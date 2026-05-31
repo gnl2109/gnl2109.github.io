@@ -2,17 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on 내 블로그</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://gnl2109.github.io/posts/</link>
     <description>Recent content in Posts on 내 블로그</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 27 May 2026 23:27:07 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 May 2026 22:18:00 +0900</lastBuildDate>
+    <atom:link href="https://gnl2109.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[이어드림스쿨6기_1주차] 01 IT 리터러시</title>
+      <link>https://gnl2109.github.io/posts/it-literacy-20260531/</link>
+      <pubDate>Sun, 31 May 2026 22:18:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/posts/it-literacy-20260531/</guid>
+      <description>&lt;p&gt;&lt;code&gt;강의자료/01 IT 리터러시&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 비개발자도 개발자와 더 정확하게 대화할 수 있도록 핵심 개념을 한 번에 정리해 보았다.&lt;/p&gt;
+&lt;p&gt;IT 리터러시는 코드를 직접 짜는 능력만을 뜻하지 않는다. 컴퓨터가 어떻게 정보를 처리하는지, 웹과 앱 서비스가 어떤 구조로 움직이는지, 데이터와 API가 왜 중요한지, 그리고 현업에서 자주 쓰는 용어가 어떤 맥락에서 등장하는지를 이해하는 능력에 가깝다.&lt;/p&gt;
+&lt;h2 id=&#34;1-컴퓨터는-0과-1로-소통한다&#34;&gt;1. 컴퓨터는 0과 1로 소통한다&lt;/h2&gt;
+&lt;p&gt;컴퓨터의 가장 아래에는 &lt;code&gt;0&lt;/code&gt;과 &lt;code&gt;1&lt;/code&gt;이 있다. 전기가 켜져 있으면 1, 꺼져 있으면 0처럼 단순한 신호를 조합해 복잡한 정보를 표현한다. 사람이 쓰는 언어와 컴퓨터가 이해하는 언어 사이에는 큰 간격이 있기 때문에, 개발자는 프로그래밍 언어를 사용해 컴퓨터와 소통한다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Sapiens: A Brief History of Humankind</title>
-      <link>http://localhost:1313/posts/book-5-202605272327/</link>
+      <link>https://gnl2109.github.io/posts/book-5-202605272327/</link>
       <pubDate>Wed, 27 May 2026 23:27:07 +0000</pubDate>
-      <guid>http://localhost:1313/posts/book-5-202605272327/</guid>
+      <guid>https://gnl2109.github.io/posts/book-5-202605272327/</guid>
       <description>&lt;h2 id=&#34;책-정보&#34;&gt;책 정보&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;제목: Sapiens: A Brief History of Humankind&lt;/li&gt;
@@ -25,9 +35,9 @@
     </item>
     <item>
       <title>Sharp Objects</title>
-      <link>http://localhost:1313/posts/book-4-202605272322/</link>
+      <link>https://gnl2109.github.io/posts/book-4-202605272322/</link>
       <pubDate>Wed, 27 May 2026 23:22:05 +0000</pubDate>
-      <guid>http://localhost:1313/posts/book-4-202605272322/</guid>
+      <guid>https://gnl2109.github.io/posts/book-4-202605272322/</guid>
       <description>&lt;h2 id=&#34;책-정보&#34;&gt;책 정보&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;제목: Sharp Objects&lt;/li&gt;
@@ -40,9 +50,9 @@
     </item>
     <item>
       <title>Soumission</title>
-      <link>http://localhost:1313/posts/book-3-202605272317/</link>
+      <link>https://gnl2109.github.io/posts/book-3-202605272317/</link>
       <pubDate>Wed, 27 May 2026 23:17:03 +0000</pubDate>
-      <guid>http://localhost:1313/posts/book-3-202605272317/</guid>
+      <guid>https://gnl2109.github.io/posts/book-3-202605272317/</guid>
       <description>&lt;h2 id=&#34;책-정보&#34;&gt;책 정보&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;제목: Soumission&lt;/li&gt;
@@ -55,9 +65,9 @@
     </item>
     <item>
       <title>Tipping the Velvet</title>
-      <link>http://localhost:1313/posts/book-2-202605272312/</link>
+      <link>https://gnl2109.github.io/posts/book-2-202605272312/</link>
       <pubDate>Wed, 27 May 2026 23:12:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/book-2-202605272312/</guid>
+      <guid>https://gnl2109.github.io/posts/book-2-202605272312/</guid>
       <description>&lt;h2 id=&#34;책-정보&#34;&gt;책 정보&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;제목: Tipping the Velvet&lt;/li&gt;
@@ -70,9 +80,9 @@
     </item>
     <item>
       <title>A Light in the Attic</title>
-      <link>http://localhost:1313/posts/book-1-202605272306/</link>
+      <link>https://gnl2109.github.io/posts/book-1-202605272306/</link>
       <pubDate>Wed, 27 May 2026 23:06:58 +0000</pubDate>
-      <guid>http://localhost:1313/posts/book-1-202605272306/</guid>
+      <guid>https://gnl2109.github.io/posts/book-1-202605272306/</guid>
       <description>&lt;h2 id=&#34;책-정보&#34;&gt;책 정보&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;제목: A Light in the Attic&lt;/li&gt;
@@ -85,9 +95,9 @@
     </item>
     <item>
       <title>첫 글</title>
-      <link>http://localhost:1313/posts/first-post/</link>
+      <link>https://gnl2109.github.io/posts/first-post/</link>
       <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/first-post/</guid>
+      <guid>https://gnl2109.github.io/posts/first-post/</guid>
       <description>&lt;p&gt;안녕하세요. 첫 블로그 글입니다.&lt;/p&gt;</description>
     </item>
   </channel>

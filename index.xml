@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>내 블로그</title>
-    <link>https://gnl2109.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on 내 블로그</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
     <lastBuildDate>Wed, 27 May 2026 23:27:07 +0000</lastBuildDate>
-    <atom:link href="https://gnl2109.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sapiens: A Brief History of Humankind</title>
-      <link>https://gnl2109.github.io/posts/book-5-202605272327/</link>
+      <link>http://localhost:1313/posts/book-5-202605272327/</link>
       <pubDate>Wed, 27 May 2026 23:27:07 +0000</pubDate>
-      <guid>https://gnl2109.github.io/posts/book-5-202605272327/</guid>
+      <guid>http://localhost:1313/posts/book-5-202605272327/</guid>
       <description>&lt;h2 id=&#34;책-정보&#34;&gt;책 정보&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;제목: Sapiens: A Brief History of Humankind&lt;/li&gt;
@@ -25,9 +25,9 @@
     </item>
     <item>
       <title>Sharp Objects</title>
-      <link>https://gnl2109.github.io/posts/book-4-202605272322/</link>
+      <link>http://localhost:1313/posts/book-4-202605272322/</link>
       <pubDate>Wed, 27 May 2026 23:22:05 +0000</pubDate>
-      <guid>https://gnl2109.github.io/posts/book-4-202605272322/</guid>
+      <guid>http://localhost:1313/posts/book-4-202605272322/</guid>
       <description>&lt;h2 id=&#34;책-정보&#34;&gt;책 정보&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;제목: Sharp Objects&lt;/li&gt;
@@ -40,9 +40,9 @@
     </item>
     <item>
       <title>Soumission</title>
-      <link>https://gnl2109.github.io/posts/book-3-202605272317/</link>
+      <link>http://localhost:1313/posts/book-3-202605272317/</link>
       <pubDate>Wed, 27 May 2026 23:17:03 +0000</pubDate>
-      <guid>https://gnl2109.github.io/posts/book-3-202605272317/</guid>
+      <guid>http://localhost:1313/posts/book-3-202605272317/</guid>
       <description>&lt;h2 id=&#34;책-정보&#34;&gt;책 정보&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;제목: Soumission&lt;/li&gt;
@@ -55,9 +55,9 @@
     </item>
     <item>
       <title>Tipping the Velvet</title>
-      <link>https://gnl2109.github.io/posts/book-2-202605272312/</link>
+      <link>http://localhost:1313/posts/book-2-202605272312/</link>
       <pubDate>Wed, 27 May 2026 23:12:00 +0000</pubDate>
-      <guid>https://gnl2109.github.io/posts/book-2-202605272312/</guid>
+      <guid>http://localhost:1313/posts/book-2-202605272312/</guid>
       <description>&lt;h2 id=&#34;책-정보&#34;&gt;책 정보&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;제목: Tipping the Velvet&lt;/li&gt;
@@ -70,9 +70,9 @@
     </item>
     <item>
       <title>A Light in the Attic</title>
-      <link>https://gnl2109.github.io/posts/book-1-202605272306/</link>
+      <link>http://localhost:1313/posts/book-1-202605272306/</link>
       <pubDate>Wed, 27 May 2026 23:06:58 +0000</pubDate>
-      <guid>https://gnl2109.github.io/posts/book-1-202605272306/</guid>
+      <guid>http://localhost:1313/posts/book-1-202605272306/</guid>
       <description>&lt;h2 id=&#34;책-정보&#34;&gt;책 정보&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;제목: A Light in the Attic&lt;/li&gt;
@@ -85,9 +85,9 @@
     </item>
     <item>
       <title>첫 글</title>
-      <link>https://gnl2109.github.io/posts/first-post/</link>
+      <link>http://localhost:1313/posts/first-post/</link>
       <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://gnl2109.github.io/posts/first-post/</guid>
+      <guid>http://localhost:1313/posts/first-post/</guid>
       <description>&lt;p&gt;안녕하세요. 첫 블로그 글입니다.&lt;/p&gt;</description>
     </item>
   </channel>

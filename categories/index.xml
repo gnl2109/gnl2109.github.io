@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Categories on 내 블로그</title>
+    <title>Categories on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
     <link>https://gnl2109.github.io/categories/</link>
-    <description>Recent content in Categories on 내 블로그</description>
+    <description>Recent content in Categories on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
     <lastBuildDate>Sun, 31 May 2026 23:22:00 +0900</lastBuildDate>
@@ -13,6 +13,13 @@
       <link>https://gnl2109.github.io/categories/%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/</link>
       <pubDate>Sun, 31 May 2026 23:22:00 +0900</pubDate>
       <guid>https://gnl2109.github.io/categories/%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Test</title>
+      <link>https://gnl2109.github.io/categories/test/</link>
+      <pubDate>Wed, 27 May 2026 23:27:07 +0000</pubDate>
+      <guid>https://gnl2109.github.io/categories/test/</guid>
       <description></description>
     </item>
   </channel>

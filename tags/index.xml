@@ -6,13 +6,48 @@
     <description>Recent content in Tags on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Sun, 31 May 2026 23:22:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://gnl2109.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CS</title>
+      <link>https://gnl2109.github.io/tags/cs/</link>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/cs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IT 리터러시</title>
+      <link>https://gnl2109.github.io/tags/it-%EB%A6%AC%ED%84%B0%EB%9F%AC%EC%8B%9C/</link>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/it-%EB%A6%AC%ED%84%B0%EB%9F%AC%EC%8B%9C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://gnl2109.github.io/tags/linux/</link>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Python</title>
       <link>https://gnl2109.github.io/tags/python/</link>
-      <pubDate>Sun, 31 May 2026 23:22:00 +0900</pubDate>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate>
       <guid>https://gnl2109.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SQL</title>
+      <link>https://gnl2109.github.io/tags/sql/</link>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/sql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>데이터 분석</title>
+      <link>https://gnl2109.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/</link>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/</guid>
       <description></description>
     </item>
     <item>
@@ -146,13 +181,6 @@
       <link>https://gnl2109.github.io/tags/api/</link>
       <pubDate>Sun, 31 May 2026 22:18:00 +0900</pubDate>
       <guid>https://gnl2109.github.io/tags/api/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>IT 리터러시</title>
-      <link>https://gnl2109.github.io/tags/it-%EB%A6%AC%ED%84%B0%EB%9F%AC%EC%8B%9C/</link>
-      <pubDate>Sun, 31 May 2026 22:18:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/it-%EB%A6%AC%ED%84%B0%EB%9F%AC%EC%8B%9C/</guid>
       <description></description>
     </item>
     <item>

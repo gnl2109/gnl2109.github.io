@@ -10,9 +10,9 @@
     <atom:link href="https://gnl2109.github.io/categories/%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초</title>
-      <link>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_2%EC%A3%BC%EC%B0%A8-0630-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98-%EA%B8%B0%EC%B4%88/</link>
+      <link>https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/</link>
       <pubDate>Tue, 30 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_2%EC%A3%BC%EC%B0%A8-0630-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98-%EA%B8%B0%EC%B4%88/</guid>
+      <guid>https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/</guid>
       <description>&lt;h1 id=&#34;행렬과-벡터&#34;&gt;행렬과 벡터&lt;/h1&gt;
 &lt;h2 id=&#34;개발에-행렬이-필요한-이유&#34;&gt;개발에 행렬이 필요한 이유&lt;/h2&gt;
 &lt;ul&gt;
@@ -33,9 +33,9 @@
     </item>
     <item>
       <title>[이어드림스쿨6기_2주차] 0629 Pandas 라이브러리 복습</title>
-      <link>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_2%EC%A3%BC%EC%B0%A8-0629-pandas-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B3%B5%EC%8A%B5/</link>
+      <link>https://gnl2109.github.io/posts/week2-pandas-review/</link>
       <pubDate>Mon, 29 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_2%EC%A3%BC%EC%B0%A8-0629-pandas-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B3%B5%EC%8A%B5/</guid>
+      <guid>https://gnl2109.github.io/posts/week2-pandas-review/</guid>
       <description>&lt;h1 id=&#34;pandas&#34;&gt;Pandas&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;행과 열로 이루어진 데이터를 만들고 다루는 패키지&lt;/li&gt;
@@ -409,9 +409,9 @@
     </item>
     <item>
       <title>[이어드림스쿨6기_1주차] 0623 이론 복습</title>
-      <link>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-0623-%EC%9D%B4%EB%A1%A0-%EB%B3%B5%EC%8A%B5/</link>
+      <link>https://gnl2109.github.io/posts/week1-theory-review/</link>
       <pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-0623-%EC%9D%B4%EB%A1%A0-%EB%B3%B5%EC%8A%B5/</guid>
+      <guid>https://gnl2109.github.io/posts/week1-theory-review/</guid>
       <description>&lt;h1 id=&#34;시험-대비-복습&#34;&gt;시험 대비 복습&lt;/h1&gt;
 &lt;h2 id=&#34;1-it-리터러시-cs&#34;&gt;1. IT 리터러시, CS&lt;/h2&gt;
 &lt;ul&gt;
@@ -454,9 +454,9 @@
     </item>
     <item>
       <title>[이어드림스쿨6기_1주차] 04,05 파이썬 기본 문법</title>
-      <link>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-0405-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95/</link>
+      <link>https://gnl2109.github.io/posts/week1-python-basic-syntax/</link>
       <pubDate>Sun, 31 May 2026 23:22:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-0405-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95/</guid>
+      <guid>https://gnl2109.github.io/posts/week1-python-basic-syntax/</guid>
       <description>&lt;p&gt;&lt;code&gt;강의자료/04,05 파이썬 기본 문법&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.&lt;/p&gt;
 &lt;p&gt;파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.&lt;/p&gt;
 &lt;h2 id=&#34;1-출력-입력-변수는-프로그램의-출발점이다&#34;&gt;1. 출력, 입력, 변수는 프로그램의 출발점이다&lt;/h2&gt;
@@ -464,9 +464,9 @@
     </item>
     <item>
       <title>[이어드림스쿨6기_1주차] 02_2 리눅스 기초</title>
-      <link>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-02_2-%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EC%B4%88/</link>
+      <link>https://gnl2109.github.io/posts/week1-linux-basics/</link>
       <pubDate>Sun, 31 May 2026 23:18:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-02_2-%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EC%B4%88/</guid>
+      <guid>https://gnl2109.github.io/posts/week1-linux-basics/</guid>
       <description>&lt;p&gt;&lt;code&gt;강의자료/02_2 리눅스 기초&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 리눅스 환경에서 꼭 알아야 할 기본 개념과 명령어를 정리해 보았다.&lt;/p&gt;
 &lt;p&gt;리눅스는 서버 개발, 클라우드, 네트워크 장비, 임베디드 기기, 안드로이드까지 넓게 쓰이는 운영체제다. 특히 개발자는 GUI보다 CLI 환경에서 서버를 다루는 일이 많기 때문에, 리눅스의 구조와 명령어에 익숙해지는 것이 중요하다.&lt;/p&gt;
 &lt;h2 id=&#34;1-리눅스는-오픈소스-기반-운영체제다&#34;&gt;1. 리눅스는 오픈소스 기반 운영체제다&lt;/h2&gt;
@@ -474,9 +474,9 @@
     </item>
     <item>
       <title>[이어드림스쿨6기_1주차] 03 네트워크 개론</title>
-      <link>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-03-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B0%9C%EB%A1%A0/</link>
+      <link>https://gnl2109.github.io/posts/week1-network-introduction/</link>
       <pubDate>Sun, 31 May 2026 23:07:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-03-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B0%9C%EB%A1%A0/</guid>
+      <guid>https://gnl2109.github.io/posts/week1-network-introduction/</guid>
       <description>&lt;p&gt;&lt;code&gt;강의자료/03 네트워크 개론&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.&lt;/p&gt;
 &lt;p&gt;네트워크는 두 대 이상의 컴퓨터가 연결되어 데이터를 주고받을 수 있도록 만든 통신망이다. 웹페이지를 열고, 이메일을 보내고, 서버에 API 요청을 보내고, 로그인 상태를 유지하는 모든 일은 네트워크 위에서 일어난다. 그래서 네트워크를 이해하면 웹 서비스가 화면 뒤에서 어떻게 움직이는지 훨씬 선명하게 볼 수 있다.&lt;/p&gt;
 &lt;h2 id=&#34;1-네트워크는-노드들이-데이터를-공유하는-통신망이다&#34;&gt;1. 네트워크는 노드들이 데이터를 공유하는 통신망이다&lt;/h2&gt;
@@ -484,9 +484,9 @@
     </item>
     <item>
       <title>[이어드림스쿨6기_1주차] 02_1 핵심 운영체제</title>
-      <link>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-02_1-%ED%95%B5%EC%8B%AC-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/</link>
+      <link>https://gnl2109.github.io/posts/week1-core-operating-system/</link>
       <pubDate>Sun, 31 May 2026 22:43:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-02_1-%ED%95%B5%EC%8B%AC-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/</guid>
+      <guid>https://gnl2109.github.io/posts/week1-core-operating-system/</guid>
       <description>&lt;p&gt;&lt;code&gt;강의자료/02_1 핵심 운영체제&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 운영체제가 컴퓨터 안에서 어떤 역할을 하는지 정리해 보았다.&lt;/p&gt;
 &lt;p&gt;운영체제는 사용자가 직접 만나는 화면보다 더 아래에서 움직이는 시스템 소프트웨어다. CPU, 메모리, 저장장치 같은 하드웨어 자원을 관리하고, 프로그램이 실행될 수 있는 환경을 만들어준다. 우리가 앱을 실행하고, 파일을 저장하고, 여러 작업을 동시에 처리할 수 있는 이유 뒤에는 운영체제가 있다.&lt;/p&gt;
 &lt;h2 id=&#34;1-운영체제는-하드웨어와-프로그램-사이를-관리한다&#34;&gt;1. 운영체제는 하드웨어와 프로그램 사이를 관리한다&lt;/h2&gt;
@@ -494,9 +494,9 @@
     </item>
     <item>
       <title>[이어드림스쿨6기_1주차] 01 IT 리터러시</title>
-      <link>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-01-it-%EB%A6%AC%ED%84%B0%EB%9F%AC%EC%8B%9C/</link>
+      <link>https://gnl2109.github.io/posts/week1-it-literacy/</link>
       <pubDate>Sun, 31 May 2026 22:18:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/%EC%9D%B4%EC%96%B4%EB%93%9C%EB%A6%BC%EC%8A%A4%EC%BF%A86%EA%B8%B0_1%EC%A3%BC%EC%B0%A8-01-it-%EB%A6%AC%ED%84%B0%EB%9F%AC%EC%8B%9C/</guid>
+      <guid>https://gnl2109.github.io/posts/week1-it-literacy/</guid>
       <description>&lt;p&gt;&lt;code&gt;강의자료/01 IT 리터러시&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 비개발자도 개발자와 더 정확하게 대화할 수 있도록 핵심 개념을 한 번에 정리해 보았다.&lt;/p&gt;
 &lt;p&gt;IT 리터러시는 코드를 직접 짜는 능력만을 뜻하지 않는다. 컴퓨터가 어떻게 정보를 처리하는지, 웹과 앱 서비스가 어떤 구조로 움직이는지, 데이터와 API가 왜 중요한지, 그리고 현업에서 자주 쓰는 용어가 어떤 맥락에서 등장하는지를 이해하는 능력에 가깝다.&lt;/p&gt;
 &lt;h2 id=&#34;1-컴퓨터는-0과-1로-소통한다&#34;&gt;1. 컴퓨터는 0과 1로 소통한다&lt;/h2&gt;

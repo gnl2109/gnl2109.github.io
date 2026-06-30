@@ -1,36 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Python on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
-    <link>https://gnl2109.github.io/tags/python/</link>
-    <description>Recent content in Python on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
+    <title>Series on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+    <link>https://gnl2109.github.io/tags/series/</link>
+    <description>Recent content in Series on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 30 Jun 2026 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://gnl2109.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[이어드림스쿨6기] 0630 머신러닝을 위한 선형대수 기초</title>
-      <link>https://gnl2109.github.io/posts/math-for-machine-learning-20260630/</link>
-      <pubDate>Tue, 30 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/math-for-machine-learning-20260630/</guid>
-      <description>&lt;h1 id=&#34;행렬과-벡터&#34;&gt;행렬과 벡터&lt;/h1&gt;
-&lt;h2 id=&#34;개발에-행렬이-필요한-이유&#34;&gt;개발에 행렬이 필요한 이유&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음&lt;/li&gt;
-&lt;li&gt;문제점 : 원본 이미지를 저장시,
-고차원 데이터 =&amp;gt; 저장비용 증가 =&amp;gt; 고정비 상승&lt;/li&gt;
-&lt;li&gt;해결방안 : PCA 원리를 활용
-&lt;ul&gt;
-&lt;li&gt;하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬&lt;/li&gt;
-&lt;li&gt;행렬 분해(SVD/PCA) 활용하면 이미지 저장 비용이 줄어든다!&lt;/li&gt;
-&lt;li&gt;시간적으로 처리속도 증가하고, 저장비용도 감소함&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법&lt;/p&gt;
-&lt;p&gt;SVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Mon, 29 Jun 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://gnl2109.github.io/tags/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[이어드림스쿨6기] 0629 Pandas 라이브러리 복습</title>
       <link>https://gnl2109.github.io/posts/pandas-library-review-20260629/</link>
@@ -406,61 +383,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;score    float64
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dtype: object
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>[이어드림스쿨6기] 0623 이론 복습</title>
-      <link>https://gnl2109.github.io/posts/theory-review-20260623/</link>
-      <pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/theory-review-20260623/</guid>
-      <description>&lt;h1 id=&#34;시험-대비-복습&#34;&gt;시험 대비 복습&lt;/h1&gt;
-&lt;h2 id=&#34;1-it-리터러시-cs&#34;&gt;1. IT 리터러시, CS&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;STORAGE &amp;gt; MEMORY &amp;gt; CPU&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;프로그램 메모리 구조&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;낮은 메모리 주소
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ↓
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──────────────────────────────┐
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│            Code              │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├──────────────────────────────┤
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 사용자가 작성한 프로그램 함수  │  사용자가 작성한 프로그램 코드(함수)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└──────────────────────────────┘
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──────────────────────────────┐
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│            Data              │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├──────────────────────────────┤
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 프로그램에 사용하는 데이터 공간 │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 전역변수, static 변수         │  전역변수, static 변수 저장
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└──────────────────────────────┘
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──────────────────────────────┐
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│            Heap              │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├──────────────────────────────┤
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 프로그래머가 필요할 때         │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 사용하는 공간                 │  동적 메모리 할당 영역
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└──────────────────────────────┘
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──────────────────────────────┐
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│            Stack             │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├──────────────────────────────┤
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 함수의 수행을 마치고           │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 복귀할 주소 및 데이터 저장     │  지역변수, 매개변수, 반환주소 저장
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ (지역변수, 매개변수, 리턴값)   │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└──────────────────────────────┘
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ↓
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;높은 메모리 주소
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;프로세스-스레드 관계. 차이점.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>[이어드림스쿨6기_1주차] 04,05 파이썬 기본 문법</title>
-      <link>https://gnl2109.github.io/posts/python-basic-syntax-20260531/</link>
-      <pubDate>Sun, 31 May 2026 23:22:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/python-basic-syntax-20260531/</guid>
-      <description>&lt;p&gt;&lt;code&gt;강의자료/04,05 파이썬 기본 문법&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.&lt;/p&gt;
-&lt;p&gt;파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.&lt;/p&gt;
-&lt;h2 id=&#34;1-출력-입력-변수는-프로그램의-출발점이다&#34;&gt;1. 출력, 입력, 변수는 프로그램의 출발점이다&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;print()&lt;/code&gt;는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

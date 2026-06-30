@@ -2,10 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://gnl2109.github.io/posts/theory-review-20260623/</loc>
-    <lastmod>2026-06-23T00:00:00+09:00</lastmod>
+    <loc>https://gnl2109.github.io/posts/math-for-machine-learning-20260630/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://gnl2109.github.io/categories/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://gnl2109.github.io/posts/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://gnl2109.github.io/tags/python/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://gnl2109.github.io/tags/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://gnl2109.github.io/categories/%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://gnl2109.github.io/tags/%EB%B2%A1%ED%84%B0/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://gnl2109.github.io/tags/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://gnl2109.github.io/tags/%EC%88%98%ED%95%99/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://gnl2109.github.io/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://gnl2109.github.io/tags/%ED%96%89%EB%A0%AC/</loc>
+    <lastmod>2026-06-30T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://gnl2109.github.io/posts/theory-review-20260623/</loc>
     <lastmod>2026-06-23T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://gnl2109.github.io/tags/cs/</loc>
@@ -17,25 +50,10 @@
     <loc>https://gnl2109.github.io/tags/linux/</loc>
     <lastmod>2026-06-23T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://gnl2109.github.io/posts/</loc>
-    <lastmod>2026-06-23T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://gnl2109.github.io/tags/python/</loc>
-    <lastmod>2026-06-23T00:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://gnl2109.github.io/tags/sql/</loc>
     <lastmod>2026-06-23T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://gnl2109.github.io/tags/</loc>
-    <lastmod>2026-06-23T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://gnl2109.github.io/categories/%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/</loc>
-    <lastmod>2026-06-23T00:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://gnl2109.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/</loc>
-    <lastmod>2026-06-23T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://gnl2109.github.io/</loc>
     <lastmod>2026-06-23T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://gnl2109.github.io/posts/python-basic-syntax-20260531/</loc>

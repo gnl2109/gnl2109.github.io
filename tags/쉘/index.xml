@@ -1,22 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>쉘 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
-    <link>https://gnl2109.github.io/tags/%EC%89%98/</link>
-    <description>Recent content in 쉘 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
-    <generator>Hugo</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 31 May 2026 23:18:00 +0900</lastBuildDate>
-    <atom:link href="https://gnl2109.github.io/tags/%EC%89%98/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[이어드림스쿨6기_1주차] 02_2 리눅스 기초</title>
-      <link>https://gnl2109.github.io/posts/week1-linux-basics/</link>
-      <pubDate>Sun, 31 May 2026 23:18:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/week1-linux-basics/</guid>
-      <description>&lt;p&gt;&lt;code&gt;강의자료/02_2 리눅스 기초&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 리눅스 환경에서 꼭 알아야 할 기본 개념과 명령어를 정리해 보았다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>쉘 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><link>https://gnl2109.github.io/tags/%EC%89%98/</link><description>Recent content in 쉘 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description><generator>Hugo</generator><language>ko-kr</language><lastBuildDate>Sun, 31 May 2026 23:18:00 +0900</lastBuildDate><atom:link href="https://gnl2109.github.io/tags/%EC%89%98/index.xml" rel="self" type="application/rss+xml"/><item><title>[이어드림스쿨6기_1주차] 02_2 리눅스 기초</title><link>https://gnl2109.github.io/posts/week1-linux-basics/</link><pubDate>Sun, 31 May 2026 23:18:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/week1-linux-basics/</guid><description>&lt;p&gt;&lt;code&gt;강의자료/02_2 리눅스 기초&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 리눅스 환경에서 꼭 알아야 할 기본 개념과 명령어를 정리해 보았다.&lt;/p&gt;
 &lt;p&gt;리눅스는 서버 개발, 클라우드, 네트워크 장비, 임베디드 기기, 안드로이드까지 넓게 쓰이는 운영체제다. 특히 개발자는 GUI보다 CLI 환경에서 서버를 다루는 일이 많기 때문에, 리눅스의 구조와 명령어에 익숙해지는 것이 중요하다.&lt;/p&gt;
-&lt;h2 id=&#34;1-리눅스는-오픈소스-기반-운영체제다&#34;&gt;1. 리눅스는 오픈소스 기반 운영체제다&lt;/h2&gt;
-&lt;p&gt;리눅스는 리누스 토발즈가 만든 운영체제 커널에서 출발했다. 자유 소프트웨어와 오픈소스 개발 문화의 대표적인 사례이며, GNU 프로젝트와 함께 성장해 왔다. GNU 프로젝트는 유닉스처럼 동작하지만 자유롭게 사용할 수 있는 소프트웨어 환경을 만들기 위해 시작되었다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="1-리눅스는-오픈소스-기반-운영체제다"&gt;1. 리눅스는 오픈소스 기반 운영체제다&lt;/h2&gt;
+&lt;p&gt;리눅스는 리누스 토발즈가 만든 운영체제 커널에서 출발했다. 자유 소프트웨어와 오픈소스 개발 문화의 대표적인 사례이며, GNU 프로젝트와 함께 성장해 왔다. GNU 프로젝트는 유닉스처럼 동작하지만 자유롭게 사용할 수 있는 소프트웨어 환경을 만들기 위해 시작되었다.&lt;/p&gt;</description></item></channel></rss>

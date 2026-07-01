@@ -52,7 +52,26 @@
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법&lt;/p&gt;
-&lt;p&gt;SVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법&lt;/p&gt;</description></item><item><title>[이어드림스쿨6기_2주차] 0629 Pandas 라이브러리 복습</title><link>https://gnl2109.github.io/posts/week2-pandas-review/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/week2-pandas-review/</guid><description>&lt;h1 id="pandas"&gt;Pandas&lt;/h1&gt;
+&lt;p&gt;SVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법&lt;/p&gt;</description></item><item><title>[이어드림스쿨6기_2주차] 0629 Matplotlib 라이브러리 복습</title><link>https://gnl2109.github.io/posts/week2-matplotlib-review/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/week2-matplotlib-review/</guid><description>&lt;h1 id="matplotlib"&gt;Matplotlib&lt;/h1&gt;
+&lt;p&gt;Matplotlib은 Python에서 가장 기본적으로 많이 사용하는 데이터 시각화 라이브러리다.&lt;/p&gt;
+&lt;p&gt;데이터 시각화는 숫자나 표 형태의 데이터를 그래프, 차트 같은 시각 형태로 표현해 이해하기 쉽게 만드는 과정이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;정보 전달 효율을 높일 수 있다.&lt;/li&gt;
+&lt;li&gt;데이터의 패턴과 상관관계를 파악하기 쉽다.&lt;/li&gt;
+&lt;li&gt;여러 값이나 그룹을 비교하기 좋다.&lt;/li&gt;
+&lt;li&gt;선 그래프, 산점도, 히스토그램, 막대 그래프 등을 세밀하게 제어할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Matplotlib을 사용할 때는 보통 &lt;code&gt;matplotlib.pyplot&lt;/code&gt;을 &lt;code&gt;plt&lt;/code&gt;라는 이름으로 불러온다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; matplotlib.pyplot &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; plt
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; matplotlib
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; numpy &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; np
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Colab 또는 Jupyter Notebook 안에 그래프 표시&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;%&lt;/span&gt;matplotlib inline
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(&lt;span style="color:#e6db74"&gt;&amp;#34;Matplotlib version:&amp;#34;&lt;/span&gt;, matplotlib&lt;span style="color:#f92672"&gt;.&lt;/span&gt;__version__)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Matplotlib version: 3.x.x
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;%matplotlib inline&lt;/code&gt;은 Jupyter/Colab 환경에서 그래프를 노트북 안에 바로 보여주기 위한 매직 명령어다. 일반 &lt;code&gt;.py&lt;/code&gt; 파일에서는 사용하지 않는다.&lt;/p&gt;</description></item><item><title>[이어드림스쿨6기_2주차] 0629 Pandas 라이브러리 복습</title><link>https://gnl2109.github.io/posts/week2-pandas-review/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/week2-pandas-review/</guid><description>&lt;h1 id="pandas"&gt;Pandas&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;행과 열로 이루어진 데이터를 만들고 다루는 패키지&lt;/li&gt;
 &lt;li&gt;데이터 분석에 특화 =&amp;gt; 대용량 데이터 처리에 편리&lt;/li&gt;

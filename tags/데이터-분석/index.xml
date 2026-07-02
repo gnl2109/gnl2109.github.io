@@ -434,7 +434,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;age int64
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;score float64
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;dtype: object
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>[이어드림스쿨6기_1주차] 0623 이론 복습</title><link>https://gnl2109.github.io/posts/week1-theory-review/</link><pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/week1-theory-review/</guid><description>&lt;h1 id="시험-대비-복습"&gt;시험 대비 복습&lt;/h1&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>[이어드림스쿨6기_2주차] 0629 Seaborn 라이브러리 복습</title><link>https://gnl2109.github.io/posts/week2-seaborn-review/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/week2-seaborn-review/</guid><description>&lt;h1 id="seaborn"&gt;Seaborn&lt;/h1&gt;
+&lt;p&gt;Seaborn은 Matplotlib 위에 색 테마와 통계 차트 기능을 더한 데이터 시각화 라이브러리다.&lt;/p&gt;
+&lt;p&gt;Matplotlib이 그래프를 세밀하게 제어하는 기본 도구라면, Seaborn은 데이터 분석에서 자주 쓰는 통계 그래프를 더 간결하고 보기 좋게 그릴 수 있도록 도와준다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Matplotlib 기반으로 동작한다.&lt;/li&gt;
+&lt;li&gt;산점도, 회귀선, 범주형 빈도, 분포 시각화에 편리하다.&lt;/li&gt;
+&lt;li&gt;기본 스타일이 정돈되어 있어 EDA에 많이 사용한다.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DataFrame&lt;/code&gt; 컬럼명을 바로 지정해서 그래프를 그릴 수 있다.&lt;/li&gt;
+&lt;li&gt;내장 예제 데이터셋을 제공한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="seaborn-import"&gt;Seaborn import&lt;/h2&gt;
+&lt;p&gt;Seaborn은 관례적으로 &lt;code&gt;sns&lt;/code&gt;라는 별칭으로 불러온다.&lt;/p&gt;</description></item><item><title>[이어드림스쿨6기_1주차] 0623 이론 복습</title><link>https://gnl2109.github.io/posts/week1-theory-review/</link><pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/week1-theory-review/</guid><description>&lt;h1 id="시험-대비-복습"&gt;시험 대비 복습&lt;/h1&gt;
 &lt;h2 id="1-it-리터러시-cs"&gt;1. IT 리터러시, CS&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;

@@ -1,9 +1,18 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><meta name=keywords content="머신러닝,수학,선형대수,행렬,벡터,Python"><meta name=description content="행렬과 벡터
-개발에 행렬이 필요한 이유
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+<meta name="keywords" content="머신러닝, 수학, 선형대수, 행렬, 벡터, Python">
+<meta name="description" content="선형대수학 (행렬과 벡터)
+개발에 선형대수학이 필요한 이유
 
 시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음
 문제점 : 원본 이미지를 저장시,
-고차원 데이터 => 저장비용 증가 => 고정비 상승
+고차원 데이터 =&gt; 저장비용 증가 =&gt; 고정비 상승
 해결방안 : PCA 원리를 활용
 
 하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬
@@ -14,94 +23,478 @@
 
 
 SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법
-SVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법"><meta name=author content><link rel=canonical href=https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/><link crossorigin=anonymous href=/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL+GgRwmx68=" rel="preload stylesheet" as=style><link rel=icon href=https://gnl2109.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://gnl2109.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://gnl2109.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://gnl2109.github.io/apple-touch-icon.png><link rel=mask-icon href=https://gnl2109.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-HTV70762HG")}</script><meta property="og:url" content="https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/"><meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그"><meta property="og:title" content="[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초"><meta property="og:description" content="행렬과 벡터 개발에 행렬이 필요한 이유 시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음 문제점 : 원본 이미지를 저장시, 고차원 데이터 => 저장비용 증가 => 고정비 상승 해결방안 : PCA 원리를 활용 하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬 행렬 분해(SVD/PCA) 활용하면 이미지 저장 비용이 줄어든다! 시간적으로 처리속도 증가하고, 저장비용도 감소함 SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법
-SVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법"><meta property="og:locale" content="ko_kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-06-30T00:00:00+09:00"><meta property="article:modified_time" content="2026-06-30T00:00:00+09:00"><meta property="article:tag" content="머신러닝"><meta property="article:tag" content="수학"><meta property="article:tag" content="선형대수"><meta property="article:tag" content="행렬"><meta property="article:tag" content="벡터"><meta property="article:tag" content="Python"><meta name=twitter:card content="summary"><meta name=twitter:title content="[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초"><meta name=twitter:description content="행렬과 벡터 개발에 행렬이 필요한 이유 시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음 문제점 : 원본 이미지를 저장시, 고차원 데이터 => 저장비용 증가 => 고정비 상승 해결방안 : PCA 원리를 활용 하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬 행렬 분해(SVD/PCA) 활용하면 이미지 저장 비용이 줄어든다! 시간적으로 처리속도 증가하고, 저장비용도 감소함 SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법
-SVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://gnl2109.github.io/posts/"},{"@type":"ListItem","position":2,"name":"[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초","item":"https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초","name":"[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초","description":"행렬과 벡터 개발에 행렬이 필요한 이유 시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음 문제점 : 원본 이미지를 저장시, 고차원 데이터 =\u0026gt; 저장비용 증가 =\u0026gt; 고정비 상승 해결방안 : PCA 원리를 활용 하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬 행렬 분해(SVD/PCA) 활용하면 이미지 저장 비용이 줄어든다! 시간적으로 처리속도 증가하고, 저장비용도 감소함 SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법\nSVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법\n","keywords":["머신러닝","수학","선형대수","행렬","벡터","Python"],"articleBody":"행렬과 벡터 개발에 행렬이 필요한 이유 시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음 문제점 : 원본 이미지를 저장시, 고차원 데이터 =\u003e 저장비용 증가 =\u003e 고정비 상승 해결방안 : PCA 원리를 활용 하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬 행렬 분해(SVD/PCA) 활용하면 이미지 저장 비용이 줄어든다! 시간적으로 처리속도 증가하고, 저장비용도 감소함 SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법\nSVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법\nPCA(Principal Component Analysis): 데이터의 중요한 특징만 남기고 차원을 줄이는 통계 기법\n행렬의 정의 행렬(matrix)은 수나 식을 직사각형 모양으로 배열 일반적으로 m개의 행과 n개의 열을 배열하여 m * n 행렬을 구성 같은 수의 행과 열을 가지면 정방행렬(square matrix) 부름 1 * n 행렬은 행벡터, n * 1 행렬은 열벡터라고 부름, 전치연산자(T)를 통해 행과 열을 서로 바꿀 수 있다 크기가 같은 두 행렬은 같은 위치의 성분끼리 덧셈, 뺄셈, 스칼라 곱셈이 가능하다. 행렬은 곧 영역 전개이다. 행렬의 연산 예시 시나리오 : 영화 추천 별점 예상. 철수(액션), 영희(로맨스), 민수(다 좋아함) 유저 행렬 : 얼마나 좋아하는가? 영화 행렬 : 영화별 장르 성분이 얼마나 들어있는가? 유저 3명 (성향 행렬) =\u003e U 영화 3편 (성분 행렬) =\u003e V import numpy as np users = [\"Cheolsu (Action)\", \"Younghee (Romance)\", \"Minsu (Both)\"] # 유저 성향 점수를 행렬로 생성 U = np.array([ [5, 1], # 철수는 액션 5, 로맨스 1 [1, 5], # 영희는 액션 1, 로맨스 5 [4, 4] # 민수는 액션 4, 로맨스 4 ]) # 영화 장르별 성분을 행렬로 생성 # 열 : 영화 # 행 : 액션 비중, 로맨스 비중 (1.0 만점 기준) movies = [\"Die Hard\", \"Titanic\", \"Terminator\"] V_T = np.array([ [1.0, 0.0, 0.9], # 액션 비중 [0.0, 1.0, 0.1] # 로맨스 성분 비중 ]) # 선형대수 행렬 곱셈 연산 predicted_ratings = U @ V_T predicted_ratings 결과 : [5. , 1. , 4.6] # 철수의 영화 평점 [1. , 5. , 1.4] # 영희의 영화 평점 [4. , 4. , 4. ] # 민수의 영화 평점 벡터 공간(R^n) 실수 n개로 이루어진 모든 벡터들이 모여 있는 공간 분석가가 ‘고객을 바라보는 렌즈의 갯수(변수)‘를 늘려가는 과정 고객의 나이, 구매액 (2차원) 고객의 나이, 구매액, 방문횟수 (3차원) 분석을 하려면 더 많은 요인이 필요해 =\u003e R^n 의 대수학적 확장 추천 알고리즘 : 클릭 횟수, 체류 시간, 반품 이력… 등 수백개의 변수 추가 100개의 변수 활용, 100차원 (R^100) 두 가지 필수 연산의 의미 벡터의 덧셈 : 온라인 쇼핑 행동 벡터 + 오프라인 매장 행동 벡터 =\u003e 고객의 통합 프로파일(Omni-Channel Profile) 완성 스칼라 곱 : 마케팅 목표 설정, 현재 우수 고객 모든 활동량을 1.5배 곱을 한다. 기존 고객 벡터의 방향성(취향)은 유지한 채, 규모를 스케일업(Scale-Up) 시뮬레이션 import numpy as np # 벡터 (구매 횟수, 사이트 체류시간) online_behavior = np.array([4, 2]) offline_behavior = np.array([1, 4]) scalar_growth = 1.5 # 가중치 # 벡터의 덧셈 : 두 행동 양식을 더해서, 옴니채널 통합 벡터 생성 integrated_v = online_behavior + offline_behavior print(integrated_v) # 스칼라 곱 : 통합된 고객 행동을 일정 비율로 스케일업 scaled_v = integrated_v * scalar_growth print(scaled_v) 결과 : [5 6] # 온라인·오프라인 행동을 통합한 고객 행동 생성 [7.5 9. ] # 고객 행동이 전체적으로 1.5배 증가했다고 가정 코사인 유사도 두 벡터의 내적을 각 벡터의 크기(Norm)의 곱으로 나눈 값이다. 활용 예시 콘텐츠 플랫폼 취향 매칭 고객 A (헤비 유저) : 주말 내내 영화 시청 (액션 100시간, 로맨스 10시간, SF 50시간) 고객 B (라이트 유저) : 한달에 한두편 시청 (액션 10시간, 로맨스 1시간, SF 5시간) 두 고객의 절대적인 시청량(크기) 차이를 무시 =\u003e 장르별 비율(방향)이 같은지 확인 import numpy as np from sklearn.metrics.pairwise import cosine_similarity customer_A = np.array([100, 10, 50]) customer_B = np.array([10, 1, 5]) # 방식 1. Norm과 내적 직접 구현 dot_product = np.dot(customer_A, customer_B) norm_A = np.linalg.norm(customer_A) norm_B = np.linalg.norm(customer_B) # 코사인 유사도 공식 적용 cos_sim_manual = dot_product / (norm_A * norm_B) print(cos_sim_manual) # 코사인 유사도 더 쉽게 계산 # 머신러닝 라이브러리 scikit-learn 방식 # 기본 입력값이 2차원 배열 A_2d = customer_A.reshape(1, -1) B_2d = customer_B.reshape(1, -1) cosine_similarity(A_2d, B_2d)[0][0] 결과 : 1.0 np.float64(0.9999999999999999) 선형방정식 수학적 원리 제약 조건 속 최적의 해답 찾기 행렬과 벡터를 활용하여 Ax = b 형태의 수식으로 표현 방정식을 풀기 위해 미지수의 계수(행렬 A)와 우변의 상수(벡터 b)를 하나로 합친 첨가 행렬(Augmented Matrix) 구성 미지수를 규칙적으로 줄여나가는 Gauss 소거법 대각선 성분만 남기는 사다리꼴 행렬로 만드는 Gauss-Jordan 소거법 비즈니스 관점에서 바라보기 제약조건 1(예산), 제약조건 2(시간) ==\u003e 가장 효율적인 접점 ==\u003e 황금비율 찾기 선형방정식을 푼다는 의미는 비즈니스 현장에서 ‘수많은 제약조건이 있는데, 그 중에서 최적의 자원 배분 비율(황금비율)을 찾는 과정’ 예시 광고채널 A(x)와 광고채널 B(y)의 최적 집행 횟수 찾기 제약조건 1 (예산) : 3x + 1y = 9 (총 예산 900만원 소진) 제약조건 2 (시간) : 1x + 2y = 8 (총 가용 시간 80시간 소진) # 선형방정식 행렬 세팅(Ax = b) # 계수 행렬 A A_matrix = np.array([ [3, 1], [1, 2] ]) # 상수 벡터 b b_vector = np.array([9, 8]) # 선형방정식 풀이 (np.linalg.solve() 활용) solution = np.linalg.solve(A_matrix, b_vector) x_sol, y_sol = solution print(x_sol, y_sol) 결과 : 2.0 3.0 수학적인 의미 두 선형 방정식 3x + y = 9, x + 2y = 8을 동시에 만족하는 유일한 해(solution)가 기하학적으로 두 직선의 교점과 같음 비즈니스적 의미 한정된 예산과 시간을 최대한 활용하면서, 최대의 효율을 내기 위해, 광고 채널 A에 2회 집행, 채널 B에 3회 집행 =\u003e 최적 자원 배분 검증을 하려면 결과를 방정식에 넣어보면 된다. ","wordCount":"838","inLanguage":"en","datePublished":"2026-06-30T00:00:00+09:00","dateModified":"2026-06-30T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/"},"publisher":{"@type":"Organization","name":"이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그","logo":{"@type":"ImageObject","url":"https://gnl2109.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://gnl2109.github.io/ accesskey=h title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초</h1><div class=post-meta><span title='2026-06-30 00:00:00 +0900 KST'>2026년 6월 30일</span></div></header><div class="post-content md-content"><h1 id=행렬과-벡터>행렬과 벡터<a hidden class=anchor aria-hidden=true href=#행렬과-벡터>#</a></h1><h2 id=개발에-행렬이-필요한-이유>개발에 행렬이 필요한 이유<a hidden class=anchor aria-hidden=true href=#개발에-행렬이-필요한-이유>#</a></h2><ul><li>시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음</li><li>문제점 : 원본 이미지를 저장시,
-고차원 데이터 => 저장비용 증가 => 고정비 상승</li><li>해결방안 : PCA 원리를 활용<ul><li>하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬</li><li>행렬 분해(SVD/PCA) 활용하면 이미지 저장 비용이 줄어든다!</li><li>시간적으로 처리속도 증가하고, 저장비용도 감소함</li></ul></li></ul><blockquote><p>SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법</p><p>SVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법</p><p>PCA(Principal Component Analysis): 데이터의 중요한 특징만 남기고 차원을 줄이는 통계 기법</p></blockquote><h2 id=행렬의-정의>행렬의 정의<a hidden class=anchor aria-hidden=true href=#행렬의-정의>#</a></h2><ul><li>행렬(matrix)은 수나 식을 직사각형 모양으로 배열</li><li>일반적으로 m개의 행과 n개의 열을 배열하여 m * n 행렬을 구성</li><li>같은 수의 행과 열을 가지면 정방행렬(square matrix) 부름</li><li>1 * n 행렬은 행벡터, n * 1 행렬은 열벡터라고 부름, 전치연산자(T)를 통해 행과 열을 서로 바꿀 수 있다</li><li>크기가 같은 두 행렬은 같은 위치의 성분끼리 덧셈, 뺄셈, 스칼라 곱셈이 가능하다.</li><li>행렬은 곧 영역 전개이다.</li></ul><h2 id=행렬의-연산-예시>행렬의 연산 예시<a hidden class=anchor aria-hidden=true href=#행렬의-연산-예시>#</a></h2><ul><li>시나리오 : 영화 추천 별점 예상. 철수(액션), 영희(로맨스), 민수(다 좋아함)<ul><li>유저 행렬 : 얼마나 좋아하는가?</li><li>영화 행렬 : 영화별 장르 성분이 얼마나 들어있는가?</li><li>유저 3명 (성향 행렬) => U</li><li>영화 3편 (성분 행렬) => V</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
-</span></span><span style=display:flex><span>users <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;Cheolsu (Action)&#34;</span>, <span style=color:#e6db74>&#34;Younghee (Romance)&#34;</span>, <span style=color:#e6db74>&#34;Minsu (Both)&#34;</span>]
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 유저 성향 점수를 행렬로 생성</span>
-</span></span><span style=display:flex><span>U <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([
-</span></span><span style=display:flex><span>    [<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>1</span>], <span style=color:#75715e># 철수는 액션 5, 로맨스 1</span>
-</span></span><span style=display:flex><span>    [<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>5</span>], <span style=color:#75715e># 영희는 액션 1, 로맨스 5</span>
-</span></span><span style=display:flex><span>    [<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>4</span>]  <span style=color:#75715e># 민수는 액션 4, 로맨스 4</span>
-</span></span><span style=display:flex><span>])
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 영화 장르별 성분을 행렬로 생성</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 열 : 영화</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 행 : 액션 비중, 로맨스 비중 (1.0 만점 기준)</span>
-</span></span><span style=display:flex><span>movies <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;Die Hard&#34;</span>, <span style=color:#e6db74>&#34;Titanic&#34;</span>, <span style=color:#e6db74>&#34;Terminator&#34;</span>]
-</span></span><span style=display:flex><span>V_T <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([
-</span></span><span style=display:flex><span>    [<span style=color:#ae81ff>1.0</span>, <span style=color:#ae81ff>0.0</span>, <span style=color:#ae81ff>0.9</span>], <span style=color:#75715e># 액션 비중</span>
-</span></span><span style=display:flex><span>    [<span style=color:#ae81ff>0.0</span>, <span style=color:#ae81ff>1.0</span>, <span style=color:#ae81ff>0.1</span>]  <span style=color:#75715e># 로맨스 성분 비중</span>
-</span></span><span style=display:flex><span>])
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 선형대수 행렬 곱셈 연산</span>
-</span></span><span style=display:flex><span>predicted_ratings <span style=color:#f92672>=</span> U <span style=color:#f92672>@</span> V_T
-</span></span><span style=display:flex><span>predicted_ratings
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>결과 : [5. , 1. , 4.6]  # 철수의 영화 평점
-</span></span><span style=display:flex><span>       [1. , 5. , 1.4]  # 영희의 영화 평점
-</span></span><span style=display:flex><span>       [4. , 4. , 4. ]  # 민수의 영화 평점
-</span></span></code></pre></div><h2 id=벡터-공간rn>벡터 공간(R^n)<a hidden class=anchor aria-hidden=true href=#벡터-공간rn>#</a></h2><ul><li>실수 n개로 이루어진 모든 벡터들이 모여 있는 공간</li><li>분석가가 &lsquo;고객을 바라보는 렌즈의 갯수(변수)&lsquo;를 늘려가는 과정</li><li>고객의 나이, 구매액 (2차원)</li><li>고객의 나이, 구매액, 방문횟수 (3차원)</li><li>분석을 하려면 더 많은 요인이 필요해 => R^n 의 대수학적 확장<ul><li>추천 알고리즘 : 클릭 횟수, 체류 시간, 반품 이력&mldr; 등 수백개의 변수 추가</li><li>100개의 변수 활용, 100차원 (R^100)</li></ul></li><li>두 가지 필수 연산의 의미<ul><li>벡터의 덧셈 : 온라인 쇼핑 행동 벡터 + 오프라인 매장 행동 벡터 => 고객의 통합 프로파일(Omni-Channel Profile) 완성</li><li>스칼라 곱 : 마케팅 목표 설정, 현재 우수 고객 모든 활동량을 1.5배 곱을 한다. 기존 고객 벡터의 방향성(취향)은 유지한 채, 규모를 스케일업(Scale-Up) 시뮬레이션</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 벡터 (구매 횟수, 사이트 체류시간)</span>
-</span></span><span style=display:flex><span>online_behavior <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>2</span>])
-</span></span><span style=display:flex><span>offline_behavior <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>4</span>])
-</span></span><span style=display:flex><span>scalar_growth <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.5</span>   <span style=color:#75715e># 가중치</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 벡터의 덧셈 : 두 행동 양식을 더해서, 옴니채널 통합 벡터 생성</span>
-</span></span><span style=display:flex><span>integrated_v <span style=color:#f92672>=</span> online_behavior <span style=color:#f92672>+</span> offline_behavior
-</span></span><span style=display:flex><span>print(integrated_v)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 스칼라 곱 : 통합된 고객 행동을 일정 비율로 스케일업</span>
-</span></span><span style=display:flex><span>scaled_v <span style=color:#f92672>=</span> integrated_v <span style=color:#f92672>*</span> scalar_growth
-</span></span><span style=display:flex><span>print(scaled_v)
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>결과 : [5 6]     # 온라인·오프라인 행동을 통합한 고객 행동 생성
-</span></span><span style=display:flex><span>      [7.5 9. ]  # 고객 행동이 전체적으로 1.5배 증가했다고 가정
-</span></span></code></pre></div><h2 id=코사인-유사도>코사인 유사도<a hidden class=anchor aria-hidden=true href=#코사인-유사도>#</a></h2><ul><li>두 벡터의 내적을 각 벡터의 크기(Norm)의 곱으로 나눈 값이다.</li></ul><h3 id=활용-예시>활용 예시<a hidden class=anchor aria-hidden=true href=#활용-예시>#</a></h3><ul><li>콘텐츠 플랫폼 취향 매칭<ul><li>고객 A (헤비 유저) : 주말 내내 영화 시청 (액션 100시간, 로맨스 10시간, SF 50시간)</li><li>고객 B (라이트 유저) : 한달에 한두편 시청 (액션 10시간, 로맨스 1시간, SF 5시간)</li></ul></li><li>두 고객의 절대적인 시청량(크기) 차이를 무시 => 장르별 비율(방향)이 같은지 확인</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
-</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sklearn.metrics.pairwise <span style=color:#f92672>import</span> cosine_similarity
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>customer_A <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>100</span>, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>50</span>])
-</span></span><span style=display:flex><span>customer_B <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>5</span>])
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 방식 1. Norm과 내적 직접 구현</span>
-</span></span><span style=display:flex><span>dot_product <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>dot(customer_A, customer_B)
-</span></span><span style=display:flex><span>norm_A <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>linalg<span style=color:#f92672>.</span>norm(customer_A)
-</span></span><span style=display:flex><span>norm_B <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>linalg<span style=color:#f92672>.</span>norm(customer_B)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 코사인 유사도 공식 적용</span>
-</span></span><span style=display:flex><span>cos_sim_manual <span style=color:#f92672>=</span> dot_product <span style=color:#f92672>/</span> (norm_A <span style=color:#f92672>*</span> norm_B)
-</span></span><span style=display:flex><span>print(cos_sim_manual)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 코사인 유사도 더 쉽게 계산</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 머신러닝 라이브러리 scikit-learn 방식</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 기본 입력값이 2차원 배열</span>
-</span></span><span style=display:flex><span>A_2d <span style=color:#f92672>=</span> customer_A<span style=color:#f92672>.</span>reshape(<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
-</span></span><span style=display:flex><span>B_2d <span style=color:#f92672>=</span> customer_B<span style=color:#f92672>.</span>reshape(<span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>cosine_similarity(A_2d, B_2d)[<span style=color:#ae81ff>0</span>][<span style=color:#ae81ff>0</span>]
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>결과 : 1.0
-</span></span><span style=display:flex><span>    np.float64(0.9999999999999999)
-</span></span></code></pre></div><h2 id=선형방정식>선형방정식<a hidden class=anchor aria-hidden=true href=#선형방정식>#</a></h2><h3 id=수학적-원리>수학적 원리<a hidden class=anchor aria-hidden=true href=#수학적-원리>#</a></h3><ul><li>제약 조건 속 최적의 해답 찾기</li><li>행렬과 벡터를 활용하여 Ax = b 형태의 수식으로 표현</li><li>방정식을 풀기 위해 미지수의 계수(행렬 A)와 우변의 상수(벡터 b)를 하나로 합친 첨가 행렬(Augmented Matrix) 구성</li><li>미지수를 규칙적으로 줄여나가는 Gauss 소거법</li><li>대각선 성분만 남기는 사다리꼴 행렬로 만드는 Gauss-Jordan 소거법</li></ul><h3 id=비즈니스-관점에서-바라보기>비즈니스 관점에서 바라보기<a hidden class=anchor aria-hidden=true href=#비즈니스-관점에서-바라보기>#</a></h3><ul><li>제약조건 1(예산), 제약조건 2(시간)
-==> 가장 효율적인 접점 ==> 황금비율 찾기</li><li>선형방정식을 푼다는 의미는 비즈니스 현장에서 &lsquo;수많은 제약조건이 있는데, 그 중에서 최적의 자원 배분 비율(황금비율)을 찾는 과정&rsquo;</li><li>예시<ul><li>광고채널 A(x)와 광고채널 B(y)의 최적 집행 횟수 찾기</li><li>제약조건 1 (예산) : 3x + 1y = 9 (총 예산 900만원 소진)</li><li>제약조건 2 (시간) : 1x + 2y = 8 (총 가용 시간 80시간 소진)</li></ul></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># 선형방정식 행렬 세팅(Ax = b)</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 계수 행렬 A</span>
-</span></span><span style=display:flex><span>A_matrix <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([
-</span></span><span style=display:flex><span>    [<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>1</span>],
-</span></span><span style=display:flex><span>    [<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>]
-</span></span><span style=display:flex><span>])
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 상수 벡터 b</span>
-</span></span><span style=display:flex><span>b_vector <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>9</span>, <span style=color:#ae81ff>8</span>])
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 선형방정식 풀이 (np.linalg.solve() 활용)</span>
-</span></span><span style=display:flex><span>solution <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>linalg<span style=color:#f92672>.</span>solve(A_matrix, b_vector)
-</span></span><span style=display:flex><span>x_sol, y_sol <span style=color:#f92672>=</span> solution
-</span></span><span style=display:flex><span>print(x_sol, y_sol)
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>결과 : 2.0 3.0
-</span></span></code></pre></div><ul><li>수학적인 의미<ul><li>두 선형 방정식 3x + y = 9, x + 2y = 8을 동시에 만족하는 유일한 해(solution)가 기하학적으로 두 직선의 교점과 같음</li></ul></li><li>비즈니스적 의미<ul><li>한정된 예산과 시간을 최대한 활용하면서, 최대의 효율을 내기 위해, 광고 채널 A에 2회 집행, 채널 B에 3회 집행 => 최적 자원 배분</li></ul></li><li>검증을 하려면 결과를 방정식에 넣어보면 된다.</li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/>머신러닝</a></li><li><a href=https://gnl2109.github.io/tags/%EC%88%98%ED%95%99/>수학</a></li><li><a href=https://gnl2109.github.io/tags/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/>선형대수</a></li><li><a href=https://gnl2109.github.io/tags/%ED%96%89%EB%A0%AC/>행렬</a></li><li><a href=https://gnl2109.github.io/tags/%EB%B2%A1%ED%84%B0/>벡터</a></li><li><a href=https://gnl2109.github.io/tags/python/>Python</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://gnl2109.github.io/>이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> ·
-<span>Powered by
-<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+SVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법">
+<meta name="author" content="">
+<link rel="canonical" href="https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css" integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL&#43;GgRwmx68=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://gnl2109.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://gnl2109.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://gnl2109.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://gnl2109.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://gnl2109.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HTV70762HG');
+        }
+      </script><meta property="og:url" content="https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/">
+  <meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그">
+  <meta property="og:title" content="[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초">
+  <meta property="og:description" content="선형대수학 (행렬과 벡터) 개발에 선형대수학이 필요한 이유 시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음 문제점 : 원본 이미지를 저장시, 고차원 데이터 =&gt; 저장비용 증가 =&gt; 고정비 상승 해결방안 : PCA 원리를 활용 하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬 행렬 분해(SVD/PCA) 활용하면 이미지 저장 비용이 줄어든다! 시간적으로 처리속도 증가하고, 저장비용도 감소함 SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법
+SVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법">
+  <meta property="og:locale" content="ko_kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-30T00:00:00+09:00">
+    <meta property="article:modified_time" content="2026-06-30T00:00:00+09:00">
+    <meta property="article:tag" content="머신러닝">
+    <meta property="article:tag" content="수학">
+    <meta property="article:tag" content="선형대수">
+    <meta property="article:tag" content="행렬">
+    <meta property="article:tag" content="벡터">
+    <meta property="article:tag" content="Python">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초">
+  <meta name="twitter:description" content="선형대수학 (행렬과 벡터) 개발에 선형대수학이 필요한 이유 시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음 문제점 : 원본 이미지를 저장시, 고차원 데이터 =&gt; 저장비용 증가 =&gt; 고정비 상승 해결방안 : PCA 원리를 활용 하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬 행렬 분해(SVD/PCA) 활용하면 이미지 저장 비용이 줄어든다! 시간적으로 처리속도 증가하고, 저장비용도 감소함 SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법
+SVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://gnl2109.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초",
+      "item": "https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초",
+  "name": "[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초",
+  "description": "선형대수학 (행렬과 벡터) 개발에 선형대수학이 필요한 이유 시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음 문제점 : 원본 이미지를 저장시, 고차원 데이터 =\u0026gt; 저장비용 증가 =\u0026gt; 고정비 상승 해결방안 : PCA 원리를 활용 하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬 행렬 분해(SVD/PCA) 활용하면 이미지 저장 비용이 줄어든다! 시간적으로 처리속도 증가하고, 저장비용도 감소함 SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법\nSVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법\n",
+  "keywords": [
+    "머신러닝", "수학", "선형대수", "행렬", "벡터", "Python"
+  ],
+  "articleBody": "선형대수학 (행렬과 벡터) 개발에 선형대수학이 필요한 이유 시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음 문제점 : 원본 이미지를 저장시, 고차원 데이터 =\u003e 저장비용 증가 =\u003e 고정비 상승 해결방안 : PCA 원리를 활용 하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬 행렬 분해(SVD/PCA) 활용하면 이미지 저장 비용이 줄어든다! 시간적으로 처리속도 증가하고, 저장비용도 감소함 SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법\nSVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법\nPCA(Principal Component Analysis): 데이터의 중요한 특징만 남기고 차원을 줄이는 통계 기법\n행렬의 정의 행렬(matrix)은 수나 식을 직사각형 모양으로 배열 일반적으로 m개의 행과 n개의 열을 배열하여 m * n 행렬을 구성 같은 수의 행과 열을 가지면 정방행렬(square matrix) 부름 1 * n 행렬은 행벡터, n * 1 행렬은 열벡터라고 부름, 전치연산자(T)를 통해 행과 열을 서로 바꿀 수 있다 크기가 같은 두 행렬은 같은 위치의 성분끼리 덧셈, 뺄셈, 스칼라 곱셈이 가능하다. 행렬은 곧 영역 전개이다. 행렬의 연산 예시 시나리오 : 영화 추천 별점 예상. 철수(액션), 영희(로맨스), 민수(다 좋아함) 유저 행렬 : 얼마나 좋아하는가? 영화 행렬 : 영화별 장르 성분이 얼마나 들어있는가? 유저 3명 (성향 행렬) =\u003e U 영화 3편 (성분 행렬) =\u003e V import numpy as np users = [\"Cheolsu (Action)\", \"Younghee (Romance)\", \"Minsu (Both)\"] # 유저 성향 점수를 행렬로 생성 U = np.array([ [5, 1], # 철수는 액션 5, 로맨스 1 [1, 5], # 영희는 액션 1, 로맨스 5 [4, 4] # 민수는 액션 4, 로맨스 4 ]) # 영화 장르별 성분을 행렬로 생성 # 열 : 영화 # 행 : 액션 비중, 로맨스 비중 (1.0 만점 기준) movies = [\"Die Hard\", \"Titanic\", \"Terminator\"] V_T = np.array([ [1.0, 0.0, 0.9], # 액션 비중 [0.0, 1.0, 0.1] # 로맨스 성분 비중 ]) # 선형대수 행렬 곱셈 연산 predicted_ratings = U @ V_T predicted_ratings 결과 : [5. , 1. , 4.6] # 철수의 영화 평점 [1. , 5. , 1.4] # 영희의 영화 평점 [4. , 4. , 4. ] # 민수의 영화 평점 벡터 공간(R^n) 실수 n개로 이루어진 모든 벡터들이 모여 있는 공간 분석가가 ‘고객을 바라보는 렌즈의 갯수(변수)‘를 늘려가는 과정 고객의 나이, 구매액 (2차원) 고객의 나이, 구매액, 방문횟수 (3차원) 분석을 하려면 더 많은 요인이 필요해 =\u003e R^n 의 대수학적 확장 추천 알고리즘 : 클릭 횟수, 체류 시간, 반품 이력… 등 수백개의 변수 추가 100개의 변수 활용, 100차원 (R^100) 두 가지 필수 연산의 의미 벡터의 덧셈 : 온라인 쇼핑 행동 벡터 + 오프라인 매장 행동 벡터 =\u003e 고객의 통합 프로파일(Omni-Channel Profile) 완성 스칼라 곱 : 마케팅 목표 설정, 현재 우수 고객 모든 활동량을 1.5배 곱을 한다. 기존 고객 벡터의 방향성(취향)은 유지한 채, 규모를 스케일업(Scale-Up) 시뮬레이션 import numpy as np # 벡터 (구매 횟수, 사이트 체류시간) online_behavior = np.array([4, 2]) offline_behavior = np.array([1, 4]) scalar_growth = 1.5 # 가중치 # 벡터의 덧셈 : 두 행동 양식을 더해서, 옴니채널 통합 벡터 생성 integrated_v = online_behavior + offline_behavior print(integrated_v) # 스칼라 곱 : 통합된 고객 행동을 일정 비율로 스케일업 scaled_v = integrated_v * scalar_growth print(scaled_v) 결과 : [5 6] # 온라인·오프라인 행동을 통합한 고객 행동 생성 [7.5 9. ] # 고객 행동이 전체적으로 1.5배 증가했다고 가정 코사인 유사도 두 벡터의 내적을 각 벡터의 크기(Norm)의 곱으로 나눈 값이다. 활용 예시 콘텐츠 플랫폼 취향 매칭 고객 A (헤비 유저) : 주말 내내 영화 시청 (액션 100시간, 로맨스 10시간, SF 50시간) 고객 B (라이트 유저) : 한달에 한두편 시청 (액션 10시간, 로맨스 1시간, SF 5시간) 두 고객의 절대적인 시청량(크기) 차이를 무시 =\u003e 장르별 비율(방향)이 같은지 확인 import numpy as np from sklearn.metrics.pairwise import cosine_similarity customer_A = np.array([100, 10, 50]) customer_B = np.array([10, 1, 5]) # 방식 1. Norm과 내적 직접 구현 dot_product = np.dot(customer_A, customer_B) norm_A = np.linalg.norm(customer_A) norm_B = np.linalg.norm(customer_B) # 코사인 유사도 공식 적용 cos_sim_manual = dot_product / (norm_A * norm_B) print(cos_sim_manual) # 코사인 유사도 더 쉽게 계산 # 머신러닝 라이브러리 scikit-learn 방식 # 기본 입력값이 2차원 배열 A_2d = customer_A.reshape(1, -1) B_2d = customer_B.reshape(1, -1) cosine_similarity(A_2d, B_2d)[0][0] 결과 : 1.0 np.float64(0.9999999999999999) 선형방정식 수학적 원리 제약 조건 속 최적의 해답 찾기 행렬과 벡터를 활용하여 Ax = b 형태의 수식으로 표현 방정식을 풀기 위해 미지수의 계수(행렬 A)와 우변의 상수(벡터 b)를 하나로 합친 첨가 행렬(Augmented Matrix) 구성 미지수를 규칙적으로 줄여나가는 Gauss 소거법 대각선 성분만 남기는 사다리꼴 행렬로 만드는 Gauss-Jordan 소거법 비즈니스 관점에서 바라보기 제약조건 1(예산), 제약조건 2(시간) ==\u003e 가장 효율적인 접점 ==\u003e 황금비율 찾기 선형방정식을 푼다는 의미는 비즈니스 현장에서 ‘수많은 제약조건이 있는데, 그 중에서 최적의 자원 배분 비율(황금비율)을 찾는 과정’ 예시 광고채널 A(x)와 광고채널 B(y)의 최적 집행 횟수 찾기 제약조건 1 (예산) : 3x + 1y = 9 (총 예산 900만원 소진) 제약조건 2 (시간) : 1x + 2y = 8 (총 가용 시간 80시간 소진) # 선형방정식 행렬 세팅(Ax = b) # 계수 행렬 A A_matrix = np.array([ [3, 1], [1, 2] ]) # 상수 벡터 b b_vector = np.array([9, 8]) # 선형방정식 풀이 (np.linalg.solve() 활용) solution = np.linalg.solve(A_matrix, b_vector) x_sol, y_sol = solution print(x_sol, y_sol) 결과 : 2.0 3.0 수학적인 의미 두 선형 방정식 3x + y = 9, x + 2y = 8을 동시에 만족하는 유일한 해(solution)가 기하학적으로 두 직선의 교점과 같음 비즈니스적 의미 한정된 예산과 시간을 최대한 활용하면서, 최대의 효율을 내기 위해, 광고 채널 A에 2회 집행, 채널 B에 3회 집행 =\u003e 최적 자원 배분 검증을 하려면 결과를 방정식에 넣어보면 된다. ",
+  "wordCount" : "839",
+  "inLanguage": "en",
+  "datePublished": "2026-06-30T00:00:00+09:00",
+  "dateModified": "2026-06-30T00:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gnl2109.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://gnl2109.github.io/" accesskey="h" title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      [이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-06-30 00:00:00 +0900 KST'>2026년 6월 30일</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><h1 id="선형대수학-행렬과-벡터">선형대수학 (행렬과 벡터)<a hidden class="anchor" aria-hidden="true" href="#선형대수학-행렬과-벡터">#</a></h1>
+<h2 id="개발에-선형대수학이-필요한-이유">개발에 선형대수학이 필요한 이유<a hidden class="anchor" aria-hidden="true" href="#개발에-선형대수학이-필요한-이유">#</a></h2>
+<ul>
+<li>시나리오 : 비즈니스에 이미지 데이터를 저장하고 있음</li>
+<li>문제점 : 원본 이미지를 저장시,
+고차원 데이터 =&gt; 저장비용 증가 =&gt; 고정비 상승</li>
+<li>해결방안 : PCA 원리를 활용
+<ul>
+<li>하드웨어 투자를 하기에 앞서서, 이미지를 압축해서 저장하는 스킬</li>
+<li>행렬 분해(SVD/PCA) 활용하면 이미지 저장 비용이 줄어든다!</li>
+<li>시간적으로 처리속도 증가하고, 저장비용도 감소함</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>SVD와 PCA는 둘 다 고차원 데이터를 더 단순하게 표현하는 방법</p>
+<p>SVD(Singular Value Decomposition): 행렬을 여러 개의 작은 행렬로 분해하는 수학적인 방법</p>
+<p>PCA(Principal Component Analysis): 데이터의 중요한 특징만 남기고 차원을 줄이는 통계 기법</p>
+</blockquote>
+<h2 id="행렬의-정의">행렬의 정의<a hidden class="anchor" aria-hidden="true" href="#행렬의-정의">#</a></h2>
+<ul>
+<li>행렬(matrix)은 수나 식을 직사각형 모양으로 배열</li>
+<li>일반적으로 m개의 행과 n개의 열을 배열하여 m * n 행렬을 구성</li>
+<li>같은 수의 행과 열을 가지면 정방행렬(square matrix) 부름</li>
+<li>1 * n 행렬은 행벡터, n * 1 행렬은 열벡터라고 부름, 전치연산자(T)를 통해 행과 열을 서로 바꿀 수 있다</li>
+<li>크기가 같은 두 행렬은 같은 위치의 성분끼리 덧셈, 뺄셈, 스칼라 곱셈이 가능하다.</li>
+<li>행렬은 곧 영역 전개이다.</li>
+</ul>
+<h2 id="행렬의-연산-예시">행렬의 연산 예시<a hidden class="anchor" aria-hidden="true" href="#행렬의-연산-예시">#</a></h2>
+<ul>
+<li>시나리오 : 영화 추천 별점 예상. 철수(액션), 영희(로맨스), 민수(다 좋아함)
+<ul>
+<li>유저 행렬 : 얼마나 좋아하는가?</li>
+<li>영화 행렬 : 영화별 장르 성분이 얼마나 들어있는가?</li>
+<li>유저 3명 (성향 행렬) =&gt; U</li>
+<li>영화 3편 (성분 행렬) =&gt; V</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>users <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Cheolsu (Action)&#34;</span>, <span style="color:#e6db74">&#34;Younghee (Romance)&#34;</span>, <span style="color:#e6db74">&#34;Minsu (Both)&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 유저 성향 점수를 행렬로 생성</span>
+</span></span><span style="display:flex;"><span>U <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>], <span style="color:#75715e"># 철수는 액션 5, 로맨스 1</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>], <span style="color:#75715e"># 영희는 액션 1, 로맨스 5</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>]  <span style="color:#75715e"># 민수는 액션 4, 로맨스 4</span>
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 영화 장르별 성분을 행렬로 생성</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 열 : 영화</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 행 : 액션 비중, 로맨스 비중 (1.0 만점 기준)</span>
+</span></span><span style="display:flex;"><span>movies <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Die Hard&#34;</span>, <span style="color:#e6db74">&#34;Titanic&#34;</span>, <span style="color:#e6db74">&#34;Terminator&#34;</span>]
+</span></span><span style="display:flex;"><span>V_T <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.9</span>], <span style="color:#75715e"># 액션 비중</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">0.1</span>]  <span style="color:#75715e"># 로맨스 성분 비중</span>
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 선형대수 행렬 곱셈 연산</span>
+</span></span><span style="display:flex;"><span>predicted_ratings <span style="color:#f92672">=</span> U <span style="color:#f92672">@</span> V_T
+</span></span><span style="display:flex;"><span>predicted_ratings
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>결과 : [5. , 1. , 4.6]  # 철수의 영화 평점
+</span></span><span style="display:flex;"><span>       [1. , 5. , 1.4]  # 영희의 영화 평점
+</span></span><span style="display:flex;"><span>       [4. , 4. , 4. ]  # 민수의 영화 평점
+</span></span></code></pre></div><h2 id="벡터-공간rn">벡터 공간(R^n)<a hidden class="anchor" aria-hidden="true" href="#벡터-공간rn">#</a></h2>
+<ul>
+<li>실수 n개로 이루어진 모든 벡터들이 모여 있는 공간</li>
+<li>분석가가 &lsquo;고객을 바라보는 렌즈의 갯수(변수)&lsquo;를 늘려가는 과정</li>
+<li>고객의 나이, 구매액 (2차원)</li>
+<li>고객의 나이, 구매액, 방문횟수 (3차원)</li>
+<li>분석을 하려면 더 많은 요인이 필요해 =&gt;  R^n 의 대수학적 확장
+<ul>
+<li>추천 알고리즘 : 클릭 횟수, 체류 시간, 반품 이력&hellip; 등 수백개의 변수 추가</li>
+<li>100개의 변수 활용, 100차원 (R^100)</li>
+</ul>
+</li>
+<li>두 가지 필수 연산의 의미
+<ul>
+<li>벡터의 덧셈 : 온라인 쇼핑 행동 벡터 + 오프라인 매장 행동 벡터 =&gt; 고객의 통합 프로파일(Omni-Channel Profile) 완성</li>
+<li>스칼라 곱 : 마케팅 목표 설정, 현재 우수 고객 모든 활동량을 1.5배 곱을 한다. 기존 고객 벡터의 방향성(취향)은 유지한 채, 규모를 스케일업(Scale-Up) 시뮬레이션</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 벡터 (구매 횟수, 사이트 체류시간)</span>
+</span></span><span style="display:flex;"><span>online_behavior <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>offline_behavior <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>])
+</span></span><span style="display:flex;"><span>scalar_growth <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.5</span>   <span style="color:#75715e"># 가중치</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 벡터의 덧셈 : 두 행동 양식을 더해서, 옴니채널 통합 벡터 생성</span>
+</span></span><span style="display:flex;"><span>integrated_v <span style="color:#f92672">=</span> online_behavior <span style="color:#f92672">+</span> offline_behavior
+</span></span><span style="display:flex;"><span>print(integrated_v)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 스칼라 곱 : 통합된 고객 행동을 일정 비율로 스케일업</span>
+</span></span><span style="display:flex;"><span>scaled_v <span style="color:#f92672">=</span> integrated_v <span style="color:#f92672">*</span> scalar_growth
+</span></span><span style="display:flex;"><span>print(scaled_v)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>결과 : [5 6]     # 온라인·오프라인 행동을 통합한 고객 행동 생성
+</span></span><span style="display:flex;"><span>      [7.5 9. ]  # 고객 행동이 전체적으로 1.5배 증가했다고 가정
+</span></span></code></pre></div><h2 id="코사인-유사도">코사인 유사도<a hidden class="anchor" aria-hidden="true" href="#코사인-유사도">#</a></h2>
+<ul>
+<li>두 벡터의 내적을 각 벡터의 크기(Norm)의 곱으로 나눈 값이다.</li>
+</ul>
+<h3 id="활용-예시">활용 예시<a hidden class="anchor" aria-hidden="true" href="#활용-예시">#</a></h3>
+<ul>
+<li>콘텐츠 플랫폼 취향 매칭
+<ul>
+<li>고객 A (헤비 유저) : 주말 내내 영화 시청 (액션 100시간, 로맨스 10시간, SF 50시간)</li>
+<li>고객 B (라이트 유저) : 한달에 한두편 시청 (액션 10시간, 로맨스 1시간, SF 5시간)</li>
+</ul>
+</li>
+<li>두 고객의 절대적인 시청량(크기) 차이를 무시 =&gt; 장르별 비율(방향)이 같은지 확인</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.metrics.pairwise <span style="color:#f92672">import</span> cosine_similarity
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>customer_A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">50</span>])
+</span></span><span style="display:flex;"><span>customer_B <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 방식 1. Norm과 내적 직접 구현</span>
+</span></span><span style="display:flex;"><span>dot_product <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(customer_A, customer_B)
+</span></span><span style="display:flex;"><span>norm_A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(customer_A)
+</span></span><span style="display:flex;"><span>norm_B <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(customer_B)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 코사인 유사도 공식 적용</span>
+</span></span><span style="display:flex;"><span>cos_sim_manual <span style="color:#f92672">=</span> dot_product <span style="color:#f92672">/</span> (norm_A <span style="color:#f92672">*</span> norm_B)
+</span></span><span style="display:flex;"><span>print(cos_sim_manual)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 코사인 유사도 더 쉽게 계산</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 머신러닝 라이브러리 scikit-learn 방식</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 기본 입력값이 2차원 배열</span>
+</span></span><span style="display:flex;"><span>A_2d <span style="color:#f92672">=</span> customer_A<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>B_2d <span style="color:#f92672">=</span> customer_B<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cosine_similarity(A_2d, B_2d)[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>결과 : 1.0
+</span></span><span style="display:flex;"><span>    np.float64(0.9999999999999999)
+</span></span></code></pre></div><h2 id="선형방정식">선형방정식<a hidden class="anchor" aria-hidden="true" href="#선형방정식">#</a></h2>
+<h3 id="수학적-원리">수학적 원리<a hidden class="anchor" aria-hidden="true" href="#수학적-원리">#</a></h3>
+<ul>
+<li>제약 조건 속 최적의 해답 찾기</li>
+<li>행렬과 벡터를 활용하여 Ax = b 형태의 수식으로 표현</li>
+<li>방정식을 풀기 위해 미지수의 계수(행렬 A)와 우변의 상수(벡터 b)를 하나로 합친 첨가 행렬(Augmented Matrix) 구성</li>
+<li>미지수를 규칙적으로 줄여나가는 Gauss 소거법</li>
+<li>대각선 성분만 남기는 사다리꼴 행렬로 만드는 Gauss-Jordan 소거법</li>
+</ul>
+<h3 id="비즈니스-관점에서-바라보기">비즈니스 관점에서 바라보기<a hidden class="anchor" aria-hidden="true" href="#비즈니스-관점에서-바라보기">#</a></h3>
+<ul>
+<li>제약조건 1(예산), 제약조건 2(시간)
+==&gt; 가장 효율적인 접점 ==&gt; 황금비율 찾기</li>
+<li>선형방정식을 푼다는 의미는 비즈니스 현장에서 &lsquo;수많은 제약조건이 있는데, 그 중에서 최적의 자원 배분 비율(황금비율)을 찾는 과정&rsquo;</li>
+<li>예시
+<ul>
+<li>광고채널 A(x)와 광고채널 B(y)의 최적 집행 횟수 찾기</li>
+<li>제약조건 1 (예산) : 3x + 1y = 9 (총 예산 900만원 소진)</li>
+<li>제약조건 2 (시간) : 1x + 2y = 8 (총 가용 시간 80시간 소진)</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 선형방정식 행렬 세팅(Ax = b)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 계수 행렬 A</span>
+</span></span><span style="display:flex;"><span>A_matrix <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 상수 벡터 b</span>
+</span></span><span style="display:flex;"><span>b_vector <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">8</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 선형방정식 풀이 (np.linalg.solve() 활용)</span>
+</span></span><span style="display:flex;"><span>solution <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>solve(A_matrix, b_vector)
+</span></span><span style="display:flex;"><span>x_sol, y_sol <span style="color:#f92672">=</span> solution
+</span></span><span style="display:flex;"><span>print(x_sol, y_sol)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>결과 : 2.0 3.0
+</span></span></code></pre></div><ul>
+<li>수학적인 의미
+<ul>
+<li>두 선형 방정식 3x + y = 9, x + 2y = 8을 동시에 만족하는 유일한 해(solution)가 기하학적으로 두 직선의 교점과 같음</li>
+</ul>
+</li>
+<li>비즈니스적 의미
+<ul>
+<li>한정된 예산과 시간을 최대한 활용하면서, 최대의 효율을 내기 위해, 광고 채널 A에 2회 집행, 채널 B에 3회 집행 =&gt; 최적 자원 배분</li>
+</ul>
+</li>
+<li>검증을 하려면 결과를 방정식에 넣어보면 된다.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a></li>
+      <li><a href="https://gnl2109.github.io/tags/%EC%88%98%ED%95%99/">수학</a></li>
+      <li><a href="https://gnl2109.github.io/tags/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/">선형대수</a></li>
+      <li><a href="https://gnl2109.github.io/tags/%ED%96%89%EB%A0%AC/">행렬</a></li>
+      <li><a href="https://gnl2109.github.io/tags/%EB%B2%A1%ED%84%B0/">벡터</a></li>
+      <li><a href="https://gnl2109.github.io/tags/python/">Python</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://gnl2109.github.io/">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

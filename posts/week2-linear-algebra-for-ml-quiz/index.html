@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초 퀴즈 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+<meta name="keywords" content="머신러닝, 수학, 선형대수, 행렬, 벡터, Python, Quiz">
+<meta name="description" content="선형대수 기초 퀴즈 정리
+머신러닝을 위한 선형대수 기초 수업에서 다룬 벡터 내적, 노름, 행렬 곱셈, 연립방정식 풀이를 퀴즈 형태로 정리했다. 계산 자체도 중요하지만, 각 연산이 어떤 의미를 갖는지 함께 확인하는 것이 핵심이다.
+퀴즈 1. 벡터의 내적과 노름
+문제는 다음 두 벡터가 주어졌을 때 내적과 각 벡터의 노름을 구하는 것이다.
+$$x=(1,-1,0,2,4), \quad y=(2,1,1,3,0)$$
+내적
+$$\langle x, y \rangle = (1)(2) &#43; (-1)(1) &#43; (0)(1) &#43; (2)(3) &#43; (4)(0)$$
+
+  
+      
+          성분
+          x
+          y
+          x * y
+      
+  
+  
+      
+          1번째
+          1
+          2
+          2
+      
+      
+          2번째
+          -1
+          1
+          -1
+      
+      
+          3번째
+          0
+          1
+          0
+      
+      
+          4번째
+          2
+          3
+          6
+      
+      
+          5번째
+          4
+          0
+          0
+      
+  
+
+따라서 내적은 다음과 같다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://gnl2109.github.io/posts/week2-linear-algebra-for-ml-quiz/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css" integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL&#43;GgRwmx68=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://gnl2109.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://gnl2109.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://gnl2109.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://gnl2109.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://gnl2109.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://gnl2109.github.io/posts/week2-linear-algebra-for-ml-quiz/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HTV70762HG');
+        }
+      </script><meta property="og:url" content="https://gnl2109.github.io/posts/week2-linear-algebra-for-ml-quiz/">
+  <meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그">
+  <meta property="og:title" content="[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초 퀴즈">
+  <meta property="og:description" content="선형대수 기초 퀴즈 정리 머신러닝을 위한 선형대수 기초 수업에서 다룬 벡터 내적, 노름, 행렬 곱셈, 연립방정식 풀이를 퀴즈 형태로 정리했다. 계산 자체도 중요하지만, 각 연산이 어떤 의미를 갖는지 함께 확인하는 것이 핵심이다.
+퀴즈 1. 벡터의 내적과 노름 문제는 다음 두 벡터가 주어졌을 때 내적과 각 벡터의 노름을 구하는 것이다.
+$$x=(1,-1,0,2,4), \quad y=(2,1,1,3,0)$$
+내적 $$\langle x, y \rangle = (1)(2) &#43; (-1)(1) &#43; (0)(1) &#43; (2)(3) &#43; (4)(0)$$
+성분 x y x * y 1번째 1 2 2 2번째 -1 1 -1 3번째 0 1 0 4번째 2 3 6 5번째 4 0 0 따라서 내적은 다음과 같다.">
+  <meta property="og:locale" content="ko_kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-30T00:00:00+09:00">
+    <meta property="article:modified_time" content="2026-06-30T00:00:00+09:00">
+    <meta property="article:tag" content="머신러닝">
+    <meta property="article:tag" content="수학">
+    <meta property="article:tag" content="선형대수">
+    <meta property="article:tag" content="행렬">
+    <meta property="article:tag" content="벡터">
+    <meta property="article:tag" content="Python">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초 퀴즈">
+  <meta name="twitter:description" content="선형대수 기초 퀴즈 정리 머신러닝을 위한 선형대수 기초 수업에서 다룬 벡터 내적, 노름, 행렬 곱셈, 연립방정식 풀이를 퀴즈 형태로 정리했다. 계산 자체도 중요하지만, 각 연산이 어떤 의미를 갖는지 함께 확인하는 것이 핵심이다.
+퀴즈 1. 벡터의 내적과 노름 문제는 다음 두 벡터가 주어졌을 때 내적과 각 벡터의 노름을 구하는 것이다.
+$$x=(1,-1,0,2,4), \quad y=(2,1,1,3,0)$$
+내적 $$\langle x, y \rangle = (1)(2) &#43; (-1)(1) &#43; (0)(1) &#43; (2)(3) &#43; (4)(0)$$
+성분 x y x * y 1번째 1 2 2 2번째 -1 1 -1 3번째 0 1 0 4번째 2 3 6 5번째 4 0 0 따라서 내적은 다음과 같다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://gnl2109.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초 퀴즈",
+      "item": "https://gnl2109.github.io/posts/week2-linear-algebra-for-ml-quiz/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초 퀴즈",
+  "name": "[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초 퀴즈",
+  "description": "선형대수 기초 퀴즈 정리 머신러닝을 위한 선형대수 기초 수업에서 다룬 벡터 내적, 노름, 행렬 곱셈, 연립방정식 풀이를 퀴즈 형태로 정리했다. 계산 자체도 중요하지만, 각 연산이 어떤 의미를 갖는지 함께 확인하는 것이 핵심이다.\n퀴즈 1. 벡터의 내적과 노름 문제는 다음 두 벡터가 주어졌을 때 내적과 각 벡터의 노름을 구하는 것이다.\n$$x=(1,-1,0,2,4), \\quad y=(2,1,1,3,0)$$\n내적 $$\\langle x, y \\rangle = (1)(2) + (-1)(1) + (0)(1) + (2)(3) + (4)(0)$$\n성분 x y x * y 1번째 1 2 2 2번째 -1 1 -1 3번째 0 1 0 4번째 2 3 6 5번째 4 0 0 따라서 내적은 다음과 같다.\n",
+  "keywords": [
+    "머신러닝", "수학", "선형대수", "행렬", "벡터", "Python", "Quiz"
+  ],
+  "articleBody": "선형대수 기초 퀴즈 정리 머신러닝을 위한 선형대수 기초 수업에서 다룬 벡터 내적, 노름, 행렬 곱셈, 연립방정식 풀이를 퀴즈 형태로 정리했다. 계산 자체도 중요하지만, 각 연산이 어떤 의미를 갖는지 함께 확인하는 것이 핵심이다.\n퀴즈 1. 벡터의 내적과 노름 문제는 다음 두 벡터가 주어졌을 때 내적과 각 벡터의 노름을 구하는 것이다.\n$$x=(1,-1,0,2,4), \\quad y=(2,1,1,3,0)$$\n내적 $$\\langle x, y \\rangle = (1)(2) + (-1)(1) + (0)(1) + (2)(3) + (4)(0)$$\n성분 x y x * y 1번째 1 2 2 2번째 -1 1 -1 3번째 0 1 0 4번째 2 3 6 5번째 4 0 0 따라서 내적은 다음과 같다.\n$$\\langle x,y \\rangle = 2 + (-1) + 0 + 6 + 0 = 7$$\n노름 벡터의 노름은 각 성분을 제곱해 더한 뒤 제곱근을 취한다.\n$$|x| = \\sqrt{1^2 + (-1)^2 + 0^2 + 2^2 + 4^2} = \\sqrt{22}$$\n$$|y| = \\sqrt{2^2 + 1^2 + 1^2 + 3^2 + 0^2} = \\sqrt{15}$$\n정답은 다음과 같다.\n$$\\langle x,y \\rangle = 7, \\quad |x| = \\sqrt{22}, \\quad |y| = \\sqrt{15}$$\nimport numpy as np x = np.array([1, -1, 0, 2, 4]) y = np.array([2, 1, 1, 3, 0]) inner = np.dot(x, y) norm_x = np.linalg.norm(x) norm_y = np.linalg.norm(y) print(inner, norm_x, norm_y) 퀴즈 2. 내적의 선형성 문제는 다음 조건에서 $\\langle 2v_1 - 3v_2, w \\rangle$을 계산하는 것이다.\n$$v_1, v_2, w \\in R^n$$\n$$\\langle v_1, w \\rangle = 3, \\quad \\langle v_2, w \\rangle = -2$$\n내적은 선형성을 가지므로 다음처럼 분배할 수 있다.\n$$\\langle 2v_1 - 3v_2, w \\rangle = 2\\langle v_1, w \\rangle - 3\\langle v_2, w \\rangle$$\n값을 대입하면 다음과 같다.\n$$2 \\cdot 3 - 3 \\cdot (-2) = 6 + 6 = 12$$\n정답은 $12$이다.\n퀴즈 3. 2x2 행렬 곱셈 다음 두 행렬을 곱한다.\n$$A = \\begin{pmatrix} 3 \u0026 1 \\ 2 \u0026 1 \\end{pmatrix} \\begin{pmatrix} 1 \u0026 -1 \\ -2 \u0026 3 \\end{pmatrix}$$\n행렬 곱셈은 왼쪽 행과 오른쪽 열의 내적으로 계산한다.\n$$\\begin{pmatrix} 3 \u0026 1 \\ 2 \u0026 1 \\end{pmatrix} \\begin{pmatrix} 1 \u0026 -1 \\ -2 \u0026 3 \\end{pmatrix} = \\begin{pmatrix} 3 \\cdot 1 + 1 \\cdot (-2) \u0026 3 \\cdot (-1) + 1 \\cdot 3 \\ 2 \\cdot 1 + 1 \\cdot (-2) \u0026 2 \\cdot (-1) + 1 \\cdot 3 \\end{pmatrix}$$\n계산 결과는 단위행렬이다.\n$$A = \\begin{pmatrix} 1 \u0026 0 \\ 0 \u0026 1 \\end{pmatrix}$$\nB = np.array([[3, 1], [2, 1]]) C = np.array([[1, -1], [-2, 3]]) result = B @ C print(result) 퀴즈 4. 3x2 행렬과 2x3 행렬의 곱 이번에는 $(3 \\times 2)$ 행렬과 $(2 \\times 3)$ 행렬을 곱한다. 결과 행렬의 크기는 $(3 \\times 3)$이다.\n$$A = \\begin{pmatrix} -1 \u0026 2 \\ -2 \u0026 1 \\ 3 \u0026 4 \\end{pmatrix} \\begin{pmatrix} 1 \u0026 0 \u0026 2 \\ 2 \u0026 -3 \u0026 1 \\end{pmatrix}$$\n각 위치는 행과 열의 내적으로 계산한다.\n$$A = \\begin{pmatrix} 3 \u0026 -6 \u0026 0 \\ 0 \u0026 -3 \u0026 -3 \\ 11 \u0026 -12 \u0026 10 \\end{pmatrix}$$\nB = np.array([[-1, 2], [-2, 1], [3, 4]]) C = np.array([[1, 0, 2], [2, -3, 1]]) A = B @ C print(A) 행렬 곱셈에서 기억할 점은 다음과 같다.\n$A$가 $m \\times r$, $B$가 $r \\times n$일 때만 $AB$가 가능하다. 결과 행렬의 크기는 $m \\times n$이다. 일반적으로 $AB \\neq BA$이므로 교환법칙이 성립하지 않는다. 두 행렬의 곱이 단위행렬이면 서로 역행렬 관계이다. 퀴즈 5. 연립방정식과 Gauss 소거법 다음 연립방정식의 해를 구한다.\n$$\\begin{cases} x + 2y - 4z = 2 \\ x + 3y - 6z = 1 \\ x + 2y - 3z = 4 \\end{cases}$$\n첨가행렬을 만들면 다음과 같다.\n$$\\left[\\begin{array}{ccc|c} 1 \u0026 2 \u0026 -4 \u0026 2 \\ 1 \u0026 3 \u0026 -6 \u0026 1 \\ 1 \u0026 2 \u0026 -3 \u0026 4 \\end{array}\\right]$$\n$R_2 \\leftarrow R_2 - R_1$, $R_3 \\leftarrow R_3 - R_1$을 적용하면 상삼각행렬 형태가 된다.\n$$\\left[\\begin{array}{ccc|c} 1 \u0026 2 \u0026 -4 \u0026 2 \\ 0 \u0026 1 \u0026 -2 \u0026 -1 \\ 0 \u0026 0 \u0026 1 \u0026 2 \\end{array}\\right]$$\n후진 대입으로 계산하면 다음과 같다.\n$$z = 2$$\n$$y - 2z = -1 \\Rightarrow y - 4 = -1 \\Rightarrow y = 3$$\n$$x + 2y - 4z = 2 \\Rightarrow x + 6 - 8 = 2 \\Rightarrow x = 4$$\n정답은 다음과 같다.\n$$x = 4, \\quad y = 3, \\quad z = 2$$\nA = np.array([ [1, 2, -4], [1, 3, -6], [1, 2, -3] ]) b = np.array([2, 1, 4]) solution = np.linalg.solve(A, b) print(solution) Gauss 소거법과 Gauss-Jordan 소거법 비교 구분 Gauss 소거법 Gauss-Jordan 소거법 목표 행렬 상삼각행렬 단위행렬(RREF) 해 구하는 방법 후진 대입법 필요 직접 읽어냄 행 연산 횟수 상대적으로 적음 상대적으로 많음 핵심 아이디어 아래쪽 계수를 0으로 만듦 위아래 계수를 모두 0으로 만듦 Gauss 소거법은 계산량이 비교적 적고, Gauss-Jordan 소거법은 결과 행렬에서 해를 바로 읽을 수 있다는 장점이 있다.\n비즈니스 관점에서 보는 선형방정식 선형방정식은 비즈니스 제약 조건 속에서 최적의 해답을 찾는 문제로 해석할 수 있다. 예를 들어 광고 채널 A와 B의 집행 횟수를 정한다고 가정한다.\n광고 채널 A 집행 횟수: $x$ 광고 채널 B 집행 횟수: $y$ 예산 제약: $3x + y = 9$ 시간 제약: $x + 2y = 8$ 행렬로 쓰면 다음과 같다.\n$$\\begin{pmatrix} 3 \u0026 1 \\ 1 \u0026 2 \\end{pmatrix} \\begin{pmatrix} x \\ y \\end{pmatrix} = \\begin{pmatrix} 9 \\ 8 \\end{pmatrix}$$\n이를 풀면 $x=2$, $y=3$이다. 즉 광고 채널 A에 2회, 광고 채널 B에 3회 집행하는 지점이 두 제약 조건을 동시에 만족한다.\n두 직선의 교점은 두 제약 조건을 동시에 만족하는 해이다. 수학적으로는 연립방정식의 해이고, 비즈니스적으로는 주어진 예산과 시간 안에서 가능한 최적 배분점으로 볼 수 있다.\n제약 조건 변경 시나리오 기존 조건은 예산 9, 시간 8이었다. 시나리오를 바꿔 예산은 12로 늘고 시간은 7로 줄어든다고 가정한다.\n$$3x + y = 12$$\n$$x + 2y = 7$$\n계수 행렬은 동일하고 상수 벡터만 바뀐다.\nA_matrix = np.array([ [3, 1], [1, 2] ]) b_old = np.array([9, 8]) b_new = np.array([12, 7]) old_solution = np.linalg.solve(A_matrix, b_old) new_solution = np.linalg.solve(A_matrix, b_new) 새 조건의 해는 $x=3.4$, $y=1.8$이다. 예산이 늘고 시간이 줄어들면서 채널 A 집행 비중이 커지고, 채널 B 집행 비중은 줄어든다.\n이처럼 선형방정식은 단순 계산 문제를 넘어, 제약 조건 변화에 따라 의사결정 지점이 어떻게 이동하는지 설명하는 도구가 된다.\n정리 이번 퀴즈에서 확인한 핵심은 다음과 같다.\n내적은 두 벡터가 같은 방향으로 얼마나 맞물리는지 계산하는 연산이다. 노름은 벡터의 크기를 의미한다. 행렬 곱셈은 행과 열의 내적이며, 차원 조건이 맞아야 계산할 수 있다. 연립방정식은 행렬 $Ax=b$로 표현할 수 있다. Gauss 소거법과 Gauss-Jordan 소거법은 첨가행렬을 변형해 해를 찾는 방법이다. 비즈니스 제약 조건도 선형방정식으로 표현하면 교점, 즉 해를 통해 최적 배분을 해석할 수 있다. ",
+  "wordCount" : "1039",
+  "inLanguage": "en",
+  "datePublished": "2026-06-30T00:00:00+09:00",
+  "dateModified": "2026-06-30T00:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gnl2109.github.io/posts/week2-linear-algebra-for-ml-quiz/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gnl2109.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://gnl2109.github.io/" accesskey="h" title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      [이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초 퀴즈
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-06-30 00:00:00 +0900 KST'>2026년 6월 30일</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><h1 id="선형대수-기초-퀴즈-정리">선형대수 기초 퀴즈 정리<a hidden class="anchor" aria-hidden="true" href="#선형대수-기초-퀴즈-정리">#</a></h1>
+<p>머신러닝을 위한 선형대수 기초 수업에서 다룬 벡터 내적, 노름, 행렬 곱셈, 연립방정식 풀이를 퀴즈 형태로 정리했다. 계산 자체도 중요하지만, 각 연산이 어떤 의미를 갖는지 함께 확인하는 것이 핵심이다.</p>
+<h2 id="퀴즈-1-벡터의-내적과-노름">퀴즈 1. 벡터의 내적과 노름<a hidden class="anchor" aria-hidden="true" href="#퀴즈-1-벡터의-내적과-노름">#</a></h2>
+<p>문제는 다음 두 벡터가 주어졌을 때 내적과 각 벡터의 노름을 구하는 것이다.</p>
+<p>$$x=(1,-1,0,2,4), \quad y=(2,1,1,3,0)$$</p>
+<h3 id="내적">내적<a hidden class="anchor" aria-hidden="true" href="#내적">#</a></h3>
+<p>$$\langle x, y \rangle = (1)(2) + (-1)(1) + (0)(1) + (2)(3) + (4)(0)$$</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">성분</th>
+          <th style="text-align: center">x</th>
+          <th style="text-align: center">y</th>
+          <th style="text-align: center">x * y</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1번째</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">2</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2번째</td>
+          <td style="text-align: center">-1</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">-1</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3번째</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4번째</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">3</td>
+          <td style="text-align: center">6</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5번째</td>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0</td>
+      </tr>
+  </tbody>
+</table>
+<p>따라서 내적은 다음과 같다.</p>
+<p>$$\langle x,y \rangle = 2 + (-1) + 0 + 6 + 0 = 7$$</p>
+<h3 id="노름">노름<a hidden class="anchor" aria-hidden="true" href="#노름">#</a></h3>
+<p>벡터의 노름은 각 성분을 제곱해 더한 뒤 제곱근을 취한다.</p>
+<p>$$|x| = \sqrt{1^2 + (-1)^2 + 0^2 + 2^2 + 4^2} = \sqrt{22}$$</p>
+<p>$$|y| = \sqrt{2^2 + 1^2 + 1^2 + 3^2 + 0^2} = \sqrt{15}$$</p>
+<p>정답은 다음과 같다.</p>
+<p>$$\langle x,y \rangle = 7, \quad |x| = \sqrt{22}, \quad |y| = \sqrt{15}$$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>])
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>inner <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(x, y)
+</span></span><span style="display:flex;"><span>norm_x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(x)
+</span></span><span style="display:flex;"><span>norm_y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(y)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(inner, norm_x, norm_y)
+</span></span></code></pre></div><h2 id="퀴즈-2-내적의-선형성">퀴즈 2. 내적의 선형성<a hidden class="anchor" aria-hidden="true" href="#퀴즈-2-내적의-선형성">#</a></h2>
+<p>문제는 다음 조건에서 $\langle 2v_1 - 3v_2, w \rangle$을 계산하는 것이다.</p>
+<p>$$v_1, v_2, w \in R^n$$</p>
+<p>$$\langle v_1, w \rangle = 3, \quad \langle v_2, w \rangle = -2$$</p>
+<p>내적은 선형성을 가지므로 다음처럼 분배할 수 있다.</p>
+<p>$$\langle 2v_1 - 3v_2, w \rangle = 2\langle v_1, w \rangle - 3\langle v_2, w \rangle$$</p>
+<p>값을 대입하면 다음과 같다.</p>
+<p>$$2 \cdot 3 - 3 \cdot (-2) = 6 + 6 = 12$$</p>
+<p>정답은 $12$이다.</p>
+<h2 id="퀴즈-3-2x2-행렬-곱셈">퀴즈 3. 2x2 행렬 곱셈<a hidden class="anchor" aria-hidden="true" href="#퀴즈-3-2x2-행렬-곱셈">#</a></h2>
+<p>다음 두 행렬을 곱한다.</p>
+<p>$$A = \begin{pmatrix} 3 &amp; 1 \ 2 &amp; 1 \end{pmatrix} \begin{pmatrix} 1 &amp; -1 \ -2 &amp; 3 \end{pmatrix}$$</p>
+<p>행렬 곱셈은 왼쪽 행과 오른쪽 열의 내적으로 계산한다.</p>
+<p>$$\begin{pmatrix} 3 &amp; 1 \ 2 &amp; 1 \end{pmatrix} \begin{pmatrix} 1 &amp; -1 \ -2 &amp; 3 \end{pmatrix}
+= \begin{pmatrix}
+3 \cdot 1 + 1 \cdot (-2) &amp; 3 \cdot (-1) + 1 \cdot 3 \
+2 \cdot 1 + 1 \cdot (-2) &amp; 2 \cdot (-1) + 1 \cdot 3
+\end{pmatrix}$$</p>
+<p>계산 결과는 단위행렬이다.</p>
+<p>$$A = \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix}$$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>B <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>]])
+</span></span><span style="display:flex;"><span>C <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], [<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> B <span style="color:#f92672">@</span> C
+</span></span><span style="display:flex;"><span>print(result)
+</span></span></code></pre></div><h2 id="퀴즈-4-3x2-행렬과-2x3-행렬의-곱">퀴즈 4. 3x2 행렬과 2x3 행렬의 곱<a hidden class="anchor" aria-hidden="true" href="#퀴즈-4-3x2-행렬과-2x3-행렬의-곱">#</a></h2>
+<p>이번에는 $(3 \times 2)$ 행렬과 $(2 \times 3)$ 행렬을 곱한다. 결과 행렬의 크기는 $(3 \times 3)$이다.</p>
+<p>$$A = \begin{pmatrix} -1 &amp; 2 \ -2 &amp; 1 \ 3 &amp; 4 \end{pmatrix} \begin{pmatrix} 1 &amp; 0 &amp; 2 \ 2 &amp; -3 &amp; 1 \end{pmatrix}$$</p>
+<p>각 위치는 행과 열의 내적으로 계산한다.</p>
+<p>$$A = \begin{pmatrix}
+3 &amp; -6 &amp; 0 \
+0 &amp; -3 &amp; -3 \
+11 &amp; -12 &amp; 10
+\end{pmatrix}$$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>B <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]])
+</span></span><span style="display:flex;"><span>C <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">2</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">=</span> B <span style="color:#f92672">@</span> C
+</span></span><span style="display:flex;"><span>print(A)
+</span></span></code></pre></div><p>행렬 곱셈에서 기억할 점은 다음과 같다.</p>
+<ul>
+<li>$A$가 $m \times r$, $B$가 $r \times n$일 때만 $AB$가 가능하다.</li>
+<li>결과 행렬의 크기는 $m \times n$이다.</li>
+<li>일반적으로 $AB \neq BA$이므로 교환법칙이 성립하지 않는다.</li>
+<li>두 행렬의 곱이 단위행렬이면 서로 역행렬 관계이다.</li>
+</ul>
+<h2 id="퀴즈-5-연립방정식과-gauss-소거법">퀴즈 5. 연립방정식과 Gauss 소거법<a hidden class="anchor" aria-hidden="true" href="#퀴즈-5-연립방정식과-gauss-소거법">#</a></h2>
+<p>다음 연립방정식의 해를 구한다.</p>
+<p>$$\begin{cases}
+x + 2y - 4z = 2 \
+x + 3y - 6z = 1 \
+x + 2y - 3z = 4
+\end{cases}$$</p>
+<p>첨가행렬을 만들면 다음과 같다.</p>
+<p>$$\left[\begin{array}{ccc|c}
+1 &amp; 2 &amp; -4 &amp; 2 \
+1 &amp; 3 &amp; -6 &amp; 1 \
+1 &amp; 2 &amp; -3 &amp; 4
+\end{array}\right]$$</p>
+<p>$R_2 \leftarrow R_2 - R_1$, $R_3 \leftarrow R_3 - R_1$을 적용하면 상삼각행렬 형태가 된다.</p>
+<p>$$\left[\begin{array}{ccc|c}
+1 &amp; 2 &amp; -4 &amp; 2 \
+0 &amp; 1 &amp; -2 &amp; -1 \
+0 &amp; 0 &amp; 1 &amp; 2
+\end{array}\right]$$</p>
+<p>후진 대입으로 계산하면 다음과 같다.</p>
+<p>$$z = 2$$</p>
+<p>$$y - 2z = -1 \Rightarrow y - 4 = -1 \Rightarrow y = 3$$</p>
+<p>$$x + 2y - 4z = 2 \Rightarrow x + 6 - 8 = 2 \Rightarrow x = 4$$</p>
+<p>정답은 다음과 같다.</p>
+<p>$$x = 4, \quad y = 3, \quad z = 2$$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">6</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>solution <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>solve(A, b)
+</span></span><span style="display:flex;"><span>print(solution)
+</span></span></code></pre></div><h2 id="gauss-소거법과-gauss-jordan-소거법-비교">Gauss 소거법과 Gauss-Jordan 소거법 비교<a hidden class="anchor" aria-hidden="true" href="#gauss-소거법과-gauss-jordan-소거법-비교">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>Gauss 소거법</th>
+          <th>Gauss-Jordan 소거법</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>목표 행렬</td>
+          <td>상삼각행렬</td>
+          <td>단위행렬(RREF)</td>
+      </tr>
+      <tr>
+          <td>해 구하는 방법</td>
+          <td>후진 대입법 필요</td>
+          <td>직접 읽어냄</td>
+      </tr>
+      <tr>
+          <td>행 연산 횟수</td>
+          <td>상대적으로 적음</td>
+          <td>상대적으로 많음</td>
+      </tr>
+      <tr>
+          <td>핵심 아이디어</td>
+          <td>아래쪽 계수를 0으로 만듦</td>
+          <td>위아래 계수를 모두 0으로 만듦</td>
+      </tr>
+  </tbody>
+</table>
+<p>Gauss 소거법은 계산량이 비교적 적고, Gauss-Jordan 소거법은 결과 행렬에서 해를 바로 읽을 수 있다는 장점이 있다.</p>
+<h2 id="비즈니스-관점에서-보는-선형방정식">비즈니스 관점에서 보는 선형방정식<a hidden class="anchor" aria-hidden="true" href="#비즈니스-관점에서-보는-선형방정식">#</a></h2>
+<p>선형방정식은 비즈니스 제약 조건 속에서 최적의 해답을 찾는 문제로 해석할 수 있다. 예를 들어 광고 채널 A와 B의 집행 횟수를 정한다고 가정한다.</p>
+<ul>
+<li>광고 채널 A 집행 횟수: $x$</li>
+<li>광고 채널 B 집행 횟수: $y$</li>
+<li>예산 제약: $3x + y = 9$</li>
+<li>시간 제약: $x + 2y = 8$</li>
+</ul>
+<p>행렬로 쓰면 다음과 같다.</p>
+<p>$$\begin{pmatrix} 3 &amp; 1 \ 1 &amp; 2 \end{pmatrix}
+\begin{pmatrix} x \ y \end{pmatrix}
+= \begin{pmatrix} 9 \ 8 \end{pmatrix}$$</p>
+<p>이를 풀면 $x=2$, $y=3$이다. 즉 광고 채널 A에 2회, 광고 채널 B에 3회 집행하는 지점이 두 제약 조건을 동시에 만족한다.</p>
+<p><img alt="광고 채널 최적 배분 시각화" loading="lazy" src="/images/week2-linear-algebra-quiz/optimal-allocation.png"></p>
+<p>두 직선의 교점은 두 제약 조건을 동시에 만족하는 해이다. 수학적으로는 연립방정식의 해이고, 비즈니스적으로는 주어진 예산과 시간 안에서 가능한 최적 배분점으로 볼 수 있다.</p>
+<h2 id="제약-조건-변경-시나리오">제약 조건 변경 시나리오<a hidden class="anchor" aria-hidden="true" href="#제약-조건-변경-시나리오">#</a></h2>
+<p>기존 조건은 예산 9, 시간 8이었다. 시나리오를 바꿔 예산은 12로 늘고 시간은 7로 줄어든다고 가정한다.</p>
+<p>$$3x + y = 12$$</p>
+<p>$$x + 2y = 7$$</p>
+<p>계수 행렬은 동일하고 상수 벡터만 바뀐다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>A_matrix <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>],
+</span></span><span style="display:flex;"><span>    [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>b_old <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">8</span>])
+</span></span><span style="display:flex;"><span>b_new <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">7</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>old_solution <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>solve(A_matrix, b_old)
+</span></span><span style="display:flex;"><span>new_solution <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>solve(A_matrix, b_new)
+</span></span></code></pre></div><p>새 조건의 해는 $x=3.4$, $y=1.8$이다. 예산이 늘고 시간이 줄어들면서 채널 A 집행 비중이 커지고, 채널 B 집행 비중은 줄어든다.</p>
+<p><img alt="제약 조건 변화에 따른 최적해 이동" loading="lazy" src="/images/week2-linear-algebra-quiz/constraint-shift.png"></p>
+<p>이처럼 선형방정식은 단순 계산 문제를 넘어, 제약 조건 변화에 따라 의사결정 지점이 어떻게 이동하는지 설명하는 도구가 된다.</p>
+<h2 id="정리">정리<a hidden class="anchor" aria-hidden="true" href="#정리">#</a></h2>
+<p>이번 퀴즈에서 확인한 핵심은 다음과 같다.</p>
+<ul>
+<li>내적은 두 벡터가 같은 방향으로 얼마나 맞물리는지 계산하는 연산이다.</li>
+<li>노름은 벡터의 크기를 의미한다.</li>
+<li>행렬 곱셈은 행과 열의 내적이며, 차원 조건이 맞아야 계산할 수 있다.</li>
+<li>연립방정식은 행렬 $Ax=b$로 표현할 수 있다.</li>
+<li>Gauss 소거법과 Gauss-Jordan 소거법은 첨가행렬을 변형해 해를 찾는 방법이다.</li>
+<li>비즈니스 제약 조건도 선형방정식으로 표현하면 교점, 즉 해를 통해 최적 배분을 해석할 수 있다.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a></li>
+      <li><a href="https://gnl2109.github.io/tags/%EC%88%98%ED%95%99/">수학</a></li>
+      <li><a href="https://gnl2109.github.io/tags/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/">선형대수</a></li>
+      <li><a href="https://gnl2109.github.io/tags/%ED%96%89%EB%A0%AC/">행렬</a></li>
+      <li><a href="https://gnl2109.github.io/tags/%EB%B2%A1%ED%84%B0/">벡터</a></li>
+      <li><a href="https://gnl2109.github.io/tags/python/">Python</a></li>
+      <li><a href="https://gnl2109.github.io/tags/quiz/">Quiz</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://gnl2109.github.io/">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

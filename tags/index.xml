@@ -30,10 +30,31 @@
       <description></description>
     </item>
     <item>
+      <title>Quiz</title>
+      <link>https://gnl2109.github.io/tags/quiz/</link>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/quiz/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Timestamp</title>
       <link>https://gnl2109.github.io/tags/timestamp/</link>
       <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
       <guid>https://gnl2109.github.io/tags/timestamp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>고유벡터</title>
+      <link>https://gnl2109.github.io/tags/%EA%B3%A0%EC%9C%A0%EB%B2%A1%ED%84%B0/</link>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/%EA%B3%A0%EC%9C%A0%EB%B2%A1%ED%84%B0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>고윳값</title>
+      <link>https://gnl2109.github.io/tags/%EA%B3%A0%EC%9C%B3%EA%B0%92/</link>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/%EA%B3%A0%EC%9C%B3%EA%B0%92/</guid>
       <description></description>
     </item>
     <item>
@@ -44,6 +65,27 @@
       <description></description>
     </item>
     <item>
+      <title>머신러닝</title>
+      <link>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</link>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>선형대수</title>
+      <link>https://gnl2109.github.io/tags/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/</link>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>수학</title>
+      <link>https://gnl2109.github.io/tags/%EC%88%98%ED%95%99/</link>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/%EC%88%98%ED%95%99/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>시계열</title>
       <link>https://gnl2109.github.io/tags/%EC%8B%9C%EA%B3%84%EC%97%B4/</link>
       <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
@@ -51,17 +93,10 @@
       <description></description>
     </item>
     <item>
-      <title>Quiz</title>
-      <link>https://gnl2109.github.io/tags/quiz/</link>
-      <pubDate>Tue, 30 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/quiz/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>머신러닝</title>
-      <link>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</link>
-      <pubDate>Tue, 30 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</guid>
+      <title>행렬</title>
+      <link>https://gnl2109.github.io/tags/%ED%96%89%EB%A0%AC/</link>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/%ED%96%89%EB%A0%AC/</guid>
       <description></description>
     </item>
     <item>
@@ -69,27 +104,6 @@
       <link>https://gnl2109.github.io/tags/%EB%B2%A1%ED%84%B0/</link>
       <pubDate>Tue, 30 Jun 2026 00:00:00 +0900</pubDate>
       <guid>https://gnl2109.github.io/tags/%EB%B2%A1%ED%84%B0/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>선형대수</title>
-      <link>https://gnl2109.github.io/tags/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/</link>
-      <pubDate>Tue, 30 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>수학</title>
-      <link>https://gnl2109.github.io/tags/%EC%88%98%ED%95%99/</link>
-      <pubDate>Tue, 30 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/%EC%88%98%ED%95%99/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>행렬</title>
-      <link>https://gnl2109.github.io/tags/%ED%96%89%EB%A0%AC/</link>
-      <pubDate>Tue, 30 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/%ED%96%89%EB%A0%AC/</guid>
       <description></description>
     </item>
     <item>

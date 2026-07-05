@@ -6,8 +6,22 @@
     <description>Recent content in 선형대수 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 30 Jun 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://gnl2109.github.io/tags/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[이어드림스쿨6기_2주차] 0701 머신러닝을 위한 선형대수 기초2 퀴즈</title>
+      <link>https://gnl2109.github.io/posts/week2-linear-algebra-for-ml-quiz2/</link>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/posts/week2-linear-algebra-for-ml-quiz2/</guid>
+      <description>&lt;h1 id=&#34;선형대수-기초2-퀴즈-정리&#34;&gt;선형대수 기초2 퀴즈 정리&lt;/h1&gt;
+&lt;p&gt;이번 퀴즈는 직교여공간, rank, 역행렬, 행렬식, 고윳값, 고유벡터, 대각화를 다룬다. 선형대수의 계산 절차뿐 아니라, 각 개념이 데이터 분석과 머신러닝에서 어떤 정보를 말해주는지도 함께 정리했다.&lt;/p&gt;
+&lt;h2 id=&#34;퀴즈-1-직교여공간&#34;&gt;퀴즈 1. 직교여공간&lt;/h2&gt;
+&lt;p&gt;문제는 다음 부분공간 $W$의 직교여공간에 속하는 벡터를 찾는 것이다.&lt;/p&gt;
+&lt;p&gt;$$W = \text{Span}{(1,0,0),\ (1,1,0)}$$&lt;/p&gt;
+&lt;p&gt;직교여공간은 $W$의 모든 원소와 내적이 0인 벡터들의 집합이다.&lt;/p&gt;
+&lt;p&gt;$$W^{\perp} = {\mathbf{v} \in \mathbb{R}^n \mid \mathbf{v} \perp \mathbf{w},\ \forall \mathbf{w} \in W}$$&lt;/p&gt;
+&lt;p&gt;$\mathbf{v}=(a,b,c)$가 $W^\perp$에 속하려면 $W$의 기저 벡터와 모두 직교해야 한다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>[이어드림스쿨6기_2주차] 0630 머신러닝을 위한 선형대수 기초</title>
       <link>https://gnl2109.github.io/posts/week2-linear-algebra-for-ml/</link>

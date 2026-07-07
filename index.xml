@@ -6,8 +6,34 @@
     <description>Recent content on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 01 Jul 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://gnl2109.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[이어드림스쿨6기_2주차] 0702 데이터 분류 모델 DecisionTreeClassifier</title>
+      <link>https://gnl2109.github.io/posts/week2-decision-tree-classifier/</link>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/posts/week2-decision-tree-classifier/</guid>
+      <description>&lt;h1 id=&#34;데이터-분류-모델-decisiontreeclassifier&#34;&gt;데이터 분류 모델 DecisionTreeClassifier&lt;/h1&gt;
+&lt;p&gt;이번 글에서는 seaborn의 &lt;code&gt;titanic&lt;/code&gt; 데이터를 사용해 승객의 &lt;strong&gt;생존 여부(&lt;code&gt;survived&lt;/code&gt;)&lt;/strong&gt; 를 예측하는 간단한 분류 모델을 정리한다.&lt;/p&gt;
+&lt;p&gt;사용한 구성은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;독립변수 X&lt;/strong&gt;: &lt;code&gt;pclass&lt;/code&gt;, &lt;code&gt;fare&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;종속변수 y&lt;/strong&gt;: &lt;code&gt;survived&lt;/code&gt; (0=사망, 1=생존)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;모델 구성&lt;/strong&gt;: &lt;code&gt;Pipeline&lt;/code&gt; = &lt;code&gt;StandardScaler&lt;/code&gt; + &lt;code&gt;DecisionTreeClassifier&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;분류 모델은 입력 데이터가 들어왔을 때 정답을 연속적인 숫자가 아니라 정해진 범주로 예측한다. 이 예제에서는 승객 정보를 보고 &lt;code&gt;사망&lt;/code&gt; 또는 &lt;code&gt;생존&lt;/code&gt; 중 하나로 분류한다.&lt;/p&gt;
+&lt;h2 id=&#34;필요한-라이브러리-불러오기&#34;&gt;필요한 라이브러리 불러오기&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; seaborn &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; sns
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; pandas &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; pd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; np
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.model_selection &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; train_test_split
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.preprocessing &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; StandardScaler
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.tree &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; DecisionTreeClassifier
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.pipeline &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Pipeline
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.metrics &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; accuracy_score, precision_score, recall_score, f1_score
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;각 라이브러리의 역할은 다음과 같다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>[이어드림스쿨6기_2주차] 0701 Pandas 시계열 50제 - 문제 1~10</title>
       <link>https://gnl2109.github.io/posts/week2-pandas-timeseries-q01-q10/</link>

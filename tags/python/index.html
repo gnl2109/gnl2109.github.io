@@ -130,6 +130,24 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_2주차] 0702 데이터 분류 모델 DecisionTreeClassifier
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>데이터 분류 모델 DecisionTreeClassifier 이번 글에서는 seaborn의 titanic 데이터를 사용해 승객의 생존 여부(survived) 를 예측하는 간단한 분류 모델을 정리한다.
+사용한 구성은 다음과 같다.
+독립변수 X: pclass, fare 종속변수 y: survived (0=사망, 1=생존) 모델 구성: Pipeline = StandardScaler &#43; DecisionTreeClassifier 분류 모델은 입력 데이터가 들어왔을 때 정답을 연속적인 숫자가 아니라 정해진 범주로 예측한다. 이 예제에서는 승객 정보를 보고 사망 또는 생존 중 하나로 분류한다.
+필요한 라이브러리 불러오기 import seaborn as sns import pandas as pd import numpy as np from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.tree import DecisionTreeClassifier from sklearn.pipeline import Pipeline from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score 각 라이브러리의 역할은 다음과 같다.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-02 00:00:00 +0900 KST'>2026년 7월 2일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_2주차] 0702 데이터 분류 모델 DecisionTreeClassifier" href="https://gnl2109.github.io/posts/week2-decision-tree-classifier/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">[이어드림스쿨6기_2주차] 0701 Pandas 시계열 50제 - 문제 1~10
     </h2>
   </header>
@@ -283,23 +301,6 @@ Matplotlib 기반으로 동작한다. 산점도, 회귀선, 범주형 빈도, �
 
 <span title='2026-06-29 00:00:00 +0900 KST'>2026년 6월 29일</span></footer>
   <a class="entry-link" aria-label="post link to [이어드림스쿨6기_2주차] 0629 Seaborn 라이브러리 복습" href="https://gnl2109.github.io/posts/week2-seaborn-review/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">[이어드림스쿨6기_1주차] 0623 이론 복습
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>시험 대비 복습 1. IT 리터러시, CS STORAGE &gt; MEMORY &gt; CPU
-프로그램 메모리 구조
-낮은 메모리 주소 ↓ ┌──────────────────────────────┐ │ Code │ ├──────────────────────────────┤ │ 사용자가 작성한 프로그램 함수 │ 사용자가 작성한 프로그램 코드(함수) └──────────────────────────────┘ ┌──────────────────────────────┐ │ Data │ ├──────────────────────────────┤ │ 프로그램에 사용하는 데이터 공간 │ │ 전역변수, static 변수 │ 전역변수, static 변수 저장 └──────────────────────────────┘ ┌──────────────────────────────┐ │ Heap │ ├──────────────────────────────┤ │ 프로그래머가 필요할 때 │ │ 사용하는 공간 │ 동적 메모리 할당 영역 └──────────────────────────────┘ ┌──────────────────────────────┐ │ Stack │ ├──────────────────────────────┤ │ 함수의 수행을 마치고 │ │ 복귀할 주소 및 데이터 저장 │ 지역변수, 매개변수, 반환주소 저장 │ (지역변수, 매개변수, 리턴값) │ └──────────────────────────────┘ ↓ 높은 메모리 주소 프로세스-스레드 관계. 차이점.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-06-23 00:00:00 +0900 KST'>2026년 6월 23일</span></footer>
-  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_1주차] 0623 이론 복습" href="https://gnl2109.github.io/posts/week1-theory-review/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

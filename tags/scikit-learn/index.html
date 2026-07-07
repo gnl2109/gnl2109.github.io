@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Python | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+<title>Scikit-Learn | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="https://gnl2109.github.io/tags/python/">
+<link rel="canonical" href="https://gnl2109.github.io/tags/scikit-learn/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css" integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL&#43;GgRwmx68=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://gnl2109.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://gnl2109.github.io/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://gnl2109.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://gnl2109.github.io/tags/python/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://gnl2109.github.io/tags/python/">
+<link rel="alternate" type="application/rss+xml" href="https://gnl2109.github.io/tags/scikit-learn/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://gnl2109.github.io/tags/scikit-learn/">
 <noscript>
     <style>
         #theme-toggle,
@@ -79,14 +79,14 @@
           gtag('js', new Date());
           gtag('config', 'G-HTV70762HG');
         }
-      </script><meta property="og:url" content="https://gnl2109.github.io/tags/python/">
+      </script><meta property="og:url" content="https://gnl2109.github.io/tags/scikit-learn/">
   <meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그">
-  <meta property="og:title" content="Python">
+  <meta property="og:title" content="Scikit-Learn">
   <meta property="og:locale" content="ko_kr">
   <meta property="og:type" content="website">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Python">
+  <meta name="twitter:title" content="Scikit-Learn">
 
 </head>
 <body class="list" id="top">
@@ -124,50 +124,27 @@
 <main class="main"> 
 <header class="page-header">
   <h1>
-    Python
+    Scikit-Learn
   </h1>
 </header>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">[이어드림스쿨6기_1주차] 0623 이론 복습
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_2주차] 0702 데이터 분류 모델 DecisionTreeClassifier
     </h2>
   </header>
   <div class="entry-content">
-    <p>시험 대비 복습 1. IT 리터러시, CS STORAGE &gt; MEMORY &gt; CPU
-프로그램 메모리 구조
-낮은 메모리 주소 ↓ ┌──────────────────────────────┐ │ Code │ ├──────────────────────────────┤ │ 사용자가 작성한 프로그램 함수 │ 사용자가 작성한 프로그램 코드(함수) └──────────────────────────────┘ ┌──────────────────────────────┐ │ Data │ ├──────────────────────────────┤ │ 프로그램에 사용하는 데이터 공간 │ │ 전역변수, static 변수 │ 전역변수, static 변수 저장 └──────────────────────────────┘ ┌──────────────────────────────┐ │ Heap │ ├──────────────────────────────┤ │ 프로그래머가 필요할 때 │ │ 사용하는 공간 │ 동적 메모리 할당 영역 └──────────────────────────────┘ ┌──────────────────────────────┐ │ Stack │ ├──────────────────────────────┤ │ 함수의 수행을 마치고 │ │ 복귀할 주소 및 데이터 저장 │ 지역변수, 매개변수, 반환주소 저장 │ (지역변수, 매개변수, 리턴값) │ └──────────────────────────────┘ ↓ 높은 메모리 주소 프로세스-스레드 관계. 차이점.
+    <p>데이터 분류 모델 DecisionTreeClassifier 이번 글에서는 seaborn의 titanic 데이터를 사용해 승객의 생존 여부(survived) 를 예측하는 간단한 분류 모델을 정리한다.
+사용한 구성은 다음과 같다.
+독립변수 X: pclass, fare 종속변수 y: survived (0=사망, 1=생존) 모델 구성: Pipeline = StandardScaler &#43; DecisionTreeClassifier 분류 모델은 입력 데이터가 들어왔을 때 정답을 연속적인 숫자가 아니라 정해진 범주로 예측한다. 이 예제에서는 승객 정보를 보고 사망 또는 생존 중 하나로 분류한다.
+필요한 라이브러리 불러오기 import seaborn as sns import pandas as pd import numpy as np from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.tree import DecisionTreeClassifier from sklearn.pipeline import Pipeline from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score 각 라이브러리의 역할은 다음과 같다.
 ...</p>
   </div>
   <footer class="entry-footer">
 
-<span title='2026-06-23 00:00:00 +0900 KST'>2026년 6월 23일</span></footer>
-  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_1주차] 0623 이론 복습" href="https://gnl2109.github.io/posts/week1-theory-review/"></a>
+<span title='2026-07-02 00:00:00 +0900 KST'>2026년 7월 2일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_2주차] 0702 데이터 분류 모델 DecisionTreeClassifier" href="https://gnl2109.github.io/posts/week2-decision-tree-classifier/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">[이어드림스쿨6기_1주차] 04,05 파이썬 기본 문법
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.
-파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.
-1. 출력, 입력, 변수는 프로그램의 출발점이다 print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-05-31 23:22:00 +0900 KST'>2026년 5월 31일</span></footer>
-  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_1주차] 04,05 파이썬 기본 문법" href="https://gnl2109.github.io/posts/week1-python-basic-syntax/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="prev" href="https://gnl2109.github.io/tags/python/">
-      «&nbsp;Prev&nbsp;
-    </a>
-  </nav>
-</footer>
     </main>
     
 <footer class="footer">

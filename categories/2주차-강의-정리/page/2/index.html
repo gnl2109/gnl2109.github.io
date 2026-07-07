@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Scikit-Learn | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+<title>2주차 강의 정리 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="https://gnl2109.github.io/tags/scikit-learn/">
+<link rel="canonical" href="https://gnl2109.github.io/categories/2%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css" integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL&#43;GgRwmx68=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://gnl2109.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://gnl2109.github.io/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://gnl2109.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://gnl2109.github.io/tags/scikit-learn/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://gnl2109.github.io/tags/scikit-learn/">
+<link rel="alternate" type="application/rss+xml" href="https://gnl2109.github.io/categories/2%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://gnl2109.github.io/categories/2%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/">
 <noscript>
     <style>
         #theme-toggle,
@@ -79,14 +79,14 @@
           gtag('js', new Date());
           gtag('config', 'G-HTV70762HG');
         }
-      </script><meta property="og:url" content="https://gnl2109.github.io/tags/scikit-learn/">
+      </script><meta property="og:url" content="https://gnl2109.github.io/categories/2%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/">
   <meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그">
-  <meta property="og:title" content="Scikit-Learn">
+  <meta property="og:title" content="2주차 강의 정리">
   <meta property="og:locale" content="ko_kr">
   <meta property="og:type" content="website">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Scikit-Learn">
+  <meta name="twitter:title" content="2주차 강의 정리">
 
 </head>
 <body class="list" id="top">
@@ -122,46 +122,47 @@
     </nav>
 </header>
 <main class="main"> 
+<nav class="category-nav" aria-label="카테고리">
+  <a class="category-nav-link" href="/">
+    전체
+  </a>
+  <a class="category-nav-link" href="/categories/1%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/">
+    1주차 강의 정리 <span>6</span>
+  </a>
+  <a class="category-nav-link is-active" href="/categories/2%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/">
+    2주차 강의 정리 <span>11</span>
+  </a>
+</nav>
+
 <header class="page-header">
   <h1>
-    Scikit-Learn
+    2주차 강의 정리
   </h1>
 </header>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">[이어드림스쿨6기_2주차] 0703 데이터 분류 모델 DecisionTreeClassifier Lv2
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_2주차] 0629 Seaborn 라이브러리 복습
     </h2>
   </header>
   <div class="entry-content">
-    <p>데이터 분류 모델 DecisionTreeClassifier Lv2 이번 글은 0702 Lv1 예제에서 확장된 Titanic 생존 여부 분류 모델이다.
-Lv1에서는 pclass, fare 두 개의 수치형 변수만 사용했다. Lv2에서는 여기에 age, embarked를 추가한다.
-독립변수 X: pclass, fare, age, embarked 종속변수 y: survived (0=사망, 1=생존) 새로 추가된 전처리: SimpleImputer, OneHotEncoder, ColumnTransformer 모델: DecisionTreeClassifier 데이터 로드, 학습/테스트 분리, fit(), predict(), 평가 지표 계산 흐름은 Lv1과 같으므로 코드 위주로 정리한다. 이번 글에서는 결측치 처리, 범주형 데이터 인코딩, 컬럼별 전처리 분기를 중심으로 보면 된다.
+    <p>Seaborn Seaborn은 Matplotlib 위에 색 테마와 통계 차트 기능을 더한 데이터 시각화 라이브러리다.
+Matplotlib이 그래프를 세밀하게 제어하는 기본 도구라면, Seaborn은 데이터 분석에서 자주 쓰는 통계 그래프를 더 간결하고 보기 좋게 그릴 수 있도록 도와준다.
+Matplotlib 기반으로 동작한다. 산점도, 회귀선, 범주형 빈도, 분포 시각화에 편리하다. 기본 스타일이 정돈되어 있어 EDA에 많이 사용한다. DataFrame 컬럼명을 바로 지정해서 그래프를 그릴 수 있다. 내장 예제 데이터셋을 제공한다. Seaborn import Seaborn은 관례적으로 sns라는 별칭으로 불러온다.
 ...</p>
   </div>
   <footer class="entry-footer">
 
-<span title='2026-07-03 00:00:00 +0900 KST'>2026년 7월 3일</span></footer>
-  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_2주차] 0703 데이터 분류 모델 DecisionTreeClassifier Lv2" href="https://gnl2109.github.io/posts/week2-decision-tree-classifier-lv2/"></a>
+<span title='2026-06-29 00:00:00 +0900 KST'>2026년 6월 29일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_2주차] 0629 Seaborn 라이브러리 복습" href="https://gnl2109.github.io/posts/week2-seaborn-review/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">[이어드림스쿨6기_2주차] 0702 데이터 분류 모델 DecisionTreeClassifier
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>데이터 분류 모델 DecisionTreeClassifier 이번 글에서는 seaborn의 titanic 데이터를 사용해 승객의 생존 여부(survived) 를 예측하는 간단한 분류 모델을 정리한다.
-사용한 구성은 다음과 같다.
-독립변수 X: pclass, fare 종속변수 y: survived (0=사망, 1=생존) 모델 구성: Pipeline = StandardScaler &#43; DecisionTreeClassifier 분류 모델은 입력 데이터가 들어왔을 때 정답을 연속적인 숫자가 아니라 정해진 범주로 예측한다. 이 예제에서는 승객 정보를 보고 사망 또는 생존 중 하나로 분류한다.
-필요한 라이브러리 불러오기 import seaborn as sns import pandas as pd import numpy as np from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.tree import DecisionTreeClassifier from sklearn.pipeline import Pipeline from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score 각 라이브러리의 역할은 다음과 같다.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-07-02 00:00:00 +0900 KST'>2026년 7월 2일</span></footer>
-  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_2주차] 0702 데이터 분류 모델 DecisionTreeClassifier" href="https://gnl2109.github.io/posts/week2-decision-tree-classifier/"></a>
-</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://gnl2109.github.io/categories/2%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/">
+      «&nbsp;Prev&nbsp;
+    </a>
+  </nav>
+</footer>
     </main>
     
 <footer class="footer">

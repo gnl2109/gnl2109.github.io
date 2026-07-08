@@ -25,11 +25,11 @@
 &lt;p&gt;데이터 로드, 학습/테스트 분리, &lt;code&gt;fit()&lt;/code&gt;, &lt;code&gt;predict()&lt;/code&gt;, 평가 지표 계산 흐름은 Lv1과 같으므로 코드 위주로 정리한다. 이번 글에서는 &lt;strong&gt;결측치 처리&lt;/strong&gt;, &lt;strong&gt;범주형 데이터 인코딩&lt;/strong&gt;, &lt;strong&gt;컬럼별 전처리 분기&lt;/strong&gt;를 중심으로 보면 된다.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>[이어드림스쿨6기_2주차] 0702 데이터 분류 모델 DecisionTreeClassifier</title>
-      <link>https://gnl2109.github.io/posts/week2-decision-tree-classifier/</link>
+      <title>[이어드림스쿨6기_2주차] 0702 데이터 분류 모델 DecisionTreeClassifier Lv1</title>
+      <link>https://gnl2109.github.io/posts/week2-decision-tree-classifier-lv1/</link>
       <pubDate>Thu, 02 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/week2-decision-tree-classifier/</guid>
-      <description>&lt;h1 id=&#34;데이터-분류-모델-decisiontreeclassifier&#34;&gt;데이터 분류 모델 DecisionTreeClassifier&lt;/h1&gt;
+      <guid>https://gnl2109.github.io/posts/week2-decision-tree-classifier-lv1/</guid>
+      <description>&lt;h1 id=&#34;데이터-분류-모델-decisiontreeclassifier-lv1&#34;&gt;데이터 분류 모델 DecisionTreeClassifier Lv1&lt;/h1&gt;
 &lt;p&gt;이번 글에서는 seaborn의 &lt;code&gt;titanic&lt;/code&gt; 데이터를 사용해 승객의 &lt;strong&gt;생존 여부(&lt;code&gt;survived&lt;/code&gt;)&lt;/strong&gt; 를 예측하는 간단한 분류 모델을 정리한다.&lt;/p&gt;
 &lt;p&gt;사용한 구성은 다음과 같다.&lt;/p&gt;
 &lt;ul&gt;
@@ -38,6 +38,7 @@
 &lt;li&gt;&lt;strong&gt;모델 구성&lt;/strong&gt;: &lt;code&gt;Pipeline&lt;/code&gt; = &lt;code&gt;StandardScaler&lt;/code&gt; + &lt;code&gt;DecisionTreeClassifier&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;분류 모델은 입력 데이터가 들어왔을 때 정답을 연속적인 숫자가 아니라 정해진 범주로 예측한다. 이 예제에서는 승객 정보를 보고 &lt;code&gt;사망&lt;/code&gt; 또는 &lt;code&gt;생존&lt;/code&gt; 중 하나로 분류한다.&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;필요한-라이브러리-불러오기&#34;&gt;필요한 라이브러리 불러오기&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; seaborn &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; sns
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; pandas &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; pd

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>회귀 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+    <link>https://gnl2109.github.io/tags/%ED%9A%8C%EA%B7%80/</link>
+    <description>Recent content in 회귀 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
+    <generator>Hugo</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 02 Jul 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://gnl2109.github.io/tags/%ED%9A%8C%EA%B7%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[이어드림스쿨6기_2주차] 0702 데이터 회귀 모델 DecisionTreeRegressor Lv1</title>
+      <link>https://gnl2109.github.io/posts/week2-decision-tree-regressor-lv1/</link>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/posts/week2-decision-tree-regressor-lv1/</guid>
+      <description>&lt;h1 id=&#34;데이터-회귀-모델-decisiontreeregressor-lv1&#34;&gt;데이터 회귀 모델 DecisionTreeRegressor Lv1&lt;/h1&gt;
+&lt;p&gt;이번 글에서는 seaborn의 &lt;code&gt;tips&lt;/code&gt; 데이터를 사용해 &lt;strong&gt;팁 금액(&lt;code&gt;tip&lt;/code&gt;)&lt;/strong&gt; 을 예측하는 간단한 회귀 모델을 정리한다.&lt;/p&gt;
+&lt;p&gt;사용한 구성은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;독립변수 X&lt;/strong&gt;: &lt;code&gt;total_bill&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;종속변수 y&lt;/strong&gt;: &lt;code&gt;tip&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;모델 구성&lt;/strong&gt;: &lt;code&gt;Pipeline&lt;/code&gt; = &lt;code&gt;StandardScaler&lt;/code&gt; + &lt;code&gt;DecisionTreeRegressor&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;분류 모델이 &lt;code&gt;생존/사망&lt;/code&gt;처럼 정해진 범주를 예측한다면, 회귀 모델은 팁 금액처럼 연속적인 숫자 값을 예측한다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;머신러닝-데이터-분석-단계&#34;&gt;머신러닝 데이터 분석 단계&lt;/h2&gt;
+&lt;p&gt;머신러닝 모델을 만드는 기본 흐름은 다음과 같다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;데이터 수집&lt;/li&gt;
+&lt;li&gt;불필요한 데이터 제거, 결측치 처리 등 전처리&lt;/li&gt;
+&lt;li&gt;훈련 데이터와 테스트 데이터 분리&lt;/li&gt;
+&lt;li&gt;사용할 모델 선정&lt;/li&gt;
+&lt;li&gt;모델과 훈련 데이터를 활용해 학습&lt;/li&gt;
+&lt;li&gt;학습된 모델에 테스트 데이터 적용&lt;/li&gt;
+&lt;li&gt;예측값과 실제값을 비교해 평가지표 산출&lt;/li&gt;
+&lt;li&gt;모델 성능을 해석하고 개선 방향 검토&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;이번 예제에서는 이 흐름을 &lt;code&gt;tips&lt;/code&gt; 데이터와 &lt;code&gt;DecisionTreeRegressor&lt;/code&gt;로 실습한다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

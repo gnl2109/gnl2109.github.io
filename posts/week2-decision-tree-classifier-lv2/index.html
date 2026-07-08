@@ -218,6 +218,7 @@ Lv1에서는 pclass, fare 두 개의 수치형 변수만 사용했다. Lv2에서
 <li><strong>모델</strong>: <code>DecisionTreeClassifier</code></li>
 </ul>
 <p>데이터 로드, 학습/테스트 분리, <code>fit()</code>, <code>predict()</code>, 평가 지표 계산 흐름은 Lv1과 같으므로 코드 위주로 정리한다. 이번 글에서는 <strong>결측치 처리</strong>, <strong>범주형 데이터 인코딩</strong>, <strong>컬럼별 전처리 분기</strong>를 중심으로 보면 된다.</p>
+<hr>
 <h2 id="환경-설정">환경 설정<a hidden class="anchor" aria-hidden="true" href="#환경-설정">#</a></h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
@@ -236,6 +237,7 @@ Lv1에서는 pclass, fare 두 개의 수치형 변수만 사용했다. Lv2에서
 <li><code>OneHotEncoder</code>: 문자형 범주 데이터를 숫자 0/1 컬럼으로 변환한다.</li>
 <li><code>ColumnTransformer</code>: 컬럼 종류별로 서로 다른 전처리를 적용한다.</li>
 </ul>
+<hr>
 <h2 id="데이터-불러오기">데이터 불러오기<a hidden class="anchor" aria-hidden="true" href="#데이터-불러오기">#</a></h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>titanic <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>load_dataset(<span style="color:#e6db74">&#34;titanic&#34;</span>)
 </span></span><span style="display:flex;"><span>
@@ -271,7 +273,8 @@ Lv1에서는 pclass, fare 두 개의 수치형 변수만 사용했다. Lv2에서
 </span></span><span style="display:flex;"><span>age         177
 </span></span><span style="display:flex;"><span>embarked      2
 </span></span><span style="display:flex;"><span>dtype: int64
-</span></span></code></pre></div><h2 id="추가-개념-1-결측치-처리">추가 개념 1. 결측치 처리<a hidden class="anchor" aria-hidden="true" href="#추가-개념-1-결측치-처리">#</a></h2>
+</span></span></code></pre></div><hr>
+<h2 id="추가-개념-1-결측치-처리">추가 개념 1. 결측치 처리<a hidden class="anchor" aria-hidden="true" href="#추가-개념-1-결측치-처리">#</a></h2>
 <p>Lv2에서는 <code>age</code>와 <code>embarked</code>에 결측치가 있다.</p>
 <ul>
 <li><code>age</code>: 177개 결측치</li>
@@ -294,6 +297,7 @@ Lv1에서는 pclass, fare 두 개의 수치형 변수만 사용했다. Lv2에서
 </span></span><span style="display:flex;"><span>])
 </span></span></code></pre></div><p><code>median</code>은 평균보다 이상치의 영향을 덜 받기 때문에 나이처럼 분포가 치우칠 수 있는 데이터에 자주 사용한다.</p>
 <p><code>most_frequent</code>는 가장 많이 등장한 값으로 결측치를 채운다. <code>embarked</code>처럼 선택지가 정해진 범주형 데이터에 사용할 수 있다.</p>
+<hr>
 <h2 id="추가-개념-2-범주형-데이터-인코딩">추가 개념 2. 범주형 데이터 인코딩<a hidden class="anchor" aria-hidden="true" href="#추가-개념-2-범주형-데이터-인코딩">#</a></h2>
 <p><code>embarked</code>는 탑승 항구를 나타내는 문자형 데이터다.</p>
 <ul>
@@ -307,6 +311,7 @@ Lv1에서는 pclass, fare 두 개의 수치형 변수만 사용했다. Lv2에서
 </span></span><span style="display:flex;"><span>embarked = Q  -&gt;  embarked_C=0, embarked_Q=1, embarked_S=0
 </span></span><span style="display:flex;"><span>embarked = S  -&gt;  embarked_C=0, embarked_Q=0, embarked_S=1
 </span></span></code></pre></div><p><code>handle_unknown=&quot;ignore&quot;</code>는 테스트 데이터나 사용자 입력에 학습 때 보지 못한 범주가 들어와도 오류를 내지 않도록 하는 옵션이다.</p>
+<hr>
 <h2 id="추가-개념-3-columntransformer">추가 개념 3. ColumnTransformer<a hidden class="anchor" aria-hidden="true" href="#추가-개념-3-columntransformer">#</a></h2>
 <p>Lv1에서는 모든 입력 변수가 수치형이었기 때문에 <code>StandardScaler</code>만 적용하면 됐다. 하지만 Lv2는 수치형과 범주형이 섞여 있다.</p>
 <ul>
@@ -327,6 +332,7 @@ Lv1에서는 pclass, fare 두 개의 수치형 변수만 사용했다. Lv2에서
 <li><code>embarked</code>에는 <code>categorical_transformer</code> 적용</li>
 </ul>
 <p>즉, 하나의 입력 데이터 안에서 컬럼 성격에 맞는 전처리를 나눠서 처리한다.</p>
+<hr>
 <h2 id="pipeline-정의">Pipeline 정의<a hidden class="anchor" aria-hidden="true" href="#pipeline-정의">#</a></h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pipeline <span style="color:#f92672">=</span> Pipeline([
 </span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#34;preprocessor&#34;</span>, preprocessor),
@@ -341,6 +347,7 @@ Lv1에서는 pclass, fare 두 개의 수치형 변수만 사용했다. Lv2에서
 <li>범주형 컬럼은 결측치 채우기 후 원-핫 인코딩한다.</li>
 <li>전처리된 데이터를 <code>DecisionTreeClassifier</code>에 전달한다.</li>
 </ol>
+<hr>
 <h2 id="모델-학습">모델 학습<a hidden class="anchor" aria-hidden="true" href="#모델-학습">#</a></h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pipeline<span style="color:#f92672">.</span>fit(X_train, y_train)
 </span></span></code></pre></div><h2 id="예측-및-평가">예측 및 평가<a hidden class="anchor" aria-hidden="true" href="#예측-및-평가">#</a></h2>
@@ -394,6 +401,7 @@ Lv1에서는 pclass, fare 두 개의 수치형 변수만 사용했다. Lv2에서
 </table>
 <p>변수를 더 추가했다고 해서 항상 성능이 좋아지는 것은 아니다. 새 변수가 예측에 도움이 될 수도 있지만, 모델 구조나 데이터 분할, 결측치 처리 방식, 하이퍼파라미터에 따라 성능이 오히려 낮아질 수도 있다.</p>
 <p>이번 Lv2의 핵심은 점수 향상 자체보다 <strong>현실적인 데이터 전처리 구조를 만들었다는 점</strong>이다. 실제 데이터에는 결측치와 문자형 컬럼이 자주 포함되기 때문에, <code>SimpleImputer</code>, <code>OneHotEncoder</code>, <code>ColumnTransformer</code>를 함께 쓰는 패턴이 중요하다.</p>
+<hr>
 <h2 id="사용자-입력-테스트">사용자 입력 테스트<a hidden class="anchor" aria-hidden="true" href="#사용자-입력-테스트">#</a></h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pclass <span style="color:#f92672">=</span> float(input(<span style="color:#e6db74">&#34;객실 등급(pclass, 1~3)을 입력하세요: &#34;</span>))
 </span></span><span style="display:flex;"><span>fare <span style="color:#f92672">=</span> float(input(<span style="color:#e6db74">&#34;요금(fare)을 입력하세요: &#34;</span>))
@@ -417,6 +425,7 @@ Lv1에서는 pclass, fare 두 개의 수치형 변수만 사용했다. Lv2에서
 </span></span></code></pre></div><p>사용자 입력 데이터도 학습 데이터와 같은 컬럼 구조를 가져야 한다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;pclass&#34;</span>, <span style="color:#e6db74">&#34;fare&#34;</span>, <span style="color:#e6db74">&#34;age&#34;</span>, <span style="color:#e6db74">&#34;embarked&#34;</span>]
 </span></span></code></pre></div><p>이 컬럼명이 <code>ColumnTransformer</code>에서 지정한 컬럼명과 맞아야 전처리와 예측이 정상적으로 이어진다.</p>
+<hr>
 <h2 id="정리">정리<a hidden class="anchor" aria-hidden="true" href="#정리">#</a></h2>
 <p>Lv2에서 새로 배운 핵심은 다음 세 가지다.</p>
 <ul>

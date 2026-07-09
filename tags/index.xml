@@ -6,8 +6,64 @@
     <description>Recent content in Tags on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://gnl2109.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cross Validation</title>
+      <link>https://gnl2109.github.io/tags/cross-validation/</link>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/cross-validation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DecisionTreeRegressor</title>
+      <link>https://gnl2109.github.io/tags/decisiontreeregressor/</link>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/decisiontreeregressor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Feature Engineering</title>
+      <link>https://gnl2109.github.io/tags/feature-engineering/</link>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/feature-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>KFold</title>
+      <link>https://gnl2109.github.io/tags/kfold/</link>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/kfold/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://gnl2109.github.io/tags/python/</link>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Scikit-Learn</title>
+      <link>https://gnl2109.github.io/tags/scikit-learn/</link>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/scikit-learn/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>머신러닝</title>
+      <link>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</link>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>회귀</title>
+      <link>https://gnl2109.github.io/tags/%ED%9A%8C%EA%B7%80/</link>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/%ED%9A%8C%EA%B7%80/</guid>
+      <description></description>
+    </item>
     <item>
       <title>ColumnTransformer</title>
       <link>https://gnl2109.github.io/tags/columntransformer/</link>
@@ -37,45 +93,10 @@
       <description></description>
     </item>
     <item>
-      <title>Python</title>
-      <link>https://gnl2109.github.io/tags/python/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Scikit-Learn</title>
-      <link>https://gnl2109.github.io/tags/scikit-learn/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/scikit-learn/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>머신러닝</title>
-      <link>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>분류</title>
       <link>https://gnl2109.github.io/tags/%EB%B6%84%EB%A5%98/</link>
       <pubDate>Fri, 03 Jul 2026 00:00:00 +0900</pubDate>
       <guid>https://gnl2109.github.io/tags/%EB%B6%84%EB%A5%98/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>DecisionTreeRegressor</title>
-      <link>https://gnl2109.github.io/tags/decisiontreeregressor/</link>
-      <pubDate>Thu, 02 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/decisiontreeregressor/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>회귀</title>
-      <link>https://gnl2109.github.io/tags/%ED%9A%8C%EA%B7%80/</link>
-      <pubDate>Thu, 02 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/%ED%9A%8C%EA%B7%80/</guid>
       <description></description>
     </item>
     <item>

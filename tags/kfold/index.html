@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Categories | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+<title>KFold | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="https://gnl2109.github.io/categories/">
+<link rel="canonical" href="https://gnl2109.github.io/tags/kfold/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css" integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL&#43;GgRwmx68=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://gnl2109.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://gnl2109.github.io/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://gnl2109.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://gnl2109.github.io/categories/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="https://gnl2109.github.io/categories/">
+<link rel="alternate" type="application/rss+xml" href="https://gnl2109.github.io/tags/kfold/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://gnl2109.github.io/tags/kfold/">
 <noscript>
     <style>
         #theme-toggle,
@@ -79,14 +79,14 @@
           gtag('js', new Date());
           gtag('config', 'G-HTV70762HG');
         }
-      </script><meta property="og:url" content="https://gnl2109.github.io/categories/">
+      </script><meta property="og:url" content="https://gnl2109.github.io/tags/kfold/">
   <meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그">
-  <meta property="og:title" content="Categories">
+  <meta property="og:title" content="KFold">
   <meta property="og:locale" content="ko_kr">
   <meta property="og:type" content="website">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Categories">
+  <meta name="twitter:title" content="KFold">
 
 </head>
 <body class="list" id="top">
@@ -121,22 +121,30 @@
         </ul>
     </nav>
 </header>
-<main class="main">
+<main class="main"> 
 <header class="page-header">
-    <h1>Categories</h1>
+  <h1>
+    KFold
+  </h1>
 </header>
 
-<ul class="terms-tags">
-            <li>
-                <a href="https://gnl2109.github.io/categories/1%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/">1주차 강의 정리 <sup><strong><sup>6</sup></strong></sup> </a>
-            </li>
-            <li>
-                <a href="https://gnl2109.github.io/categories/2%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/">2주차 강의 정리 <sup><strong><sup>12</sup></strong></sup> </a>
-            </li>
-            <li>
-                <a href="https://gnl2109.github.io/categories/3%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/">3주차 강의 정리 <sup><strong><sup>1</sup></strong></sup> </a>
-            </li>
-</ul>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_3주차] 0706 데이터 회귀 모델 DecisionTreeRegressor Lv3
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>데이터 회귀 모델 DecisionTreeRegressor Lv3 이번 글에서는 Kaggle House Price 데이터를 사용해 주택 판매 가격(SalePrice) 을 예측하는 회귀 모델을 정리한다.
+Lv1과 비교했을 때 Lv3에서 중요하게 추가된 내용은 다음과 같다.
+일부 독립변수 선택 파생변수 생성 바이닝 전처리 함수화 DecisionTreeRegressor 하이퍼파라미터 설정 KFold와 cross_validate를 활용한 교차검증 실제값과 예측값 비교 시각화 특성 중요도 확인 탐색적 분석(EDA)은 생략하고, 의사결정나무 회귀 모델 하나만 사용한다.
+환경설정 # 기본 및 데이터 처리 라이브러리 import warnings from pathlib import Path import numpy as np import pandas as pd from scipy import stats # 시각화 라이브러리 import matplotlib.pyplot as plt import matplotlib.patches as mpatches import matplotlib.ticker as mticker import matplotlib.font_manager as fm import seaborn as sns # 데이터 분할 및 교차검증 도구 from sklearn.model_selection import KFold, cross_validate, train_test_split # 결측치 처리 도구 from sklearn.impute import SimpleImputer # 데이터 스케일링 및 인코딩 도구 from sklearn.preprocessing import OneHotEncoder, StandardScaler # 컬럼별 전처리와 파이프라인 도구 from sklearn.compose import ColumnTransformer from sklearn.pipeline import Pipeline # 의사결정나무 회귀 모델 from sklearn.tree import DecisionTreeRegressor # 회귀 성능 평가 지표 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score # 경고 메시지 숨김 warnings.filterwarnings(&#34;ignore&#34;) # 랜덤 시드 고정 RANDOM_STATE = 42 np.random.seed(RANDOM_STATE) 새로 나온 머신러닝 도구 이번 노트북에서 새롭게 봐야 할 머신러닝 도구는 KFold와 cross_validate다.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-06 00:00:00 +0900 KST'>2026년 7월 6일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_3주차] 0706 데이터 회귀 모델 DecisionTreeRegressor Lv3" href="https://gnl2109.github.io/posts/week3-decision-tree-regressor-lv3/"></a>
+</article>
     </main>
     
 <footer class="footer">

@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://gnl2109.github.io/posts/week3-decision-tree-regressor-lv3/</loc>
+    <loc>https://gnl2109.github.io/posts/week2-decision-tree-regressor-lv3/</loc>
     <lastmod>2026-07-06T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://gnl2109.github.io/categories/3%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/</loc>
+    <loc>https://gnl2109.github.io/categories/2%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/</loc>
     <lastmod>2026-07-06T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://gnl2109.github.io/categories/</loc>
@@ -45,9 +45,6 @@
     <lastmod>2026-07-06T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://gnl2109.github.io/posts/week2-decision-tree-classifier-lv2/</loc>
-    <lastmod>2026-07-03T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://gnl2109.github.io/categories/2%EC%A3%BC%EC%B0%A8-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/</loc>
     <lastmod>2026-07-03T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://gnl2109.github.io/tags/columntransformer/</loc>

@@ -70,7 +70,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;RANDOM_STATE &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;42&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;random&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;seed(RANDOM_STATE)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;새로-나온-머신러닝-도구&#34;&gt;새로 나온 머신러닝 도구&lt;/h2&gt;
+&lt;h2 id=&#34;새로-학습한-머신러닝-도구&#34;&gt;새로 학습한 머신러닝 도구&lt;/h2&gt;
 &lt;p&gt;이번 노트북에서 새롭게 봐야 할 머신러닝 도구는 &lt;code&gt;KFold&lt;/code&gt;와 &lt;code&gt;cross_validate&lt;/code&gt;다.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>[이어드림스쿨6기_2주차] 0707 데이터 분류 모델 RandomForestClassifier Lv4 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+<meta name="keywords" content="머신러닝, 분류, RandomForestClassifier, Scikit-learn, StratifiedKFold, GridSearchCV, Pipeline, Python">
+<meta name="description" content="데이터 분류 모델 RandomForestClassifier Lv4
+이번 글에서는 seaborn Titanic 데이터로 승객 생존 여부(survived) 를 예측하는 분류 모델을 정리한다.
+Lv4의 핵심은 단순히 모델을 바꾸는 것이 아니라, 분류 문제에서 검증 설계와 튜닝 순서를 제대로 잡는 것이다.
+
+타깃: survived (0=사망, 1=생존)
+모델: RandomForestClassifier
+분리 방식: train_test_split(..., stratify=y)
+교차검증: StratifiedKFold
+튜닝: GridSearchCV
+전처리: Pipeline &#43; ColumnTransformer
+평가: classification_report, ROC-AUC, confusion_matrix
+
+
+환경설정
+import sys
+import platform
+import warnings
+
+# Colab / Linux 환경 한글 폰트 설치 및 캐시 초기화
+if sys.platform != &#34;darwin&#34;:
+    !sudo apt-get install -y -qq fonts-nanum 2&gt;/dev/null
+    !fc-cache -fv 2&gt;/dev/null
+    !rm -rf ~/.cache/matplotlib 2&gt;/dev/null
+
+# 데이터 처리 및 시각화 라이브러리
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import seaborn as sns
+from scipy import stats
+
+# 데이터 분할, 교차검증, 하이퍼파라미터 튜닝
+from sklearn.model_selection import (
+    train_test_split,
+    GridSearchCV,
+    StratifiedKFold,
+    cross_validate,
+)
+
+# 전처리 파이프라인 구성
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+
+# 분류 모델
+from sklearn.ensemble import RandomForestClassifier
+
+# 분류 평가 지표
+from sklearn.metrics import (
+    classification_report,
+    confusion_matrix,
+    ConfusionMatrixDisplay,
+    roc_auc_score,
+)
+
+# 경고 메시지 숨김
+warnings.filterwarnings(&#34;ignore&#34;)
+
+# 랜덤 시드 고정
+RANDOM_STATE = 42
+np.random.seed(RANDOM_STATE)
+
+새로 학습한 내용
+이번 Lv4에서 새로 봐야 할 핵심은 다음과 같다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://gnl2109.github.io/posts/week2-random-forest-classifier-lv4/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css" integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL&#43;GgRwmx68=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://gnl2109.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://gnl2109.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://gnl2109.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://gnl2109.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://gnl2109.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://gnl2109.github.io/posts/week2-random-forest-classifier-lv4/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HTV70762HG');
+        }
+      </script><meta property="og:url" content="https://gnl2109.github.io/posts/week2-random-forest-classifier-lv4/">
+  <meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그">
+  <meta property="og:title" content="[이어드림스쿨6기_2주차] 0707 데이터 분류 모델 RandomForestClassifier Lv4">
+  <meta property="og:description" content="데이터 분류 모델 RandomForestClassifier Lv4 이번 글에서는 seaborn Titanic 데이터로 승객 생존 여부(survived) 를 예측하는 분류 모델을 정리한다.
+Lv4의 핵심은 단순히 모델을 바꾸는 것이 아니라, 분류 문제에서 검증 설계와 튜닝 순서를 제대로 잡는 것이다.
+타깃: survived (0=사망, 1=생존) 모델: RandomForestClassifier 분리 방식: train_test_split(..., stratify=y) 교차검증: StratifiedKFold 튜닝: GridSearchCV 전처리: Pipeline &#43; ColumnTransformer 평가: classification_report, ROC-AUC, confusion_matrix 환경설정 import sys import platform import warnings # Colab / Linux 환경 한글 폰트 설치 및 캐시 초기화 if sys.platform != &#34;darwin&#34;: !sudo apt-get install -y -qq fonts-nanum 2&gt;/dev/null !fc-cache -fv 2&gt;/dev/null !rm -rf ~/.cache/matplotlib 2&gt;/dev/null # 데이터 처리 및 시각화 라이브러리 import numpy as np import pandas as pd import matplotlib.pyplot as plt import matplotlib.font_manager as fm import seaborn as sns from scipy import stats # 데이터 분할, 교차검증, 하이퍼파라미터 튜닝 from sklearn.model_selection import ( train_test_split, GridSearchCV, StratifiedKFold, cross_validate, ) # 전처리 파이프라인 구성 from sklearn.pipeline import Pipeline from sklearn.compose import ColumnTransformer from sklearn.impute import SimpleImputer from sklearn.preprocessing import StandardScaler, OneHotEncoder # 분류 모델 from sklearn.ensemble import RandomForestClassifier # 분류 평가 지표 from sklearn.metrics import ( classification_report, confusion_matrix, ConfusionMatrixDisplay, roc_auc_score, ) # 경고 메시지 숨김 warnings.filterwarnings(&#34;ignore&#34;) # 랜덤 시드 고정 RANDOM_STATE = 42 np.random.seed(RANDOM_STATE) 새로 학습한 내용 이번 Lv4에서 새로 봐야 할 핵심은 다음과 같다.">
+  <meta property="og:locale" content="ko_kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-07-07T00:00:00+09:00">
+    <meta property="article:modified_time" content="2026-07-07T00:00:00+09:00">
+    <meta property="article:tag" content="머신러닝">
+    <meta property="article:tag" content="분류">
+    <meta property="article:tag" content="RandomForestClassifier">
+    <meta property="article:tag" content="Scikit-Learn">
+    <meta property="article:tag" content="StratifiedKFold">
+    <meta property="article:tag" content="GridSearchCV">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[이어드림스쿨6기_2주차] 0707 데이터 분류 모델 RandomForestClassifier Lv4">
+  <meta name="twitter:description" content="데이터 분류 모델 RandomForestClassifier Lv4 이번 글에서는 seaborn Titanic 데이터로 승객 생존 여부(survived) 를 예측하는 분류 모델을 정리한다.
+Lv4의 핵심은 단순히 모델을 바꾸는 것이 아니라, 분류 문제에서 검증 설계와 튜닝 순서를 제대로 잡는 것이다.
+타깃: survived (0=사망, 1=생존) 모델: RandomForestClassifier 분리 방식: train_test_split(..., stratify=y) 교차검증: StratifiedKFold 튜닝: GridSearchCV 전처리: Pipeline &#43; ColumnTransformer 평가: classification_report, ROC-AUC, confusion_matrix 환경설정 import sys import platform import warnings # Colab / Linux 환경 한글 폰트 설치 및 캐시 초기화 if sys.platform != &#34;darwin&#34;: !sudo apt-get install -y -qq fonts-nanum 2&gt;/dev/null !fc-cache -fv 2&gt;/dev/null !rm -rf ~/.cache/matplotlib 2&gt;/dev/null # 데이터 처리 및 시각화 라이브러리 import numpy as np import pandas as pd import matplotlib.pyplot as plt import matplotlib.font_manager as fm import seaborn as sns from scipy import stats # 데이터 분할, 교차검증, 하이퍼파라미터 튜닝 from sklearn.model_selection import ( train_test_split, GridSearchCV, StratifiedKFold, cross_validate, ) # 전처리 파이프라인 구성 from sklearn.pipeline import Pipeline from sklearn.compose import ColumnTransformer from sklearn.impute import SimpleImputer from sklearn.preprocessing import StandardScaler, OneHotEncoder # 분류 모델 from sklearn.ensemble import RandomForestClassifier # 분류 평가 지표 from sklearn.metrics import ( classification_report, confusion_matrix, ConfusionMatrixDisplay, roc_auc_score, ) # 경고 메시지 숨김 warnings.filterwarnings(&#34;ignore&#34;) # 랜덤 시드 고정 RANDOM_STATE = 42 np.random.seed(RANDOM_STATE) 새로 학습한 내용 이번 Lv4에서 새로 봐야 할 핵심은 다음과 같다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://gnl2109.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[이어드림스쿨6기_2주차] 0707 데이터 분류 모델 RandomForestClassifier Lv4",
+      "item": "https://gnl2109.github.io/posts/week2-random-forest-classifier-lv4/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[이어드림스쿨6기_2주차] 0707 데이터 분류 모델 RandomForestClassifier Lv4",
+  "name": "[이어드림스쿨6기_2주차] 0707 데이터 분류 모델 RandomForestClassifier Lv4",
+  "description": "데이터 분류 모델 RandomForestClassifier Lv4 이번 글에서는 seaborn Titanic 데이터로 승객 생존 여부(survived) 를 예측하는 분류 모델을 정리한다.\nLv4의 핵심은 단순히 모델을 바꾸는 것이 아니라, 분류 문제에서 검증 설계와 튜닝 순서를 제대로 잡는 것이다.\n타깃: survived (0=사망, 1=생존) 모델: RandomForestClassifier 분리 방식: train_test_split(..., stratify=y) 교차검증: StratifiedKFold 튜닝: GridSearchCV 전처리: Pipeline + ColumnTransformer 평가: classification_report, ROC-AUC, confusion_matrix 환경설정 import sys import platform import warnings # Colab / Linux 환경 한글 폰트 설치 및 캐시 초기화 if sys.platform != \u0026#34;darwin\u0026#34;: !sudo apt-get install -y -qq fonts-nanum 2\u0026gt;/dev/null !fc-cache -fv 2\u0026gt;/dev/null !rm -rf ~/.cache/matplotlib 2\u0026gt;/dev/null # 데이터 처리 및 시각화 라이브러리 import numpy as np import pandas as pd import matplotlib.pyplot as plt import matplotlib.font_manager as fm import seaborn as sns from scipy import stats # 데이터 분할, 교차검증, 하이퍼파라미터 튜닝 from sklearn.model_selection import ( train_test_split, GridSearchCV, StratifiedKFold, cross_validate, ) # 전처리 파이프라인 구성 from sklearn.pipeline import Pipeline from sklearn.compose import ColumnTransformer from sklearn.impute import SimpleImputer from sklearn.preprocessing import StandardScaler, OneHotEncoder # 분류 모델 from sklearn.ensemble import RandomForestClassifier # 분류 평가 지표 from sklearn.metrics import ( classification_report, confusion_matrix, ConfusionMatrixDisplay, roc_auc_score, ) # 경고 메시지 숨김 warnings.filterwarnings(\u0026#34;ignore\u0026#34;) # 랜덤 시드 고정 RANDOM_STATE = 42 np.random.seed(RANDOM_STATE) 새로 학습한 내용 이번 Lv4에서 새로 봐야 할 핵심은 다음과 같다.\n",
+  "keywords": [
+    "머신러닝", "분류", "RandomForestClassifier", "Scikit-learn", "StratifiedKFold", "GridSearchCV", "Pipeline", "Python"
+  ],
+  "articleBody": "데이터 분류 모델 RandomForestClassifier Lv4 이번 글에서는 seaborn Titanic 데이터로 승객 생존 여부(survived) 를 예측하는 분류 모델을 정리한다.\nLv4의 핵심은 단순히 모델을 바꾸는 것이 아니라, 분류 문제에서 검증 설계와 튜닝 순서를 제대로 잡는 것이다.\n타깃: survived (0=사망, 1=생존) 모델: RandomForestClassifier 분리 방식: train_test_split(..., stratify=y) 교차검증: StratifiedKFold 튜닝: GridSearchCV 전처리: Pipeline + ColumnTransformer 평가: classification_report, ROC-AUC, confusion_matrix 환경설정 import sys import platform import warnings # Colab / Linux 환경 한글 폰트 설치 및 캐시 초기화 if sys.platform != \"darwin\": !sudo apt-get install -y -qq fonts-nanum 2\u003e/dev/null !fc-cache -fv 2\u003e/dev/null !rm -rf ~/.cache/matplotlib 2\u003e/dev/null # 데이터 처리 및 시각화 라이브러리 import numpy as np import pandas as pd import matplotlib.pyplot as plt import matplotlib.font_manager as fm import seaborn as sns from scipy import stats # 데이터 분할, 교차검증, 하이퍼파라미터 튜닝 from sklearn.model_selection import ( train_test_split, GridSearchCV, StratifiedKFold, cross_validate, ) # 전처리 파이프라인 구성 from sklearn.pipeline import Pipeline from sklearn.compose import ColumnTransformer from sklearn.impute import SimpleImputer from sklearn.preprocessing import StandardScaler, OneHotEncoder # 분류 모델 from sklearn.ensemble import RandomForestClassifier # 분류 평가 지표 from sklearn.metrics import ( classification_report, confusion_matrix, ConfusionMatrixDisplay, roc_auc_score, ) # 경고 메시지 숨김 warnings.filterwarnings(\"ignore\") # 랜덤 시드 고정 RANDOM_STATE = 42 np.random.seed(RANDOM_STATE) 새로 학습한 내용 이번 Lv4에서 새로 봐야 할 핵심은 다음과 같다.\nRandomForestClassifier는 여러 개의 의사결정나무를 만들고, 각 나무의 예측을 모아 최종 분류 결과를 정하는 앙상블 모델이다. 하나의 결정나무보다 과적합에 덜 민감하고, 비선형 패턴을 잘 잡는 편이다.\nstratify=y는 학습/테스트 데이터가 원래 타깃 비율을 비슷하게 유지하도록 나누는 옵션이다. Titanic 데이터는 사망/생존 비율이 완전히 같지 않기 때문에, 분류 평가를 안정적으로 하려면 층화추출이 중요하다.\nStratifiedKFold는 교차검증의 각 fold에서도 클래스 비율을 유지하는 방법이다. 회귀에서 사용했던 KFold와 달리, 분류 문제에서는 각 fold 안의 사망/생존 비율이 크게 흔들리지 않도록 관리한다.\nGridSearchCV는 여러 하이퍼파라미터 조합을 자동으로 실험하고, 교차검증 점수가 가장 좋은 조합을 찾아준다. 이번 예제에서는 roc_auc를 기준으로 최적 조합을 선택한다.\npredict_proba()는 각 클래스에 속할 확률을 반환한다. ROC-AUC는 단순 예측값 0/1보다 생존 확률 점수를 이용해 모델의 구분 능력을 평가한다.\n데이터 불러오기 titanic = sns.load_dataset(\"titanic\") print(\"titanic shape:\", titanic.shape) print() print(\"컬럼 목록:\") print(titanic.columns.tolist()) titanic.head() titanic shape: (891, 15) 컬럼 목록: ['survived', 'pclass', 'sex', 'age', 'sibsp', 'parch', 'fare', 'embarked', 'class', 'who', 'adult_male', 'deck', 'embark_town', 'alive', 'alone'] 사용할 변수 선택 alive는 survived와 같은 정보를 담고 있으므로 사용하지 않는다. deck은 결측치가 많아 이번 예제에서는 제외한다.\nbase_features = [ \"pclass\", \"age\", \"sibsp\", \"parch\", \"fare\", \"sex\", \"embarked\", \"who\", \"adult_male\", \"alone\", ] target = \"survived\" X = titanic.loc[:, base_features].copy() y = titanic.loc[:, target].copy() print(\"X shape:\", X.shape) print(\"y shape:\", y.shape) print() print(\"사용할 독립변수:\") print(base_features) print() print(\"타깃 분포:\") print(y.value_counts(normalize=True).sort_index().round(3)) X shape: (891, 10) y shape: (891,) 사용할 독립변수: ['pclass', 'age', 'sibsp', 'parch', 'fare', 'sex', 'embarked', 'who', 'adult_male', 'alone'] 타깃 분포: survived 0 0.616 1 0.384 Name: proportion, dtype: float64 학습 / 테스트 데이터 분리: 층화추출 X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.2, random_state=RANDOM_STATE, stratify=y, ) print(f\"학습 데이터: {len(X_train)}건\") print(f\"테스트 데이터: {len(X_test)}건\") print() print(\"[전체 y 비율]\") print(y.value_counts(normalize=True).sort_index().round(3)) print(\"\\n[train y 비율]\") print(y_train.value_counts(normalize=True).sort_index().round(3)) print(\"\\n[test y 비율]\") print(y_test.value_counts(normalize=True).sort_index().round(3)) 학습 데이터: 712건 테스트 데이터: 179건 [전체 y 비율] survived 0 0.616 1 0.384 [train y 비율] survived 0 0.617 1 0.383 [test y 비율] survived 0 0.615 1 0.385 stratify=y를 적용했기 때문에 전체, 학습, 테스트 데이터의 사망/생존 비율이 거의 동일하게 유지된다.\n수치형 / 범주형 변수 분리 numeric_features = [ \"pclass\", \"age\", \"sibsp\", \"parch\", \"fare\", ] categorical_features = [ \"sex\", \"embarked\", \"who\", \"adult_male\", \"alone\", ] print(\"수치형 변수:\", numeric_features) print(\"범주형 변수:\", categorical_features) print() print(\"X_train 결측치:\") print(X_train.isnull().sum()) 수치형 변수: ['pclass', 'age', 'sibsp', 'parch', 'fare'] 범주형 변수: ['sex', 'embarked', 'who', 'adult_male', 'alone'] X_train 결측치: pclass 0 age 137 sibsp 0 parch 0 fare 0 sex 0 embarked 2 who 0 adult_male 0 alone 0 dtype: int64 age와 embarked에 결측치가 있으므로 파이프라인 내부에서 처리한다.\nPipeline 구성 numeric_transformer = Pipeline(steps=[ (\"imputer\", SimpleImputer(strategy=\"median\")), (\"scaler\", StandardScaler()), ]) categorical_transformer = Pipeline(steps=[ (\"imputer\", SimpleImputer(strategy=\"most_frequent\")), (\"onehot\", OneHotEncoder( drop=\"first\", handle_unknown=\"ignore\", sparse_output=False, )), ]) preprocessor = ColumnTransformer(transformers=[ (\"num\", numeric_transformer, numeric_features), (\"cat\", categorical_transformer, categorical_features), ]) rf_model = RandomForestClassifier( n_estimators=200, random_state=RANDOM_STATE, n_jobs=-1, ) pipeline = Pipeline(steps=[ (\"preprocessor\", preprocessor), (\"model\", rf_model), ]) pipeline RandomForestClassifier의 주요 설정은 다음과 같다.\nn_estimators=200: 200개의 결정나무를 만든다. random_state=42: 결과 재현을 위해 난수 시드를 고정한다. n_jobs=-1: 가능한 CPU 코어를 사용해 병렬 처리한다. OneHotEncoder(drop=\"first\")는 범주형 변수를 원-핫 인코딩할 때 첫 번째 범주를 하나 제거한다. 중복 더미 변수를 줄이는 효과가 있다. sparse_output=False는 결과를 희소 행렬이 아니라 일반 배열 형태로 반환하도록 하는 설정이다.\nStratifiedKFold 교차검증 cv = StratifiedKFold( n_splits=5, shuffle=True, random_state=RANDOM_STATE, ) scoring = { \"accuracy\": \"accuracy\", \"f1\": \"f1\", \"roc_auc\": \"roc_auc\", \"recall\": \"recall\", } cv_results = cross_validate( pipeline, X_train, y_train, cv=cv, scoring=scoring, return_train_score=True, n_jobs=-1, ) cv_summary = pd.DataFrame({ \"metric\": [\"accuracy\", \"f1\", \"roc_auc\", \"recall\"], \"train_mean\": [ cv_results[\"train_accuracy\"].mean(), cv_results[\"train_f1\"].mean(), cv_results[\"train_roc_auc\"].mean(), cv_results[\"train_recall\"].mean(), ], \"valid_mean\": [ cv_results[\"test_accuracy\"].mean(), cv_results[\"test_f1\"].mean(), cv_results[\"test_roc_auc\"].mean(), cv_results[\"test_recall\"].mean(), ], \"valid_std\": [ cv_results[\"test_accuracy\"].std(), cv_results[\"test_f1\"].std(), cv_results[\"test_roc_auc\"].std(), cv_results[\"test_recall\"].std(), ], }) cv_summary.round(4) metric train_mean valid_mean valid_std 0 accuracy 0.9824 0.8034 0.0144 1 f1 0.9769 0.7420 0.0109 2 roc_auc 0.9980 0.8666 0.0116 3 recall 0.9679 0.7363 0.0246 학습 점수가 검증 점수보다 상당히 높다. 랜덤 포레스트가 학습 데이터에는 매우 잘 맞지만, 검증 데이터에서는 성능이 낮아지는 모습이므로 과적합 가능성을 의심할 수 있다. 그래서 다음 단계에서 하이퍼파라미터 튜닝을 진행한다.\nGridSearchCV 하이퍼파라미터 튜닝 param_grid = { \"model__n_estimators\": [100, 200], \"model__max_depth\": [3, 5, None], \"model__min_samples_leaf\": [1, 3, 5], \"model__max_features\": [\"sqrt\", \"log2\"], } grid_search = GridSearchCV( estimator=pipeline, param_grid=param_grid, scoring=\"roc_auc\", cv=cv, n_jobs=-1, return_train_score=True, ) grid_search.fit(X_train, y_train) RandomForest에서 자주 조정하는 하이퍼파라미터는 다음과 같다.\nn_estimators: 만들 나무의 개수 max_depth: 각 나무의 최대 깊이 min_samples_leaf: 마지막 leaf node에 있어야 하는 최소 샘플 수 max_features: 각 split에서 고려할 feature 수 GridSearchCV에서 파이프라인 내부 모델의 파라미터를 지정할 때는 model__max_depth처럼 단계이름__파라미터명 형식을 사용한다. 여기서 model은 Pipeline에서 붙인 단계 이름이다.\nprint(\"Best ROC-AUC:\", round(grid_search.best_score_, 4)) print(\"Best params:\") print(grid_search.best_params_) Best ROC-AUC: 0.88 Best params: {'model__max_depth': None, 'model__max_features': 'sqrt', 'model__min_samples_leaf': 5, 'model__n_estimators': 100} 튜닝 결과 상위 조합 확인 tuning_results = pd.DataFrame(grid_search.cv_results_) cols_to_show = [ \"mean_train_score\", \"mean_test_score\", \"std_test_score\", \"param_model__n_estimators\", \"param_model__max_depth\", \"param_model__min_samples_leaf\", \"param_model__max_features\", ] top_results = ( tuning_results .loc[:, cols_to_show] .sort_values(\"mean_test_score\", ascending=False) .head(10) ) top_results.round(4) mean_train_score mean_test_score std_test_score param_model__n_estimators param_model__max_depth 34 0.9390 0.8800 0.0274 100 None 28 0.9390 0.8800 0.0274 100 None 27 0.9607 0.8794 0.0235 200 None 33 0.9607 0.8794 0.0235 200 None 35 0.9395 0.8790 0.0265 200 None 상위 조합을 보면 검증 ROC-AUC가 0.88 근처에서 형성된다. 학습 점수와 검증 점수의 차이를 함께 보면서 과적합 정도도 같이 판단해야 한다.\n최종 모델 테스트 평가 best_model = grid_search.best_estimator_ y_pred = best_model.predict(X_test) y_proba = best_model.predict_proba(X_test)[:, 1] test_roc_auc = roc_auc_score(y_test, y_proba) print(\"--- Test Classification Report ---\") print(classification_report(y_test, y_pred, target_names=[\"사망\", \"생존\"])) print(f\"Test ROC-AUC: {test_roc_auc:.4f}\") --- Test Classification Report --- precision recall f1-score support 사망 0.82 0.93 0.87 110 생존 0.85 0.68 0.76 69 accuracy 0.83 179 macro avg 0.84 0.80 0.81 179 weighted avg 0.83 0.83 0.83 179 Test ROC-AUC: 0.8457 테스트 정확도는 약 0.83이고, ROC-AUC는 0.8457이다. 생존 클래스의 recall은 0.68이므로 실제 생존자 중 일부를 놓치고 있다. 이 지점은 threshold 조정으로 더 다뤄볼 수 있다.\ncm = confusion_matrix(y_test, y_pred) fig, ax = plt.subplots(figsize=(5, 4)) ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[\"사망\", \"생존\"]).plot( ax=ax, cmap=\"Blues\", colorbar=False, ) ax.set_title(\"Titanic 생존 예측 Confusion Matrix\") plt.tight_layout() plt.show() 혼동행렬을 보면 사망 110명 중 102명을 사망으로 맞혔고, 생존 69명 중 47명을 생존으로 맞혔다. 생존자를 사망으로 예측한 경우가 22건으로, 생존 클래스의 recall이 낮아진 주된 원인이다.\nFeature Importance 확인 feature_names = best_model.named_steps[\"preprocessor\"].get_feature_names_out() importances = best_model.named_steps[\"model\"].feature_importances_ importance_df = pd.DataFrame({ \"feature\": feature_names, \"importance\": importances, }).sort_values(\"importance\", ascending=False) importance_df.head(15) feature importance 4 num__fare 0.157333 10 cat__adult_male_True 0.146170 8 cat__who_man 0.146051 5 cat__sex_male 0.133868 0 num__pclass 0.124075 9 cat__who_woman 0.098202 1 num__age 0.097202 2 num__sibsp 0.041859 7 cat__embarked_S 0.018965 3 num__parch 0.016099 11 cat__alone_True 0.013471 6 cat__embarked_Q 0.006703 RandomForestClassifier도 feature_importances_를 제공한다. 여러 나무에서 해당 변수가 불순도 감소에 얼마나 기여했는지를 기반으로 중요도를 계산한다.\ntop_importance = importance_df.head(15).sort_values(\"importance\") fig, ax = plt.subplots(figsize=(8, 6)) sns.barplot(data=top_importance, x=\"importance\", y=\"feature\", ax=ax, color=\"steelblue\") ax.set_title(\"RandomForest Feature Importance Top 15\") ax.set_xlabel(\"Importance\") ax.set_ylabel(\"Feature\") plt.tight_layout() plt.show() 중요도 상위에는 fare, adult_male, who_man, sex_male, pclass, age 등이 있다. Titanic 데이터에서는 성별, 요금, 객실 등급, 나이가 생존 여부 예측에 큰 역할을 한 것으로 볼 수 있다.\n교차검증 fold별 클래스 비율 확인 fold_rows = [] for fold, (train_idx, valid_idx) in enumerate(cv.split(X_train, y_train), start=1): y_tr_fold = y_train.iloc[train_idx] y_va_fold = y_train.iloc[valid_idx] fold_rows.append({ \"fold\": fold, \"train_survived_rate\": y_tr_fold.mean(), \"valid_survived_rate\": y_va_fold.mean(), \"train_n\": len(y_tr_fold), \"valid_n\": len(y_va_fold), }) fold_df = pd.DataFrame(fold_rows) fold_df.round(4) fold train_survived_rate valid_survived_rate train_n valid_n 0 1 0.3831 0.3846 569 143 1 2 0.3831 0.3846 569 143 2 3 0.3825 0.3873 570 142 3 4 0.3842 0.3803 570 142 4 5 0.3842 0.3803 570 142 각 fold의 생존 비율이 약 0.38로 비슷하게 유지된다. 이것이 StratifiedKFold를 사용하는 이유다.\n정리 이번 Lv4 분류 예제의 핵심 흐름은 다음과 같다.\nsurvived를 타깃으로 하는 이진 분류 문제를 만들었다. 학습/테스트 분리에서 stratify=y로 클래스 비율을 유지했다. 수치형·범주형 변수를 분리하고 ColumnTransformer로 전처리했다. Pipeline으로 전처리와 RandomForestClassifier를 하나로 묶었다. StratifiedKFold로 층화 교차검증을 진행했다. GridSearchCV로 RandomForest 하이퍼파라미터를 튜닝했다. 마지막에만 테스트 데이터로 최종 성능을 평가했다. 혼동행렬과 특성 중요도로 모델 결과를 해석했다. Lv4에서 가장 중요한 메시지는 테스트 데이터는 마지막 평가에만 사용한다는 점이다. 전처리, 교차검증, 튜닝은 모두 학습 데이터 내부에서만 진행해야 모델 성능을 더 정직하게 확인할 수 있다.\n",
+  "wordCount" : "1409",
+  "inLanguage": "en",
+  "datePublished": "2026-07-07T00:00:00+09:00",
+  "dateModified": "2026-07-07T00:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gnl2109.github.io/posts/week2-random-forest-classifier-lv4/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gnl2109.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://gnl2109.github.io/" accesskey="h" title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      [이어드림스쿨6기_2주차] 0707 데이터 분류 모델 RandomForestClassifier Lv4
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-07-07 00:00:00 +0900 KST'>2026년 7월 7일</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><h1 id="데이터-분류-모델-randomforestclassifier-lv4">데이터 분류 모델 RandomForestClassifier Lv4<a hidden class="anchor" aria-hidden="true" href="#데이터-분류-모델-randomforestclassifier-lv4">#</a></h1>
+<p>이번 글에서는 seaborn Titanic 데이터로 <strong>승객 생존 여부(<code>survived</code>)</strong> 를 예측하는 분류 모델을 정리한다.</p>
+<p>Lv4의 핵심은 단순히 모델을 바꾸는 것이 아니라, <strong>분류 문제에서 검증 설계와 튜닝 순서를 제대로 잡는 것</strong>이다.</p>
+<ul>
+<li>타깃: <code>survived</code> (0=사망, 1=생존)</li>
+<li>모델: <code>RandomForestClassifier</code></li>
+<li>분리 방식: <code>train_test_split(..., stratify=y)</code></li>
+<li>교차검증: <code>StratifiedKFold</code></li>
+<li>튜닝: <code>GridSearchCV</code></li>
+<li>전처리: <code>Pipeline + ColumnTransformer</code></li>
+<li>평가: <code>classification_report</code>, <code>ROC-AUC</code>, <code>confusion_matrix</code></li>
+</ul>
+<hr>
+<h2 id="환경설정">환경설정<a hidden class="anchor" aria-hidden="true" href="#환경설정">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> platform
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> warnings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Colab / Linux 환경 한글 폰트 설치 및 캐시 초기화</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> sys<span style="color:#f92672">.</span>platform <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;darwin&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">!</span>sudo apt<span style="color:#f92672">-</span>get install <span style="color:#f92672">-</span>y <span style="color:#f92672">-</span>qq fonts<span style="color:#f92672">-</span>nanum <span style="color:#ae81ff">2</span><span style="color:#f92672">&gt;/</span>dev<span style="color:#f92672">/</span>null
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">!</span>fc<span style="color:#f92672">-</span>cache <span style="color:#f92672">-</span>fv <span style="color:#ae81ff">2</span><span style="color:#f92672">&gt;/</span>dev<span style="color:#f92672">/</span>null
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">!</span>rm <span style="color:#f92672">-</span>rf <span style="color:#f92672">~/.</span>cache<span style="color:#f92672">/</span>matplotlib <span style="color:#ae81ff">2</span><span style="color:#f92672">&gt;/</span>dev<span style="color:#f92672">/</span>null
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 데이터 처리 및 시각화 라이브러리</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.font_manager <span style="color:#66d9ef">as</span> fm
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy <span style="color:#f92672">import</span> stats
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 데이터 분할, 교차검증, 하이퍼파라미터 튜닝</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    train_test_split,
+</span></span><span style="display:flex;"><span>    GridSearchCV,
+</span></span><span style="display:flex;"><span>    StratifiedKFold,
+</span></span><span style="display:flex;"><span>    cross_validate,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 전처리 파이프라인 구성</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.pipeline <span style="color:#f92672">import</span> Pipeline
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.compose <span style="color:#f92672">import</span> ColumnTransformer
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.impute <span style="color:#f92672">import</span> SimpleImputer
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> StandardScaler, OneHotEncoder
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 분류 모델</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.ensemble <span style="color:#f92672">import</span> RandomForestClassifier
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 분류 평가 지표</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    classification_report,
+</span></span><span style="display:flex;"><span>    confusion_matrix,
+</span></span><span style="display:flex;"><span>    ConfusionMatrixDisplay,
+</span></span><span style="display:flex;"><span>    roc_auc_score,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 경고 메시지 숨김</span>
+</span></span><span style="display:flex;"><span>warnings<span style="color:#f92672">.</span>filterwarnings(<span style="color:#e6db74">&#34;ignore&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 랜덤 시드 고정</span>
+</span></span><span style="display:flex;"><span>RANDOM_STATE <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(RANDOM_STATE)
+</span></span></code></pre></div><hr>
+<h2 id="새로-학습한-내용">새로 학습한 내용<a hidden class="anchor" aria-hidden="true" href="#새로-학습한-내용">#</a></h2>
+<p>이번 Lv4에서 새로 봐야 할 핵심은 다음과 같다.</p>
+<p><code>RandomForestClassifier</code>는 여러 개의 의사결정나무를 만들고, 각 나무의 예측을 모아 최종 분류 결과를 정하는 앙상블 모델이다. 하나의 결정나무보다 과적합에 덜 민감하고, 비선형 패턴을 잘 잡는 편이다.</p>
+<p><code>stratify=y</code>는 학습/테스트 데이터가 원래 타깃 비율을 비슷하게 유지하도록 나누는 옵션이다. Titanic 데이터는 사망/생존 비율이 완전히 같지 않기 때문에, 분류 평가를 안정적으로 하려면 층화추출이 중요하다.</p>
+<p><code>StratifiedKFold</code>는 교차검증의 각 fold에서도 클래스 비율을 유지하는 방법이다. 회귀에서 사용했던 <code>KFold</code>와 달리, 분류 문제에서는 각 fold 안의 사망/생존 비율이 크게 흔들리지 않도록 관리한다.</p>
+<p><code>GridSearchCV</code>는 여러 하이퍼파라미터 조합을 자동으로 실험하고, 교차검증 점수가 가장 좋은 조합을 찾아준다. 이번 예제에서는 <code>roc_auc</code>를 기준으로 최적 조합을 선택한다.</p>
+<p><code>predict_proba()</code>는 각 클래스에 속할 확률을 반환한다. ROC-AUC는 단순 예측값 0/1보다 생존 확률 점수를 이용해 모델의 구분 능력을 평가한다.</p>
+<hr>
+<h2 id="데이터-불러오기">데이터 불러오기<a hidden class="anchor" aria-hidden="true" href="#데이터-불러오기">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>titanic <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>load_dataset(<span style="color:#e6db74">&#34;titanic&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;titanic shape:&#34;</span>, titanic<span style="color:#f92672">.</span>shape)
+</span></span><span style="display:flex;"><span>print()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;컬럼 목록:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(titanic<span style="color:#f92672">.</span>columns<span style="color:#f92672">.</span>tolist())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>titanic<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>titanic shape: (891, 15)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>컬럼 목록:
+</span></span><span style="display:flex;"><span>[&#39;survived&#39;, &#39;pclass&#39;, &#39;sex&#39;, &#39;age&#39;, &#39;sibsp&#39;, &#39;parch&#39;, &#39;fare&#39;, &#39;embarked&#39;, &#39;class&#39;, &#39;who&#39;, &#39;adult_male&#39;, &#39;deck&#39;, &#39;embark_town&#39;, &#39;alive&#39;, &#39;alone&#39;]
+</span></span></code></pre></div><hr>
+<h2 id="사용할-변수-선택">사용할 변수 선택<a hidden class="anchor" aria-hidden="true" href="#사용할-변수-선택">#</a></h2>
+<p><code>alive</code>는 <code>survived</code>와 같은 정보를 담고 있으므로 사용하지 않는다. <code>deck</code>은 결측치가 많아 이번 예제에서는 제외한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>base_features <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pclass&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;age&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sibsp&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;parch&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fare&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sex&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;embarked&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;who&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;adult_male&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;alone&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;survived&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> titanic<span style="color:#f92672">.</span>loc[:, base_features]<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> titanic<span style="color:#f92672">.</span>loc[:, target]<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;X shape:&#34;</span>, X<span style="color:#f92672">.</span>shape)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;y shape:&#34;</span>, y<span style="color:#f92672">.</span>shape)
+</span></span><span style="display:flex;"><span>print()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;사용할 독립변수:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(base_features)
+</span></span><span style="display:flex;"><span>print()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;타깃 분포:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(y<span style="color:#f92672">.</span>value_counts(normalize<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>sort_index()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>))
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>X shape: (891, 10)
+</span></span><span style="display:flex;"><span>y shape: (891,)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>사용할 독립변수:
+</span></span><span style="display:flex;"><span>[&#39;pclass&#39;, &#39;age&#39;, &#39;sibsp&#39;, &#39;parch&#39;, &#39;fare&#39;, &#39;sex&#39;, &#39;embarked&#39;, &#39;who&#39;, &#39;adult_male&#39;, &#39;alone&#39;]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>타깃 분포:
+</span></span><span style="display:flex;"><span>survived
+</span></span><span style="display:flex;"><span>0    0.616
+</span></span><span style="display:flex;"><span>1    0.384
+</span></span><span style="display:flex;"><span>Name: proportion, dtype: float64
+</span></span></code></pre></div><hr>
+<h2 id="학습--테스트-데이터-분리-층화추출">학습 / 테스트 데이터 분리: 층화추출<a hidden class="anchor" aria-hidden="true" href="#학습--테스트-데이터-분리-층화추출">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(
+</span></span><span style="display:flex;"><span>    X,
+</span></span><span style="display:flex;"><span>    y,
+</span></span><span style="display:flex;"><span>    test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>,
+</span></span><span style="display:flex;"><span>    random_state<span style="color:#f92672">=</span>RANDOM_STATE,
+</span></span><span style="display:flex;"><span>    stratify<span style="color:#f92672">=</span>y,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;학습 데이터: </span><span style="color:#e6db74">{</span>len(X_train)<span style="color:#e6db74">}</span><span style="color:#e6db74">건&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;테스트 데이터: </span><span style="color:#e6db74">{</span>len(X_test)<span style="color:#e6db74">}</span><span style="color:#e6db74">건&#34;</span>)
+</span></span><span style="display:flex;"><span>print()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;[전체 y 비율]&#34;</span>)
+</span></span><span style="display:flex;"><span>print(y<span style="color:#f92672">.</span>value_counts(normalize<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>sort_index()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">[train y 비율]&#34;</span>)
+</span></span><span style="display:flex;"><span>print(y_train<span style="color:#f92672">.</span>value_counts(normalize<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>sort_index()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">[test y 비율]&#34;</span>)
+</span></span><span style="display:flex;"><span>print(y_test<span style="color:#f92672">.</span>value_counts(normalize<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>sort_index()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">3</span>))
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>학습 데이터: 712건
+</span></span><span style="display:flex;"><span>테스트 데이터: 179건
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[전체 y 비율]
+</span></span><span style="display:flex;"><span>survived
+</span></span><span style="display:flex;"><span>0    0.616
+</span></span><span style="display:flex;"><span>1    0.384
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[train y 비율]
+</span></span><span style="display:flex;"><span>survived
+</span></span><span style="display:flex;"><span>0    0.617
+</span></span><span style="display:flex;"><span>1    0.383
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[test y 비율]
+</span></span><span style="display:flex;"><span>survived
+</span></span><span style="display:flex;"><span>0    0.615
+</span></span><span style="display:flex;"><span>1    0.385
+</span></span></code></pre></div><p><code>stratify=y</code>를 적용했기 때문에 전체, 학습, 테스트 데이터의 사망/생존 비율이 거의 동일하게 유지된다.</p>
+<hr>
+<h2 id="수치형--범주형-변수-분리">수치형 / 범주형 변수 분리<a hidden class="anchor" aria-hidden="true" href="#수치형--범주형-변수-분리">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numeric_features <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pclass&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;age&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sibsp&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;parch&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fare&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>categorical_features <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sex&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;embarked&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;who&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;adult_male&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;alone&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;수치형 변수:&#34;</span>, numeric_features)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;범주형 변수:&#34;</span>, categorical_features)
+</span></span><span style="display:flex;"><span>print()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;X_train 결측치:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(X_train<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum())
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>수치형 변수: [&#39;pclass&#39;, &#39;age&#39;, &#39;sibsp&#39;, &#39;parch&#39;, &#39;fare&#39;]
+</span></span><span style="display:flex;"><span>범주형 변수: [&#39;sex&#39;, &#39;embarked&#39;, &#39;who&#39;, &#39;adult_male&#39;, &#39;alone&#39;]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X_train 결측치:
+</span></span><span style="display:flex;"><span>pclass          0
+</span></span><span style="display:flex;"><span>age           137
+</span></span><span style="display:flex;"><span>sibsp           0
+</span></span><span style="display:flex;"><span>parch           0
+</span></span><span style="display:flex;"><span>fare            0
+</span></span><span style="display:flex;"><span>sex             0
+</span></span><span style="display:flex;"><span>embarked        2
+</span></span><span style="display:flex;"><span>who             0
+</span></span><span style="display:flex;"><span>adult_male      0
+</span></span><span style="display:flex;"><span>alone           0
+</span></span><span style="display:flex;"><span>dtype: int64
+</span></span></code></pre></div><p><code>age</code>와 <code>embarked</code>에 결측치가 있으므로 파이프라인 내부에서 처리한다.</p>
+<hr>
+<h2 id="pipeline-구성">Pipeline 구성<a hidden class="anchor" aria-hidden="true" href="#pipeline-구성">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numeric_transformer <span style="color:#f92672">=</span> Pipeline(steps<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#34;imputer&#34;</span>, SimpleImputer(strategy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;median&#34;</span>)),
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#34;scaler&#34;</span>, StandardScaler()),
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>categorical_transformer <span style="color:#f92672">=</span> Pipeline(steps<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#34;imputer&#34;</span>, SimpleImputer(strategy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;most_frequent&#34;</span>)),
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#34;onehot&#34;</span>, OneHotEncoder(
+</span></span><span style="display:flex;"><span>        drop<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;first&#34;</span>,
+</span></span><span style="display:flex;"><span>        handle_unknown<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ignore&#34;</span>,
+</span></span><span style="display:flex;"><span>        sparse_output<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>    )),
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>preprocessor <span style="color:#f92672">=</span> ColumnTransformer(transformers<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#34;num&#34;</span>, numeric_transformer, numeric_features),
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#34;cat&#34;</span>, categorical_transformer, categorical_features),
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rf_model <span style="color:#f92672">=</span> RandomForestClassifier(
+</span></span><span style="display:flex;"><span>    n_estimators<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>,
+</span></span><span style="display:flex;"><span>    random_state<span style="color:#f92672">=</span>RANDOM_STATE,
+</span></span><span style="display:flex;"><span>    n_jobs<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pipeline <span style="color:#f92672">=</span> Pipeline(steps<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#34;preprocessor&#34;</span>, preprocessor),
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">&#34;model&#34;</span>, rf_model),
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pipeline
+</span></span></code></pre></div><p><code>RandomForestClassifier</code>의 주요 설정은 다음과 같다.</p>
+<ul>
+<li><code>n_estimators=200</code>: 200개의 결정나무를 만든다.</li>
+<li><code>random_state=42</code>: 결과 재현을 위해 난수 시드를 고정한다.</li>
+<li><code>n_jobs=-1</code>: 가능한 CPU 코어를 사용해 병렬 처리한다.</li>
+</ul>
+<p><code>OneHotEncoder(drop=&quot;first&quot;)</code>는 범주형 변수를 원-핫 인코딩할 때 첫 번째 범주를 하나 제거한다. 중복 더미 변수를 줄이는 효과가 있다. <code>sparse_output=False</code>는 결과를 희소 행렬이 아니라 일반 배열 형태로 반환하도록 하는 설정이다.</p>
+<hr>
+<h2 id="stratifiedkfold-교차검증">StratifiedKFold 교차검증<a hidden class="anchor" aria-hidden="true" href="#stratifiedkfold-교차검증">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cv <span style="color:#f92672">=</span> StratifiedKFold(
+</span></span><span style="display:flex;"><span>    n_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>    shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    random_state<span style="color:#f92672">=</span>RANDOM_STATE,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>scoring <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;accuracy&#34;</span>: <span style="color:#e6db74">&#34;accuracy&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;f1&#34;</span>: <span style="color:#e6db74">&#34;f1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;roc_auc&#34;</span>: <span style="color:#e6db74">&#34;roc_auc&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;recall&#34;</span>: <span style="color:#e6db74">&#34;recall&#34;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cv_results <span style="color:#f92672">=</span> cross_validate(
+</span></span><span style="display:flex;"><span>    pipeline,
+</span></span><span style="display:flex;"><span>    X_train,
+</span></span><span style="display:flex;"><span>    y_train,
+</span></span><span style="display:flex;"><span>    cv<span style="color:#f92672">=</span>cv,
+</span></span><span style="display:flex;"><span>    scoring<span style="color:#f92672">=</span>scoring,
+</span></span><span style="display:flex;"><span>    return_train_score<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    n_jobs<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cv_summary <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;metric&#34;</span>: [<span style="color:#e6db74">&#34;accuracy&#34;</span>, <span style="color:#e6db74">&#34;f1&#34;</span>, <span style="color:#e6db74">&#34;roc_auc&#34;</span>, <span style="color:#e6db74">&#34;recall&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;train_mean&#34;</span>: [
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;train_accuracy&#34;</span>]<span style="color:#f92672">.</span>mean(),
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;train_f1&#34;</span>]<span style="color:#f92672">.</span>mean(),
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;train_roc_auc&#34;</span>]<span style="color:#f92672">.</span>mean(),
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;train_recall&#34;</span>]<span style="color:#f92672">.</span>mean(),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;valid_mean&#34;</span>: [
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;test_accuracy&#34;</span>]<span style="color:#f92672">.</span>mean(),
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;test_f1&#34;</span>]<span style="color:#f92672">.</span>mean(),
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;test_roc_auc&#34;</span>]<span style="color:#f92672">.</span>mean(),
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;test_recall&#34;</span>]<span style="color:#f92672">.</span>mean(),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;valid_std&#34;</span>: [
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;test_accuracy&#34;</span>]<span style="color:#f92672">.</span>std(),
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;test_f1&#34;</span>]<span style="color:#f92672">.</span>std(),
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;test_roc_auc&#34;</span>]<span style="color:#f92672">.</span>std(),
+</span></span><span style="display:flex;"><span>        cv_results[<span style="color:#e6db74">&#34;test_recall&#34;</span>]<span style="color:#f92672">.</span>std(),
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cv_summary<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">4</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>     metric  train_mean  valid_mean  valid_std
+</span></span><span style="display:flex;"><span>0  accuracy      0.9824      0.8034     0.0144
+</span></span><span style="display:flex;"><span>1        f1      0.9769      0.7420     0.0109
+</span></span><span style="display:flex;"><span>2   roc_auc      0.9980      0.8666     0.0116
+</span></span><span style="display:flex;"><span>3    recall      0.9679      0.7363     0.0246
+</span></span></code></pre></div><p>학습 점수가 검증 점수보다 상당히 높다. 랜덤 포레스트가 학습 데이터에는 매우 잘 맞지만, 검증 데이터에서는 성능이 낮아지는 모습이므로 과적합 가능성을 의심할 수 있다. 그래서 다음 단계에서 하이퍼파라미터 튜닝을 진행한다.</p>
+<hr>
+<h2 id="gridsearchcv-하이퍼파라미터-튜닝">GridSearchCV 하이퍼파라미터 튜닝<a hidden class="anchor" aria-hidden="true" href="#gridsearchcv-하이퍼파라미터-튜닝">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>param_grid <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;model__n_estimators&#34;</span>: [<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">200</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;model__max_depth&#34;</span>: [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#66d9ef">None</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;model__min_samples_leaf&#34;</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;model__max_features&#34;</span>: [<span style="color:#e6db74">&#34;sqrt&#34;</span>, <span style="color:#e6db74">&#34;log2&#34;</span>],
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>grid_search <span style="color:#f92672">=</span> GridSearchCV(
+</span></span><span style="display:flex;"><span>    estimator<span style="color:#f92672">=</span>pipeline,
+</span></span><span style="display:flex;"><span>    param_grid<span style="color:#f92672">=</span>param_grid,
+</span></span><span style="display:flex;"><span>    scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;roc_auc&#34;</span>,
+</span></span><span style="display:flex;"><span>    cv<span style="color:#f92672">=</span>cv,
+</span></span><span style="display:flex;"><span>    n_jobs<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    return_train_score<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>grid_search<span style="color:#f92672">.</span>fit(X_train, y_train)
+</span></span></code></pre></div><p>RandomForest에서 자주 조정하는 하이퍼파라미터는 다음과 같다.</p>
+<ul>
+<li><code>n_estimators</code>: 만들 나무의 개수</li>
+<li><code>max_depth</code>: 각 나무의 최대 깊이</li>
+<li><code>min_samples_leaf</code>: 마지막 leaf node에 있어야 하는 최소 샘플 수</li>
+<li><code>max_features</code>: 각 split에서 고려할 feature 수</li>
+</ul>
+<p><code>GridSearchCV</code>에서 파이프라인 내부 모델의 파라미터를 지정할 때는 <code>model__max_depth</code>처럼 <code>단계이름__파라미터명</code> 형식을 사용한다. 여기서 <code>model</code>은 <code>Pipeline</code>에서 붙인 단계 이름이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Best ROC-AUC:&#34;</span>, round(grid_search<span style="color:#f92672">.</span>best_score_, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Best params:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(grid_search<span style="color:#f92672">.</span>best_params_)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Best ROC-AUC: 0.88
+</span></span><span style="display:flex;"><span>Best params:
+</span></span><span style="display:flex;"><span>{&#39;model__max_depth&#39;: None, &#39;model__max_features&#39;: &#39;sqrt&#39;, &#39;model__min_samples_leaf&#39;: 5, &#39;model__n_estimators&#39;: 100}
+</span></span></code></pre></div><hr>
+<h2 id="튜닝-결과-상위-조합-확인">튜닝 결과 상위 조합 확인<a hidden class="anchor" aria-hidden="true" href="#튜닝-결과-상위-조합-확인">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tuning_results <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(grid_search<span style="color:#f92672">.</span>cv_results_)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cols_to_show <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;mean_train_score&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;mean_test_score&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;std_test_score&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;param_model__n_estimators&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;param_model__max_depth&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;param_model__min_samples_leaf&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;param_model__max_features&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>top_results <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    tuning_results
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>loc[:, cols_to_show]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#34;mean_test_score&#34;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>head(<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>top_results<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">4</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>    mean_train_score  mean_test_score  std_test_score  param_model__n_estimators  param_model__max_depth
+</span></span><span style="display:flex;"><span>34            0.9390           0.8800          0.0274                        100                   None
+</span></span><span style="display:flex;"><span>28            0.9390           0.8800          0.0274                        100                   None
+</span></span><span style="display:flex;"><span>27            0.9607           0.8794          0.0235                        200                   None
+</span></span><span style="display:flex;"><span>33            0.9607           0.8794          0.0235                        200                   None
+</span></span><span style="display:flex;"><span>35            0.9395           0.8790          0.0265                        200                   None
+</span></span></code></pre></div><p>상위 조합을 보면 검증 ROC-AUC가 0.88 근처에서 형성된다. 학습 점수와 검증 점수의 차이를 함께 보면서 과적합 정도도 같이 판단해야 한다.</p>
+<hr>
+<h2 id="최종-모델-테스트-평가">최종 모델 테스트 평가<a hidden class="anchor" aria-hidden="true" href="#최종-모델-테스트-평가">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>best_model <span style="color:#f92672">=</span> grid_search<span style="color:#f92672">.</span>best_estimator_
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>y_pred <span style="color:#f92672">=</span> best_model<span style="color:#f92672">.</span>predict(X_test)
+</span></span><span style="display:flex;"><span>y_proba <span style="color:#f92672">=</span> best_model<span style="color:#f92672">.</span>predict_proba(X_test)[:, <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>test_roc_auc <span style="color:#f92672">=</span> roc_auc_score(y_test, y_proba)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;--- Test Classification Report ---&#34;</span>)
+</span></span><span style="display:flex;"><span>print(classification_report(y_test, y_pred, target_names<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;사망&#34;</span>, <span style="color:#e6db74">&#34;생존&#34;</span>]))
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Test ROC-AUC: </span><span style="color:#e6db74">{</span>test_roc_auc<span style="color:#e6db74">:</span><span style="color:#e6db74">.4f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>--- Test Classification Report ---
+</span></span><span style="display:flex;"><span>              precision    recall  f1-score   support
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          사망       0.82      0.93      0.87       110
+</span></span><span style="display:flex;"><span>          생존       0.85      0.68      0.76        69
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    accuracy                           0.83       179
+</span></span><span style="display:flex;"><span>   macro avg       0.84      0.80      0.81       179
+</span></span><span style="display:flex;"><span>weighted avg       0.83      0.83      0.83       179
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Test ROC-AUC: 0.8457
+</span></span></code></pre></div><p>테스트 정확도는 약 0.83이고, ROC-AUC는 0.8457이다. 생존 클래스의 recall은 0.68이므로 실제 생존자 중 일부를 놓치고 있다. 이 지점은 threshold 조정으로 더 다뤄볼 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cm <span style="color:#f92672">=</span> confusion_matrix(y_test, y_pred)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>ConfusionMatrixDisplay(confusion_matrix<span style="color:#f92672">=</span>cm, display_labels<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;사망&#34;</span>, <span style="color:#e6db74">&#34;생존&#34;</span>])<span style="color:#f92672">.</span>plot(
+</span></span><span style="display:flex;"><span>    ax<span style="color:#f92672">=</span>ax,
+</span></span><span style="display:flex;"><span>    cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Blues&#34;</span>,
+</span></span><span style="display:flex;"><span>    colorbar<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Titanic 생존 예측 Confusion Matrix&#34;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>tight_layout()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p><img alt="Titanic 생존 예측 Confusion Matrix" loading="lazy" src="/images/random-forest-classifier-lv4/confusion-matrix.png"></p>
+<p>혼동행렬을 보면 사망 110명 중 102명을 사망으로 맞혔고, 생존 69명 중 47명을 생존으로 맞혔다. 생존자를 사망으로 예측한 경우가 22건으로, 생존 클래스의 recall이 낮아진 주된 원인이다.</p>
+<hr>
+<h2 id="feature-importance-확인">Feature Importance 확인<a hidden class="anchor" aria-hidden="true" href="#feature-importance-확인">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>feature_names <span style="color:#f92672">=</span> best_model<span style="color:#f92672">.</span>named_steps[<span style="color:#e6db74">&#34;preprocessor&#34;</span>]<span style="color:#f92672">.</span>get_feature_names_out()
+</span></span><span style="display:flex;"><span>importances <span style="color:#f92672">=</span> best_model<span style="color:#f92672">.</span>named_steps[<span style="color:#e6db74">&#34;model&#34;</span>]<span style="color:#f92672">.</span>feature_importances_
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>importance_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;feature&#34;</span>: feature_names,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;importance&#34;</span>: importances,
+</span></span><span style="display:flex;"><span>})<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#34;importance&#34;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>importance_df<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">15</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>                 feature  importance
+</span></span><span style="display:flex;"><span>4              num__fare    0.157333
+</span></span><span style="display:flex;"><span>10  cat__adult_male_True    0.146170
+</span></span><span style="display:flex;"><span>8           cat__who_man    0.146051
+</span></span><span style="display:flex;"><span>5          cat__sex_male    0.133868
+</span></span><span style="display:flex;"><span>0            num__pclass    0.124075
+</span></span><span style="display:flex;"><span>9         cat__who_woman    0.098202
+</span></span><span style="display:flex;"><span>1               num__age    0.097202
+</span></span><span style="display:flex;"><span>2             num__sibsp    0.041859
+</span></span><span style="display:flex;"><span>7        cat__embarked_S    0.018965
+</span></span><span style="display:flex;"><span>3             num__parch    0.016099
+</span></span><span style="display:flex;"><span>11       cat__alone_True    0.013471
+</span></span><span style="display:flex;"><span>6        cat__embarked_Q    0.006703
+</span></span></code></pre></div><p><code>RandomForestClassifier</code>도 <code>feature_importances_</code>를 제공한다. 여러 나무에서 해당 변수가 불순도 감소에 얼마나 기여했는지를 기반으로 중요도를 계산한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>top_importance <span style="color:#f92672">=</span> importance_df<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">15</span>)<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#34;importance&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">6</span>))
+</span></span><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>barplot(data<span style="color:#f92672">=</span>top_importance, x<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;importance&#34;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;feature&#34;</span>, ax<span style="color:#f92672">=</span>ax, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;steelblue&#34;</span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;RandomForest Feature Importance Top 15&#34;</span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#34;Importance&#34;</span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#34;Feature&#34;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>tight_layout()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p><img alt="RandomForest Feature Importance Top 15" loading="lazy" src="/images/random-forest-classifier-lv4/feature-importance.png"></p>
+<p>중요도 상위에는 <code>fare</code>, <code>adult_male</code>, <code>who_man</code>, <code>sex_male</code>, <code>pclass</code>, <code>age</code> 등이 있다. Titanic 데이터에서는 성별, 요금, 객실 등급, 나이가 생존 여부 예측에 큰 역할을 한 것으로 볼 수 있다.</p>
+<hr>
+<h2 id="교차검증-fold별-클래스-비율-확인">교차검증 fold별 클래스 비율 확인<a hidden class="anchor" aria-hidden="true" href="#교차검증-fold별-클래스-비율-확인">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fold_rows <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> fold, (train_idx, valid_idx) <span style="color:#f92672">in</span> enumerate(cv<span style="color:#f92672">.</span>split(X_train, y_train), start<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    y_tr_fold <span style="color:#f92672">=</span> y_train<span style="color:#f92672">.</span>iloc[train_idx]
+</span></span><span style="display:flex;"><span>    y_va_fold <span style="color:#f92672">=</span> y_train<span style="color:#f92672">.</span>iloc[valid_idx]
+</span></span><span style="display:flex;"><span>    fold_rows<span style="color:#f92672">.</span>append({
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;fold&#34;</span>: fold,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;train_survived_rate&#34;</span>: y_tr_fold<span style="color:#f92672">.</span>mean(),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;valid_survived_rate&#34;</span>: y_va_fold<span style="color:#f92672">.</span>mean(),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;train_n&#34;</span>: len(y_tr_fold),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;valid_n&#34;</span>: len(y_va_fold),
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fold_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(fold_rows)
+</span></span><span style="display:flex;"><span>fold_df<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">4</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>   fold  train_survived_rate  valid_survived_rate  train_n  valid_n
+</span></span><span style="display:flex;"><span>0     1               0.3831               0.3846      569      143
+</span></span><span style="display:flex;"><span>1     2               0.3831               0.3846      569      143
+</span></span><span style="display:flex;"><span>2     3               0.3825               0.3873      570      142
+</span></span><span style="display:flex;"><span>3     4               0.3842               0.3803      570      142
+</span></span><span style="display:flex;"><span>4     5               0.3842               0.3803      570      142
+</span></span></code></pre></div><p>각 fold의 생존 비율이 약 0.38로 비슷하게 유지된다. 이것이 <code>StratifiedKFold</code>를 사용하는 이유다.</p>
+<hr>
+<h2 id="정리">정리<a hidden class="anchor" aria-hidden="true" href="#정리">#</a></h2>
+<p>이번 Lv4 분류 예제의 핵심 흐름은 다음과 같다.</p>
+<ol>
+<li><code>survived</code>를 타깃으로 하는 이진 분류 문제를 만들었다.</li>
+<li>학습/테스트 분리에서 <code>stratify=y</code>로 클래스 비율을 유지했다.</li>
+<li>수치형·범주형 변수를 분리하고 <code>ColumnTransformer</code>로 전처리했다.</li>
+<li><code>Pipeline</code>으로 전처리와 <code>RandomForestClassifier</code>를 하나로 묶었다.</li>
+<li><code>StratifiedKFold</code>로 층화 교차검증을 진행했다.</li>
+<li><code>GridSearchCV</code>로 RandomForest 하이퍼파라미터를 튜닝했다.</li>
+<li>마지막에만 테스트 데이터로 최종 성능을 평가했다.</li>
+<li>혼동행렬과 특성 중요도로 모델 결과를 해석했다.</li>
+</ol>
+<p>Lv4에서 가장 중요한 메시지는 <strong>테스트 데이터는 마지막 평가에만 사용한다</strong>는 점이다. 전처리, 교차검증, 튜닝은 모두 학습 데이터 내부에서만 진행해야 모델 성능을 더 정직하게 확인할 수 있다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/">머신러닝</a></li>
+      <li><a href="https://gnl2109.github.io/tags/%EB%B6%84%EB%A5%98/">분류</a></li>
+      <li><a href="https://gnl2109.github.io/tags/randomforestclassifier/">RandomForestClassifier</a></li>
+      <li><a href="https://gnl2109.github.io/tags/scikit-learn/">Scikit-Learn</a></li>
+      <li><a href="https://gnl2109.github.io/tags/stratifiedkfold/">StratifiedKFold</a></li>
+      <li><a href="https://gnl2109.github.io/tags/gridsearchcv/">GridSearchCV</a></li>
+      <li><a href="https://gnl2109.github.io/tags/pipeline/">Pipeline</a></li>
+      <li><a href="https://gnl2109.github.io/tags/python/">Python</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://gnl2109.github.io/">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

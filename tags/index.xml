@@ -6,8 +6,64 @@
     <description>Recent content in Tags on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 06 Jul 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://gnl2109.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GridSearchCV</title>
+      <link>https://gnl2109.github.io/tags/gridsearchcv/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/gridsearchcv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pipeline</title>
+      <link>https://gnl2109.github.io/tags/pipeline/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/pipeline/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://gnl2109.github.io/tags/python/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RandomForestClassifier</title>
+      <link>https://gnl2109.github.io/tags/randomforestclassifier/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/randomforestclassifier/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Scikit-Learn</title>
+      <link>https://gnl2109.github.io/tags/scikit-learn/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/scikit-learn/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>StratifiedKFold</title>
+      <link>https://gnl2109.github.io/tags/stratifiedkfold/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/stratifiedkfold/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>머신러닝</title>
+      <link>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>분류</title>
+      <link>https://gnl2109.github.io/tags/%EB%B6%84%EB%A5%98/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/tags/%EB%B6%84%EB%A5%98/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Cross Validation</title>
       <link>https://gnl2109.github.io/tags/cross-validation/</link>
@@ -37,27 +93,6 @@
       <description></description>
     </item>
     <item>
-      <title>Python</title>
-      <link>https://gnl2109.github.io/tags/python/</link>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Scikit-Learn</title>
-      <link>https://gnl2109.github.io/tags/scikit-learn/</link>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/scikit-learn/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>머신러닝</title>
-      <link>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</link>
-      <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>회귀</title>
       <link>https://gnl2109.github.io/tags/%ED%9A%8C%EA%B7%80/</link>
       <pubDate>Mon, 06 Jul 2026 00:00:00 +0900</pubDate>
@@ -83,20 +118,6 @@
       <link>https://gnl2109.github.io/tags/onehotencoder/</link>
       <pubDate>Fri, 03 Jul 2026 00:00:00 +0900</pubDate>
       <guid>https://gnl2109.github.io/tags/onehotencoder/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Pipeline</title>
-      <link>https://gnl2109.github.io/tags/pipeline/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/pipeline/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>분류</title>
-      <link>https://gnl2109.github.io/tags/%EB%B6%84%EB%A5%98/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/tags/%EB%B6%84%EB%A5%98/</guid>
       <description></description>
     </item>
     <item>

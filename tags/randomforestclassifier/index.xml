@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>분류 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
-    <link>https://gnl2109.github.io/tags/%EB%B6%84%EB%A5%98/</link>
-    <description>Recent content in 분류 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
+    <title>RandomForestClassifier on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+    <link>https://gnl2109.github.io/tags/randomforestclassifier/</link>
+    <description>Recent content in RandomForestClassifier on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
     <lastBuildDate>Tue, 07 Jul 2026 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://gnl2109.github.io/tags/%EB%B6%84%EB%A5%98/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://gnl2109.github.io/tags/randomforestclassifier/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[이어드림스쿨6기_2주차] 0707 데이터 분류 모델 RandomForestClassifier Lv4</title>
       <link>https://gnl2109.github.io/posts/week2-random-forest-classifier-lv4/</link>
@@ -79,49 +79,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;새로-학습한-내용&#34;&gt;새로 학습한 내용&lt;/h2&gt;
 &lt;p&gt;이번 Lv4에서 새로 봐야 할 핵심은 다음과 같다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>[이어드림스쿨6기_2주차] 0703 데이터 분류 모델 DecisionTreeClassifier Lv2</title>
-      <link>https://gnl2109.github.io/posts/week2-decision-tree-classifier-lv2/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/week2-decision-tree-classifier-lv2/</guid>
-      <description>&lt;h1 id=&#34;데이터-분류-모델-decisiontreeclassifier-lv2&#34;&gt;데이터 분류 모델 DecisionTreeClassifier Lv2&lt;/h1&gt;
-&lt;p&gt;이번 글은 0702 Lv1 예제에서 확장된 Titanic 생존 여부 분류 모델이다.&lt;/p&gt;
-&lt;p&gt;Lv1에서는 &lt;code&gt;pclass&lt;/code&gt;, &lt;code&gt;fare&lt;/code&gt; 두 개의 수치형 변수만 사용했다. Lv2에서는 여기에 &lt;code&gt;age&lt;/code&gt;, &lt;code&gt;embarked&lt;/code&gt;를 추가한다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;독립변수 X&lt;/strong&gt;: &lt;code&gt;pclass&lt;/code&gt;, &lt;code&gt;fare&lt;/code&gt;, &lt;code&gt;age&lt;/code&gt;, &lt;code&gt;embarked&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;종속변수 y&lt;/strong&gt;: &lt;code&gt;survived&lt;/code&gt; (0=사망, 1=생존)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;새로 추가된 전처리&lt;/strong&gt;: &lt;code&gt;SimpleImputer&lt;/code&gt;, &lt;code&gt;OneHotEncoder&lt;/code&gt;, &lt;code&gt;ColumnTransformer&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;모델&lt;/strong&gt;: &lt;code&gt;DecisionTreeClassifier&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;데이터 로드, 학습/테스트 분리, &lt;code&gt;fit()&lt;/code&gt;, &lt;code&gt;predict()&lt;/code&gt;, 평가 지표 계산 흐름은 Lv1과 같으므로 코드 위주로 정리한다. 이번 글에서는 &lt;strong&gt;결측치 처리&lt;/strong&gt;, &lt;strong&gt;범주형 데이터 인코딩&lt;/strong&gt;, &lt;strong&gt;컬럼별 전처리 분기&lt;/strong&gt;를 중심으로 보면 된다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>[이어드림스쿨6기_2주차] 0702 데이터 분류 모델 DecisionTreeClassifier Lv1</title>
-      <link>https://gnl2109.github.io/posts/week2-decision-tree-classifier-lv1/</link>
-      <pubDate>Thu, 02 Jul 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/week2-decision-tree-classifier-lv1/</guid>
-      <description>&lt;h1 id=&#34;데이터-분류-모델-decisiontreeclassifier-lv1&#34;&gt;데이터 분류 모델 DecisionTreeClassifier Lv1&lt;/h1&gt;
-&lt;p&gt;이번 글에서는 seaborn의 &lt;code&gt;titanic&lt;/code&gt; 데이터를 사용해 승객의 &lt;strong&gt;생존 여부(&lt;code&gt;survived&lt;/code&gt;)&lt;/strong&gt; 를 예측하는 간단한 분류 모델을 정리한다.&lt;/p&gt;
-&lt;p&gt;사용한 구성은 다음과 같다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;독립변수 X&lt;/strong&gt;: &lt;code&gt;pclass&lt;/code&gt;, &lt;code&gt;fare&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;종속변수 y&lt;/strong&gt;: &lt;code&gt;survived&lt;/code&gt; (0=사망, 1=생존)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;모델 구성&lt;/strong&gt;: &lt;code&gt;Pipeline&lt;/code&gt; = &lt;code&gt;StandardScaler&lt;/code&gt; + &lt;code&gt;DecisionTreeClassifier&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;분류 모델은 입력 데이터가 들어왔을 때 정답을 연속적인 숫자가 아니라 정해진 범주로 예측한다. 이 예제에서는 승객 정보를 보고 &lt;code&gt;사망&lt;/code&gt; 또는 &lt;code&gt;생존&lt;/code&gt; 중 하나로 분류한다.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;필요한-라이브러리-불러오기&#34;&gt;필요한 라이브러리 불러오기&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; seaborn &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; sns
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; pandas &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; pd
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; np
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.model_selection &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; train_test_split
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.preprocessing &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; StandardScaler
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.tree &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; DecisionTreeClassifier
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.pipeline &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Pipeline
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.metrics &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; accuracy_score, precision_score, recall_score, f1_score
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;각 라이브러리의 역할은 다음과 같다.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

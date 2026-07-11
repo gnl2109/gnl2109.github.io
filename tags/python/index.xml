@@ -6,8 +6,80 @@
     <description>Recent content in Python on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 06 Jul 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://gnl2109.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[이어드림스쿨6기_2주차] 0707 데이터 분류 모델 RandomForestClassifier Lv4</title>
+      <link>https://gnl2109.github.io/posts/week2-random-forest-classifier-lv4/</link>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://gnl2109.github.io/posts/week2-random-forest-classifier-lv4/</guid>
+      <description>&lt;h1 id=&#34;데이터-분류-모델-randomforestclassifier-lv4&#34;&gt;데이터 분류 모델 RandomForestClassifier Lv4&lt;/h1&gt;
+&lt;p&gt;이번 글에서는 seaborn Titanic 데이터로 &lt;strong&gt;승객 생존 여부(&lt;code&gt;survived&lt;/code&gt;)&lt;/strong&gt; 를 예측하는 분류 모델을 정리한다.&lt;/p&gt;
+&lt;p&gt;Lv4의 핵심은 단순히 모델을 바꾸는 것이 아니라, &lt;strong&gt;분류 문제에서 검증 설계와 튜닝 순서를 제대로 잡는 것&lt;/strong&gt;이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;타깃: &lt;code&gt;survived&lt;/code&gt; (0=사망, 1=생존)&lt;/li&gt;
+&lt;li&gt;모델: &lt;code&gt;RandomForestClassifier&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;분리 방식: &lt;code&gt;train_test_split(..., stratify=y)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;교차검증: &lt;code&gt;StratifiedKFold&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;튜닝: &lt;code&gt;GridSearchCV&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;전처리: &lt;code&gt;Pipeline + ColumnTransformer&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;평가: &lt;code&gt;classification_report&lt;/code&gt;, &lt;code&gt;ROC-AUC&lt;/code&gt;, &lt;code&gt;confusion_matrix&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;환경설정&#34;&gt;환경설정&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; sys
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; platform
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; warnings
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Colab / Linux 환경 한글 폰트 설치 및 캐시 초기화&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; sys&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;platform &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;darwin&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;!&lt;/span&gt;sudo apt&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;get install &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;y &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;qq fonts&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;nanum &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;/&lt;/span&gt;dev&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;!&lt;/span&gt;fc&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;cache &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;fv &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;/&lt;/span&gt;dev&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;!&lt;/span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rf &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;cache&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;matplotlib &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;/&lt;/span&gt;dev&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 데이터 처리 및 시각화 라이브러리&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; np
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; pandas &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; pd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; matplotlib.pyplot &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; plt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; matplotlib.font_manager &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; fm
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; seaborn &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; sns
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; stats
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 데이터 분할, 교차검증, 하이퍼파라미터 튜닝&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.model_selection &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    train_test_split,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    GridSearchCV,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    StratifiedKFold,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    cross_validate,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 전처리 파이프라인 구성&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.pipeline &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Pipeline
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.compose &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; ColumnTransformer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.impute &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; SimpleImputer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.preprocessing &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; StandardScaler, OneHotEncoder
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 분류 모델&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.ensemble &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; RandomForestClassifier
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 분류 평가 지표&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.metrics &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    classification_report,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    confusion_matrix,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ConfusionMatrixDisplay,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    roc_auc_score,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 경고 메시지 숨김&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;warnings&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;filterwarnings(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ignore&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 랜덤 시드 고정&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;RANDOM_STATE &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;42&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;random&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;seed(RANDOM_STATE)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;새로-학습한-내용&#34;&gt;새로 학습한 내용&lt;/h2&gt;
+&lt;p&gt;이번 Lv4에서 새로 봐야 할 핵심은 다음과 같다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>[이어드림스쿨6기_2주차] 0706 데이터 회귀 모델 DecisionTreeRegressor Lv3</title>
       <link>https://gnl2109.github.io/posts/week2-decision-tree-regressor-lv3/</link>

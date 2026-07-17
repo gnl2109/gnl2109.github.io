@@ -1,67 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>IT 리터러시 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
-    <link>https://gnl2109.github.io/tags/it-%EB%A6%AC%ED%84%B0%EB%9F%AC%EC%8B%9C/</link>
-    <description>Recent content in IT 리터러시 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
-    <generator>Hugo</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Tue, 23 Jun 2026 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://gnl2109.github.io/tags/it-%EB%A6%AC%ED%84%B0%EB%9F%AC%EC%8B%9C/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[이어드림스쿨6기_1주차] 0623 이론 복습</title>
-      <link>https://gnl2109.github.io/posts/week1-theory-review/</link>
-      <pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/week1-theory-review/</guid>
-      <description>&lt;h1 id=&#34;시험-대비-복습&#34;&gt;시험 대비 복습&lt;/h1&gt;
-&lt;h2 id=&#34;1-it-리터러시-cs&#34;&gt;1. IT 리터러시, CS&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>IT 리터러시 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><link>https://gnl2109.github.io/tags/it-%EB%A6%AC%ED%84%B0%EB%9F%AC%EC%8B%9C/</link><description>Recent content in IT 리터러시 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description><generator>Hugo</generator><language>ko-kr</language><lastBuildDate>Tue, 23 Jun 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://gnl2109.github.io/tags/it-%EB%A6%AC%ED%84%B0%EB%9F%AC%EC%8B%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>[이어드림스쿨6기_1개월] 0623 이론 복습</title><link>https://gnl2109.github.io/posts/month1-theory-review/</link><pubDate>Tue, 23 Jun 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month1-theory-review/</guid><description>&lt;h1 id="시험-대비-복습"&gt;시험 대비 복습&lt;/h1&gt;
+&lt;h2 id="1-it-리터러시-cs"&gt;1. IT 리터러시, CS&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;STORAGE &amp;gt; MEMORY &amp;gt; CPU&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;프로그램 메모리 구조&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;낮은 메모리 주소
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ↓
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──────────────────────────────┐
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│            Code              │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├──────────────────────────────┤
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 사용자가 작성한 프로그램 함수  │  사용자가 작성한 프로그램 코드(함수)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└──────────────────────────────┘
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──────────────────────────────┐
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│            Data              │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├──────────────────────────────┤
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 프로그램에 사용하는 데이터 공간 │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 전역변수, static 변수         │  전역변수, static 변수 저장
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└──────────────────────────────┘
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──────────────────────────────┐
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│            Heap              │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├──────────────────────────────┤
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 프로그래머가 필요할 때         │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 사용하는 공간                 │  동적 메모리 할당 영역
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└──────────────────────────────┘
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──────────────────────────────┐
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│            Stack             │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├──────────────────────────────┤
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 함수의 수행을 마치고           │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ 복귀할 주소 및 데이터 저장     │  지역변수, 매개변수, 반환주소 저장
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ (지역변수, 매개변수, 리턴값)   │
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└──────────────────────────────┘
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ↓
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;높은 메모리 주소
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;낮은 메모리 주소
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;┌──────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ Code │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├──────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ 사용자가 작성한 프로그램 함수 │ 사용자가 작성한 프로그램 코드(함수)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;└──────────────────────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;┌──────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ Data │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├──────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ 프로그램에 사용하는 데이터 공간 │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ 전역변수, static 변수 │ 전역변수, static 변수 저장
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;└──────────────────────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;┌──────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ Heap │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├──────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ 프로그래머가 필요할 때 │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ 사용하는 공간 │ 동적 메모리 할당 영역
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;└──────────────────────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;┌──────────────────────────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ Stack │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├──────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ 함수의 수행을 마치고 │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ 복귀할 주소 및 데이터 저장 │ 지역변수, 매개변수, 반환주소 저장
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ (지역변수, 매개변수, 리턴값) │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;└──────────────────────────────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;높은 메모리 주소
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;프로세스-스레드 관계. 차이점.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>[이어드림스쿨6기_1주차] 01 IT 리터러시</title>
-      <link>https://gnl2109.github.io/posts/week1-it-literacy/</link>
-      <pubDate>Sun, 31 May 2026 22:18:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/week1-it-literacy/</guid>
-      <description>&lt;p&gt;&lt;code&gt;강의자료/01 IT 리터러시&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 비개발자도 개발자와 더 정확하게 대화할 수 있도록 핵심 개념을 한 번에 정리해 보았다.&lt;/p&gt;
+&lt;p&gt;프로세스-스레드 관계. 차이점.&lt;/p&gt;</description></item><item><title>[이어드림스쿨6기_1개월] 01 IT 리터러시</title><link>https://gnl2109.github.io/posts/month1-it-literacy/</link><pubDate>Sun, 31 May 2026 22:18:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month1-it-literacy/</guid><description>&lt;p&gt;&lt;code&gt;강의자료/01 IT 리터러시&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 비개발자도 개발자와 더 정확하게 대화할 수 있도록 핵심 개념을 한 번에 정리해 보았다.&lt;/p&gt;
 &lt;p&gt;IT 리터러시는 코드를 직접 짜는 능력만을 뜻하지 않는다. 컴퓨터가 어떻게 정보를 처리하는지, 웹과 앱 서비스가 어떤 구조로 움직이는지, 데이터와 API가 왜 중요한지, 그리고 현업에서 자주 쓰는 용어가 어떤 맥락에서 등장하는지를 이해하는 능력에 가깝다.&lt;/p&gt;
-&lt;h2 id=&#34;1-컴퓨터는-0과-1로-소통한다&#34;&gt;1. 컴퓨터는 0과 1로 소통한다&lt;/h2&gt;
-&lt;p&gt;컴퓨터의 가장 아래에는 &lt;code&gt;0&lt;/code&gt;과 &lt;code&gt;1&lt;/code&gt;이 있다. 전기가 켜져 있으면 1, 꺼져 있으면 0처럼 단순한 신호를 조합해 복잡한 정보를 표현한다. 사람이 쓰는 언어와 컴퓨터가 이해하는 언어 사이에는 큰 간격이 있기 때문에, 개발자는 프로그래밍 언어를 사용해 컴퓨터와 소통한다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="1-컴퓨터는-0과-1로-소통한다"&gt;1. 컴퓨터는 0과 1로 소통한다&lt;/h2&gt;
+&lt;p&gt;컴퓨터의 가장 아래에는 &lt;code&gt;0&lt;/code&gt;과 &lt;code&gt;1&lt;/code&gt;이 있다. 전기가 켜져 있으면 1, 꺼져 있으면 0처럼 단순한 신호를 조합해 복잡한 정보를 표현한다. 사람이 쓰는 언어와 컴퓨터가 이해하는 언어 사이에는 큰 간격이 있기 때문에, 개발자는 프로그래밍 언어를 사용해 컴퓨터와 소통한다.&lt;/p&gt;</description></item></channel></rss>

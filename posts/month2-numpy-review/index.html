@@ -1,0 +1,311 @@
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>[이어드림스쿨6기_2개월] 0629 NumPy 라이브러리 복습 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><meta name=keywords content="NumPy,Python,데이터 분석,배열,머신러닝"><meta name=description content="NumPy
+NumPy는 Python에서 과학 계산과 데이터 분석을 할 때 가장 기본이 되는 다차원 배열 처리 라이브러리다.
+머신러닝에서는 데이터가 대부분 숫자 배열 형태로 다뤄지기 때문에 NumPy의 배열 생성, 형태 변경, 슬라이싱, 연산 방식에 익숙해지는 것이 중요하다.
+배열이란?
+배열(Array)은 같은 자료형의 데이터를 순서대로 저장하는 자료 구조다.
+
+모든 원소가 동일한 데이터 타입을 가진다.
+메모리에 연속적으로 저장되어 인덱스로 빠르게 접근할 수 있다.
+벡터, 행렬, 다차원 텐서를 표현하기 좋다.
+
+Python 리스트도 여러 값을 담을 수 있지만, NumPy 배열과는 연산 방식이 다르다."><meta name=author content><link rel=canonical href=https://gnl2109.github.io/posts/month2-numpy-review/><link crossorigin=anonymous href=/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL+GgRwmx68=" rel="preload stylesheet" as=style><link rel=icon href=https://gnl2109.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://gnl2109.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://gnl2109.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://gnl2109.github.io/apple-touch-icon.png><link rel=mask-icon href=https://gnl2109.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://gnl2109.github.io/posts/month2-numpy-review/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-HTV70762HG")}</script><meta property="og:url" content="https://gnl2109.github.io/posts/month2-numpy-review/"><meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그"><meta property="og:title" content="[이어드림스쿨6기_2개월] 0629 NumPy 라이브러리 복습"><meta property="og:description" content="NumPy NumPy는 Python에서 과학 계산과 데이터 분석을 할 때 가장 기본이 되는 다차원 배열 처리 라이브러리다.
+머신러닝에서는 데이터가 대부분 숫자 배열 형태로 다뤄지기 때문에 NumPy의 배열 생성, 형태 변경, 슬라이싱, 연산 방식에 익숙해지는 것이 중요하다.
+배열이란? 배열(Array)은 같은 자료형의 데이터를 순서대로 저장하는 자료 구조다.
+모든 원소가 동일한 데이터 타입을 가진다. 메모리에 연속적으로 저장되어 인덱스로 빠르게 접근할 수 있다. 벡터, 행렬, 다차원 텐서를 표현하기 좋다. Python 리스트도 여러 값을 담을 수 있지만, NumPy 배열과는 연산 방식이 다르다."><meta property="og:locale" content="ko_kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-06-29T00:00:00+09:00"><meta property="article:modified_time" content="2026-06-29T00:00:00+09:00"><meta property="article:tag" content="NumPy"><meta property="article:tag" content="Python"><meta property="article:tag" content="데이터 분석"><meta property="article:tag" content="배열"><meta property="article:tag" content="머신러닝"><meta name=twitter:card content="summary"><meta name=twitter:title content="[이어드림스쿨6기_2개월] 0629 NumPy 라이브러리 복습"><meta name=twitter:description content="NumPy NumPy는 Python에서 과학 계산과 데이터 분석을 할 때 가장 기본이 되는 다차원 배열 처리 라이브러리다.
+머신러닝에서는 데이터가 대부분 숫자 배열 형태로 다뤄지기 때문에 NumPy의 배열 생성, 형태 변경, 슬라이싱, 연산 방식에 익숙해지는 것이 중요하다.
+배열이란? 배열(Array)은 같은 자료형의 데이터를 순서대로 저장하는 자료 구조다.
+모든 원소가 동일한 데이터 타입을 가진다. 메모리에 연속적으로 저장되어 인덱스로 빠르게 접근할 수 있다. 벡터, 행렬, 다차원 텐서를 표현하기 좋다. Python 리스트도 여러 값을 담을 수 있지만, NumPy 배열과는 연산 방식이 다르다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://gnl2109.github.io/posts/"},{"@type":"ListItem","position":2,"name":"[이어드림스쿨6기_2개월] 0629 NumPy 라이브러리 복습","item":"https://gnl2109.github.io/posts/month2-numpy-review/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"[이어드림스쿨6기_2개월] 0629 NumPy 라이브러리 복습","name":"[이어드림스쿨6기_2개월] 0629 NumPy 라이브러리 복습","description":"NumPy NumPy는 Python에서 과학 계산과 데이터 분석을 할 때 가장 기본이 되는 다차원 배열 처리 라이브러리다.\n머신러닝에서는 데이터가 대부분 숫자 배열 형태로 다뤄지기 때문에 NumPy의 배열 생성, 형태 변경, 슬라이싱, 연산 방식에 익숙해지는 것이 중요하다.\n배열이란? 배열(Array)은 같은 자료형의 데이터를 순서대로 저장하는 자료 구조다.\n모든 원소가 동일한 데이터 타입을 가진다. 메모리에 연속적으로 저장되어 인덱스로 빠르게 접근할 수 있다. 벡터, 행렬, 다차원 텐서를 표현하기 좋다. Python 리스트도 여러 값을 담을 수 있지만, NumPy 배열과는 연산 방식이 다르다.\n","keywords":["NumPy","Python","데이터 분석","배열","머신러닝"],"articleBody":"NumPy NumPy는 Python에서 과학 계산과 데이터 분석을 할 때 가장 기본이 되는 다차원 배열 처리 라이브러리다.\n머신러닝에서는 데이터가 대부분 숫자 배열 형태로 다뤄지기 때문에 NumPy의 배열 생성, 형태 변경, 슬라이싱, 연산 방식에 익숙해지는 것이 중요하다.\n배열이란? 배열(Array)은 같은 자료형의 데이터를 순서대로 저장하는 자료 구조다.\n모든 원소가 동일한 데이터 타입을 가진다. 메모리에 연속적으로 저장되어 인덱스로 빠르게 접근할 수 있다. 벡터, 행렬, 다차원 텐서를 표현하기 좋다. Python 리스트도 여러 값을 담을 수 있지만, NumPy 배열과는 연산 방식이 다르다.\n[1, 2, 3] * 2 [1, 2, 3, 1, 2, 3] 리스트에 * 2를 하면 원소별 곱셈이 아니라 리스트가 반복된다. 반면 NumPy 배열은 원소별 연산을 수행한다.\nimport numpy as np np.array([1, 2, 3]) * 2 array([2, 4, 6]) NumPy import NumPy는 관례적으로 np라는 별칭으로 불러온다.\nimport numpy as np print(\"NumPy version:\", np.__version__) NumPy version: 2.x.x 1-1. 배열 선언: array() np.array()는 Python 리스트를 NumPy 배열로 변환한다.\n다양한 데이터 타입을 지원한다. dtype 매개변수로 자료형을 명시할 수 있다. 자주 쓰는 dtype은 int, float, bool, complex 등이 있다. dtype을 지정하지 않으면 NumPy가 자동으로 추론한다. # 리스트를 NumPy 배열로 변환 a = np.array([0, 1, 2, 3]) print(\"Integer array:\", a) # dtype으로 float 타입 명시 b = np.array([0, 1, 2, 3], dtype=float) print(\"Float array:\", b) # 중첩 리스트로 2차원 배열 선언 c = np.array([[1, 2, 3], [4, 5, 6]]) print(\"2D array (matrix):\") print(c) Integer array: [0 1 2 3] Float array: [0. 1. 2. 3.] 2D array (matrix): [[1 2 3] [4 5 6]] 중첩 리스트를 넣으면 2차원 배열, 즉 행렬 형태로 만들 수 있다.\n1-2. 배열 선언: arange() np.arange()는 일정한 간격의 숫자 배열을 만든다.\n형식은 np.arange(start, stop, step)이다.\n인자 1개: 0부터 해당 값 직전까지 인자 2개: 첫 값부터 둘째 값 직전까지 인자 3개: 첫 값부터 둘째 값 직전까지 step 간격으로 # 인자 1개: 0~9 a = np.arange(10) print(\"arange(10):\", a) # 인자 2개: 1~3 b = np.arange(1, 4) print(\"arange(1, 4):\", b) # 인자 3개: 1~7, step=2 c = np.arange(1, 8, 2) print(\"arange(1, 8, 2):\", c) arange(10): [0 1 2 3 4 5 6 7 8 9] arange(1, 4): [1 2 3] arange(1, 8, 2): [1 3 5 7] stop 값은 포함되지 않는다는 점이 중요하다.\n1-3. 배열 선언: zeros()와 ones() np.zeros()는 0으로 채운 배열, np.ones()는 1로 채운 배열을 만든다.\n# zeros() 기본 dtype은 float zero_arr1 = np.zeros(5) print(\"zeros(5) - float:\", zero_arr1) # int dtype 지정 zero_arr2 = np.zeros(5, dtype=int) print(\"zeros(5, dtype=int):\", zero_arr2) # 2차원 shape zero_2d = np.zeros((3, 4)) print(\"zeros((3,4)):\") print(zero_2d) # ones() one_arr1 = np.ones(5) print(\"ones(5) - float:\", one_arr1) one_arr2 = np.ones(5, dtype=int) print(\"ones(5, dtype=int):\", one_arr2) zeros(5) - float: [0. 0. 0. 0. 0.] zeros(5, dtype=int): [0 0 0 0 0] zeros((3,4)): [[0. 0. 0. 0.] [0. 0. 0. 0.] [0. 0. 0. 0.]] ones(5) - float: [1. 1. 1. 1. 1.] ones(5, dtype=int): [1 1 1 1 1] 연산 결과를 채우기 전의 초기 배열을 만들거나, 마스크/편향 값을 만들 때 자주 사용한다.\n1-4. 배열 선언: random np.random은 난수를 생성할 때 사용한다.\nnp.random.rand(d0, d1, ...): 균등분포 [0, 1) 난수 생성 np.random.randint(low, high, size): 범위 내 정수 난수 생성 np.random.seed(): 난수 시드 고정 # 균등분포 [0, 1) random_arr1 = np.random.rand(5) print(\"rand(5):\", random_arr1) # 2행 3열 난수 배열 random_arr2 = np.random.rand(2, 3) print(\"rand(2, 3):\") print(random_arr2) # 0~9 정수 5개 random_arr3 = np.random.randint(0, 10, size=5) print(\"randint(0, 10, size=5):\", random_arr3) 난수는 실행할 때마다 값이 바뀐다. 머신러닝 실험에서는 재현성을 위해 시드를 고정하는 습관이 중요하다.\nnp.random.seed(42) print(\"Fixed seed rand(3):\", np.random.rand(3)) Fixed seed rand(3): [0.37454012 0.95071431 0.73199394] 데이터 전처리 방법이나 알고리즘을 비교할 때는 훈련/테스트 데이터 분할 조건이 같아야 하므로 난수 시드 고정이 필요하다.\n1-5. 배열 크기와 정보 확인 NumPy 배열은 .shape, .size, .dtype으로 기본 정보를 확인할 수 있다.\n.shape: 각 차원의 크기를 튜플로 반환 .size: 전체 원소 개수 .dtype: 원소 자료형 array[row, col]: 특정 원소 접근 c = np.array([[1, 2, 3], [4, 5, 6]]) print(\"Array contents:\") print(c) print(\"Shape (rows, cols):\", c.shape) print(\"Size (total elements):\", c.size) print(\"Data type:\", c.dtype) print(\"Element at [1, 2]:\", c[1, 2]) print(\"Element at [0, 0]:\", c[0, 0]) Array contents: [[1 2 3] [4 5 6]] Shape (rows, cols): (2, 3) Size (total elements): 6 Data type: int64 Element at [1, 2]: 6 Element at [0, 0]: 1 인덱스는 Python과 마찬가지로 0부터 시작한다.\n1-6. 배열 형태 변경: reshape() reshape()는 배열의 구조를 원하는 shape로 바꾼다.\n전체 원소 개수는 동일해야 한다. np.reshape(arr, shape) 또는 arr.reshape(shape) 형태로 사용한다. 한 차원에 -1을 쓰면 NumPy가 그 차원의 크기를 자동 계산한다. a = np.array([1, 2, 3, 4]) print(\"Original array:\", a, \"| Shape:\", a.shape) a_reshaped = np.reshape(a, (2, 2)) print(\"Reshaped to (2,2):\") print(a_reshaped) a_reshaped2 = a.reshape((2, 2)) print(\"a.reshape((2,2)):\") print(a_reshaped2) Original array: [1 2 3 4] | Shape: (4,) Reshaped to (2,2): [[1 2] [3 4]] a.reshape((2,2)): [[1 2] [3 4]] 12개 원소를 가진 1차원 배열은 3행 4열 또는 2행 6열 등으로 바꿀 수 있다.\narr = np.arange(12) print(\"Original:\", arr) print(\"Reshaped to (3,4):\") print(arr.reshape(3, 4)) print(\"Reshaped with -1 (2, -1):\") print(arr.reshape(2, -1)) print(\"Reshaped with -1 (-1, 4):\") print(arr.reshape(-1, 4)) Original: [ 0 1 2 3 4 5 6 7 8 9 10 11] Reshaped to (3,4): [[ 0 1 2 3] [ 4 5 6 7] [ 8 9 10 11]] Reshaped with -1 (2, -1): [[ 0 1 2 3 4 5] [ 6 7 8 9 10 11]] Reshaped with -1 (-1, 4): [[ 0 1 2 3] [ 4 5 6 7] [ 8 9 10 11]] -1은 전체 원소 수에 맞춰 자동 계산하라는 의미다.\n1-7. 배열 슬라이싱 NumPy 배열은 array[row_slice, col_slice] 형태로 행과 열을 동시에 슬라이싱할 수 있다.\n:: 해당 차원 전체 0: 첫 번째 -1: 마지막 start:stop:step: start부터 stop 직전까지 step 간격 a0 = np.array([[1, 2, 3], [4, 5, 6]]) print(\"Original array (2x3):\") print(a0) a1 = a0[:, 0] print(\"First column a0[:,0]:\", a1) a2 = a0[:, -1] print(\"Last column a0[:,-1]:\", a2) a3 = a0[1, :] print(\"Second row a0[1,:]:\", a3) a4 = a0[-1, :] print(\"Last row a0[-1,:]:\", a4) Original array (2x3): [[1 2 3] [4 5 6]] First column a0[:,0]: [1 4] Last column a0[:,-1]: [3 6] Second row a0[1,:]: [4 5 6] Last row a0[-1,:]: [4 5 6] 더 큰 배열에서는 열 범위를 자유롭게 자를 수 있다.\na_big = np.array([ [1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12] ]) print(\"Large array (2x6):\") print(a_big) print(\"a[:,4:]:\") print(a_big[:, 4:]) print(\"a[:,3:6]:\") print(a_big[:, 3:6]) print(\"a[:,2:-1]:\") print(a_big[:, 2:-1]) print(\"a[:,0:3:2]:\") print(a_big[:, 0:3:2]) Large array (2x6): [[ 1 2 3 4 5 6] [ 7 8 9 10 11 12]] a[:,4:]: [[ 5 6] [11 12]] a[:,3:6]: [[ 4 5 6] [10 11 12]] a[:,2:-1]: [[ 3 4 5] [ 9 10 11]] a[:,0:3:2]: [[1 3] [7 9]] 행 전체를 선택하고 특정 열만 자르는 패턴은 머신러닝 데이터에서 입력 변수 일부를 선택할 때 자주 사용된다.\n1-8. 배열 연결 배열을 연결할 때는 np.r_, np.c_, np.concatenate()를 사용할 수 있다.\nnp.r_[a, b]: 행 방향으로 연결 np.c_[a, b]: 열 방향으로 연결 np.concatenate((a, b), axis=0): 지정 축을 따라 연결 axis=0: 세로 방향 axis=1: 가로 방향 a = np.array([[1, 2, 3], [4, 5, 6]]) b = np.array([[7, 8, 9], [10, 11, 12]]) print(\"Matrix a:\") print(a) print(\"Matrix b:\") print(b) print(\"np.r_[a, b] (row direction):\") print(np.r_[a, b]) print(\"np.c_[a, b] (column direction):\") print(np.c_[a, b]) print(\"np.concatenate(axis=0):\") print(np.concatenate((a, b), axis=0)) print(\"np.concatenate(axis=1):\") print(np.concatenate((a, b), axis=1)) Matrix a: [[1 2 3] [4 5 6]] Matrix b: [[ 7 8 9] [10 11 12]] np.r_[a, b] (row direction): [[ 1 2 3] [ 4 5 6] [ 7 8 9] [10 11 12]] np.c_[a, b] (column direction): [[ 1 2 3 7 8 9] [ 4 5 6 10 11 12]] np.concatenate(axis=0): [[ 1 2 3] [ 4 5 6] [ 7 8 9] [10 11 12]] np.concatenate(axis=1): [[ 1 2 3 7 8 9] [ 4 5 6 10 11 12]] 연결하려는 축을 제외한 나머지 차원의 크기는 서로 같아야 한다.\n1-9. 배열 연산 NumPy 배열은 +, -, *, / 연산을 원소별로 수행한다.\n+: 원소별 덧셈 -: 원소별 뺄셈 *: 원소별 곱셈 /: 원소별 나눗셈 행렬 곱: np.dot(a, b) 또는 a @ b a = np.array([[1, 2, 3], [3, 2, 5]]) b = np.array([[-1, 3, 5], [1, 4, 2]]) print(\"Matrix a:\") print(a) print(\"Matrix b:\") print(b) print(\"a + b:\") print(a + b) print(\"a - b:\") print(a - b) print(\"a * b:\") print(a * b) print(\"a / b:\") print(a / b) Matrix a: [[1 2 3] [3 2 5]] Matrix b: [[-1 3 5] [ 1 4 2]] a + b: [[0 5 8] [4 6 7]] a - b: [[ 2 -1 -2] [ 2 -2 3]] a * b: [[-1 6 15] [ 3 8 10]] a / b: [[-1. 0.66666667 0.6 ] [ 3. 0.5 2.5 ]] *는 행렬 곱이 아니라 같은 위치의 원소끼리 곱하는 연산이다.\n행렬 곱은 np.dot() 또는 @를 사용한다.\na2 = np.array([[1, 2], [3, 4], [5, 6]]) # 3 x 2 b2 = np.array([[7, 8, 9], [10, 11, 12]]) # 2 x 3 print(\"Matrix multiplication (3x2) @ (2x3):\") print(np.dot(a2, b2)) print(a2 @ b2) Matrix multiplication (3x2) @ (2x3): [[ 27 30 33] [ 61 68 75] [ 95 106 117]] [[ 27 30 33] [ 61 68 75] [ 95 106 117]] 행렬 곱은 앞 행렬의 열 수와 뒤 행렬의 행 수가 같아야 한다. 위 예시는 (3, 2) @ (2, 3)이므로 결과 shape은 (3, 3)이 된다.\n정리 NumPy Part 1에서 익힌 핵심은 배열을 만들고, 모양을 바꾸고, 필요한 부분을 자르고, 배열끼리 연산하는 방법이다.\n배열 생성: np.array(), np.arange(), np.zeros(), np.ones() 난수 생성: np.random.rand(), np.random.randint(), np.random.seed() 배열 정보 확인: .shape, .size, .dtype 형태 변경: .reshape() 슬라이싱: array[row_slice, col_slice] 배열 연결: np.r_, np.c_, np.concatenate() 원소별 연산: +, -, *, / 행렬 곱: np.dot(), @ Pandas, Matplotlib, 머신러닝 모델링도 결국 내부적으로는 숫자 배열을 다루는 일이 많다. NumPy 배열의 shape과 연산 방식을 정확히 이해해두면 이후 데이터 분석 코드가 훨씬 읽기 쉬워진다.\n","wordCount":"1559","inLanguage":"en","datePublished":"2026-06-29T00:00:00+09:00","dateModified":"2026-06-29T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://gnl2109.github.io/posts/month2-numpy-review/"},"publisher":{"@type":"Organization","name":"이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그","logo":{"@type":"ImageObject","url":"https://gnl2109.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://gnl2109.github.io/ accesskey=h title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">[이어드림스쿨6기_2개월] 0629 NumPy 라이브러리 복습</h1><div class=post-meta><span title='2026-06-29 00:00:00 +0900 KST'>2026년 6월 29일</span></div></header><div class="post-content md-content"><h1 id=numpy>NumPy<a hidden class=anchor aria-hidden=true href=#numpy>#</a></h1><p>NumPy는 Python에서 과학 계산과 데이터 분석을 할 때 가장 기본이 되는 다차원 배열 처리 라이브러리다.</p><p>머신러닝에서는 데이터가 대부분 숫자 배열 형태로 다뤄지기 때문에 NumPy의 배열 생성, 형태 변경, 슬라이싱, 연산 방식에 익숙해지는 것이 중요하다.</p><h2 id=배열이란>배열이란?<a hidden class=anchor aria-hidden=true href=#배열이란>#</a></h2><p>배열(Array)은 같은 자료형의 데이터를 순서대로 저장하는 자료 구조다.</p><ul><li>모든 원소가 동일한 데이터 타입을 가진다.</li><li>메모리에 연속적으로 저장되어 인덱스로 빠르게 접근할 수 있다.</li><li>벡터, 행렬, 다차원 텐서를 표현하기 좋다.</li></ul><p>Python 리스트도 여러 값을 담을 수 있지만, NumPy 배열과는 연산 방식이 다르다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>] <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[1, 2, 3, 1, 2, 3]
+</span></span></code></pre></div><p>리스트에 <code>* 2</code>를 하면 원소별 곱셈이 아니라 리스트가 반복된다. 반면 NumPy 배열은 원소별 연산을 수행한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>]) <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>array([2, 4, 6])
+</span></span></code></pre></div><h2 id=numpy-import>NumPy import<a hidden class=anchor aria-hidden=true href=#numpy-import>#</a></h2><p>NumPy는 관례적으로 <code>np</code>라는 별칭으로 불러온다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;NumPy version:&#34;</span>, np<span style=color:#f92672>.</span>__version__)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>NumPy version: 2.x.x
+</span></span></code></pre></div><h2 id=1-1-배열-선언-array>1-1. 배열 선언: <code>array()</code><a hidden class=anchor aria-hidden=true href=#1-1-배열-선언-array>#</a></h2><p><code>np.array()</code>는 Python 리스트를 NumPy 배열로 변환한다.</p><ul><li>다양한 데이터 타입을 지원한다.</li><li><code>dtype</code> 매개변수로 자료형을 명시할 수 있다.</li><li>자주 쓰는 dtype은 <code>int</code>, <code>float</code>, <code>bool</code>, <code>complex</code> 등이 있다.</li><li>dtype을 지정하지 않으면 NumPy가 자동으로 추론한다.</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># 리스트를 NumPy 배열로 변환</span>
+</span></span><span style=display:flex><span>a <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>])
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Integer array:&#34;</span>, a)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># dtype으로 float 타입 명시</span>
+</span></span><span style=display:flex><span>b <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>], dtype<span style=color:#f92672>=</span>float)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Float array:&#34;</span>, b)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 중첩 리스트로 2차원 배열 선언</span>
+</span></span><span style=display:flex><span>c <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>], [<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>]])
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;2D array (matrix):&#34;</span>)
+</span></span><span style=display:flex><span>print(c)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Integer array: [0 1 2 3]
+</span></span><span style=display:flex><span>Float array: [0. 1. 2. 3.]
+</span></span><span style=display:flex><span>2D array (matrix):
+</span></span><span style=display:flex><span>[[1 2 3]
+</span></span><span style=display:flex><span> [4 5 6]]
+</span></span></code></pre></div><p>중첩 리스트를 넣으면 2차원 배열, 즉 행렬 형태로 만들 수 있다.</p><h2 id=1-2-배열-선언-arange>1-2. 배열 선언: <code>arange()</code><a hidden class=anchor aria-hidden=true href=#1-2-배열-선언-arange>#</a></h2><p><code>np.arange()</code>는 일정한 간격의 숫자 배열을 만든다.</p><p>형식은 <code>np.arange(start, stop, step)</code>이다.</p><ul><li>인자 1개: <code>0</code>부터 해당 값 직전까지</li><li>인자 2개: 첫 값부터 둘째 값 직전까지</li><li>인자 3개: 첫 값부터 둘째 값 직전까지 step 간격으로</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># 인자 1개: 0~9</span>
+</span></span><span style=display:flex><span>a <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>arange(<span style=color:#ae81ff>10</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;arange(10):&#34;</span>, a)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 인자 2개: 1~3</span>
+</span></span><span style=display:flex><span>b <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>arange(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>4</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;arange(1, 4):&#34;</span>, b)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 인자 3개: 1~7, step=2</span>
+</span></span><span style=display:flex><span>c <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>arange(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;arange(1, 8, 2):&#34;</span>, c)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>arange(10): [0 1 2 3 4 5 6 7 8 9]
+</span></span><span style=display:flex><span>arange(1, 4): [1 2 3]
+</span></span><span style=display:flex><span>arange(1, 8, 2): [1 3 5 7]
+</span></span></code></pre></div><p><code>stop</code> 값은 포함되지 않는다는 점이 중요하다.</p><h2 id=1-3-배열-선언-zeros와-ones>1-3. 배열 선언: <code>zeros()</code>와 <code>ones()</code><a hidden class=anchor aria-hidden=true href=#1-3-배열-선언-zeros와-ones>#</a></h2><p><code>np.zeros()</code>는 0으로 채운 배열, <code>np.ones()</code>는 1로 채운 배열을 만든다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># zeros() 기본 dtype은 float</span>
+</span></span><span style=display:flex><span>zero_arr1 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>zeros(<span style=color:#ae81ff>5</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;zeros(5) - float:&#34;</span>, zero_arr1)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># int dtype 지정</span>
+</span></span><span style=display:flex><span>zero_arr2 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>zeros(<span style=color:#ae81ff>5</span>, dtype<span style=color:#f92672>=</span>int)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;zeros(5, dtype=int):&#34;</span>, zero_arr2)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 2차원 shape</span>
+</span></span><span style=display:flex><span>zero_2d <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>zeros((<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>))
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;zeros((3,4)):&#34;</span>)
+</span></span><span style=display:flex><span>print(zero_2d)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ones()</span>
+</span></span><span style=display:flex><span>one_arr1 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>ones(<span style=color:#ae81ff>5</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;ones(5) - float:&#34;</span>, one_arr1)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>one_arr2 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>ones(<span style=color:#ae81ff>5</span>, dtype<span style=color:#f92672>=</span>int)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;ones(5, dtype=int):&#34;</span>, one_arr2)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>zeros(5) - float: [0. 0. 0. 0. 0.]
+</span></span><span style=display:flex><span>zeros(5, dtype=int): [0 0 0 0 0]
+</span></span><span style=display:flex><span>zeros((3,4)):
+</span></span><span style=display:flex><span>[[0. 0. 0. 0.]
+</span></span><span style=display:flex><span> [0. 0. 0. 0.]
+</span></span><span style=display:flex><span> [0. 0. 0. 0.]]
+</span></span><span style=display:flex><span>ones(5) - float: [1. 1. 1. 1. 1.]
+</span></span><span style=display:flex><span>ones(5, dtype=int): [1 1 1 1 1]
+</span></span></code></pre></div><p>연산 결과를 채우기 전의 초기 배열을 만들거나, 마스크/편향 값을 만들 때 자주 사용한다.</p><h2 id=1-4-배열-선언-random>1-4. 배열 선언: <code>random</code><a hidden class=anchor aria-hidden=true href=#1-4-배열-선언-random>#</a></h2><p><code>np.random</code>은 난수를 생성할 때 사용한다.</p><ul><li><code>np.random.rand(d0, d1, ...)</code>: 균등분포 <code>[0, 1)</code> 난수 생성</li><li><code>np.random.randint(low, high, size)</code>: 범위 내 정수 난수 생성</li><li><code>np.random.seed()</code>: 난수 시드 고정</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># 균등분포 [0, 1)</span>
+</span></span><span style=display:flex><span>random_arr1 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>random<span style=color:#f92672>.</span>rand(<span style=color:#ae81ff>5</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;rand(5):&#34;</span>, random_arr1)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 2행 3열 난수 배열</span>
+</span></span><span style=display:flex><span>random_arr2 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>random<span style=color:#f92672>.</span>rand(<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;rand(2, 3):&#34;</span>)
+</span></span><span style=display:flex><span>print(random_arr2)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 0~9 정수 5개</span>
+</span></span><span style=display:flex><span>random_arr3 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>random<span style=color:#f92672>.</span>randint(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>10</span>, size<span style=color:#f92672>=</span><span style=color:#ae81ff>5</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;randint(0, 10, size=5):&#34;</span>, random_arr3)
+</span></span></code></pre></div><p>난수는 실행할 때마다 값이 바뀐다. 머신러닝 실험에서는 재현성을 위해 시드를 고정하는 습관이 중요하다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>np<span style=color:#f92672>.</span>random<span style=color:#f92672>.</span>seed(<span style=color:#ae81ff>42</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Fixed seed rand(3):&#34;</span>, np<span style=color:#f92672>.</span>random<span style=color:#f92672>.</span>rand(<span style=color:#ae81ff>3</span>))
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Fixed seed rand(3): [0.37454012 0.95071431 0.73199394]
+</span></span></code></pre></div><p>데이터 전처리 방법이나 알고리즘을 비교할 때는 훈련/테스트 데이터 분할 조건이 같아야 하므로 난수 시드 고정이 필요하다.</p><h2 id=1-5-배열-크기와-정보-확인>1-5. 배열 크기와 정보 확인<a hidden class=anchor aria-hidden=true href=#1-5-배열-크기와-정보-확인>#</a></h2><p>NumPy 배열은 <code>.shape</code>, <code>.size</code>, <code>.dtype</code>으로 기본 정보를 확인할 수 있다.</p><ul><li><code>.shape</code>: 각 차원의 크기를 튜플로 반환</li><li><code>.size</code>: 전체 원소 개수</li><li><code>.dtype</code>: 원소 자료형</li><li><code>array[row, col]</code>: 특정 원소 접근</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>c <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>], [<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>]])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Array contents:&#34;</span>)
+</span></span><span style=display:flex><span>print(c)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Shape (rows, cols):&#34;</span>, c<span style=color:#f92672>.</span>shape)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Size (total elements):&#34;</span>, c<span style=color:#f92672>.</span>size)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Data type:&#34;</span>, c<span style=color:#f92672>.</span>dtype)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Element at [1, 2]:&#34;</span>, c[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>])
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Element at [0, 0]:&#34;</span>, c[<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>])
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Array contents:
+</span></span><span style=display:flex><span>[[1 2 3]
+</span></span><span style=display:flex><span> [4 5 6]]
+</span></span><span style=display:flex><span>Shape (rows, cols): (2, 3)
+</span></span><span style=display:flex><span>Size (total elements): 6
+</span></span><span style=display:flex><span>Data type: int64
+</span></span><span style=display:flex><span>Element at [1, 2]: 6
+</span></span><span style=display:flex><span>Element at [0, 0]: 1
+</span></span></code></pre></div><p>인덱스는 Python과 마찬가지로 0부터 시작한다.</p><h2 id=1-6-배열-형태-변경-reshape>1-6. 배열 형태 변경: <code>reshape()</code><a hidden class=anchor aria-hidden=true href=#1-6-배열-형태-변경-reshape>#</a></h2><p><code>reshape()</code>는 배열의 구조를 원하는 shape로 바꾼다.</p><ul><li>전체 원소 개수는 동일해야 한다.</li><li><code>np.reshape(arr, shape)</code> 또는 <code>arr.reshape(shape)</code> 형태로 사용한다.</li><li>한 차원에 <code>-1</code>을 쓰면 NumPy가 그 차원의 크기를 자동 계산한다.</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>a <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>])
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Original array:&#34;</span>, a, <span style=color:#e6db74>&#34;| Shape:&#34;</span>, a<span style=color:#f92672>.</span>shape)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>a_reshaped <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>reshape(a, (<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>2</span>))
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Reshaped to (2,2):&#34;</span>)
+</span></span><span style=display:flex><span>print(a_reshaped)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>a_reshaped2 <span style=color:#f92672>=</span> a<span style=color:#f92672>.</span>reshape((<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>2</span>))
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;a.reshape((2,2)):&#34;</span>)
+</span></span><span style=display:flex><span>print(a_reshaped2)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Original array: [1 2 3 4] | Shape: (4,)
+</span></span><span style=display:flex><span>Reshaped to (2,2):
+</span></span><span style=display:flex><span>[[1 2]
+</span></span><span style=display:flex><span> [3 4]]
+</span></span><span style=display:flex><span>a.reshape((2,2)):
+</span></span><span style=display:flex><span>[[1 2]
+</span></span><span style=display:flex><span> [3 4]]
+</span></span></code></pre></div><p>12개 원소를 가진 1차원 배열은 3행 4열 또는 2행 6열 등으로 바꿀 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>arr <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>arange(<span style=color:#ae81ff>12</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Original:&#34;</span>, arr)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Reshaped to (3,4):&#34;</span>)
+</span></span><span style=display:flex><span>print(arr<span style=color:#f92672>.</span>reshape(<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Reshaped with -1 (2, -1):&#34;</span>)
+</span></span><span style=display:flex><span>print(arr<span style=color:#f92672>.</span>reshape(<span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Reshaped with -1 (-1, 4):&#34;</span>)
+</span></span><span style=display:flex><span>print(arr<span style=color:#f92672>.</span>reshape(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>4</span>))
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Original: [ 0  1  2  3  4  5  6  7  8  9 10 11]
+</span></span><span style=display:flex><span>Reshaped to (3,4):
+</span></span><span style=display:flex><span>[[ 0  1  2  3]
+</span></span><span style=display:flex><span> [ 4  5  6  7]
+</span></span><span style=display:flex><span> [ 8  9 10 11]]
+</span></span><span style=display:flex><span>Reshaped with -1 (2, -1):
+</span></span><span style=display:flex><span>[[ 0  1  2  3  4  5]
+</span></span><span style=display:flex><span> [ 6  7  8  9 10 11]]
+</span></span><span style=display:flex><span>Reshaped with -1 (-1, 4):
+</span></span><span style=display:flex><span>[[ 0  1  2  3]
+</span></span><span style=display:flex><span> [ 4  5  6  7]
+</span></span><span style=display:flex><span> [ 8  9 10 11]]
+</span></span></code></pre></div><p><code>-1</code>은 전체 원소 수에 맞춰 자동 계산하라는 의미다.</p><h2 id=1-7-배열-슬라이싱>1-7. 배열 슬라이싱<a hidden class=anchor aria-hidden=true href=#1-7-배열-슬라이싱>#</a></h2><p>NumPy 배열은 <code>array[row_slice, col_slice]</code> 형태로 행과 열을 동시에 슬라이싱할 수 있다.</p><ul><li><code>:</code>: 해당 차원 전체</li><li><code>0</code>: 첫 번째</li><li><code>-1</code>: 마지막</li><li><code>start:stop:step</code>: start부터 stop 직전까지 step 간격</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>a0 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>], [<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>]])
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Original array (2x3):&#34;</span>)
+</span></span><span style=display:flex><span>print(a0)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>a1 <span style=color:#f92672>=</span> a0[:, <span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;First column a0[:,0]:&#34;</span>, a1)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>a2 <span style=color:#f92672>=</span> a0[:, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Last column a0[:,-1]:&#34;</span>, a2)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>a3 <span style=color:#f92672>=</span> a0[<span style=color:#ae81ff>1</span>, :]
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Second row a0[1,:]:&#34;</span>, a3)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>a4 <span style=color:#f92672>=</span> a0[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, :]
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Last row a0[-1,:]:&#34;</span>, a4)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Original array (2x3):
+</span></span><span style=display:flex><span>[[1 2 3]
+</span></span><span style=display:flex><span> [4 5 6]]
+</span></span><span style=display:flex><span>First column a0[:,0]: [1 4]
+</span></span><span style=display:flex><span>Last column a0[:,-1]: [3 6]
+</span></span><span style=display:flex><span>Second row a0[1,:]: [4 5 6]
+</span></span><span style=display:flex><span>Last row a0[-1,:]: [4 5 6]
+</span></span></code></pre></div><p>더 큰 배열에서는 열 범위를 자유롭게 자를 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>a_big <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([
+</span></span><span style=display:flex><span>    [<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>],
+</span></span><span style=display:flex><span>    [<span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>9</span>, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>11</span>, <span style=color:#ae81ff>12</span>]
+</span></span><span style=display:flex><span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Large array (2x6):&#34;</span>)
+</span></span><span style=display:flex><span>print(a_big)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;a[:,4:]:&#34;</span>)
+</span></span><span style=display:flex><span>print(a_big[:, <span style=color:#ae81ff>4</span>:])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;a[:,3:6]:&#34;</span>)
+</span></span><span style=display:flex><span>print(a_big[:, <span style=color:#ae81ff>3</span>:<span style=color:#ae81ff>6</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;a[:,2:-1]:&#34;</span>)
+</span></span><span style=display:flex><span>print(a_big[:, <span style=color:#ae81ff>2</span>:<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;a[:,0:3:2]:&#34;</span>)
+</span></span><span style=display:flex><span>print(a_big[:, <span style=color:#ae81ff>0</span>:<span style=color:#ae81ff>3</span>:<span style=color:#ae81ff>2</span>])
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Large array (2x6):
+</span></span><span style=display:flex><span>[[ 1  2  3  4  5  6]
+</span></span><span style=display:flex><span> [ 7  8  9 10 11 12]]
+</span></span><span style=display:flex><span>a[:,4:]:
+</span></span><span style=display:flex><span>[[ 5  6]
+</span></span><span style=display:flex><span> [11 12]]
+</span></span><span style=display:flex><span>a[:,3:6]:
+</span></span><span style=display:flex><span>[[ 4  5  6]
+</span></span><span style=display:flex><span> [10 11 12]]
+</span></span><span style=display:flex><span>a[:,2:-1]:
+</span></span><span style=display:flex><span>[[ 3  4  5]
+</span></span><span style=display:flex><span> [ 9 10 11]]
+</span></span><span style=display:flex><span>a[:,0:3:2]:
+</span></span><span style=display:flex><span>[[1 3]
+</span></span><span style=display:flex><span> [7 9]]
+</span></span></code></pre></div><p>행 전체를 선택하고 특정 열만 자르는 패턴은 머신러닝 데이터에서 입력 변수 일부를 선택할 때 자주 사용된다.</p><h2 id=1-8-배열-연결>1-8. 배열 연결<a hidden class=anchor aria-hidden=true href=#1-8-배열-연결>#</a></h2><p>배열을 연결할 때는 <code>np.r_</code>, <code>np.c_</code>, <code>np.concatenate()</code>를 사용할 수 있다.</p><ul><li><code>np.r_[a, b]</code>: 행 방향으로 연결</li><li><code>np.c_[a, b]</code>: 열 방향으로 연결</li><li><code>np.concatenate((a, b), axis=0)</code>: 지정 축을 따라 연결</li><li><code>axis=0</code>: 세로 방향</li><li><code>axis=1</code>: 가로 방향</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>a <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>], [<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>]])
+</span></span><span style=display:flex><span>b <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>9</span>], [<span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>11</span>, <span style=color:#ae81ff>12</span>]])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Matrix a:&#34;</span>)
+</span></span><span style=display:flex><span>print(a)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Matrix b:&#34;</span>)
+</span></span><span style=display:flex><span>print(b)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;np.r_[a, b] (row direction):&#34;</span>)
+</span></span><span style=display:flex><span>print(np<span style=color:#f92672>.</span>r_[a, b])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;np.c_[a, b] (column direction):&#34;</span>)
+</span></span><span style=display:flex><span>print(np<span style=color:#f92672>.</span>c_[a, b])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;np.concatenate(axis=0):&#34;</span>)
+</span></span><span style=display:flex><span>print(np<span style=color:#f92672>.</span>concatenate((a, b), axis<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;np.concatenate(axis=1):&#34;</span>)
+</span></span><span style=display:flex><span>print(np<span style=color:#f92672>.</span>concatenate((a, b), axis<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>))
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Matrix a:
+</span></span><span style=display:flex><span>[[1 2 3]
+</span></span><span style=display:flex><span> [4 5 6]]
+</span></span><span style=display:flex><span>Matrix b:
+</span></span><span style=display:flex><span>[[ 7  8  9]
+</span></span><span style=display:flex><span> [10 11 12]]
+</span></span><span style=display:flex><span>np.r_[a, b] (row direction):
+</span></span><span style=display:flex><span>[[ 1  2  3]
+</span></span><span style=display:flex><span> [ 4  5  6]
+</span></span><span style=display:flex><span> [ 7  8  9]
+</span></span><span style=display:flex><span> [10 11 12]]
+</span></span><span style=display:flex><span>np.c_[a, b] (column direction):
+</span></span><span style=display:flex><span>[[ 1  2  3  7  8  9]
+</span></span><span style=display:flex><span> [ 4  5  6 10 11 12]]
+</span></span><span style=display:flex><span>np.concatenate(axis=0):
+</span></span><span style=display:flex><span>[[ 1  2  3]
+</span></span><span style=display:flex><span> [ 4  5  6]
+</span></span><span style=display:flex><span> [ 7  8  9]
+</span></span><span style=display:flex><span> [10 11 12]]
+</span></span><span style=display:flex><span>np.concatenate(axis=1):
+</span></span><span style=display:flex><span>[[ 1  2  3  7  8  9]
+</span></span><span style=display:flex><span> [ 4  5  6 10 11 12]]
+</span></span></code></pre></div><p>연결하려는 축을 제외한 나머지 차원의 크기는 서로 같아야 한다.</p><h2 id=1-9-배열-연산>1-9. 배열 연산<a hidden class=anchor aria-hidden=true href=#1-9-배열-연산>#</a></h2><p>NumPy 배열은 <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> 연산을 원소별로 수행한다.</p><ul><li><code>+</code>: 원소별 덧셈</li><li><code>-</code>: 원소별 뺄셈</li><li><code>*</code>: 원소별 곱셈</li><li><code>/</code>: 원소별 나눗셈</li><li>행렬 곱: <code>np.dot(a, b)</code> 또는 <code>a @ b</code></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>a <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>], [<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>5</span>]])
+</span></span><span style=display:flex><span>b <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span>], [<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>2</span>]])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Matrix a:&#34;</span>)
+</span></span><span style=display:flex><span>print(a)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Matrix b:&#34;</span>)
+</span></span><span style=display:flex><span>print(b)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;a + b:&#34;</span>)
+</span></span><span style=display:flex><span>print(a <span style=color:#f92672>+</span> b)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;a - b:&#34;</span>)
+</span></span><span style=display:flex><span>print(a <span style=color:#f92672>-</span> b)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;a * b:&#34;</span>)
+</span></span><span style=display:flex><span>print(a <span style=color:#f92672>*</span> b)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;a / b:&#34;</span>)
+</span></span><span style=display:flex><span>print(a <span style=color:#f92672>/</span> b)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Matrix a:
+</span></span><span style=display:flex><span>[[1 2 3]
+</span></span><span style=display:flex><span> [3 2 5]]
+</span></span><span style=display:flex><span>Matrix b:
+</span></span><span style=display:flex><span>[[-1  3  5]
+</span></span><span style=display:flex><span> [ 1  4  2]]
+</span></span><span style=display:flex><span>a + b:
+</span></span><span style=display:flex><span>[[0 5 8]
+</span></span><span style=display:flex><span> [4 6 7]]
+</span></span><span style=display:flex><span>a - b:
+</span></span><span style=display:flex><span>[[ 2 -1 -2]
+</span></span><span style=display:flex><span> [ 2 -2  3]]
+</span></span><span style=display:flex><span>a * b:
+</span></span><span style=display:flex><span>[[-1  6 15]
+</span></span><span style=display:flex><span> [ 3  8 10]]
+</span></span><span style=display:flex><span>a / b:
+</span></span><span style=display:flex><span>[[-1.          0.66666667  0.6       ]
+</span></span><span style=display:flex><span> [ 3.          0.5         2.5       ]]
+</span></span></code></pre></div><p><code>*</code>는 행렬 곱이 아니라 같은 위치의 원소끼리 곱하는 연산이다.</p><p>행렬 곱은 <code>np.dot()</code> 또는 <code>@</code>를 사용한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>a2 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>], [<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>], [<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>]])      <span style=color:#75715e># 3 x 2</span>
+</span></span><span style=display:flex><span>b2 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([[<span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>9</span>], [<span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>11</span>, <span style=color:#ae81ff>12</span>]])     <span style=color:#75715e># 2 x 3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;Matrix multiplication (3x2) @ (2x3):&#34;</span>)
+</span></span><span style=display:flex><span>print(np<span style=color:#f92672>.</span>dot(a2, b2))
+</span></span><span style=display:flex><span>print(a2 <span style=color:#f92672>@</span> b2)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Matrix multiplication (3x2) @ (2x3):
+</span></span><span style=display:flex><span>[[ 27  30  33]
+</span></span><span style=display:flex><span> [ 61  68  75]
+</span></span><span style=display:flex><span> [ 95 106 117]]
+</span></span><span style=display:flex><span>[[ 27  30  33]
+</span></span><span style=display:flex><span> [ 61  68  75]
+</span></span><span style=display:flex><span> [ 95 106 117]]
+</span></span></code></pre></div><p>행렬 곱은 앞 행렬의 열 수와 뒤 행렬의 행 수가 같아야 한다. 위 예시는 <code>(3, 2) @ (2, 3)</code>이므로 결과 shape은 <code>(3, 3)</code>이 된다.</p><h2 id=정리>정리<a hidden class=anchor aria-hidden=true href=#정리>#</a></h2><p>NumPy Part 1에서 익힌 핵심은 배열을 만들고, 모양을 바꾸고, 필요한 부분을 자르고, 배열끼리 연산하는 방법이다.</p><ul><li>배열 생성: <code>np.array()</code>, <code>np.arange()</code>, <code>np.zeros()</code>, <code>np.ones()</code></li><li>난수 생성: <code>np.random.rand()</code>, <code>np.random.randint()</code>, <code>np.random.seed()</code></li><li>배열 정보 확인: <code>.shape</code>, <code>.size</code>, <code>.dtype</code></li><li>형태 변경: <code>.reshape()</code></li><li>슬라이싱: <code>array[row_slice, col_slice]</code></li><li>배열 연결: <code>np.r_</code>, <code>np.c_</code>, <code>np.concatenate()</code></li><li>원소별 연산: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></li><li>행렬 곱: <code>np.dot()</code>, <code>@</code></li></ul><p>Pandas, Matplotlib, 머신러닝 모델링도 결국 내부적으로는 숫자 배열을 다루는 일이 많다. NumPy 배열의 shape과 연산 방식을 정확히 이해해두면 이후 데이터 분석 코드가 훨씬 읽기 쉬워진다.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://gnl2109.github.io/tags/numpy/>NumPy</a></li><li><a href=https://gnl2109.github.io/tags/python/>Python</a></li><li><a href=https://gnl2109.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/>데이터 분석</a></li><li><a href=https://gnl2109.github.io/tags/%EB%B0%B0%EC%97%B4/>배열</a></li><li><a href=https://gnl2109.github.io/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/>머신러닝</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://gnl2109.github.io/>이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>

@@ -1,22 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>메모리 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
-    <link>https://gnl2109.github.io/tags/%EB%A9%94%EB%AA%A8%EB%A6%AC/</link>
-    <description>Recent content in 메모리 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
-    <generator>Hugo</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 31 May 2026 22:43:00 +0900</lastBuildDate>
-    <atom:link href="https://gnl2109.github.io/tags/%EB%A9%94%EB%AA%A8%EB%A6%AC/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[이어드림스쿨6기_1주차] 02_1 핵심 운영체제</title>
-      <link>https://gnl2109.github.io/posts/week1-core-operating-system/</link>
-      <pubDate>Sun, 31 May 2026 22:43:00 +0900</pubDate>
-      <guid>https://gnl2109.github.io/posts/week1-core-operating-system/</guid>
-      <description>&lt;p&gt;&lt;code&gt;강의자료/02_1 핵심 운영체제&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 운영체제가 컴퓨터 안에서 어떤 역할을 하는지 정리해 보았다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>메모리 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><link>https://gnl2109.github.io/tags/%EB%A9%94%EB%AA%A8%EB%A6%AC/</link><description>Recent content in 메모리 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description><generator>Hugo</generator><language>ko-kr</language><lastBuildDate>Sun, 31 May 2026 22:43:00 +0900</lastBuildDate><atom:link href="https://gnl2109.github.io/tags/%EB%A9%94%EB%AA%A8%EB%A6%AC/index.xml" rel="self" type="application/rss+xml"/><item><title>[이어드림스쿨6기_1개월] 02_1 핵심 운영체제</title><link>https://gnl2109.github.io/posts/month1-core-operating-system/</link><pubDate>Sun, 31 May 2026 22:43:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month1-core-operating-system/</guid><description>&lt;p&gt;&lt;code&gt;강의자료/02_1 핵심 운영체제&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 운영체제가 컴퓨터 안에서 어떤 역할을 하는지 정리해 보았다.&lt;/p&gt;
 &lt;p&gt;운영체제는 사용자가 직접 만나는 화면보다 더 아래에서 움직이는 시스템 소프트웨어다. CPU, 메모리, 저장장치 같은 하드웨어 자원을 관리하고, 프로그램이 실행될 수 있는 환경을 만들어준다. 우리가 앱을 실행하고, 파일을 저장하고, 여러 작업을 동시에 처리할 수 있는 이유 뒤에는 운영체제가 있다.&lt;/p&gt;
-&lt;h2 id=&#34;1-운영체제는-하드웨어와-프로그램-사이를-관리한다&#34;&gt;1. 운영체제는 하드웨어와 프로그램 사이를 관리한다&lt;/h2&gt;
-&lt;p&gt;컴퓨터에는 CPU, 메모리, 주변장치, 보조기억장치 같은 여러 하드웨어가 있다. CPU는 데이터를 연산하고 명령을 처리하는 장치이고, 메모리는 실행 중인 프로그램과 데이터를 임시로 올려두는 공간이다. 키보드, 마우스, 프린터 같은 주변장치는 사용자의 입력과 출력에 관여하고, SSD나 HDD 같은 보조기억장치는 데이터를 오래 보관한다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="1-운영체제는-하드웨어와-프로그램-사이를-관리한다"&gt;1. 운영체제는 하드웨어와 프로그램 사이를 관리한다&lt;/h2&gt;
+&lt;p&gt;컴퓨터에는 CPU, 메모리, 주변장치, 보조기억장치 같은 여러 하드웨어가 있다. CPU는 데이터를 연산하고 명령을 처리하는 장치이고, 메모리는 실행 중인 프로그램과 데이터를 임시로 올려두는 공간이다. 키보드, 마우스, 프린터 같은 주변장치는 사용자의 입력과 출력에 관여하고, SSD나 HDD 같은 보조기억장치는 데이터를 오래 보관한다.&lt;/p&gt;</description></item></channel></rss>

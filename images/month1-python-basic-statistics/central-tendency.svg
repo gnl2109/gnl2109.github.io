@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="270" viewBox="0 0 800 270" role="img" aria-labelledby="title desc">
+  <title id="title">평균, 중앙값, 최빈값 비교</title><desc id="desc">관측값이 놓인 수직선에서 평균, 중앙값, 최빈값의 위치를 비교한다.</desc>
+  <style>text{font-family:Arial,'Malgun Gothic',sans-serif;fill:#1f2937}.label{font-size:18px;font-weight:700}.note{font-size:15px}.axis{stroke:#64748b;stroke-width:2}.dot{fill:#2563eb}.mean{stroke:#dc2626;stroke-width:3}.median{stroke:#7c3aed;stroke-width:3}.mode{stroke:#059669;stroke-width:3}</style>
+  <rect width="800" height="270" fill="#f8fafc"/><text x="42" y="38" class="label">같은 자료에서 중심을 찾는 세 가지 방법</text>
+  <line x1="80" y1="160" x2="720" y2="160" class="axis"/>
+  <g class="note" text-anchor="middle"><text x="160" y="190">2</text><text x="240" y="190">3</text><text x="320" y="190">4</text><text x="400" y="190">5</text><text x="480" y="190">6</text><text x="560" y="190">7</text><text x="640" y="190">8</text></g>
+  <g class="dot"><circle cx="160" cy="145" r="8"/><circle cx="240" cy="145" r="8"/><circle cx="320" cy="145" r="8"/><circle cx="400" cy="145" r="8"/><circle cx="400" cy="122" r="8"/><circle cx="400" cy="99" r="8"/><circle cx="480" cy="145" r="8"/><circle cx="560" cy="145" r="8"/><circle cx="640" cy="145" r="8"/></g>
+  <line x1="400" y1="65" x2="400" y2="210" class="mode"/><line x1="400" y1="65" x2="400" y2="210" class="median"/><line x1="400" y1="65" x2="400" y2="210" class="mean"/>
+  <text x="420" y="64" class="note" fill="#059669">최빈값 5 (가장 자주 등장)</text><text x="420" y="86" class="note" fill="#7c3aed">중앙값 5 (가운데 값)</text><text x="420" y="108" class="note" fill="#dc2626">평균 5 (모든 값의 합 ÷ 개수)</text>
+</svg>

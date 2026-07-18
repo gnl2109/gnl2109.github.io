@@ -1,18 +1,265 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>파일 시스템 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://gnl2109.github.io/tags/%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/><link crossorigin=anonymous href=/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL+GgRwmx68=" rel="preload stylesheet" as=style><link rel=icon href=https://gnl2109.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://gnl2109.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://gnl2109.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://gnl2109.github.io/apple-touch-icon.png><link rel=mask-icon href=https://gnl2109.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://gnl2109.github.io/tags/%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/index.xml title=rss><link rel=alternate hreflang=en href=https://gnl2109.github.io/tags/%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-HTV70762HG")}</script><meta property="og:url" content="https://gnl2109.github.io/tags/%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/"><meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그"><meta property="og:title" content="파일 시스템"><meta property="og:locale" content="ko_kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="파일 시스템"></head><body class=list id=top><header class=header><nav class=header-nav><div class=logo><a href=https://gnl2109.github.io/ accesskey=h title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu></ul></nav></header><main class=main><header class=page-header><h1>파일 시스템</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>[이어드림스쿨6기_1개월] 리눅스 기초 실습 01</h2></header><div class=entry-content><p>강의자료/0531_linux_tutorial_01.md를 바탕으로, 터미널에서 현재 위치를 확인하고 디렉터리와 파일을 만들고 옮기고 삭제하는 기본 흐름을 정리했다.
-이번 실습의 핵심은 명령어를 하나씩 외우는 것보다, 터미널에서 “내가 어디에 있고, 무엇을 만들고, 어떻게 확인하고, 어떻게 정리할지"를 순서대로 익히는 것이다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>파일 시스템 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1314/tags/%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css" integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL&#43;GgRwmx68=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1314/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1314/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1314/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1314/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1314/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1314/tags/%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1314/tags/%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HTV70762HG');
+        }
+      </script><meta property="og:url" content="http://localhost:1314/tags/%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C/">
+  <meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그">
+  <meta property="og:title" content="파일 시스템">
+  <meta property="og:locale" content="ko_kr">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="파일 시스템">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1314/" accesskey="h" title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    파일 시스템
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_1개월] 리눅스 기초 실습 01
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>강의자료/0531_linux_tutorial_01.md를 바탕으로, 터미널에서 현재 위치를 확인하고 디렉터리와 파일을 만들고 옮기고 삭제하는 기본 흐름을 정리했다.
+이번 실습의 핵심은 명령어를 하나씩 외우는 것보다, 터미널에서 “내가 어디에 있고, 무엇을 만들고, 어떻게 확인하고, 어떻게 정리할지&#34;를 순서대로 익히는 것이다.
 1. 현재 위치 확인하기 터미널 작업은 현재 내가 어느 디렉터리에 있는지 확인하는 것에서 시작한다. 위치를 모르고 명령어를 실행하면 엉뚱한 곳에 파일을 만들거나 삭제할 수 있다.
 현재 디렉터리의 절대 경로를 확인할 때는 pwd를 사용한다.
 $ pwd C:/Users/gnl21/Desktop/TEST 원하는 디렉터리로 이동할 때는 cd를 사용한다. 예를 들어 바탕화면으로 이동하려면 다음처럼 입력한다.
-...</p></div><footer class=entry-footer><span title='2026-05-31 23:30:00 +0900 KST'>2026년 5월 31일</span></footer><a class=entry-link aria-label="post link to [이어드림스쿨6기_1개월] 리눅스 기초 실습 01" href=https://gnl2109.github.io/posts/month1-linux-tutorial-01/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>[이어드림스쿨6기_1개월] 02_2 리눅스 기초</h2></header><div class=entry-content><p>강의자료/02_2 리눅스 기초 이어드림스쿨 강의자료를 바탕으로, 리눅스 환경에서 꼭 알아야 할 기본 개념과 명령어를 정리해 보았다.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-05-31 23:30:00 +0900 KST'>2026년 5월 31일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_1개월] 리눅스 기초 실습 01" href="http://localhost:1314/posts/month1-linux-tutorial-01/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_1개월] 02_2 리눅스 기초
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>강의자료/02_2 리눅스 기초 이어드림스쿨 강의자료를 바탕으로, 리눅스 환경에서 꼭 알아야 할 기본 개념과 명령어를 정리해 보았다.
 리눅스는 서버 개발, 클라우드, 네트워크 장비, 임베디드 기기, 안드로이드까지 넓게 쓰이는 운영체제다. 특히 개발자는 GUI보다 CLI 환경에서 서버를 다루는 일이 많기 때문에, 리눅스의 구조와 명령어에 익숙해지는 것이 중요하다.
 1. 리눅스는 오픈소스 기반 운영체제다 리눅스는 리누스 토발즈가 만든 운영체제 커널에서 출발했다. 자유 소프트웨어와 오픈소스 개발 문화의 대표적인 사례이며, GNU 프로젝트와 함께 성장해 왔다. GNU 프로젝트는 유닉스처럼 동작하지만 자유롭게 사용할 수 있는 소프트웨어 환경을 만들기 위해 시작되었다.
-...</p></div><footer class=entry-footer><span title='2026-05-31 23:18:00 +0900 KST'>2026년 5월 31일</span></footer><a class=entry-link aria-label="post link to [이어드림스쿨6기_1개월] 02_2 리눅스 기초" href=https://gnl2109.github.io/posts/month1-linux-basics/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>[이어드림스쿨6기_1개월] 02_1 핵심 운영체제</h2></header><div class=entry-content><p>강의자료/02_1 핵심 운영체제 이어드림스쿨 강의자료를 바탕으로, 운영체제가 컴퓨터 안에서 어떤 역할을 하는지 정리해 보았다.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-05-31 23:18:00 +0900 KST'>2026년 5월 31일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_1개월] 02_2 리눅스 기초" href="http://localhost:1314/posts/month1-linux-basics/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_1개월] 02_1 핵심 운영체제
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>강의자료/02_1 핵심 운영체제 이어드림스쿨 강의자료를 바탕으로, 운영체제가 컴퓨터 안에서 어떤 역할을 하는지 정리해 보았다.
 운영체제는 사용자가 직접 만나는 화면보다 더 아래에서 움직이는 시스템 소프트웨어다. CPU, 메모리, 저장장치 같은 하드웨어 자원을 관리하고, 프로그램이 실행될 수 있는 환경을 만들어준다. 우리가 앱을 실행하고, 파일을 저장하고, 여러 작업을 동시에 처리할 수 있는 이유 뒤에는 운영체제가 있다.
 1. 운영체제는 하드웨어와 프로그램 사이를 관리한다 컴퓨터에는 CPU, 메모리, 주변장치, 보조기억장치 같은 여러 하드웨어가 있다. CPU는 데이터를 연산하고 명령을 처리하는 장치이고, 메모리는 실행 중인 프로그램과 데이터를 임시로 올려두는 공간이다. 키보드, 마우스, 프린터 같은 주변장치는 사용자의 입력과 출력에 관여하고, SSD나 HDD 같은 보조기억장치는 데이터를 오래 보관한다.
-...</p></div><footer class=entry-footer><span title='2026-05-31 22:43:00 +0900 KST'>2026년 5월 31일</span></footer><a class=entry-link aria-label="post link to [이어드림스쿨6기_1개월] 02_1 핵심 운영체제" href=https://gnl2109.github.io/posts/month1-core-operating-system/></a></article></main><footer class=footer><span>&copy; 2026 <a href=https://gnl2109.github.io/>이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> ·
-<span>Powered by
-<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-05-31 22:43:00 +0900 KST'>2026년 5월 31일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_1개월] 02_1 핵심 운영체제" href="http://localhost:1314/posts/month1-core-operating-system/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1314/">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

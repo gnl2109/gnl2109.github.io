@@ -1,14 +1,387 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>[이어드림스쿨6기_1개월] 03 네트워크 개론 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><meta name=keywords content="네트워크,HTTP,TCP/IP,프로토콜,보안"><meta name=description content="강의자료/03 네트워크 개론 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>[이어드림스쿨6기_1개월] 03 네트워크 개론 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+<meta name="keywords" content="네트워크, HTTP, TCP/IP, 프로토콜, 보안">
+<meta name="description" content="강의자료/03 네트워크 개론 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.
 네트워크는 두 대 이상의 컴퓨터가 연결되어 데이터를 주고받을 수 있도록 만든 통신망이다. 웹페이지를 열고, 이메일을 보내고, 서버에 API 요청을 보내고, 로그인 상태를 유지하는 모든 일은 네트워크 위에서 일어난다. 그래서 네트워크를 이해하면 웹 서비스가 화면 뒤에서 어떻게 움직이는지 훨씬 선명하게 볼 수 있다.
 1. 네트워크는 노드들이 데이터를 공유하는 통신망이다
-네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다."><meta name=author content><link rel=canonical href=https://gnl2109.github.io/posts/month1-network-introduction/><link crossorigin=anonymous href=/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL+GgRwmx68=" rel="preload stylesheet" as=style><link rel=icon href=https://gnl2109.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://gnl2109.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://gnl2109.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://gnl2109.github.io/apple-touch-icon.png><link rel=mask-icon href=https://gnl2109.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://gnl2109.github.io/posts/month1-network-introduction/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-HTV70762HG")}</script><meta property="og:url" content="https://gnl2109.github.io/posts/month1-network-introduction/"><meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그"><meta property="og:title" content="[이어드림스쿨6기_1개월] 03 네트워크 개론"><meta property="og:description" content="강의자료/03 네트워크 개론 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.
+네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1314/posts/month1-network-introduction/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css" integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL&#43;GgRwmx68=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1314/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1314/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1314/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1314/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1314/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1314/posts/month1-network-introduction/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HTV70762HG');
+        }
+      </script><meta property="og:url" content="http://localhost:1314/posts/month1-network-introduction/">
+  <meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그">
+  <meta property="og:title" content="[이어드림스쿨6기_1개월] 03 네트워크 개론">
+  <meta property="og:description" content="강의자료/03 네트워크 개론 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.
 네트워크는 두 대 이상의 컴퓨터가 연결되어 데이터를 주고받을 수 있도록 만든 통신망이다. 웹페이지를 열고, 이메일을 보내고, 서버에 API 요청을 보내고, 로그인 상태를 유지하는 모든 일은 네트워크 위에서 일어난다. 그래서 네트워크를 이해하면 웹 서비스가 화면 뒤에서 어떻게 움직이는지 훨씬 선명하게 볼 수 있다.
-1. 네트워크는 노드들이 데이터를 공유하는 통신망이다 네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다."><meta property="og:locale" content="ko_kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-05-31T23:07:00+09:00"><meta property="article:modified_time" content="2026-05-31T23:07:00+09:00"><meta property="article:tag" content="네트워크"><meta property="article:tag" content="HTTP"><meta property="article:tag" content="TCP/IP"><meta property="article:tag" content="프로토콜"><meta property="article:tag" content="보안"><meta name=twitter:card content="summary"><meta name=twitter:title content="[이어드림스쿨6기_1개월] 03 네트워크 개론"><meta name=twitter:description content="강의자료/03 네트워크 개론 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.
+1. 네트워크는 노드들이 데이터를 공유하는 통신망이다 네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다.">
+  <meta property="og:locale" content="ko_kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-31T23:07:00+09:00">
+    <meta property="article:modified_time" content="2026-05-31T23:07:00+09:00">
+    <meta property="article:tag" content="네트워크">
+    <meta property="article:tag" content="HTTP">
+    <meta property="article:tag" content="TCP/IP">
+    <meta property="article:tag" content="프로토콜">
+    <meta property="article:tag" content="보안">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="[이어드림스쿨6기_1개월] 03 네트워크 개론">
+  <meta name="twitter:description" content="강의자료/03 네트워크 개론 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.
 네트워크는 두 대 이상의 컴퓨터가 연결되어 데이터를 주고받을 수 있도록 만든 통신망이다. 웹페이지를 열고, 이메일을 보내고, 서버에 API 요청을 보내고, 로그인 상태를 유지하는 모든 일은 네트워크 위에서 일어난다. 그래서 네트워크를 이해하면 웹 서비스가 화면 뒤에서 어떻게 움직이는지 훨씬 선명하게 볼 수 있다.
-1. 네트워크는 노드들이 데이터를 공유하는 통신망이다 네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://gnl2109.github.io/posts/"},{"@type":"ListItem","position":2,"name":"[이어드림스쿨6기_1개월] 03 네트워크 개론","item":"https://gnl2109.github.io/posts/month1-network-introduction/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"[이어드림스쿨6기_1개월] 03 네트워크 개론","name":"[이어드림스쿨6기_1개월] 03 네트워크 개론","description":"강의자료/03 네트워크 개론 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.\n네트워크는 두 대 이상의 컴퓨터가 연결되어 데이터를 주고받을 수 있도록 만든 통신망이다. 웹페이지를 열고, 이메일을 보내고, 서버에 API 요청을 보내고, 로그인 상태를 유지하는 모든 일은 네트워크 위에서 일어난다. 그래서 네트워크를 이해하면 웹 서비스가 화면 뒤에서 어떻게 움직이는지 훨씬 선명하게 볼 수 있다.\n1. 네트워크는 노드들이 데이터를 공유하는 통신망이다 네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다.\n","keywords":["네트워크","HTTP","TCP/IP","프로토콜","보안"],"articleBody":"강의자료/03 네트워크 개론 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.\n네트워크는 두 대 이상의 컴퓨터가 연결되어 데이터를 주고받을 수 있도록 만든 통신망이다. 웹페이지를 열고, 이메일을 보내고, 서버에 API 요청을 보내고, 로그인 상태를 유지하는 모든 일은 네트워크 위에서 일어난다. 그래서 네트워크를 이해하면 웹 서비스가 화면 뒤에서 어떻게 움직이는지 훨씬 선명하게 볼 수 있다.\n1. 네트워크는 노드들이 데이터를 공유하는 통신망이다 네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다.\n네트워크의 장점은 자료 공유, 디지털 미디어 전송, 여러 장치 간 작업 분산이다. 반대로 보안 문제가 생기거나 데이터가 변조될 위험도 있다. 연결이 많아질수록 편리함은 커지지만, 그만큼 신뢰성과 보안도 함께 고려해야 한다.\n네트워크는 유선 또는 무선 매체를 통해 작동한다. 이더넷 케이블은 근거리 통신망에서 흔히 쓰이고, 광섬유 케이블은 장거리 고속 통신에 강하다. 무선 통신은 케이블 없이 연결할 수 있다는 장점이 있지만, 장애물이나 간섭의 영향을 받을 수 있다.\n네트워크를 연결하는 구조를 토폴로지라고 한다. 스타형은 중앙 장치에 노드들이 연결되는 구조이고, 버스형은 하나의 선을 여러 장치가 공유한다. 링형은 하나의 순환 경로를 따라 통신하고, 망형은 여러 노드가 서로 복잡하게 연결되어 안정성을 높인다. 어떤 구조를 선택하느냐에 따라 비용, 장애 대응, 확장성이 달라진다.\n네트워크 범위에 따라 PAN, LAN, MAN, WAN으로 나눌 수 있다. PAN은 개인 기기 사이의 짧은 연결이고, LAN은 집이나 회사 같은 좁은 지역의 네트워크다. MAN은 도시 단위, WAN은 국가나 대륙처럼 넓은 범위를 연결한다.\n2. IP 주소와 라우팅은 목적지를 찾기 위한 장치다 IP 주소는 네트워크 환경에서 사용하는 컴퓨터의 주소다. 인터넷에서 데이터를 주고받으려면 출발지와 목적지를 식별할 수 있어야 한다. IPv4는 32비트 주소 체계이고, IPv6는 더 많은 주소를 제공하기 위해 128비트 주소 체계를 사용한다.\nIP 주소는 네트워크 ID와 호스트 ID로 나눌 수 있다. 서브넷 마스크는 어떤 부분이 네트워크 주소이고 어떤 부분이 호스트 주소인지 구분하는 기준이다. 서브넷팅은 큰 네트워크를 더 작은 네트워크로 나누는 작업이다.\n공인 IP는 인터넷에서 식별 가능한 주소이고, 사설 IP는 집이나 회사 같은 내부 네트워크에서 사용하는 주소다. 사설 IP만으로는 외부 인터넷에서 직접 식별되기 어렵기 때문에 NAT가 사용된다. NAT는 사설 IP와 공인 IP 사이에서 주소를 변환해 여러 내부 장치가 하나의 공인 IP를 통해 인터넷을 사용할 수 있도록 돕는다.\n네트워크에서는 유니캐스트, 멀티캐스트, 브로드캐스트 같은 통신 방식도 사용된다. 유니캐스트는 특정 대상과 1:1로 통신하는 방식이고, 멀티캐스트는 특정 그룹에 데이터를 보내는 방식이다. 브로드캐스트는 같은 네트워크의 모든 장치에게 데이터를 보내는 방식이다.\n라우터는 네트워크 사이에서 패킷이 어느 경로로 가야 하는지 판단한다. 포워딩은 라우터에 들어온 패킷을 알맞은 출력 포트로 보내는 동작이고, 라우팅은 패킷이 목적지까지 가기 위한 경로를 결정하는 과정이다.\n3. OSI 7계층과 TCP/IP는 통신 과정을 나누어 이해하게 해준다 OSI 7계층은 네트워크 통신 구조를 7개의 계층으로 나누어 설명하는 모델이다. 복잡한 통신 과정을 계층별 역할로 나누면, 문제가 생겼을 때 어디를 확인해야 하는지 파악하기 쉬워진다.\n7계층 응용 계층: 사용자가 만나는 서비스와 가까운 계층이다. HTTP, SMTP, SSH 등이 여기에 해당한다. 6계층 표현 계층: 데이터 인코딩, 압축, 암호화 같은 표현 방식을 다룬다. 5계층 세션 계층: 통신 세션을 만들고 유지하고 종료한다. 4계층 전송 계층: TCP, UDP처럼 종단 간 데이터 전송을 담당한다. 3계층 네트워크 계층: IP 주소를 기반으로 경로를 찾는다. 2계층 데이터링크 계층: MAC 주소와 프레임 단위 전송을 다룬다. 1계층 물리 계층: 전기적, 기계적 신호를 실제 매체로 전달한다. TCP/IP 모델은 실제 인터넷에서 널리 쓰이는 통신 모델이다. 응용 계층, 전송 계층, 인터넷 계층, 네트워크 액세스 계층으로 나누어 볼 수 있다. HTTP 요청을 보낼 때도 응용 계층에서 시작한 데이터가 아래 계층을 지나며 캡슐화되고, 상대방은 이를 다시 역캡슐화해 원래 데이터로 해석한다.\n프로토콜은 통신에 필요한 형식, 약속, 규칙을 정의한 것이다. 구문은 데이터 형식과 부호화를, 의미는 제어 정보를, 시간은 통신 속도와 순서를 다룬다. 프로토콜이 맞아야 서로 다른 컴퓨터와 서비스가 같은 규칙으로 대화할 수 있다.\n4. HTTP는 웹에서 요청과 응답을 주고받는 규칙이다 HTTP는 인터넷에서 데이터를 주고받기 위한 프로토콜이다. 전통적인 클라이언트-서버 모델을 따르고, 기본적으로 무상태 프로토콜이다. 무상태라는 말은 서버가 이전 요청의 상태를 자동으로 기억하지 않는다는 뜻이다.\nHTTP 메시지는 보통 시작 줄, 헤더, 빈 줄, 본문으로 구성된다. 헤더에는 요청이나 응답에 대한 부가 정보가 들어가고, 본문에는 실제 데이터가 담길 수 있다.\nHTTP 메서드는 요청의 의도를 표현한다.\nGET: 데이터를 조회한다. POST: 데이터를 등록한다. PUT: 데이터를 수정한다. DELETE: 데이터를 삭제한다. HTTP 상태코드는 서버가 요청을 어떻게 처리했는지 알려준다. 100번대는 정보, 200번대는 성공, 300번대는 리다이렉션, 400번대는 클라이언트 오류, 500번대는 서버 오류를 뜻한다. 예를 들어 200 OK는 성공, 404 Not Found는 요청한 페이지를 찾을 수 없음, 500 Internal Server Error는 서버 내부 오류를 의미한다.\nCORS는 서로 다른 출처 간 요청과 응답을 허용하기 위한 정책이다. 브라우저는 보안을 위해 기본적으로 같은 출처 정책을 적용한다. 출처는 프로토콜, 도메인, 포트로 결정된다. 다른 출처의 리소스를 안전하게 요청하려면 서버가 CORS 정책을 통해 허용 범위를 명시해야 한다.\n5. 주요 프로토콜은 각자의 역할을 가진다 IP는 네트워크에서 데이터를 어디로 보낼지 결정하는 기본 프로토콜이다. 다만 IP 자체는 데이터가 반드시 정확하게 도착한다고 보장하지 않는다. 신뢰성은 주로 전송 계층에서 보완한다.\nDNS는 도메인 이름을 IP 주소로 바꾸어 주는 시스템이다. 사용자는 숫자로 된 IP 주소 대신 도메인 이름을 입력하고, DNS는 그 이름에 해당하는 주소를 찾아준다. DHCP는 IP 주소, 게이트웨이, 네임서버 정보를 자동으로 할당해주는 프로토콜이다.\nTCP는 신뢰성 있는 데이터 통신을 위한 연결형 프로토콜이다. 3-way handshake로 연결을 성립하고, 4-way handshake로 연결을 종료한다. 전송 순서를 보장하고 수신 여부를 확인하지만, 그만큼 UDP보다 느릴 수 있다.\nUDP는 빠른 데이터 전송을 위한 비연결형 프로토콜이다. 신뢰성은 낮지만 속도가 빠르기 때문에 실시간 스트리밍, 게임, 음성 통신처럼 빠른 전달이 중요한 상황에서 자주 사용된다.\nFTP는 파일 전송 프로토콜이고, SFTP는 SSH 기반으로 파일을 더 안전하게 전송하는 방식이다. SMTP는 이메일을 보내는 데 사용되고, IMAP과 POP3는 이메일을 가져오거나 관리하는 데 사용된다. SSH는 원격 서버에 안전하게 접속하기 위한 보안 프로토콜이다. SSL/TLS는 웹에서 오가는 데이터를 암호화하고, HTTPS는 HTTP 위에 보안 계층을 더한 프로토콜이다.\n6. 보안은 인증, 인가, 암호화, 상태 관리로 이어진다 보안은 승인되지 않은 접근, 오용, 수정, 파괴, 부적절한 노출로부터 시스템을 보호하는 과정이다. 웹 서비스에서 보안은 단순히 비밀번호를 입력하는 순간에만 필요한 것이 아니라, 요청과 응답이 오가는 전체 과정에 걸쳐 필요하다.\n인증은 사용자의 신원을 확인하는 과정이다. 비밀번호, 일회용 PIN, 인증 앱, 생체 인식 등이 인증 방식이 될 수 있다. 인가는 인증된 사용자가 어떤 자원에 접근할 수 있는지 확인하는 과정이다. 로그인은 인증에 가깝고, 관리자 페이지 접근 권한 확인은 인가에 가깝다.\n해시는 임의의 길이 데이터를 고정된 길이의 값으로 바꾸는 단방향 암호화 방식이다. 해시값만 보고 원래 값을 되돌리기 어렵고, 작은 입력 변화도 완전히 다른 결과를 만든다. 그래서 비밀번호 저장, 파일 무결성 검증, 전자서명 등에 사용된다.\nHTTP는 무상태 프로토콜이기 때문에 사용자를 기억하기 위한 장치가 필요하다. 쿠키는 서버가 브라우저에 저장하도록 보내는 작은 데이터이고, 세션은 서버 쪽에 사용자 상태를 저장하는 방식이다. 쿠키는 빠르고 서버 부담이 적지만 보안에 주의해야 하고, 세션은 상대적으로 안전하지만 서버 자원을 사용한다.\n토큰은 서버가 클라이언트를 식별할 수 있도록 발급하는 암호화된 데이터다. JWT는 JSON Web Token의 약자로, Header, Payload, Signature로 구성된다. 서버는 토큰의 서명을 검증해 요청한 사용자를 확인할 수 있다. 다만 토큰이 탈취되면 위험하므로 만료 시간과 Refresh Token 설계가 중요하다.\n캐시는 자주 필요한 데이터나 결과를 임시로 저장해 성능을 높이는 방식이다. 웹페이지 요소를 캐시하면 로딩이 빨라지고, 서버나 데이터베이스의 부하도 줄일 수 있다. CDN은 사용자의 위치와 가까운 서버에서 콘텐츠를 제공해 전송 속도와 안정성을 높이는 기술이다.\n마무리 네트워크는 단순히 컴퓨터를 연결하는 기술이 아니라, 웹 서비스가 사용자와 서버 사이에서 데이터를 주고받는 전체 구조다. IP 주소, 라우팅, 프로토콜, HTTP, 보안, 캐시는 모두 서로 연결되어 하나의 서비스 경험을 만든다.\n1. 핵심 주장 네트워크를 이해한다는 것은 “요청이 어디서 출발해 어디로 가고, 어떤 규칙으로 처리되며, 어떤 방식으로 안전하게 돌아오는지\"를 이해하는 일이다.\n웹 서비스의 문제를 볼 때 화면만 보면 원인을 놓치기 쉽다. 요청이 실패했는지, 주소를 못 찾았는지, 권한이 없는지, 서버가 터졌는지, CORS에 막혔는지, 캐시 때문에 오래된 데이터가 보이는지까지 함께 봐야 한다.\n2. 중요한 개념 네트워크는 노드들이 데이터를 공유할 수 있도록 연결된 통신망이다. IP 주소는 네트워크에서 장치를 식별하는 주소이고, NAT는 사설 IP와 공인 IP 사이를 변환한다. 라우팅은 패킷이 목적지까지 가는 경로를 결정하고, 포워딩은 실제로 다음 경로로 보내는 동작이다. OSI 7계층과 TCP/IP 모델은 통신 과정을 계층별로 나누어 이해하게 해준다. HTTP는 웹에서 클라이언트와 서버가 요청과 응답을 주고받는 프로토콜이다. HTTP 상태코드는 요청 처리 결과를 숫자로 알려준다. DNS는 도메인 이름을 IP 주소로 바꾸고, DHCP는 네트워크 설정을 자동으로 할당한다. TCP는 신뢰성을, UDP는 속도를 중시하는 전송 프로토콜이다. 인증은 신원 확인이고, 인가는 권한 확인이다. 쿠키, 세션, 토큰, JWT는 HTTP의 무상태성을 보완하기 위한 상태 관리 방식이다. 캐시와 CDN은 성능과 안정성을 높이기 위한 네트워크 활용 방식이다. 3. 내가 놓치기 쉬운 부분 HTTP 상태코드를 단순히 에러 숫자로만 보면 원인 분석이 어렵다. 400번대는 대체로 클라이언트 요청 문제이고, 500번대는 서버 쪽 문제에 가깝다. 401, 403, 404, 500은 모두 실패처럼 보이지만 각각 확인해야 할 지점이 다르다.\nTCP와 UDP도 “느리다”, “빠르다\"로만 외우면 부족하다. TCP는 순서와 수신 확인이 중요할 때 쓰이고, UDP는 일부 손실보다 빠른 전달이 중요할 때 쓰인다. 어떤 프로토콜을 쓰는지는 서비스의 목적과 맞물린다.\n쿠키, 세션, 토큰은 모두 로그인과 관련되어 보여도 저장 위치와 책임이 다르다. 쿠키는 클라이언트에 저장되고, 세션은 서버에 상태를 둔다. 토큰은 클라이언트가 들고 다니는 인증 정보에 가깝기 때문에 탈취와 만료 시간을 반드시 고려해야 한다.\n4. 현실에 적용하는 방법 웹 요청이 실패했을 때는 먼저 개발자 도구의 Network 탭에서 요청 URL, HTTP 메서드, 상태코드, 요청 헤더, 응답 본문을 확인해볼 수 있다. 404라면 경로를, 401이나 403이라면 인증과 권한을, 500이라면 서버 로그를 확인하는 식으로 원인을 좁힐 수 있다.\nAPI를 설계하거나 이해할 때는 “어떤 자원을 어떤 메서드로 요청하는가\"를 먼저 정리하면 좋다. 조회는 GET, 생성은 POST, 수정은 PUT, 삭제는 DELETE처럼 요청의 의도를 맞추면 협업이 쉬워진다.\n로그인 기능을 볼 때는 쿠키, 세션, 토큰 중 어떤 방식으로 상태를 유지하는지 확인해보려고 한다. 또 외부 API를 호출할 때 CORS 문제가 생기면 단순히 프론트엔드 오류로만 보지 않고, 서버가 어떤 출처를 허용하고 있는지도 함께 확인해야 한다.\n5. 나에게 물어볼 질문 5개 내가 접속한 웹사이트의 도메인은 어떤 과정을 거쳐 IP 주소로 변환될까? API 요청이 실패했을 때 상태코드를 보고 원인을 어디부터 확인할 수 있을까? TCP와 UDP 중 내가 사용하는 서비스는 어떤 특성을 더 중요하게 여길까? 로그인 상태는 쿠키, 세션, 토큰 중 어떤 방식으로 유지되고 있을까? 캐시나 CDN 때문에 사용자가 더 빠르게 콘텐츠를 볼 수 있는 사례를 설명할 수 있을까? ","wordCount":"1516","inLanguage":"en","datePublished":"2026-05-31T23:07:00+09:00","dateModified":"2026-05-31T23:07:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://gnl2109.github.io/posts/month1-network-introduction/"},"publisher":{"@type":"Organization","name":"이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그","logo":{"@type":"ImageObject","url":"https://gnl2109.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://gnl2109.github.io/ accesskey=h title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">[이어드림스쿨6기_1개월] 03 네트워크 개론</h1><div class=post-meta><span title='2026-05-31 23:07:00 +0900 KST'>2026년 5월 31일</span></div></header><div class="post-content md-content"><p><code>강의자료/03 네트워크 개론</code> 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.</p><p>네트워크는 두 대 이상의 컴퓨터가 연결되어 데이터를 주고받을 수 있도록 만든 통신망이다. 웹페이지를 열고, 이메일을 보내고, 서버에 API 요청을 보내고, 로그인 상태를 유지하는 모든 일은 네트워크 위에서 일어난다. 그래서 네트워크를 이해하면 웹 서비스가 화면 뒤에서 어떻게 움직이는지 훨씬 선명하게 볼 수 있다.</p><h2 id=1-네트워크는-노드들이-데이터를-공유하는-통신망이다>1. 네트워크는 노드들이 데이터를 공유하는 통신망이다<a hidden class=anchor aria-hidden=true href=#1-네트워크는-노드들이-데이터를-공유하는-통신망이다>#</a></h2><p>네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다.</p><p>네트워크의 장점은 자료 공유, 디지털 미디어 전송, 여러 장치 간 작업 분산이다. 반대로 보안 문제가 생기거나 데이터가 변조될 위험도 있다. 연결이 많아질수록 편리함은 커지지만, 그만큼 신뢰성과 보안도 함께 고려해야 한다.</p><p>네트워크는 유선 또는 무선 매체를 통해 작동한다. 이더넷 케이블은 근거리 통신망에서 흔히 쓰이고, 광섬유 케이블은 장거리 고속 통신에 강하다. 무선 통신은 케이블 없이 연결할 수 있다는 장점이 있지만, 장애물이나 간섭의 영향을 받을 수 있다.</p><p>네트워크를 연결하는 구조를 토폴로지라고 한다. 스타형은 중앙 장치에 노드들이 연결되는 구조이고, 버스형은 하나의 선을 여러 장치가 공유한다. 링형은 하나의 순환 경로를 따라 통신하고, 망형은 여러 노드가 서로 복잡하게 연결되어 안정성을 높인다. 어떤 구조를 선택하느냐에 따라 비용, 장애 대응, 확장성이 달라진다.</p><p>네트워크 범위에 따라 PAN, LAN, MAN, WAN으로 나눌 수 있다. PAN은 개인 기기 사이의 짧은 연결이고, LAN은 집이나 회사 같은 좁은 지역의 네트워크다. MAN은 도시 단위, WAN은 국가나 대륙처럼 넓은 범위를 연결한다.</p><h2 id=2-ip-주소와-라우팅은-목적지를-찾기-위한-장치다>2. IP 주소와 라우팅은 목적지를 찾기 위한 장치다<a hidden class=anchor aria-hidden=true href=#2-ip-주소와-라우팅은-목적지를-찾기-위한-장치다>#</a></h2><p>IP 주소는 네트워크 환경에서 사용하는 컴퓨터의 주소다. 인터넷에서 데이터를 주고받으려면 출발지와 목적지를 식별할 수 있어야 한다. IPv4는 32비트 주소 체계이고, IPv6는 더 많은 주소를 제공하기 위해 128비트 주소 체계를 사용한다.</p><p>IP 주소는 네트워크 ID와 호스트 ID로 나눌 수 있다. 서브넷 마스크는 어떤 부분이 네트워크 주소이고 어떤 부분이 호스트 주소인지 구분하는 기준이다. 서브넷팅은 큰 네트워크를 더 작은 네트워크로 나누는 작업이다.</p><p>공인 IP는 인터넷에서 식별 가능한 주소이고, 사설 IP는 집이나 회사 같은 내부 네트워크에서 사용하는 주소다. 사설 IP만으로는 외부 인터넷에서 직접 식별되기 어렵기 때문에 NAT가 사용된다. NAT는 사설 IP와 공인 IP 사이에서 주소를 변환해 여러 내부 장치가 하나의 공인 IP를 통해 인터넷을 사용할 수 있도록 돕는다.</p><p>네트워크에서는 유니캐스트, 멀티캐스트, 브로드캐스트 같은 통신 방식도 사용된다. 유니캐스트는 특정 대상과 1:1로 통신하는 방식이고, 멀티캐스트는 특정 그룹에 데이터를 보내는 방식이다. 브로드캐스트는 같은 네트워크의 모든 장치에게 데이터를 보내는 방식이다.</p><p>라우터는 네트워크 사이에서 패킷이 어느 경로로 가야 하는지 판단한다. 포워딩은 라우터에 들어온 패킷을 알맞은 출력 포트로 보내는 동작이고, 라우팅은 패킷이 목적지까지 가기 위한 경로를 결정하는 과정이다.</p><h2 id=3-osi-7계층과-tcpip는-통신-과정을-나누어-이해하게-해준다>3. OSI 7계층과 TCP/IP는 통신 과정을 나누어 이해하게 해준다<a hidden class=anchor aria-hidden=true href=#3-osi-7계층과-tcpip는-통신-과정을-나누어-이해하게-해준다>#</a></h2><p>OSI 7계층은 네트워크 통신 구조를 7개의 계층으로 나누어 설명하는 모델이다. 복잡한 통신 과정을 계층별 역할로 나누면, 문제가 생겼을 때 어디를 확인해야 하는지 파악하기 쉬워진다.</p><ul><li>7계층 응용 계층: 사용자가 만나는 서비스와 가까운 계층이다. HTTP, SMTP, SSH 등이 여기에 해당한다.</li><li>6계층 표현 계층: 데이터 인코딩, 압축, 암호화 같은 표현 방식을 다룬다.</li><li>5계층 세션 계층: 통신 세션을 만들고 유지하고 종료한다.</li><li>4계층 전송 계층: TCP, UDP처럼 종단 간 데이터 전송을 담당한다.</li><li>3계층 네트워크 계층: IP 주소를 기반으로 경로를 찾는다.</li><li>2계층 데이터링크 계층: MAC 주소와 프레임 단위 전송을 다룬다.</li><li>1계층 물리 계층: 전기적, 기계적 신호를 실제 매체로 전달한다.</li></ul><p>TCP/IP 모델은 실제 인터넷에서 널리 쓰이는 통신 모델이다. 응용 계층, 전송 계층, 인터넷 계층, 네트워크 액세스 계층으로 나누어 볼 수 있다. HTTP 요청을 보낼 때도 응용 계층에서 시작한 데이터가 아래 계층을 지나며 캡슐화되고, 상대방은 이를 다시 역캡슐화해 원래 데이터로 해석한다.</p><p>프로토콜은 통신에 필요한 형식, 약속, 규칙을 정의한 것이다. 구문은 데이터 형식과 부호화를, 의미는 제어 정보를, 시간은 통신 속도와 순서를 다룬다. 프로토콜이 맞아야 서로 다른 컴퓨터와 서비스가 같은 규칙으로 대화할 수 있다.</p><h2 id=4-http는-웹에서-요청과-응답을-주고받는-규칙이다>4. HTTP는 웹에서 요청과 응답을 주고받는 규칙이다<a hidden class=anchor aria-hidden=true href=#4-http는-웹에서-요청과-응답을-주고받는-규칙이다>#</a></h2><p>HTTP는 인터넷에서 데이터를 주고받기 위한 프로토콜이다. 전통적인 클라이언트-서버 모델을 따르고, 기본적으로 무상태 프로토콜이다. 무상태라는 말은 서버가 이전 요청의 상태를 자동으로 기억하지 않는다는 뜻이다.</p><p>HTTP 메시지는 보통 시작 줄, 헤더, 빈 줄, 본문으로 구성된다. 헤더에는 요청이나 응답에 대한 부가 정보가 들어가고, 본문에는 실제 데이터가 담길 수 있다.</p><p>HTTP 메서드는 요청의 의도를 표현한다.</p><ul><li>GET: 데이터를 조회한다.</li><li>POST: 데이터를 등록한다.</li><li>PUT: 데이터를 수정한다.</li><li>DELETE: 데이터를 삭제한다.</li></ul><p>HTTP 상태코드는 서버가 요청을 어떻게 처리했는지 알려준다. 100번대는 정보, 200번대는 성공, 300번대는 리다이렉션, 400번대는 클라이언트 오류, 500번대는 서버 오류를 뜻한다. 예를 들어 <code>200 OK</code>는 성공, <code>404 Not Found</code>는 요청한 페이지를 찾을 수 없음, <code>500 Internal Server Error</code>는 서버 내부 오류를 의미한다.</p><p>CORS는 서로 다른 출처 간 요청과 응답을 허용하기 위한 정책이다. 브라우저는 보안을 위해 기본적으로 같은 출처 정책을 적용한다. 출처는 프로토콜, 도메인, 포트로 결정된다. 다른 출처의 리소스를 안전하게 요청하려면 서버가 CORS 정책을 통해 허용 범위를 명시해야 한다.</p><h2 id=5-주요-프로토콜은-각자의-역할을-가진다>5. 주요 프로토콜은 각자의 역할을 가진다<a hidden class=anchor aria-hidden=true href=#5-주요-프로토콜은-각자의-역할을-가진다>#</a></h2><p>IP는 네트워크에서 데이터를 어디로 보낼지 결정하는 기본 프로토콜이다. 다만 IP 자체는 데이터가 반드시 정확하게 도착한다고 보장하지 않는다. 신뢰성은 주로 전송 계층에서 보완한다.</p><p>DNS는 도메인 이름을 IP 주소로 바꾸어 주는 시스템이다. 사용자는 숫자로 된 IP 주소 대신 도메인 이름을 입력하고, DNS는 그 이름에 해당하는 주소를 찾아준다. DHCP는 IP 주소, 게이트웨이, 네임서버 정보를 자동으로 할당해주는 프로토콜이다.</p><p>TCP는 신뢰성 있는 데이터 통신을 위한 연결형 프로토콜이다. 3-way handshake로 연결을 성립하고, 4-way handshake로 연결을 종료한다. 전송 순서를 보장하고 수신 여부를 확인하지만, 그만큼 UDP보다 느릴 수 있다.</p><p>UDP는 빠른 데이터 전송을 위한 비연결형 프로토콜이다. 신뢰성은 낮지만 속도가 빠르기 때문에 실시간 스트리밍, 게임, 음성 통신처럼 빠른 전달이 중요한 상황에서 자주 사용된다.</p><p>FTP는 파일 전송 프로토콜이고, SFTP는 SSH 기반으로 파일을 더 안전하게 전송하는 방식이다. SMTP는 이메일을 보내는 데 사용되고, IMAP과 POP3는 이메일을 가져오거나 관리하는 데 사용된다. SSH는 원격 서버에 안전하게 접속하기 위한 보안 프로토콜이다. SSL/TLS는 웹에서 오가는 데이터를 암호화하고, HTTPS는 HTTP 위에 보안 계층을 더한 프로토콜이다.</p><h2 id=6-보안은-인증-인가-암호화-상태-관리로-이어진다>6. 보안은 인증, 인가, 암호화, 상태 관리로 이어진다<a hidden class=anchor aria-hidden=true href=#6-보안은-인증-인가-암호화-상태-관리로-이어진다>#</a></h2><p>보안은 승인되지 않은 접근, 오용, 수정, 파괴, 부적절한 노출로부터 시스템을 보호하는 과정이다. 웹 서비스에서 보안은 단순히 비밀번호를 입력하는 순간에만 필요한 것이 아니라, 요청과 응답이 오가는 전체 과정에 걸쳐 필요하다.</p><p>인증은 사용자의 신원을 확인하는 과정이다. 비밀번호, 일회용 PIN, 인증 앱, 생체 인식 등이 인증 방식이 될 수 있다. 인가는 인증된 사용자가 어떤 자원에 접근할 수 있는지 확인하는 과정이다. 로그인은 인증에 가깝고, 관리자 페이지 접근 권한 확인은 인가에 가깝다.</p><p>해시는 임의의 길이 데이터를 고정된 길이의 값으로 바꾸는 단방향 암호화 방식이다. 해시값만 보고 원래 값을 되돌리기 어렵고, 작은 입력 변화도 완전히 다른 결과를 만든다. 그래서 비밀번호 저장, 파일 무결성 검증, 전자서명 등에 사용된다.</p><p>HTTP는 무상태 프로토콜이기 때문에 사용자를 기억하기 위한 장치가 필요하다. 쿠키는 서버가 브라우저에 저장하도록 보내는 작은 데이터이고, 세션은 서버 쪽에 사용자 상태를 저장하는 방식이다. 쿠키는 빠르고 서버 부담이 적지만 보안에 주의해야 하고, 세션은 상대적으로 안전하지만 서버 자원을 사용한다.</p><p>토큰은 서버가 클라이언트를 식별할 수 있도록 발급하는 암호화된 데이터다. JWT는 JSON Web Token의 약자로, Header, Payload, Signature로 구성된다. 서버는 토큰의 서명을 검증해 요청한 사용자를 확인할 수 있다. 다만 토큰이 탈취되면 위험하므로 만료 시간과 Refresh Token 설계가 중요하다.</p><p>캐시는 자주 필요한 데이터나 결과를 임시로 저장해 성능을 높이는 방식이다. 웹페이지 요소를 캐시하면 로딩이 빨라지고, 서버나 데이터베이스의 부하도 줄일 수 있다. CDN은 사용자의 위치와 가까운 서버에서 콘텐츠를 제공해 전송 속도와 안정성을 높이는 기술이다.</p><h2 id=마무리>마무리<a hidden class=anchor aria-hidden=true href=#마무리>#</a></h2><p>네트워크는 단순히 컴퓨터를 연결하는 기술이 아니라, 웹 서비스가 사용자와 서버 사이에서 데이터를 주고받는 전체 구조다. IP 주소, 라우팅, 프로토콜, HTTP, 보안, 캐시는 모두 서로 연결되어 하나의 서비스 경험을 만든다.</p><h3 id=1-핵심-주장>1. 핵심 주장<a hidden class=anchor aria-hidden=true href=#1-핵심-주장>#</a></h3><p>네트워크를 이해한다는 것은 &ldquo;요청이 어디서 출발해 어디로 가고, 어떤 규칙으로 처리되며, 어떤 방식으로 안전하게 돌아오는지"를 이해하는 일이다.</p><p>웹 서비스의 문제를 볼 때 화면만 보면 원인을 놓치기 쉽다. 요청이 실패했는지, 주소를 못 찾았는지, 권한이 없는지, 서버가 터졌는지, CORS에 막혔는지, 캐시 때문에 오래된 데이터가 보이는지까지 함께 봐야 한다.</p><h3 id=2-중요한-개념>2. 중요한 개념<a hidden class=anchor aria-hidden=true href=#2-중요한-개념>#</a></h3><ul><li>네트워크는 노드들이 데이터를 공유할 수 있도록 연결된 통신망이다.</li><li>IP 주소는 네트워크에서 장치를 식별하는 주소이고, NAT는 사설 IP와 공인 IP 사이를 변환한다.</li><li>라우팅은 패킷이 목적지까지 가는 경로를 결정하고, 포워딩은 실제로 다음 경로로 보내는 동작이다.</li><li>OSI 7계층과 TCP/IP 모델은 통신 과정을 계층별로 나누어 이해하게 해준다.</li><li>HTTP는 웹에서 클라이언트와 서버가 요청과 응답을 주고받는 프로토콜이다.</li><li>HTTP 상태코드는 요청 처리 결과를 숫자로 알려준다.</li><li>DNS는 도메인 이름을 IP 주소로 바꾸고, DHCP는 네트워크 설정을 자동으로 할당한다.</li><li>TCP는 신뢰성을, UDP는 속도를 중시하는 전송 프로토콜이다.</li><li>인증은 신원 확인이고, 인가는 권한 확인이다.</li><li>쿠키, 세션, 토큰, JWT는 HTTP의 무상태성을 보완하기 위한 상태 관리 방식이다.</li><li>캐시와 CDN은 성능과 안정성을 높이기 위한 네트워크 활용 방식이다.</li></ul><h3 id=3-내가-놓치기-쉬운-부분>3. 내가 놓치기 쉬운 부분<a hidden class=anchor aria-hidden=true href=#3-내가-놓치기-쉬운-부분>#</a></h3><p>HTTP 상태코드를 단순히 에러 숫자로만 보면 원인 분석이 어렵다. 400번대는 대체로 클라이언트 요청 문제이고, 500번대는 서버 쪽 문제에 가깝다. <code>401</code>, <code>403</code>, <code>404</code>, <code>500</code>은 모두 실패처럼 보이지만 각각 확인해야 할 지점이 다르다.</p><p>TCP와 UDP도 &ldquo;느리다&rdquo;, &ldquo;빠르다"로만 외우면 부족하다. TCP는 순서와 수신 확인이 중요할 때 쓰이고, UDP는 일부 손실보다 빠른 전달이 중요할 때 쓰인다. 어떤 프로토콜을 쓰는지는 서비스의 목적과 맞물린다.</p><p>쿠키, 세션, 토큰은 모두 로그인과 관련되어 보여도 저장 위치와 책임이 다르다. 쿠키는 클라이언트에 저장되고, 세션은 서버에 상태를 둔다. 토큰은 클라이언트가 들고 다니는 인증 정보에 가깝기 때문에 탈취와 만료 시간을 반드시 고려해야 한다.</p><h3 id=4-현실에-적용하는-방법>4. 현실에 적용하는 방법<a hidden class=anchor aria-hidden=true href=#4-현실에-적용하는-방법>#</a></h3><p>웹 요청이 실패했을 때는 먼저 개발자 도구의 Network 탭에서 요청 URL, HTTP 메서드, 상태코드, 요청 헤더, 응답 본문을 확인해볼 수 있다. <code>404</code>라면 경로를, <code>401</code>이나 <code>403</code>이라면 인증과 권한을, <code>500</code>이라면 서버 로그를 확인하는 식으로 원인을 좁힐 수 있다.</p><p>API를 설계하거나 이해할 때는 &ldquo;어떤 자원을 어떤 메서드로 요청하는가"를 먼저 정리하면 좋다. 조회는 <code>GET</code>, 생성은 <code>POST</code>, 수정은 <code>PUT</code>, 삭제는 <code>DELETE</code>처럼 요청의 의도를 맞추면 협업이 쉬워진다.</p><p>로그인 기능을 볼 때는 쿠키, 세션, 토큰 중 어떤 방식으로 상태를 유지하는지 확인해보려고 한다. 또 외부 API를 호출할 때 CORS 문제가 생기면 단순히 프론트엔드 오류로만 보지 않고, 서버가 어떤 출처를 허용하고 있는지도 함께 확인해야 한다.</p><h3 id=5-나에게-물어볼-질문-5개>5. 나에게 물어볼 질문 5개<a hidden class=anchor aria-hidden=true href=#5-나에게-물어볼-질문-5개>#</a></h3><ol><li>내가 접속한 웹사이트의 도메인은 어떤 과정을 거쳐 IP 주소로 변환될까?</li><li>API 요청이 실패했을 때 상태코드를 보고 원인을 어디부터 확인할 수 있을까?</li><li>TCP와 UDP 중 내가 사용하는 서비스는 어떤 특성을 더 중요하게 여길까?</li><li>로그인 상태는 쿠키, 세션, 토큰 중 어떤 방식으로 유지되고 있을까?</li><li>캐시나 CDN 때문에 사용자가 더 빠르게 콘텐츠를 볼 수 있는 사례를 설명할 수 있을까?</li></ol></div><footer class=post-footer><ul class=post-tags><li><a href=https://gnl2109.github.io/tags/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/>네트워크</a></li><li><a href=https://gnl2109.github.io/tags/http/>HTTP</a></li><li><a href=https://gnl2109.github.io/tags/tcp/ip/>TCP/IP</a></li><li><a href=https://gnl2109.github.io/tags/%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C/>프로토콜</a></li><li><a href=https://gnl2109.github.io/tags/%EB%B3%B4%EC%95%88/>보안</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://gnl2109.github.io/>이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> ·
-<span>Powered by
-<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+1. 네트워크는 노드들이 데이터를 공유하는 통신망이다 네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1314/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[이어드림스쿨6기_1개월] 03 네트워크 개론",
+      "item": "http://localhost:1314/posts/month1-network-introduction/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[이어드림스쿨6기_1개월] 03 네트워크 개론",
+  "name": "[이어드림스쿨6기_1개월] 03 네트워크 개론",
+  "description": "강의자료/03 네트워크 개론 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.\n네트워크는 두 대 이상의 컴퓨터가 연결되어 데이터를 주고받을 수 있도록 만든 통신망이다. 웹페이지를 열고, 이메일을 보내고, 서버에 API 요청을 보내고, 로그인 상태를 유지하는 모든 일은 네트워크 위에서 일어난다. 그래서 네트워크를 이해하면 웹 서비스가 화면 뒤에서 어떻게 움직이는지 훨씬 선명하게 볼 수 있다.\n1. 네트워크는 노드들이 데이터를 공유하는 통신망이다 네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다.\n",
+  "keywords": [
+    "네트워크", "HTTP", "TCP/IP", "프로토콜", "보안"
+  ],
+  "articleBody": "강의자료/03 네트워크 개론 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.\n네트워크는 두 대 이상의 컴퓨터가 연결되어 데이터를 주고받을 수 있도록 만든 통신망이다. 웹페이지를 열고, 이메일을 보내고, 서버에 API 요청을 보내고, 로그인 상태를 유지하는 모든 일은 네트워크 위에서 일어난다. 그래서 네트워크를 이해하면 웹 서비스가 화면 뒤에서 어떻게 움직이는지 훨씬 선명하게 볼 수 있다.\n1. 네트워크는 노드들이 데이터를 공유하는 통신망이다 네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다.\n네트워크의 장점은 자료 공유, 디지털 미디어 전송, 여러 장치 간 작업 분산이다. 반대로 보안 문제가 생기거나 데이터가 변조될 위험도 있다. 연결이 많아질수록 편리함은 커지지만, 그만큼 신뢰성과 보안도 함께 고려해야 한다.\n네트워크는 유선 또는 무선 매체를 통해 작동한다. 이더넷 케이블은 근거리 통신망에서 흔히 쓰이고, 광섬유 케이블은 장거리 고속 통신에 강하다. 무선 통신은 케이블 없이 연결할 수 있다는 장점이 있지만, 장애물이나 간섭의 영향을 받을 수 있다.\n네트워크를 연결하는 구조를 토폴로지라고 한다. 스타형은 중앙 장치에 노드들이 연결되는 구조이고, 버스형은 하나의 선을 여러 장치가 공유한다. 링형은 하나의 순환 경로를 따라 통신하고, 망형은 여러 노드가 서로 복잡하게 연결되어 안정성을 높인다. 어떤 구조를 선택하느냐에 따라 비용, 장애 대응, 확장성이 달라진다.\n네트워크 범위에 따라 PAN, LAN, MAN, WAN으로 나눌 수 있다. PAN은 개인 기기 사이의 짧은 연결이고, LAN은 집이나 회사 같은 좁은 지역의 네트워크다. MAN은 도시 단위, WAN은 국가나 대륙처럼 넓은 범위를 연결한다.\n2. IP 주소와 라우팅은 목적지를 찾기 위한 장치다 IP 주소는 네트워크 환경에서 사용하는 컴퓨터의 주소다. 인터넷에서 데이터를 주고받으려면 출발지와 목적지를 식별할 수 있어야 한다. IPv4는 32비트 주소 체계이고, IPv6는 더 많은 주소를 제공하기 위해 128비트 주소 체계를 사용한다.\nIP 주소는 네트워크 ID와 호스트 ID로 나눌 수 있다. 서브넷 마스크는 어떤 부분이 네트워크 주소이고 어떤 부분이 호스트 주소인지 구분하는 기준이다. 서브넷팅은 큰 네트워크를 더 작은 네트워크로 나누는 작업이다.\n공인 IP는 인터넷에서 식별 가능한 주소이고, 사설 IP는 집이나 회사 같은 내부 네트워크에서 사용하는 주소다. 사설 IP만으로는 외부 인터넷에서 직접 식별되기 어렵기 때문에 NAT가 사용된다. NAT는 사설 IP와 공인 IP 사이에서 주소를 변환해 여러 내부 장치가 하나의 공인 IP를 통해 인터넷을 사용할 수 있도록 돕는다.\n네트워크에서는 유니캐스트, 멀티캐스트, 브로드캐스트 같은 통신 방식도 사용된다. 유니캐스트는 특정 대상과 1:1로 통신하는 방식이고, 멀티캐스트는 특정 그룹에 데이터를 보내는 방식이다. 브로드캐스트는 같은 네트워크의 모든 장치에게 데이터를 보내는 방식이다.\n라우터는 네트워크 사이에서 패킷이 어느 경로로 가야 하는지 판단한다. 포워딩은 라우터에 들어온 패킷을 알맞은 출력 포트로 보내는 동작이고, 라우팅은 패킷이 목적지까지 가기 위한 경로를 결정하는 과정이다.\n3. OSI 7계층과 TCP/IP는 통신 과정을 나누어 이해하게 해준다 OSI 7계층은 네트워크 통신 구조를 7개의 계층으로 나누어 설명하는 모델이다. 복잡한 통신 과정을 계층별 역할로 나누면, 문제가 생겼을 때 어디를 확인해야 하는지 파악하기 쉬워진다.\n7계층 응용 계층: 사용자가 만나는 서비스와 가까운 계층이다. HTTP, SMTP, SSH 등이 여기에 해당한다. 6계층 표현 계층: 데이터 인코딩, 압축, 암호화 같은 표현 방식을 다룬다. 5계층 세션 계층: 통신 세션을 만들고 유지하고 종료한다. 4계층 전송 계층: TCP, UDP처럼 종단 간 데이터 전송을 담당한다. 3계층 네트워크 계층: IP 주소를 기반으로 경로를 찾는다. 2계층 데이터링크 계층: MAC 주소와 프레임 단위 전송을 다룬다. 1계층 물리 계층: 전기적, 기계적 신호를 실제 매체로 전달한다. TCP/IP 모델은 실제 인터넷에서 널리 쓰이는 통신 모델이다. 응용 계층, 전송 계층, 인터넷 계층, 네트워크 액세스 계층으로 나누어 볼 수 있다. HTTP 요청을 보낼 때도 응용 계층에서 시작한 데이터가 아래 계층을 지나며 캡슐화되고, 상대방은 이를 다시 역캡슐화해 원래 데이터로 해석한다.\n프로토콜은 통신에 필요한 형식, 약속, 규칙을 정의한 것이다. 구문은 데이터 형식과 부호화를, 의미는 제어 정보를, 시간은 통신 속도와 순서를 다룬다. 프로토콜이 맞아야 서로 다른 컴퓨터와 서비스가 같은 규칙으로 대화할 수 있다.\n4. HTTP는 웹에서 요청과 응답을 주고받는 규칙이다 HTTP는 인터넷에서 데이터를 주고받기 위한 프로토콜이다. 전통적인 클라이언트-서버 모델을 따르고, 기본적으로 무상태 프로토콜이다. 무상태라는 말은 서버가 이전 요청의 상태를 자동으로 기억하지 않는다는 뜻이다.\nHTTP 메시지는 보통 시작 줄, 헤더, 빈 줄, 본문으로 구성된다. 헤더에는 요청이나 응답에 대한 부가 정보가 들어가고, 본문에는 실제 데이터가 담길 수 있다.\nHTTP 메서드는 요청의 의도를 표현한다.\nGET: 데이터를 조회한다. POST: 데이터를 등록한다. PUT: 데이터를 수정한다. DELETE: 데이터를 삭제한다. HTTP 상태코드는 서버가 요청을 어떻게 처리했는지 알려준다. 100번대는 정보, 200번대는 성공, 300번대는 리다이렉션, 400번대는 클라이언트 오류, 500번대는 서버 오류를 뜻한다. 예를 들어 200 OK는 성공, 404 Not Found는 요청한 페이지를 찾을 수 없음, 500 Internal Server Error는 서버 내부 오류를 의미한다.\nCORS는 서로 다른 출처 간 요청과 응답을 허용하기 위한 정책이다. 브라우저는 보안을 위해 기본적으로 같은 출처 정책을 적용한다. 출처는 프로토콜, 도메인, 포트로 결정된다. 다른 출처의 리소스를 안전하게 요청하려면 서버가 CORS 정책을 통해 허용 범위를 명시해야 한다.\n5. 주요 프로토콜은 각자의 역할을 가진다 IP는 네트워크에서 데이터를 어디로 보낼지 결정하는 기본 프로토콜이다. 다만 IP 자체는 데이터가 반드시 정확하게 도착한다고 보장하지 않는다. 신뢰성은 주로 전송 계층에서 보완한다.\nDNS는 도메인 이름을 IP 주소로 바꾸어 주는 시스템이다. 사용자는 숫자로 된 IP 주소 대신 도메인 이름을 입력하고, DNS는 그 이름에 해당하는 주소를 찾아준다. DHCP는 IP 주소, 게이트웨이, 네임서버 정보를 자동으로 할당해주는 프로토콜이다.\nTCP는 신뢰성 있는 데이터 통신을 위한 연결형 프로토콜이다. 3-way handshake로 연결을 성립하고, 4-way handshake로 연결을 종료한다. 전송 순서를 보장하고 수신 여부를 확인하지만, 그만큼 UDP보다 느릴 수 있다.\nUDP는 빠른 데이터 전송을 위한 비연결형 프로토콜이다. 신뢰성은 낮지만 속도가 빠르기 때문에 실시간 스트리밍, 게임, 음성 통신처럼 빠른 전달이 중요한 상황에서 자주 사용된다.\nFTP는 파일 전송 프로토콜이고, SFTP는 SSH 기반으로 파일을 더 안전하게 전송하는 방식이다. SMTP는 이메일을 보내는 데 사용되고, IMAP과 POP3는 이메일을 가져오거나 관리하는 데 사용된다. SSH는 원격 서버에 안전하게 접속하기 위한 보안 프로토콜이다. SSL/TLS는 웹에서 오가는 데이터를 암호화하고, HTTPS는 HTTP 위에 보안 계층을 더한 프로토콜이다.\n6. 보안은 인증, 인가, 암호화, 상태 관리로 이어진다 보안은 승인되지 않은 접근, 오용, 수정, 파괴, 부적절한 노출로부터 시스템을 보호하는 과정이다. 웹 서비스에서 보안은 단순히 비밀번호를 입력하는 순간에만 필요한 것이 아니라, 요청과 응답이 오가는 전체 과정에 걸쳐 필요하다.\n인증은 사용자의 신원을 확인하는 과정이다. 비밀번호, 일회용 PIN, 인증 앱, 생체 인식 등이 인증 방식이 될 수 있다. 인가는 인증된 사용자가 어떤 자원에 접근할 수 있는지 확인하는 과정이다. 로그인은 인증에 가깝고, 관리자 페이지 접근 권한 확인은 인가에 가깝다.\n해시는 임의의 길이 데이터를 고정된 길이의 값으로 바꾸는 단방향 암호화 방식이다. 해시값만 보고 원래 값을 되돌리기 어렵고, 작은 입력 변화도 완전히 다른 결과를 만든다. 그래서 비밀번호 저장, 파일 무결성 검증, 전자서명 등에 사용된다.\nHTTP는 무상태 프로토콜이기 때문에 사용자를 기억하기 위한 장치가 필요하다. 쿠키는 서버가 브라우저에 저장하도록 보내는 작은 데이터이고, 세션은 서버 쪽에 사용자 상태를 저장하는 방식이다. 쿠키는 빠르고 서버 부담이 적지만 보안에 주의해야 하고, 세션은 상대적으로 안전하지만 서버 자원을 사용한다.\n토큰은 서버가 클라이언트를 식별할 수 있도록 발급하는 암호화된 데이터다. JWT는 JSON Web Token의 약자로, Header, Payload, Signature로 구성된다. 서버는 토큰의 서명을 검증해 요청한 사용자를 확인할 수 있다. 다만 토큰이 탈취되면 위험하므로 만료 시간과 Refresh Token 설계가 중요하다.\n캐시는 자주 필요한 데이터나 결과를 임시로 저장해 성능을 높이는 방식이다. 웹페이지 요소를 캐시하면 로딩이 빨라지고, 서버나 데이터베이스의 부하도 줄일 수 있다. CDN은 사용자의 위치와 가까운 서버에서 콘텐츠를 제공해 전송 속도와 안정성을 높이는 기술이다.\n마무리 네트워크는 단순히 컴퓨터를 연결하는 기술이 아니라, 웹 서비스가 사용자와 서버 사이에서 데이터를 주고받는 전체 구조다. IP 주소, 라우팅, 프로토콜, HTTP, 보안, 캐시는 모두 서로 연결되어 하나의 서비스 경험을 만든다.\n1. 핵심 주장 네트워크를 이해한다는 것은 “요청이 어디서 출발해 어디로 가고, 어떤 규칙으로 처리되며, 어떤 방식으로 안전하게 돌아오는지\"를 이해하는 일이다.\n웹 서비스의 문제를 볼 때 화면만 보면 원인을 놓치기 쉽다. 요청이 실패했는지, 주소를 못 찾았는지, 권한이 없는지, 서버가 터졌는지, CORS에 막혔는지, 캐시 때문에 오래된 데이터가 보이는지까지 함께 봐야 한다.\n2. 중요한 개념 네트워크는 노드들이 데이터를 공유할 수 있도록 연결된 통신망이다. IP 주소는 네트워크에서 장치를 식별하는 주소이고, NAT는 사설 IP와 공인 IP 사이를 변환한다. 라우팅은 패킷이 목적지까지 가는 경로를 결정하고, 포워딩은 실제로 다음 경로로 보내는 동작이다. OSI 7계층과 TCP/IP 모델은 통신 과정을 계층별로 나누어 이해하게 해준다. HTTP는 웹에서 클라이언트와 서버가 요청과 응답을 주고받는 프로토콜이다. HTTP 상태코드는 요청 처리 결과를 숫자로 알려준다. DNS는 도메인 이름을 IP 주소로 바꾸고, DHCP는 네트워크 설정을 자동으로 할당한다. TCP는 신뢰성을, UDP는 속도를 중시하는 전송 프로토콜이다. 인증은 신원 확인이고, 인가는 권한 확인이다. 쿠키, 세션, 토큰, JWT는 HTTP의 무상태성을 보완하기 위한 상태 관리 방식이다. 캐시와 CDN은 성능과 안정성을 높이기 위한 네트워크 활용 방식이다. 3. 내가 놓치기 쉬운 부분 HTTP 상태코드를 단순히 에러 숫자로만 보면 원인 분석이 어렵다. 400번대는 대체로 클라이언트 요청 문제이고, 500번대는 서버 쪽 문제에 가깝다. 401, 403, 404, 500은 모두 실패처럼 보이지만 각각 확인해야 할 지점이 다르다.\nTCP와 UDP도 “느리다”, “빠르다\"로만 외우면 부족하다. TCP는 순서와 수신 확인이 중요할 때 쓰이고, UDP는 일부 손실보다 빠른 전달이 중요할 때 쓰인다. 어떤 프로토콜을 쓰는지는 서비스의 목적과 맞물린다.\n쿠키, 세션, 토큰은 모두 로그인과 관련되어 보여도 저장 위치와 책임이 다르다. 쿠키는 클라이언트에 저장되고, 세션은 서버에 상태를 둔다. 토큰은 클라이언트가 들고 다니는 인증 정보에 가깝기 때문에 탈취와 만료 시간을 반드시 고려해야 한다.\n4. 현실에 적용하는 방법 웹 요청이 실패했을 때는 먼저 개발자 도구의 Network 탭에서 요청 URL, HTTP 메서드, 상태코드, 요청 헤더, 응답 본문을 확인해볼 수 있다. 404라면 경로를, 401이나 403이라면 인증과 권한을, 500이라면 서버 로그를 확인하는 식으로 원인을 좁힐 수 있다.\nAPI를 설계하거나 이해할 때는 “어떤 자원을 어떤 메서드로 요청하는가\"를 먼저 정리하면 좋다. 조회는 GET, 생성은 POST, 수정은 PUT, 삭제는 DELETE처럼 요청의 의도를 맞추면 협업이 쉬워진다.\n로그인 기능을 볼 때는 쿠키, 세션, 토큰 중 어떤 방식으로 상태를 유지하는지 확인해보려고 한다. 또 외부 API를 호출할 때 CORS 문제가 생기면 단순히 프론트엔드 오류로만 보지 않고, 서버가 어떤 출처를 허용하고 있는지도 함께 확인해야 한다.\n5. 나에게 물어볼 질문 5개 내가 접속한 웹사이트의 도메인은 어떤 과정을 거쳐 IP 주소로 변환될까? API 요청이 실패했을 때 상태코드를 보고 원인을 어디부터 확인할 수 있을까? TCP와 UDP 중 내가 사용하는 서비스는 어떤 특성을 더 중요하게 여길까? 로그인 상태는 쿠키, 세션, 토큰 중 어떤 방식으로 유지되고 있을까? 캐시나 CDN 때문에 사용자가 더 빠르게 콘텐츠를 볼 수 있는 사례를 설명할 수 있을까? ",
+  "wordCount" : "1516",
+  "inLanguage": "en",
+  "datePublished": "2026-05-31T23:07:00+09:00",
+  "dateModified": "2026-05-31T23:07:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1314/posts/month1-network-introduction/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1314/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1314/" accesskey="h" title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      [이어드림스쿨6기_1개월] 03 네트워크 개론
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-05-31 23:07:00 +0900 KST'>2026년 5월 31일</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><p><code>강의자료/03 네트워크 개론</code> 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.</p>
+<p>네트워크는 두 대 이상의 컴퓨터가 연결되어 데이터를 주고받을 수 있도록 만든 통신망이다. 웹페이지를 열고, 이메일을 보내고, 서버에 API 요청을 보내고, 로그인 상태를 유지하는 모든 일은 네트워크 위에서 일어난다. 그래서 네트워크를 이해하면 웹 서비스가 화면 뒤에서 어떻게 움직이는지 훨씬 선명하게 볼 수 있다.</p>
+<h2 id="1-네트워크는-노드들이-데이터를-공유하는-통신망이다">1. 네트워크는 노드들이 데이터를 공유하는 통신망이다<a hidden class="anchor" aria-hidden="true" href="#1-네트워크는-노드들이-데이터를-공유하는-통신망이다">#</a></h2>
+<p>네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다.</p>
+<p>네트워크의 장점은 자료 공유, 디지털 미디어 전송, 여러 장치 간 작업 분산이다. 반대로 보안 문제가 생기거나 데이터가 변조될 위험도 있다. 연결이 많아질수록 편리함은 커지지만, 그만큼 신뢰성과 보안도 함께 고려해야 한다.</p>
+<p>네트워크는 유선 또는 무선 매체를 통해 작동한다. 이더넷 케이블은 근거리 통신망에서 흔히 쓰이고, 광섬유 케이블은 장거리 고속 통신에 강하다. 무선 통신은 케이블 없이 연결할 수 있다는 장점이 있지만, 장애물이나 간섭의 영향을 받을 수 있다.</p>
+<p>네트워크를 연결하는 구조를 토폴로지라고 한다. 스타형은 중앙 장치에 노드들이 연결되는 구조이고, 버스형은 하나의 선을 여러 장치가 공유한다. 링형은 하나의 순환 경로를 따라 통신하고, 망형은 여러 노드가 서로 복잡하게 연결되어 안정성을 높인다. 어떤 구조를 선택하느냐에 따라 비용, 장애 대응, 확장성이 달라진다.</p>
+<p>네트워크 범위에 따라 PAN, LAN, MAN, WAN으로 나눌 수 있다. PAN은 개인 기기 사이의 짧은 연결이고, LAN은 집이나 회사 같은 좁은 지역의 네트워크다. MAN은 도시 단위, WAN은 국가나 대륙처럼 넓은 범위를 연결한다.</p>
+<h2 id="2-ip-주소와-라우팅은-목적지를-찾기-위한-장치다">2. IP 주소와 라우팅은 목적지를 찾기 위한 장치다<a hidden class="anchor" aria-hidden="true" href="#2-ip-주소와-라우팅은-목적지를-찾기-위한-장치다">#</a></h2>
+<p>IP 주소는 네트워크 환경에서 사용하는 컴퓨터의 주소다. 인터넷에서 데이터를 주고받으려면 출발지와 목적지를 식별할 수 있어야 한다. IPv4는 32비트 주소 체계이고, IPv6는 더 많은 주소를 제공하기 위해 128비트 주소 체계를 사용한다.</p>
+<p>IP 주소는 네트워크 ID와 호스트 ID로 나눌 수 있다. 서브넷 마스크는 어떤 부분이 네트워크 주소이고 어떤 부분이 호스트 주소인지 구분하는 기준이다. 서브넷팅은 큰 네트워크를 더 작은 네트워크로 나누는 작업이다.</p>
+<p>공인 IP는 인터넷에서 식별 가능한 주소이고, 사설 IP는 집이나 회사 같은 내부 네트워크에서 사용하는 주소다. 사설 IP만으로는 외부 인터넷에서 직접 식별되기 어렵기 때문에 NAT가 사용된다. NAT는 사설 IP와 공인 IP 사이에서 주소를 변환해 여러 내부 장치가 하나의 공인 IP를 통해 인터넷을 사용할 수 있도록 돕는다.</p>
+<p>네트워크에서는 유니캐스트, 멀티캐스트, 브로드캐스트 같은 통신 방식도 사용된다. 유니캐스트는 특정 대상과 1:1로 통신하는 방식이고, 멀티캐스트는 특정 그룹에 데이터를 보내는 방식이다. 브로드캐스트는 같은 네트워크의 모든 장치에게 데이터를 보내는 방식이다.</p>
+<p>라우터는 네트워크 사이에서 패킷이 어느 경로로 가야 하는지 판단한다. 포워딩은 라우터에 들어온 패킷을 알맞은 출력 포트로 보내는 동작이고, 라우팅은 패킷이 목적지까지 가기 위한 경로를 결정하는 과정이다.</p>
+<h2 id="3-osi-7계층과-tcpip는-통신-과정을-나누어-이해하게-해준다">3. OSI 7계층과 TCP/IP는 통신 과정을 나누어 이해하게 해준다<a hidden class="anchor" aria-hidden="true" href="#3-osi-7계층과-tcpip는-통신-과정을-나누어-이해하게-해준다">#</a></h2>
+<p>OSI 7계층은 네트워크 통신 구조를 7개의 계층으로 나누어 설명하는 모델이다. 복잡한 통신 과정을 계층별 역할로 나누면, 문제가 생겼을 때 어디를 확인해야 하는지 파악하기 쉬워진다.</p>
+<ul>
+<li>7계층 응용 계층: 사용자가 만나는 서비스와 가까운 계층이다. HTTP, SMTP, SSH 등이 여기에 해당한다.</li>
+<li>6계층 표현 계층: 데이터 인코딩, 압축, 암호화 같은 표현 방식을 다룬다.</li>
+<li>5계층 세션 계층: 통신 세션을 만들고 유지하고 종료한다.</li>
+<li>4계층 전송 계층: TCP, UDP처럼 종단 간 데이터 전송을 담당한다.</li>
+<li>3계층 네트워크 계층: IP 주소를 기반으로 경로를 찾는다.</li>
+<li>2계층 데이터링크 계층: MAC 주소와 프레임 단위 전송을 다룬다.</li>
+<li>1계층 물리 계층: 전기적, 기계적 신호를 실제 매체로 전달한다.</li>
+</ul>
+<p>TCP/IP 모델은 실제 인터넷에서 널리 쓰이는 통신 모델이다. 응용 계층, 전송 계층, 인터넷 계층, 네트워크 액세스 계층으로 나누어 볼 수 있다. HTTP 요청을 보낼 때도 응용 계층에서 시작한 데이터가 아래 계층을 지나며 캡슐화되고, 상대방은 이를 다시 역캡슐화해 원래 데이터로 해석한다.</p>
+<p>프로토콜은 통신에 필요한 형식, 약속, 규칙을 정의한 것이다. 구문은 데이터 형식과 부호화를, 의미는 제어 정보를, 시간은 통신 속도와 순서를 다룬다. 프로토콜이 맞아야 서로 다른 컴퓨터와 서비스가 같은 규칙으로 대화할 수 있다.</p>
+<h2 id="4-http는-웹에서-요청과-응답을-주고받는-규칙이다">4. HTTP는 웹에서 요청과 응답을 주고받는 규칙이다<a hidden class="anchor" aria-hidden="true" href="#4-http는-웹에서-요청과-응답을-주고받는-규칙이다">#</a></h2>
+<p>HTTP는 인터넷에서 데이터를 주고받기 위한 프로토콜이다. 전통적인 클라이언트-서버 모델을 따르고, 기본적으로 무상태 프로토콜이다. 무상태라는 말은 서버가 이전 요청의 상태를 자동으로 기억하지 않는다는 뜻이다.</p>
+<p>HTTP 메시지는 보통 시작 줄, 헤더, 빈 줄, 본문으로 구성된다. 헤더에는 요청이나 응답에 대한 부가 정보가 들어가고, 본문에는 실제 데이터가 담길 수 있다.</p>
+<p>HTTP 메서드는 요청의 의도를 표현한다.</p>
+<ul>
+<li>GET: 데이터를 조회한다.</li>
+<li>POST: 데이터를 등록한다.</li>
+<li>PUT: 데이터를 수정한다.</li>
+<li>DELETE: 데이터를 삭제한다.</li>
+</ul>
+<p>HTTP 상태코드는 서버가 요청을 어떻게 처리했는지 알려준다. 100번대는 정보, 200번대는 성공, 300번대는 리다이렉션, 400번대는 클라이언트 오류, 500번대는 서버 오류를 뜻한다. 예를 들어 <code>200 OK</code>는 성공, <code>404 Not Found</code>는 요청한 페이지를 찾을 수 없음, <code>500 Internal Server Error</code>는 서버 내부 오류를 의미한다.</p>
+<p>CORS는 서로 다른 출처 간 요청과 응답을 허용하기 위한 정책이다. 브라우저는 보안을 위해 기본적으로 같은 출처 정책을 적용한다. 출처는 프로토콜, 도메인, 포트로 결정된다. 다른 출처의 리소스를 안전하게 요청하려면 서버가 CORS 정책을 통해 허용 범위를 명시해야 한다.</p>
+<h2 id="5-주요-프로토콜은-각자의-역할을-가진다">5. 주요 프로토콜은 각자의 역할을 가진다<a hidden class="anchor" aria-hidden="true" href="#5-주요-프로토콜은-각자의-역할을-가진다">#</a></h2>
+<p>IP는 네트워크에서 데이터를 어디로 보낼지 결정하는 기본 프로토콜이다. 다만 IP 자체는 데이터가 반드시 정확하게 도착한다고 보장하지 않는다. 신뢰성은 주로 전송 계층에서 보완한다.</p>
+<p>DNS는 도메인 이름을 IP 주소로 바꾸어 주는 시스템이다. 사용자는 숫자로 된 IP 주소 대신 도메인 이름을 입력하고, DNS는 그 이름에 해당하는 주소를 찾아준다. DHCP는 IP 주소, 게이트웨이, 네임서버 정보를 자동으로 할당해주는 프로토콜이다.</p>
+<p>TCP는 신뢰성 있는 데이터 통신을 위한 연결형 프로토콜이다. 3-way handshake로 연결을 성립하고, 4-way handshake로 연결을 종료한다. 전송 순서를 보장하고 수신 여부를 확인하지만, 그만큼 UDP보다 느릴 수 있다.</p>
+<p>UDP는 빠른 데이터 전송을 위한 비연결형 프로토콜이다. 신뢰성은 낮지만 속도가 빠르기 때문에 실시간 스트리밍, 게임, 음성 통신처럼 빠른 전달이 중요한 상황에서 자주 사용된다.</p>
+<p>FTP는 파일 전송 프로토콜이고, SFTP는 SSH 기반으로 파일을 더 안전하게 전송하는 방식이다. SMTP는 이메일을 보내는 데 사용되고, IMAP과 POP3는 이메일을 가져오거나 관리하는 데 사용된다. SSH는 원격 서버에 안전하게 접속하기 위한 보안 프로토콜이다. SSL/TLS는 웹에서 오가는 데이터를 암호화하고, HTTPS는 HTTP 위에 보안 계층을 더한 프로토콜이다.</p>
+<h2 id="6-보안은-인증-인가-암호화-상태-관리로-이어진다">6. 보안은 인증, 인가, 암호화, 상태 관리로 이어진다<a hidden class="anchor" aria-hidden="true" href="#6-보안은-인증-인가-암호화-상태-관리로-이어진다">#</a></h2>
+<p>보안은 승인되지 않은 접근, 오용, 수정, 파괴, 부적절한 노출로부터 시스템을 보호하는 과정이다. 웹 서비스에서 보안은 단순히 비밀번호를 입력하는 순간에만 필요한 것이 아니라, 요청과 응답이 오가는 전체 과정에 걸쳐 필요하다.</p>
+<p>인증은 사용자의 신원을 확인하는 과정이다. 비밀번호, 일회용 PIN, 인증 앱, 생체 인식 등이 인증 방식이 될 수 있다. 인가는 인증된 사용자가 어떤 자원에 접근할 수 있는지 확인하는 과정이다. 로그인은 인증에 가깝고, 관리자 페이지 접근 권한 확인은 인가에 가깝다.</p>
+<p>해시는 임의의 길이 데이터를 고정된 길이의 값으로 바꾸는 단방향 암호화 방식이다. 해시값만 보고 원래 값을 되돌리기 어렵고, 작은 입력 변화도 완전히 다른 결과를 만든다. 그래서 비밀번호 저장, 파일 무결성 검증, 전자서명 등에 사용된다.</p>
+<p>HTTP는 무상태 프로토콜이기 때문에 사용자를 기억하기 위한 장치가 필요하다. 쿠키는 서버가 브라우저에 저장하도록 보내는 작은 데이터이고, 세션은 서버 쪽에 사용자 상태를 저장하는 방식이다. 쿠키는 빠르고 서버 부담이 적지만 보안에 주의해야 하고, 세션은 상대적으로 안전하지만 서버 자원을 사용한다.</p>
+<p>토큰은 서버가 클라이언트를 식별할 수 있도록 발급하는 암호화된 데이터다. JWT는 JSON Web Token의 약자로, Header, Payload, Signature로 구성된다. 서버는 토큰의 서명을 검증해 요청한 사용자를 확인할 수 있다. 다만 토큰이 탈취되면 위험하므로 만료 시간과 Refresh Token 설계가 중요하다.</p>
+<p>캐시는 자주 필요한 데이터나 결과를 임시로 저장해 성능을 높이는 방식이다. 웹페이지 요소를 캐시하면 로딩이 빨라지고, 서버나 데이터베이스의 부하도 줄일 수 있다. CDN은 사용자의 위치와 가까운 서버에서 콘텐츠를 제공해 전송 속도와 안정성을 높이는 기술이다.</p>
+<h2 id="마무리">마무리<a hidden class="anchor" aria-hidden="true" href="#마무리">#</a></h2>
+<p>네트워크는 단순히 컴퓨터를 연결하는 기술이 아니라, 웹 서비스가 사용자와 서버 사이에서 데이터를 주고받는 전체 구조다. IP 주소, 라우팅, 프로토콜, HTTP, 보안, 캐시는 모두 서로 연결되어 하나의 서비스 경험을 만든다.</p>
+<h3 id="1-핵심-주장">1. 핵심 주장<a hidden class="anchor" aria-hidden="true" href="#1-핵심-주장">#</a></h3>
+<p>네트워크를 이해한다는 것은 &ldquo;요청이 어디서 출발해 어디로 가고, 어떤 규칙으로 처리되며, 어떤 방식으로 안전하게 돌아오는지&quot;를 이해하는 일이다.</p>
+<p>웹 서비스의 문제를 볼 때 화면만 보면 원인을 놓치기 쉽다. 요청이 실패했는지, 주소를 못 찾았는지, 권한이 없는지, 서버가 터졌는지, CORS에 막혔는지, 캐시 때문에 오래된 데이터가 보이는지까지 함께 봐야 한다.</p>
+<h3 id="2-중요한-개념">2. 중요한 개념<a hidden class="anchor" aria-hidden="true" href="#2-중요한-개념">#</a></h3>
+<ul>
+<li>네트워크는 노드들이 데이터를 공유할 수 있도록 연결된 통신망이다.</li>
+<li>IP 주소는 네트워크에서 장치를 식별하는 주소이고, NAT는 사설 IP와 공인 IP 사이를 변환한다.</li>
+<li>라우팅은 패킷이 목적지까지 가는 경로를 결정하고, 포워딩은 실제로 다음 경로로 보내는 동작이다.</li>
+<li>OSI 7계층과 TCP/IP 모델은 통신 과정을 계층별로 나누어 이해하게 해준다.</li>
+<li>HTTP는 웹에서 클라이언트와 서버가 요청과 응답을 주고받는 프로토콜이다.</li>
+<li>HTTP 상태코드는 요청 처리 결과를 숫자로 알려준다.</li>
+<li>DNS는 도메인 이름을 IP 주소로 바꾸고, DHCP는 네트워크 설정을 자동으로 할당한다.</li>
+<li>TCP는 신뢰성을, UDP는 속도를 중시하는 전송 프로토콜이다.</li>
+<li>인증은 신원 확인이고, 인가는 권한 확인이다.</li>
+<li>쿠키, 세션, 토큰, JWT는 HTTP의 무상태성을 보완하기 위한 상태 관리 방식이다.</li>
+<li>캐시와 CDN은 성능과 안정성을 높이기 위한 네트워크 활용 방식이다.</li>
+</ul>
+<h3 id="3-내가-놓치기-쉬운-부분">3. 내가 놓치기 쉬운 부분<a hidden class="anchor" aria-hidden="true" href="#3-내가-놓치기-쉬운-부분">#</a></h3>
+<p>HTTP 상태코드를 단순히 에러 숫자로만 보면 원인 분석이 어렵다. 400번대는 대체로 클라이언트 요청 문제이고, 500번대는 서버 쪽 문제에 가깝다. <code>401</code>, <code>403</code>, <code>404</code>, <code>500</code>은 모두 실패처럼 보이지만 각각 확인해야 할 지점이 다르다.</p>
+<p>TCP와 UDP도 &ldquo;느리다&rdquo;, &ldquo;빠르다&quot;로만 외우면 부족하다. TCP는 순서와 수신 확인이 중요할 때 쓰이고, UDP는 일부 손실보다 빠른 전달이 중요할 때 쓰인다. 어떤 프로토콜을 쓰는지는 서비스의 목적과 맞물린다.</p>
+<p>쿠키, 세션, 토큰은 모두 로그인과 관련되어 보여도 저장 위치와 책임이 다르다. 쿠키는 클라이언트에 저장되고, 세션은 서버에 상태를 둔다. 토큰은 클라이언트가 들고 다니는 인증 정보에 가깝기 때문에 탈취와 만료 시간을 반드시 고려해야 한다.</p>
+<h3 id="4-현실에-적용하는-방법">4. 현실에 적용하는 방법<a hidden class="anchor" aria-hidden="true" href="#4-현실에-적용하는-방법">#</a></h3>
+<p>웹 요청이 실패했을 때는 먼저 개발자 도구의 Network 탭에서 요청 URL, HTTP 메서드, 상태코드, 요청 헤더, 응답 본문을 확인해볼 수 있다. <code>404</code>라면 경로를, <code>401</code>이나 <code>403</code>이라면 인증과 권한을, <code>500</code>이라면 서버 로그를 확인하는 식으로 원인을 좁힐 수 있다.</p>
+<p>API를 설계하거나 이해할 때는 &ldquo;어떤 자원을 어떤 메서드로 요청하는가&quot;를 먼저 정리하면 좋다. 조회는 <code>GET</code>, 생성은 <code>POST</code>, 수정은 <code>PUT</code>, 삭제는 <code>DELETE</code>처럼 요청의 의도를 맞추면 협업이 쉬워진다.</p>
+<p>로그인 기능을 볼 때는 쿠키, 세션, 토큰 중 어떤 방식으로 상태를 유지하는지 확인해보려고 한다. 또 외부 API를 호출할 때 CORS 문제가 생기면 단순히 프론트엔드 오류로만 보지 않고, 서버가 어떤 출처를 허용하고 있는지도 함께 확인해야 한다.</p>
+<h3 id="5-나에게-물어볼-질문-5개">5. 나에게 물어볼 질문 5개<a hidden class="anchor" aria-hidden="true" href="#5-나에게-물어볼-질문-5개">#</a></h3>
+<ol>
+<li>내가 접속한 웹사이트의 도메인은 어떤 과정을 거쳐 IP 주소로 변환될까?</li>
+<li>API 요청이 실패했을 때 상태코드를 보고 원인을 어디부터 확인할 수 있을까?</li>
+<li>TCP와 UDP 중 내가 사용하는 서비스는 어떤 특성을 더 중요하게 여길까?</li>
+<li>로그인 상태는 쿠키, 세션, 토큰 중 어떤 방식으로 유지되고 있을까?</li>
+<li>캐시나 CDN 때문에 사용자가 더 빠르게 콘텐츠를 볼 수 있는 사례를 설명할 수 있을까?</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1314/tags/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/">네트워크</a></li>
+      <li><a href="http://localhost:1314/tags/http/">HTTP</a></li>
+      <li><a href="http://localhost:1314/tags/tcp/ip/">TCP/IP</a></li>
+      <li><a href="http://localhost:1314/tags/%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C/">프로토콜</a></li>
+      <li><a href="http://localhost:1314/tags/%EB%B3%B4%EC%95%88/">보안</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1314/">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

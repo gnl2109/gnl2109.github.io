@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>프로토콜 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><link>https://gnl2109.github.io/tags/%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C/</link><description>Recent content in 프로토콜 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description><generator>Hugo</generator><language>ko-kr</language><lastBuildDate>Sun, 31 May 2026 23:07:00 +0900</lastBuildDate><atom:link href="https://gnl2109.github.io/tags/%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>[이어드림스쿨6기_1개월] 03 네트워크 개론</title><link>https://gnl2109.github.io/posts/month1-network-introduction/</link><pubDate>Sun, 31 May 2026 23:07:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month1-network-introduction/</guid><description>&lt;p&gt;&lt;code&gt;강의자료/03 네트워크 개론&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>프로토콜 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+    <link>http://localhost:1314/tags/%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C/</link>
+    <description>Recent content in 프로토콜 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
+    <generator>Hugo</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 31 May 2026 23:07:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1314/tags/%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[이어드림스쿨6기_1개월] 03 네트워크 개론</title>
+      <link>http://localhost:1314/posts/month1-network-introduction/</link>
+      <pubDate>Sun, 31 May 2026 23:07:00 +0900</pubDate>
+      <guid>http://localhost:1314/posts/month1-network-introduction/</guid>
+      <description>&lt;p&gt;&lt;code&gt;강의자료/03 네트워크 개론&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 네트워크가 무엇이고 웹 서비스에서 어떤 방식으로 동작하는지 정리해 보았다.&lt;/p&gt;
 &lt;p&gt;네트워크는 두 대 이상의 컴퓨터가 연결되어 데이터를 주고받을 수 있도록 만든 통신망이다. 웹페이지를 열고, 이메일을 보내고, 서버에 API 요청을 보내고, 로그인 상태를 유지하는 모든 일은 네트워크 위에서 일어난다. 그래서 네트워크를 이해하면 웹 서비스가 화면 뒤에서 어떻게 움직이는지 훨씬 선명하게 볼 수 있다.&lt;/p&gt;
-&lt;h2 id="1-네트워크는-노드들이-데이터를-공유하는-통신망이다"&gt;1. 네트워크는 노드들이 데이터를 공유하는 통신망이다&lt;/h2&gt;
-&lt;p&gt;네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다.&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id=&#34;1-네트워크는-노드들이-데이터를-공유하는-통신망이다&#34;&gt;1. 네트워크는 노드들이 데이터를 공유하는 통신망이다&lt;/h2&gt;
+&lt;p&gt;네트워크는 여러 노드가 연결되어 데이터를 공유할 수 있도록 만든 구조다. 여기서 노드는 컴퓨터, 서버, 라우터, 스마트폰처럼 네트워크에 참여하는 장치나 데이터 지점을 뜻한다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

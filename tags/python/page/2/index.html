@@ -1,27 +1,336 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Python | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://gnl2109.github.io/tags/python/><link crossorigin=anonymous href=/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL+GgRwmx68=" rel="preload stylesheet" as=style><link rel=icon href=https://gnl2109.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://gnl2109.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://gnl2109.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://gnl2109.github.io/apple-touch-icon.png><link rel=mask-icon href=https://gnl2109.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://gnl2109.github.io/tags/python/index.xml title=rss><link rel=alternate hreflang=en href=https://gnl2109.github.io/tags/python/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-HTV70762HG")}</script><meta property="og:url" content="https://gnl2109.github.io/tags/python/"><meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그"><meta property="og:title" content="Python"><meta property="og:locale" content="ko_kr"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Python"></head><body class=list id=top><header class=header><nav class=header-nav><div class=logo><a href=https://gnl2109.github.io/ accesskey=h title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu></ul></nav></header><main class=main><header class=page-header><h1>Python</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>[이어드림스쿨6기_2개월] 0629 Matplotlib 라이브러리 복습</h2></header><div class=entry-content><p>Matplotlib Matplotlib은 Python에서 가장 기본적으로 많이 사용하는 데이터 시각화 라이브러리다.
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Python | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1314/tags/python/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css" integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL&#43;GgRwmx68=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1314/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1314/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1314/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1314/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1314/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1314/tags/python/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1314/tags/python/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HTV70762HG');
+        }
+      </script><meta property="og:url" content="http://localhost:1314/tags/python/">
+  <meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그">
+  <meta property="og:title" content="Python">
+  <meta property="og:locale" content="ko_kr">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Python">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1314/" accesskey="h" title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Python
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_2개월] 0629 Matplotlib 라이브러리 복습
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Matplotlib Matplotlib은 Python에서 가장 기본적으로 많이 사용하는 데이터 시각화 라이브러리다.
 데이터 시각화는 숫자나 표 형태의 데이터를 그래프, 차트 같은 시각 형태로 표현해 이해하기 쉽게 만드는 과정이다.
 정보 전달 효율을 높일 수 있다. 데이터의 패턴과 상관관계를 파악하기 쉽다. 여러 값이나 그룹을 비교하기 좋다. 선 그래프, 산점도, 히스토그램, 막대 그래프 등을 세밀하게 제어할 수 있다. Matplotlib을 사용할 때는 보통 matplotlib.pyplot을 plt라는 이름으로 불러온다.
-import matplotlib.pyplot as plt import matplotlib import numpy as np # Colab 또는 Jupyter Notebook 안에 그래프 표시 %matplotlib inline print("Matplotlib version:", matplotlib.__version__) Matplotlib version: 3.x.x %matplotlib inline은 Jupyter/Colab 환경에서 그래프를 노트북 안에 바로 보여주기 위한 매직 명령어다. 일반 .py 파일에서는 사용하지 않는다.
-...</p></div><footer class=entry-footer><span title='2026-06-29 00:00:00 +0900 KST'>2026년 6월 29일</span></footer><a class=entry-link aria-label="post link to [이어드림스쿨6기_2개월] 0629 Matplotlib 라이브러리 복습" href=https://gnl2109.github.io/posts/month2-matplotlib-review/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>[이어드림스쿨6기_2개월] 0629 NumPy 라이브러리 복습</h2></header><div class=entry-content><p>NumPy NumPy는 Python에서 과학 계산과 데이터 분석을 할 때 가장 기본이 되는 다차원 배열 처리 라이브러리다.
+import matplotlib.pyplot as plt import matplotlib import numpy as np # Colab 또는 Jupyter Notebook 안에 그래프 표시 %matplotlib inline print(&#34;Matplotlib version:&#34;, matplotlib.__version__) Matplotlib version: 3.x.x %matplotlib inline은 Jupyter/Colab 환경에서 그래프를 노트북 안에 바로 보여주기 위한 매직 명령어다. 일반 .py 파일에서는 사용하지 않는다.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-06-29 00:00:00 +0900 KST'>2026년 6월 29일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_2개월] 0629 Matplotlib 라이브러리 복습" href="http://localhost:1314/posts/month2-matplotlib-review/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_2개월] 0629 NumPy 라이브러리 복습
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>NumPy NumPy는 Python에서 과학 계산과 데이터 분석을 할 때 가장 기본이 되는 다차원 배열 처리 라이브러리다.
 머신러닝에서는 데이터가 대부분 숫자 배열 형태로 다뤄지기 때문에 NumPy의 배열 생성, 형태 변경, 슬라이싱, 연산 방식에 익숙해지는 것이 중요하다.
 배열이란? 배열(Array)은 같은 자료형의 데이터를 순서대로 저장하는 자료 구조다.
 모든 원소가 동일한 데이터 타입을 가진다. 메모리에 연속적으로 저장되어 인덱스로 빠르게 접근할 수 있다. 벡터, 행렬, 다차원 텐서를 표현하기 좋다. Python 리스트도 여러 값을 담을 수 있지만, NumPy 배열과는 연산 방식이 다르다.
-...</p></div><footer class=entry-footer><span title='2026-06-29 00:00:00 +0900 KST'>2026년 6월 29일</span></footer><a class=entry-link aria-label="post link to [이어드림스쿨6기_2개월] 0629 NumPy 라이브러리 복습" href=https://gnl2109.github.io/posts/month2-numpy-review/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>[이어드림스쿨6기_2개월] 0629 Pandas 라이브러리 복습</h2></header><div class=entry-content><p>Pandas 행과 열로 이루어진 데이터를 만들고 다루는 패키지 데이터 분석에 특화 => 대용량 데이터 처리에 편리 자료 구조와 데이터 조작 기능 제공 import pandas as pd Series 1차원 배열형 구조 인덱스를 포함 (기본 인덱스는 0부터 시작) index 매개변수로 사용자 인덱스 지정 가능 인덱스 순서가 다른 Series끼리 연산 시 인덱스 라벨로 맞춤 # 기본 Series — 인덱스 0부터 자동 obj = pd.Series([4, 7, -5]) print("Basic Series:") print(obj) print() # 사용자 지정 인덱스 Series (날짜 문자열 등) obj2 = pd.Series([4, 7, -5], index=['2016-01-01', '2016-01-02', '2016-01-03']) print("Series with custom index:") print(obj2) print() # 인덱스 라벨로 원소 접근 print("Value at '2016-01-01':", obj2['2016-01-01']) print() # Series 연산 — 위치가 아닌 인덱스 라벨로 맞춤 stock0 = pd.Series([10, 20, 30], index=['naver', 'skt', 'LG']) stock1 = pd.Series([30, 20, 10], index=['LG', 'naver', 'skt']) print("stock0:") print(stock0) print("stock1 (different order):") print(stock1) # 순서가 달라도 라벨 기준으로 덧셈 merge = stock0 + stock1 print("stock0 + stock1 (matched by label):") print(merge) # 결과 Basic Series: 0 4 1 7 2 -5 dtype: int64 Series with custom index: 2016-01-01 4 2016-01-02 7 2016-01-03 -5 dtype: int64 Value at '2016-01-01': 4 stock0: naver 10 skt 20 LG 30 dtype: int64 stock1 (different order): LG 30 naver 20 skt 10 dtype: int64 stock0 + stock1 (matched by label): LG 60 naver 30 skt 30 dtype: int64 DataFrame Series가 모여 행과 열을 이룬 데이터 (2차원 표 구조) Dataframe 생성에는 딕셔너리 사용 키 → 열 이름 값(리스트) → 열 데이터 열 방향: 키-값 쌍 하나가 한 열 행 방향: 정수 인덱스 자동 부여(Series와 유사), 또는 사용자 인덱스 지정 from pandas import Series, DataFrame # 딕셔너리로 DataFrame 생성 raw_data = { 'col0' : [1, 2, 3, 4], 'col1' : [10, 20, 30, 40], 'col2' : [100, 200, 300, 400] } data = DataFrame(raw_data) print("DataFrame from dictionary:") print(data) print() # 2D 리스트 + 사용자 index·columns a = [[1, 2], [3, 4]] df = DataFrame(a, index=[0, 1], columns=['a', 'b']) print("DataFrame from 2D list:") print(df) print() # 사용자 행 인덱스·열 순서 지정 daeshin = { 'open': [11650, 11100, 11200, 11100, 11000], 'high': [12100, 11800, 11200, 11100, 11150], 'low': [11600, 11050, 10900, 10950, 10900], 'close': [11900, 11600, 11000, 11100, 11050] } daeshin_day = DataFrame(daeshin, index=[0, 2, 4, 6, 8], columns=['open', 'high', 'low', 'close']) print("Stock price DataFrame with custom index:") print(daeshin_day) # 결과 DataFrame from dictionary: col0 col1 col2 0 1 10 100 1 2 20 200 2 3 30 300 3 4 40 400 DataFrame from 2D list: a b 0 1 2 1 3 4 Stock price DataFrame with custom index: open high low close 0 11650 12100 11600 11900 2 11100 11800 11050 11600 4 11200 11200 10900 11000 6 11100 11100 10950 11100 8 11000 11150 10900 11050 인덱싱 & 슬라이싱 .loc[] : 라벨(이름) 기반 인덱싱. 끝 포함 .iloc[] : 정수 위치 기반 인덱싱. 끝 미포함 # 문자열 인덱스 샘플 DataFrame data = {'A': [1, 2, 3], 'B': [4, 5, 6], 'C': [7, 8, 9]} df = pd.DataFrame(data, index=['a', 'b', 'c']) print("DataFrame:") print(df) print() # loc — 라벨: 행 'a'~'b', 열 'A'·'C' # 참고: 끝 라벨 'b' 포함 print("df.loc['a':'b', ['A','C']]:") print(df.loc['a':'b', ['A', 'C']]) print() # iloc — 정수: 행 0~1(2 미포함), 열 0·2 # 참고: 인덱스 2 미포함 (끝 제외) print("df.iloc[0:2, [0,2]]:") print(df.iloc[0:2, [0, 2]]) # 결과 DataFrame: A B C a 1 4 7 b 2 5 8 c 3 6 9 df.loc['a':'b', ['A','C']]: A C a 1 7 b 2 8 df.iloc[0:2, [0,2]]: A C a 1 7 b 2 8 데이터 삭제 .drop() : DataFrame에서 행 또는 열을 삭제 # 샘플 DataFrame data = {'A': [1, 2, 3], 'B': [4, 5, 6], 'C': [7, 8, 9]} df = pd.DataFrame(data, index=['a', 'b', 'c']) print("Original DataFrame:") print(df) print() # 행 'a' 삭제 (axis=0, 기본값) df_dropped_row = df.drop(labels='a') print("After dropping row 'a':") print(df_dropped_row) print() # 열 'A' 삭제 (axis=1 지정) df_dropped_col = df.drop(labels='A', axis=1) print("After dropping column 'A':") print(df_dropped_col) print() # inplace=False (기본값, 원본 df 유지) # inplace=True (원본 df 변경) # ==> 데이터 가공 후, 원본 업데이트 됨 # ==> 비추. 코딩 일관성 측면에서 좋지 않음 # df2 = df.가공 (df 가공하여 df2에 저장) # ==> 일반적으로 위 방법을 통하여 진행 # 결과 Original DataFrame: A B C a 1 4 7 b 2 5 8 c 3 6 9 After dropping row 'a': A B C b 2 5 8 c 3 6 9 After dropping column 'A': B C a 4 7 b 5 8 c 6 9 데이터 정렬 .sort_values() : 열 값 기준으로 DataFrame 또는 Series 정렬 # 샘플 DataFrame data = {'A': [3, 2, 1], 'B': [4, 5, 6]} df = pd.DataFrame(data) print("Original DataFrame:") print(df) print() # 열 'A' 오름차순 정렬 (기본) sorted_df = df.sort_values(by='A') print("Sorted by column 'A' (ascending):") print(sorted_df) print("Note: the index order also changes (2, 1, 0)") print() # 내림차순 정렬 sorted_desc = df.sort_values(by='A', ascending=False) print("Sorted by column 'A' (descending):") print(sorted_desc) # 결과 Original DataFrame: A B 0 3 4 1 2 5 2 1 6 Sorted by column 'A' (ascending): A B 2 1 6 1 2 5 0 3 4 Note: the index order also changes (2, 1, 0) Sorted by column 'A' (descending): A B 0 3 4 1 2 5 2 1 6 데이터프레임 간의 연산 .add() # 덧셈 .sub() # 뺄셈 .mul() # 곱셈 .div() # 나눗셈 # 연산 시연용 DataFrame 두 개 df1 = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]}) df2 = pd.DataFrame({'A': [10, 20, 30], 'B': [40, 50, 60]}) print("df1:") print(df1) print("df2:") print(df2) print() # 덧셈 print("df1.add(df2):") print(df1.add(df2)) print() # 뺄셈 print("df1.sub(df2):") print(df1.sub(df2)) print() # fill_value — NaN 처리 예제 df3 = pd.DataFrame({'A': [1, 2], 'B': [3, 4]}) df4 = pd.DataFrame({'A': [10, 20, 30], 'B': [40, 50, 60]}) print("df3 (2 rows) + df4 (3 rows) without fill_value:") print(df3.add(df4)) print() print("df3 + df4 with fill_value=0 (NaN replaced by 0):") print(df3.add(df4, fill_value=0)) # 결과 df1: A B 0 1 4 1 2 5 2 3 6 df2: A B 0 10 40 1 20 50 2 30 60 df1.add(df2): A B 0 11 44 1 22 55 2 33 66 df1.sub(df2): A B 0 -9 -36 1 -18 -45 2 -27 -54 df3 (2 rows) + df4 (3 rows) without fill_value: A B 0 11.0 43.0 1 22.0 54.0 2 NaN NaN df3 + df4 with fill_value=0 (NaN replaced by 0): A B 0 11.0 43.0 1 22.0 54.0 2 30.0 60.0 데이터프레임 저장 및 불러오기 .to_csv(data) # csv로 저장 .to_excel(data) # excel로 저장 read_csv(data) # csv로 불러오기 read_excel(data) # excel로 불러오기 # DataFrame을 CSV로 저장 sample_df = pd.DataFrame({ 'name': ['Alice', 'Bob', 'Charlie'], 'age': [25, 30, 35], 'score': [88.5, 92.0, 78.3] }) # CSV 저장 (index=False — 행번호 열 제외) sample_df.to_csv('./sample_data.csv', index=False) print("Saved to CSV successfully.") # 다시 읽기 loaded_df = pd.read_csv('./sample_data.csv') print("Loaded from CSV:") print(loaded_df) print() print("Data types:") print(loaded_df.dtypes) # 결과 Saved to CSV successfully. Loaded from CSV: name age score 0 Alice 25 88.5 1 Bob 30 92.0 2 Charlie 35 78.3 Data types: name object age int64 score float64 dtype: object</p></div><footer class=entry-footer><span title='2026-06-29 00:00:00 +0900 KST'>2026년 6월 29일</span></footer><a class=entry-link aria-label="post link to [이어드림스쿨6기_2개월] 0629 Pandas 라이브러리 복습" href=https://gnl2109.github.io/posts/month2-pandas-review/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>[이어드림스쿨6기_2개월] 0629 Seaborn 라이브러리 복습</h2></header><div class=entry-content><p>Seaborn Seaborn은 Matplotlib 위에 색 테마와 통계 차트 기능을 더한 데이터 시각화 라이브러리다.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-06-29 00:00:00 +0900 KST'>2026년 6월 29일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_2개월] 0629 NumPy 라이브러리 복습" href="http://localhost:1314/posts/month2-numpy-review/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_2개월] 0629 Pandas 라이브러리 복습
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Pandas 행과 열로 이루어진 데이터를 만들고 다루는 패키지 데이터 분석에 특화 =&gt; 대용량 데이터 처리에 편리 자료 구조와 데이터 조작 기능 제공 import pandas as pd Series 1차원 배열형 구조 인덱스를 포함 (기본 인덱스는 0부터 시작) index 매개변수로 사용자 인덱스 지정 가능 인덱스 순서가 다른 Series끼리 연산 시 인덱스 라벨로 맞춤 # 기본 Series — 인덱스 0부터 자동 obj = pd.Series([4, 7, -5]) print(&#34;Basic Series:&#34;) print(obj) print() # 사용자 지정 인덱스 Series (날짜 문자열 등) obj2 = pd.Series([4, 7, -5], index=[&#39;2016-01-01&#39;, &#39;2016-01-02&#39;, &#39;2016-01-03&#39;]) print(&#34;Series with custom index:&#34;) print(obj2) print() # 인덱스 라벨로 원소 접근 print(&#34;Value at &#39;2016-01-01&#39;:&#34;, obj2[&#39;2016-01-01&#39;]) print() # Series 연산 — 위치가 아닌 인덱스 라벨로 맞춤 stock0 = pd.Series([10, 20, 30], index=[&#39;naver&#39;, &#39;skt&#39;, &#39;LG&#39;]) stock1 = pd.Series([30, 20, 10], index=[&#39;LG&#39;, &#39;naver&#39;, &#39;skt&#39;]) print(&#34;stock0:&#34;) print(stock0) print(&#34;stock1 (different order):&#34;) print(stock1) # 순서가 달라도 라벨 기준으로 덧셈 merge = stock0 &#43; stock1 print(&#34;stock0 &#43; stock1 (matched by label):&#34;) print(merge) # 결과 Basic Series: 0 4 1 7 2 -5 dtype: int64 Series with custom index: 2016-01-01 4 2016-01-02 7 2016-01-03 -5 dtype: int64 Value at &#39;2016-01-01&#39;: 4 stock0: naver 10 skt 20 LG 30 dtype: int64 stock1 (different order): LG 30 naver 20 skt 10 dtype: int64 stock0 &#43; stock1 (matched by label): LG 60 naver 30 skt 30 dtype: int64 DataFrame Series가 모여 행과 열을 이룬 데이터 (2차원 표 구조) Dataframe 생성에는 딕셔너리 사용 키 → 열 이름 값(리스트) → 열 데이터 열 방향: 키-값 쌍 하나가 한 열 행 방향: 정수 인덱스 자동 부여(Series와 유사), 또는 사용자 인덱스 지정 from pandas import Series, DataFrame # 딕셔너리로 DataFrame 생성 raw_data = { &#39;col0&#39; : [1, 2, 3, 4], &#39;col1&#39; : [10, 20, 30, 40], &#39;col2&#39; : [100, 200, 300, 400] } data = DataFrame(raw_data) print(&#34;DataFrame from dictionary:&#34;) print(data) print() # 2D 리스트 &#43; 사용자 index·columns a = [[1, 2], [3, 4]] df = DataFrame(a, index=[0, 1], columns=[&#39;a&#39;, &#39;b&#39;]) print(&#34;DataFrame from 2D list:&#34;) print(df) print() # 사용자 행 인덱스·열 순서 지정 daeshin = { &#39;open&#39;: [11650, 11100, 11200, 11100, 11000], &#39;high&#39;: [12100, 11800, 11200, 11100, 11150], &#39;low&#39;: [11600, 11050, 10900, 10950, 10900], &#39;close&#39;: [11900, 11600, 11000, 11100, 11050] } daeshin_day = DataFrame(daeshin, index=[0, 2, 4, 6, 8], columns=[&#39;open&#39;, &#39;high&#39;, &#39;low&#39;, &#39;close&#39;]) print(&#34;Stock price DataFrame with custom index:&#34;) print(daeshin_day) # 결과 DataFrame from dictionary: col0 col1 col2 0 1 10 100 1 2 20 200 2 3 30 300 3 4 40 400 DataFrame from 2D list: a b 0 1 2 1 3 4 Stock price DataFrame with custom index: open high low close 0 11650 12100 11600 11900 2 11100 11800 11050 11600 4 11200 11200 10900 11000 6 11100 11100 10950 11100 8 11000 11150 10900 11050 인덱싱 &amp; 슬라이싱 .loc[] : 라벨(이름) 기반 인덱싱. 끝 포함 .iloc[] : 정수 위치 기반 인덱싱. 끝 미포함 # 문자열 인덱스 샘플 DataFrame data = {&#39;A&#39;: [1, 2, 3], &#39;B&#39;: [4, 5, 6], &#39;C&#39;: [7, 8, 9]} df = pd.DataFrame(data, index=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]) print(&#34;DataFrame:&#34;) print(df) print() # loc — 라벨: 행 &#39;a&#39;~&#39;b&#39;, 열 &#39;A&#39;·&#39;C&#39; # 참고: 끝 라벨 &#39;b&#39; 포함 print(&#34;df.loc[&#39;a&#39;:&#39;b&#39;, [&#39;A&#39;,&#39;C&#39;]]:&#34;) print(df.loc[&#39;a&#39;:&#39;b&#39;, [&#39;A&#39;, &#39;C&#39;]]) print() # iloc — 정수: 행 0~1(2 미포함), 열 0·2 # 참고: 인덱스 2 미포함 (끝 제외) print(&#34;df.iloc[0:2, [0,2]]:&#34;) print(df.iloc[0:2, [0, 2]]) # 결과 DataFrame: A B C a 1 4 7 b 2 5 8 c 3 6 9 df.loc[&#39;a&#39;:&#39;b&#39;, [&#39;A&#39;,&#39;C&#39;]]: A C a 1 7 b 2 8 df.iloc[0:2, [0,2]]: A C a 1 7 b 2 8 데이터 삭제 .drop() : DataFrame에서 행 또는 열을 삭제 # 샘플 DataFrame data = {&#39;A&#39;: [1, 2, 3], &#39;B&#39;: [4, 5, 6], &#39;C&#39;: [7, 8, 9]} df = pd.DataFrame(data, index=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]) print(&#34;Original DataFrame:&#34;) print(df) print() # 행 &#39;a&#39; 삭제 (axis=0, 기본값) df_dropped_row = df.drop(labels=&#39;a&#39;) print(&#34;After dropping row &#39;a&#39;:&#34;) print(df_dropped_row) print() # 열 &#39;A&#39; 삭제 (axis=1 지정) df_dropped_col = df.drop(labels=&#39;A&#39;, axis=1) print(&#34;After dropping column &#39;A&#39;:&#34;) print(df_dropped_col) print() # inplace=False (기본값, 원본 df 유지) # inplace=True (원본 df 변경) # ==&gt; 데이터 가공 후, 원본 업데이트 됨 # ==&gt; 비추. 코딩 일관성 측면에서 좋지 않음 # df2 = df.가공 (df 가공하여 df2에 저장) # ==&gt; 일반적으로 위 방법을 통하여 진행 # 결과 Original DataFrame: A B C a 1 4 7 b 2 5 8 c 3 6 9 After dropping row &#39;a&#39;: A B C b 2 5 8 c 3 6 9 After dropping column &#39;A&#39;: B C a 4 7 b 5 8 c 6 9 데이터 정렬 .sort_values() : 열 값 기준으로 DataFrame 또는 Series 정렬 # 샘플 DataFrame data = {&#39;A&#39;: [3, 2, 1], &#39;B&#39;: [4, 5, 6]} df = pd.DataFrame(data) print(&#34;Original DataFrame:&#34;) print(df) print() # 열 &#39;A&#39; 오름차순 정렬 (기본) sorted_df = df.sort_values(by=&#39;A&#39;) print(&#34;Sorted by column &#39;A&#39; (ascending):&#34;) print(sorted_df) print(&#34;Note: the index order also changes (2, 1, 0)&#34;) print() # 내림차순 정렬 sorted_desc = df.sort_values(by=&#39;A&#39;, ascending=False) print(&#34;Sorted by column &#39;A&#39; (descending):&#34;) print(sorted_desc) # 결과 Original DataFrame: A B 0 3 4 1 2 5 2 1 6 Sorted by column &#39;A&#39; (ascending): A B 2 1 6 1 2 5 0 3 4 Note: the index order also changes (2, 1, 0) Sorted by column &#39;A&#39; (descending): A B 0 3 4 1 2 5 2 1 6 데이터프레임 간의 연산 .add() # 덧셈 .sub() # 뺄셈 .mul() # 곱셈 .div() # 나눗셈 # 연산 시연용 DataFrame 두 개 df1 = pd.DataFrame({&#39;A&#39;: [1, 2, 3], &#39;B&#39;: [4, 5, 6]}) df2 = pd.DataFrame({&#39;A&#39;: [10, 20, 30], &#39;B&#39;: [40, 50, 60]}) print(&#34;df1:&#34;) print(df1) print(&#34;df2:&#34;) print(df2) print() # 덧셈 print(&#34;df1.add(df2):&#34;) print(df1.add(df2)) print() # 뺄셈 print(&#34;df1.sub(df2):&#34;) print(df1.sub(df2)) print() # fill_value — NaN 처리 예제 df3 = pd.DataFrame({&#39;A&#39;: [1, 2], &#39;B&#39;: [3, 4]}) df4 = pd.DataFrame({&#39;A&#39;: [10, 20, 30], &#39;B&#39;: [40, 50, 60]}) print(&#34;df3 (2 rows) &#43; df4 (3 rows) without fill_value:&#34;) print(df3.add(df4)) print() print(&#34;df3 &#43; df4 with fill_value=0 (NaN replaced by 0):&#34;) print(df3.add(df4, fill_value=0)) # 결과 df1: A B 0 1 4 1 2 5 2 3 6 df2: A B 0 10 40 1 20 50 2 30 60 df1.add(df2): A B 0 11 44 1 22 55 2 33 66 df1.sub(df2): A B 0 -9 -36 1 -18 -45 2 -27 -54 df3 (2 rows) &#43; df4 (3 rows) without fill_value: A B 0 11.0 43.0 1 22.0 54.0 2 NaN NaN df3 &#43; df4 with fill_value=0 (NaN replaced by 0): A B 0 11.0 43.0 1 22.0 54.0 2 30.0 60.0 데이터프레임 저장 및 불러오기 .to_csv(data) # csv로 저장 .to_excel(data) # excel로 저장 read_csv(data) # csv로 불러오기 read_excel(data) # excel로 불러오기 # DataFrame을 CSV로 저장 sample_df = pd.DataFrame({ &#39;name&#39;: [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Charlie&#39;], &#39;age&#39;: [25, 30, 35], &#39;score&#39;: [88.5, 92.0, 78.3] }) # CSV 저장 (index=False — 행번호 열 제외) sample_df.to_csv(&#39;./sample_data.csv&#39;, index=False) print(&#34;Saved to CSV successfully.&#34;) # 다시 읽기 loaded_df = pd.read_csv(&#39;./sample_data.csv&#39;) print(&#34;Loaded from CSV:&#34;) print(loaded_df) print() print(&#34;Data types:&#34;) print(loaded_df.dtypes) # 결과 Saved to CSV successfully. Loaded from CSV: name age score 0 Alice 25 88.5 1 Bob 30 92.0 2 Charlie 35 78.3 Data types: name object age int64 score float64 dtype: object </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-06-29 00:00:00 +0900 KST'>2026년 6월 29일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_2개월] 0629 Pandas 라이브러리 복습" href="http://localhost:1314/posts/month2-pandas-review/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_2개월] 0629 Seaborn 라이브러리 복습
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Seaborn Seaborn은 Matplotlib 위에 색 테마와 통계 차트 기능을 더한 데이터 시각화 라이브러리다.
 Matplotlib이 그래프를 세밀하게 제어하는 기본 도구라면, Seaborn은 데이터 분석에서 자주 쓰는 통계 그래프를 더 간결하고 보기 좋게 그릴 수 있도록 도와준다.
 Matplotlib 기반으로 동작한다. 산점도, 회귀선, 범주형 빈도, 분포 시각화에 편리하다. 기본 스타일이 정돈되어 있어 EDA에 많이 사용한다. DataFrame 컬럼명을 바로 지정해서 그래프를 그릴 수 있다. 내장 예제 데이터셋을 제공한다. Seaborn import Seaborn은 관례적으로 sns라는 별칭으로 불러온다.
-...</p></div><footer class=entry-footer><span title='2026-06-29 00:00:00 +0900 KST'>2026년 6월 29일</span></footer><a class=entry-link aria-label="post link to [이어드림스쿨6기_2개월] 0629 Seaborn 라이브러리 복습" href=https://gnl2109.github.io/posts/month2-seaborn-review/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>[이어드림스쿨6기_1개월] 0623 이론 복습</h2></header><div class=entry-content><p>시험 대비 복습 1. IT 리터러시, CS STORAGE > MEMORY > CPU
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-06-29 00:00:00 +0900 KST'>2026년 6월 29일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_2개월] 0629 Seaborn 라이브러리 복습" href="http://localhost:1314/posts/month2-seaborn-review/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_1개월] 0623 이론 복습
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>시험 대비 복습 1. IT 리터러시, CS STORAGE &gt; MEMORY &gt; CPU
 프로그램 메모리 구조
 낮은 메모리 주소 ↓ ┌──────────────────────────────┐ │ Code │ ├──────────────────────────────┤ │ 사용자가 작성한 프로그램 함수 │ 사용자가 작성한 프로그램 코드(함수) └──────────────────────────────┘ ┌──────────────────────────────┐ │ Data │ ├──────────────────────────────┤ │ 프로그램에 사용하는 데이터 공간 │ │ 전역변수, static 변수 │ 전역변수, static 변수 저장 └──────────────────────────────┘ ┌──────────────────────────────┐ │ Heap │ ├──────────────────────────────┤ │ 프로그래머가 필요할 때 │ │ 사용하는 공간 │ 동적 메모리 할당 영역 └──────────────────────────────┘ ┌──────────────────────────────┐ │ Stack │ ├──────────────────────────────┤ │ 함수의 수행을 마치고 │ │ 복귀할 주소 및 데이터 저장 │ 지역변수, 매개변수, 반환주소 저장 │ (지역변수, 매개변수, 리턴값) │ └──────────────────────────────┘ ↓ 높은 메모리 주소 프로세스-스레드 관계. 차이점.
-...</p></div><footer class=entry-footer><span title='2026-06-23 00:00:00 +0900 KST'>2026년 6월 23일</span></footer><a class=entry-link aria-label="post link to [이어드림스쿨6기_1개월] 0623 이론 복습" href=https://gnl2109.github.io/posts/month1-theory-review/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>[이어드림스쿨6기_1개월] 0619 파이썬 기초통계</h2></header><div class=entry-content><p>파이썬 기초통계 수치를 통한 연속형 자료 요약
-중심위치의 측도(measure of center) : 자료의 중심위치를 나타냄 퍼진 정도의 측도(measure of dispersion) : 자료가 각 중심위치로부터 얼마나 흩어져 있는지 나타냄 도수분포표 : 자료가 이미 그룹화된 경우의 수치 요약 방법 상자 그림 : 사분위수, 최솟값, 최댓값 등을 이용한 요약 방법 중심위치의 측도 평균 np.mean() : 모든 관측값의 합을 자료의 개수로 나눈 값. 관측값들의 무게중심. 극단값의 영향을 받음.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-06-23 00:00:00 +0900 KST'>2026년 6월 23일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_1개월] 0623 이론 복습" href="http://localhost:1314/posts/month1-theory-review/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_1개월] 0619 파이썬 확률 통계
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>파이썬 확률 통계 수치를 통한 연속형 자료 요약 중심위치의 측도(measure of center) : 자료의 중심위치를 나타냄 퍼진 정도의 측도(measure of dispersion) : 자료가 각 중심위치로부터 얼마나 흩어져 있는지 나타냄 도수분포표 : 자료가 이미 그룹화된 경우의 수치 요약 방법 상자 그림 : 사분위수, 최솟값, 최댓값 등을 이용한 요약 방법 중심위치의 측도 평균 np.mean() : 모든 관측값의 합을 자료의 개수로 나눈 값. 관측값들의 무게중심. 극단값의 영향을 받음.
 중앙값 np.median() : 전체 관측값을 정렬했을 때 가운데에 위치하는 값. 극단값의 영향을 받지 않음.
-...</p></div><footer class=entry-footer><span title='2026-06-19 00:00:00 +0900 KST'>2026년 6월 19일</span></footer><a class=entry-link aria-label="post link to [이어드림스쿨6기_1개월] 0619 파이썬 기초통계" href=https://gnl2109.github.io/posts/month1-python-basic-statistics/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법</h2></header><div class=entry-content><p>강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-06-19 00:00:00 +0900 KST'>2026년 6월 19일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_1개월] 0619 파이썬 확률 통계" href="http://localhost:1314/posts/month1-python-basic-statistics/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.
 파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.
 1. 출력, 입력, 변수는 프로그램의 출발점이다 print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.
-...</p></div><footer class=entry-footer><span title='2026-05-31 23:22:00 +0900 KST'>2026년 5월 31일</span></footer><a class=entry-link aria-label="post link to [이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법" href=https://gnl2109.github.io/posts/month1-python-basic-syntax/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://gnl2109.github.io/tags/python/>«&nbsp;Prev&nbsp;</a></nav></footer></main><footer class=footer><span>&copy; 2026 <a href=https://gnl2109.github.io/>이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> ·
-<span>Powered by
-<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
-</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-05-31 23:22:00 +0900 KST'>2026년 5월 31일</span></footer>
+  <a class="entry-link" aria-label="post link to [이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법" href="http://localhost:1314/posts/month1-python-basic-syntax/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://localhost:1314/tags/python/">
+      «&nbsp;Prev&nbsp;
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1314/">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

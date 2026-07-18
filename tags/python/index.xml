@@ -729,7 +729,22 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;높은 메모리 주소
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;프로세스-스레드 관계. 차이점.&lt;/p&gt;</description></item><item><title>[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법</title><link>https://gnl2109.github.io/posts/month1-python-basic-syntax/</link><pubDate>Sun, 31 May 2026 23:22:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month1-python-basic-syntax/</guid><description>&lt;p&gt;&lt;code&gt;강의자료/04,05 파이썬 기본 문법&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.&lt;/p&gt;
+&lt;p&gt;프로세스-스레드 관계. 차이점.&lt;/p&gt;</description></item><item><title>[이어드림스쿨6기_1개월] 0619 파이썬 기초통계</title><link>https://gnl2109.github.io/posts/month1-python-basic-statistics/</link><pubDate>Fri, 19 Jun 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month1-python-basic-statistics/</guid><description>&lt;h1 id="파이썬-기초통계"&gt;파이썬 기초통계&lt;/h1&gt;
+&lt;p&gt;수치를 통한 연속형 자료 요약&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;중심위치의 측도(measure of center) : 자료의 중심위치를 나타냄&lt;/li&gt;
+&lt;li&gt;퍼진 정도의 측도(measure of dispersion) : 자료가 각 중심위치로부터 얼마나 흩어져 있는지 나타냄&lt;/li&gt;
+&lt;li&gt;도수분포표 : 자료가 이미 그룹화된 경우의 수치 요약 방법&lt;/li&gt;
+&lt;li&gt;상자 그림 : 사분위수, 최솟값, 최댓값 등을 이용한 요약 방법&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="중심위치의-측도"&gt;중심위치의 측도&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;평균 &lt;code&gt;np.mean()&lt;/code&gt; : 모든 관측값의 합을 자료의 개수로 나눈 값. 관측값들의 무게중심. 극단값의 영향을 받음.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;중앙값 &lt;code&gt;np.median()&lt;/code&gt; : 전체 관측값을 정렬했을 때 가운데에 위치하는 값. 극단값의 영향을 받지 않음.&lt;/p&gt;</description></item><item><title>[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법</title><link>https://gnl2109.github.io/posts/month1-python-basic-syntax/</link><pubDate>Sun, 31 May 2026 23:22:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month1-python-basic-syntax/</guid><description>&lt;p&gt;&lt;code&gt;강의자료/04,05 파이썬 기본 문법&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.&lt;/p&gt;
 &lt;p&gt;파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.&lt;/p&gt;
 &lt;h2 id="1-출력-입력-변수는-프로그램의-출발점이다"&gt;1. 출력, 입력, 변수는 프로그램의 출발점이다&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;print()&lt;/code&gt;는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.&lt;/p&gt;</description></item></channel></rss>

@@ -36,7 +36,22 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;높은 메모리 주소
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;프로세스-스레드 관계. 차이점.&lt;/p&gt;</description></item><item><title>[이어드림스쿨6기_1개월] 리눅스 기초 실습 01</title><link>https://gnl2109.github.io/posts/month1-linux-tutorial-01/</link><pubDate>Sun, 31 May 2026 23:30:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month1-linux-tutorial-01/</guid><description>&lt;p&gt;&lt;code&gt;강의자료/0531_linux_tutorial_01.md&lt;/code&gt;를 바탕으로, 터미널에서 현재 위치를 확인하고 디렉터리와 파일을 만들고 옮기고 삭제하는 기본 흐름을 정리했다.&lt;/p&gt;
+&lt;p&gt;프로세스-스레드 관계. 차이점.&lt;/p&gt;</description></item><item><title>[이어드림스쿨6기_1개월] 0619 파이썬 기초통계</title><link>https://gnl2109.github.io/posts/month1-python-basic-statistics/</link><pubDate>Fri, 19 Jun 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month1-python-basic-statistics/</guid><description>&lt;h1 id="파이썬-기초통계"&gt;파이썬 기초통계&lt;/h1&gt;
+&lt;p&gt;수치를 통한 연속형 자료 요약&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;중심위치의 측도(measure of center) : 자료의 중심위치를 나타냄&lt;/li&gt;
+&lt;li&gt;퍼진 정도의 측도(measure of dispersion) : 자료가 각 중심위치로부터 얼마나 흩어져 있는지 나타냄&lt;/li&gt;
+&lt;li&gt;도수분포표 : 자료가 이미 그룹화된 경우의 수치 요약 방법&lt;/li&gt;
+&lt;li&gt;상자 그림 : 사분위수, 최솟값, 최댓값 등을 이용한 요약 방법&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="중심위치의-측도"&gt;중심위치의 측도&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;평균 &lt;code&gt;np.mean()&lt;/code&gt; : 모든 관측값의 합을 자료의 개수로 나눈 값. 관측값들의 무게중심. 극단값의 영향을 받음.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;중앙값 &lt;code&gt;np.median()&lt;/code&gt; : 전체 관측값을 정렬했을 때 가운데에 위치하는 값. 극단값의 영향을 받지 않음.&lt;/p&gt;</description></item><item><title>[이어드림스쿨6기_1개월] 리눅스 기초 실습 01</title><link>https://gnl2109.github.io/posts/month1-linux-tutorial-01/</link><pubDate>Sun, 31 May 2026 23:30:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month1-linux-tutorial-01/</guid><description>&lt;p&gt;&lt;code&gt;강의자료/0531_linux_tutorial_01.md&lt;/code&gt;를 바탕으로, 터미널에서 현재 위치를 확인하고 디렉터리와 파일을 만들고 옮기고 삭제하는 기본 흐름을 정리했다.&lt;/p&gt;
 &lt;p&gt;이번 실습의 핵심은 명령어를 하나씩 외우는 것보다, 터미널에서 &amp;ldquo;내가 어디에 있고, 무엇을 만들고, 어떻게 확인하고, 어떻게 정리할지&amp;quot;를 순서대로 익히는 것이다.&lt;/p&gt;
 &lt;h2 id="1-현재-위치-확인하기"&gt;1. 현재 위치 확인하기&lt;/h2&gt;
 &lt;p&gt;터미널 작업은 현재 내가 어느 디렉터리에 있는지 확인하는 것에서 시작한다. 위치를 모르고 명령어를 실행하면 엉뚱한 곳에 파일을 만들거나 삭제할 수 있다.&lt;/p&gt;

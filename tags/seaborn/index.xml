@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Seaborn on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
-    <link>http://localhost:1314/tags/seaborn/</link>
-    <description>Recent content in Seaborn on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
-    <generator>Hugo</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 29 Jun 2026 00:00:00 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1314/tags/seaborn/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[이어드림스쿨6기_2개월] 0629 Seaborn 라이브러리 복습</title>
-      <link>http://localhost:1314/posts/month2-seaborn-review/</link>
-      <pubDate>Mon, 29 Jun 2026 00:00:00 +0900</pubDate>
-      <guid>http://localhost:1314/posts/month2-seaborn-review/</guid>
-      <description>&lt;h1 id=&#34;seaborn&#34;&gt;Seaborn&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Seaborn on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><link>https://gnl2109.github.io/tags/seaborn/</link><description>Recent content in Seaborn on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description><generator>Hugo</generator><language>ko-kr</language><lastBuildDate>Mon, 29 Jun 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://gnl2109.github.io/tags/seaborn/index.xml" rel="self" type="application/rss+xml"/><item><title>[이어드림스쿨6기_2개월] 0629 Seaborn 라이브러리 복습</title><link>https://gnl2109.github.io/posts/month2-seaborn-review/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month2-seaborn-review/</guid><description>&lt;h1 id="seaborn"&gt;Seaborn&lt;/h1&gt;
 &lt;p&gt;Seaborn은 Matplotlib 위에 색 테마와 통계 차트 기능을 더한 데이터 시각화 라이브러리다.&lt;/p&gt;
 &lt;p&gt;Matplotlib이 그래프를 세밀하게 제어하는 기본 도구라면, Seaborn은 데이터 분석에서 자주 쓰는 통계 그래프를 더 간결하고 보기 좋게 그릴 수 있도록 도와준다.&lt;/p&gt;
 &lt;ul&gt;
@@ -23,8 +8,5 @@
 &lt;li&gt;&lt;code&gt;DataFrame&lt;/code&gt; 컬럼명을 바로 지정해서 그래프를 그릴 수 있다.&lt;/li&gt;
 &lt;li&gt;내장 예제 데이터셋을 제공한다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;seaborn-import&#34;&gt;Seaborn import&lt;/h2&gt;
-&lt;p&gt;Seaborn은 관례적으로 &lt;code&gt;sns&lt;/code&gt;라는 별칭으로 불러온다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="seaborn-import"&gt;Seaborn import&lt;/h2&gt;
+&lt;p&gt;Seaborn은 관례적으로 &lt;code&gt;sns&lt;/code&gt;라는 별칭으로 불러온다.&lt;/p&gt;</description></item></channel></rss>

@@ -1,22 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>기본문법 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
-    <link>http://localhost:1314/tags/%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95/</link>
-    <description>Recent content in 기본문법 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description>
-    <generator>Hugo</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sun, 31 May 2026 23:22:00 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1314/tags/%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법</title>
-      <link>http://localhost:1314/posts/month1-python-basic-syntax/</link>
-      <pubDate>Sun, 31 May 2026 23:22:00 +0900</pubDate>
-      <guid>http://localhost:1314/posts/month1-python-basic-syntax/</guid>
-      <description>&lt;p&gt;&lt;code&gt;강의자료/04,05 파이썬 기본 문법&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>기본문법 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><link>https://gnl2109.github.io/tags/%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95/</link><description>Recent content in 기본문법 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description><generator>Hugo</generator><language>ko-kr</language><lastBuildDate>Sun, 31 May 2026 23:22:00 +0900</lastBuildDate><atom:link href="https://gnl2109.github.io/tags/%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95/index.xml" rel="self" type="application/rss+xml"/><item><title>[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법</title><link>https://gnl2109.github.io/posts/month1-python-basic-syntax/</link><pubDate>Sun, 31 May 2026 23:22:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/month1-python-basic-syntax/</guid><description>&lt;p&gt;&lt;code&gt;강의자료/04,05 파이썬 기본 문법&lt;/code&gt; 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.&lt;/p&gt;
 &lt;p&gt;파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.&lt;/p&gt;
-&lt;h2 id=&#34;1-출력-입력-변수는-프로그램의-출발점이다&#34;&gt;1. 출력, 입력, 변수는 프로그램의 출발점이다&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;print()&lt;/code&gt;는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;h2 id="1-출력-입력-변수는-프로그램의-출발점이다"&gt;1. 출력, 입력, 변수는 프로그램의 출발점이다&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;print()&lt;/code&gt;는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.&lt;/p&gt;</description></item></channel></rss>

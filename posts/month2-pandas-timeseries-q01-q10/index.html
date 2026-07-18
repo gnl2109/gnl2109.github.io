@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
-<meta name="keywords" content="Pandas, Python, 데이터 분석, 시계열, Timestamp">
-<meta name="description" content="Pandas 시계열 50제: 문제 1~10
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><meta name=keywords content="Pandas,Python,데이터 분석,시계열,Timestamp"><meta name=description content='Pandas 시계열 50제: 문제 1~10
 Pandas 시계열 학습자료의 Part 1은 날짜 데이터를 만드는 방법과 변환하는 방법을 익히는 구간이다.
 핵심은 다음 네 가지다.
 
@@ -21,483 +12,152 @@ import pandas as pd
 import numpy as np
 import datetime
 
-pd.set_option(&#34;display.max_columns&#34;, 15)
-pd.set_option(&#34;display.width&#34;, 110)
-원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 orders[&quot;orderDate&quot;] 컬럼을 사용한다.">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1314/posts/month2-pandas-timeseries-q01-q10/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css" integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL&#43;GgRwmx68=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1314/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1314/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1314/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1314/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1314/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1314/posts/month2-pandas-timeseries-q01-q10/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script>
-      <script>
-        var doNotTrack = false;
-        if ( true ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-HTV70762HG');
-        }
-      </script><meta property="og:url" content="http://localhost:1314/posts/month2-pandas-timeseries-q01-q10/">
-  <meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그">
-  <meta property="og:title" content="[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10">
-  <meta property="og:description" content="Pandas 시계열 50제: 문제 1~10 Pandas 시계열 학습자료의 Part 1은 날짜 데이터를 만드는 방법과 변환하는 방법을 익히는 구간이다.
+pd.set_option("display.max_columns", 15)
+pd.set_option("display.width", 110)
+원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 orders["orderDate"] 컬럼을 사용한다.'><meta name=author content><link rel=canonical href=https://gnl2109.github.io/posts/month2-pandas-timeseries-q01-q10/><link crossorigin=anonymous href=/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL+GgRwmx68=" rel="preload stylesheet" as=style><link rel=icon href=https://gnl2109.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://gnl2109.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://gnl2109.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://gnl2109.github.io/apple-touch-icon.png><link rel=mask-icon href=https://gnl2109.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://gnl2109.github.io/posts/month2-pandas-timeseries-q01-q10/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-HTV70762HG")}</script><meta property="og:url" content="https://gnl2109.github.io/posts/month2-pandas-timeseries-q01-q10/"><meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그"><meta property="og:title" content="[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10"><meta property="og:description" content='Pandas 시계열 50제: 문제 1~10 Pandas 시계열 학습자료의 Part 1은 날짜 데이터를 만드는 방법과 변환하는 방법을 익히는 구간이다.
 핵심은 다음 네 가지다.
-pd.Timestamp : 하나의 날짜/시간 값을 표현 pd.to_datetime() : 문자열, 리스트, Series 등을 datetime 타입으로 변환 pd.date_range() : 일정한 간격의 날짜 시퀀스 생성 pd.period_range() : 월, 분기처럼 기간 단위의 시퀀스 생성 공통 준비 코드 import pandas as pd import numpy as np import datetime pd.set_option(&#34;display.max_columns&#34;, 15) pd.set_option(&#34;display.width&#34;, 110) 원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 orders[&#34;orderDate&#34;] 컬럼을 사용한다.">
-  <meta property="og:locale" content="ko_kr">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-07-01T00:00:00+09:00">
-    <meta property="article:modified_time" content="2026-07-01T00:00:00+09:00">
-    <meta property="article:tag" content="Pandas">
-    <meta property="article:tag" content="Python">
-    <meta property="article:tag" content="데이터 분석">
-    <meta property="article:tag" content="시계열">
-    <meta property="article:tag" content="Timestamp">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10">
-  <meta name="twitter:description" content="Pandas 시계열 50제: 문제 1~10 Pandas 시계열 학습자료의 Part 1은 날짜 데이터를 만드는 방법과 변환하는 방법을 익히는 구간이다.
+pd.Timestamp : 하나의 날짜/시간 값을 표현 pd.to_datetime() : 문자열, 리스트, Series 등을 datetime 타입으로 변환 pd.date_range() : 일정한 간격의 날짜 시퀀스 생성 pd.period_range() : 월, 분기처럼 기간 단위의 시퀀스 생성 공통 준비 코드 import pandas as pd import numpy as np import datetime pd.set_option("display.max_columns", 15) pd.set_option("display.width", 110) 원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 orders["orderDate"] 컬럼을 사용한다.'><meta property="og:locale" content="ko_kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-07-01T00:00:00+09:00"><meta property="article:modified_time" content="2026-07-01T00:00:00+09:00"><meta property="article:tag" content="Pandas"><meta property="article:tag" content="Python"><meta property="article:tag" content="데이터 분석"><meta property="article:tag" content="시계열"><meta property="article:tag" content="Timestamp"><meta name=twitter:card content="summary"><meta name=twitter:title content="[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10"><meta name=twitter:description content='Pandas 시계열 50제: 문제 1~10 Pandas 시계열 학습자료의 Part 1은 날짜 데이터를 만드는 방법과 변환하는 방법을 익히는 구간이다.
 핵심은 다음 네 가지다.
-pd.Timestamp : 하나의 날짜/시간 값을 표현 pd.to_datetime() : 문자열, 리스트, Series 등을 datetime 타입으로 변환 pd.date_range() : 일정한 간격의 날짜 시퀀스 생성 pd.period_range() : 월, 분기처럼 기간 단위의 시퀀스 생성 공통 준비 코드 import pandas as pd import numpy as np import datetime pd.set_option(&#34;display.max_columns&#34;, 15) pd.set_option(&#34;display.width&#34;, 110) 원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 orders[&#34;orderDate&#34;] 컬럼을 사용한다.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "http://localhost:1314/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10",
-      "item": "http://localhost:1314/posts/month2-pandas-timeseries-q01-q10/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10",
-  "name": "[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10",
-  "description": "Pandas 시계열 50제: 문제 1~10 Pandas 시계열 학습자료의 Part 1은 날짜 데이터를 만드는 방법과 변환하는 방법을 익히는 구간이다.\n핵심은 다음 네 가지다.\npd.Timestamp : 하나의 날짜/시간 값을 표현 pd.to_datetime() : 문자열, 리스트, Series 등을 datetime 타입으로 변환 pd.date_range() : 일정한 간격의 날짜 시퀀스 생성 pd.period_range() : 월, 분기처럼 기간 단위의 시퀀스 생성 공통 준비 코드 import pandas as pd import numpy as np import datetime pd.set_option(\u0026#34;display.max_columns\u0026#34;, 15) pd.set_option(\u0026#34;display.width\u0026#34;, 110) 원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 orders[\u0026quot;orderDate\u0026quot;] 컬럼을 사용한다.\n",
-  "keywords": [
-    "Pandas", "Python", "데이터 분석", "시계열", "Timestamp"
-  ],
-  "articleBody": "Pandas 시계열 50제: 문제 1~10 Pandas 시계열 학습자료의 Part 1은 날짜 데이터를 만드는 방법과 변환하는 방법을 익히는 구간이다.\n핵심은 다음 네 가지다.\npd.Timestamp : 하나의 날짜/시간 값을 표현 pd.to_datetime() : 문자열, 리스트, Series 등을 datetime 타입으로 변환 pd.date_range() : 일정한 간격의 날짜 시퀀스 생성 pd.period_range() : 월, 분기처럼 기간 단위의 시퀀스 생성 공통 준비 코드 import pandas as pd import numpy as np import datetime pd.set_option(\"display.max_columns\", 15) pd.set_option(\"display.width\", 110) 원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 orders[\"orderDate\"] 컬럼을 사용한다.\nDATA = \"/content/drive/MyDrive/Colab Notebooks/2026/이어드림스쿨6기/dataset/erd_sample\" orders = pd.read_csv( f\"{DATA}/orders.csv\", parse_dates=[\"orderDate\", \"requiredDate\", \"shippedDate\"] ) parse_dates에 날짜 컬럼을 지정하면 CSV를 읽는 시점에 문자열을 datetime 타입으로 변환할 수 있다.\nQ01. 문자열을 Timestamp로 변환하기 문자열 날짜를 Pandas의 Timestamp 객체로 만드는 방법은 여러 가지가 있다.\n# 방법 1: pd.Timestamp ts1 = pd.Timestamp(\"2003-01-06\") # 방법 2: pd.to_datetime ts2 = pd.to_datetime(\"2003-01-06\") # 방법 3: datetime 객체를 Timestamp로 변환 ts3 = pd.Timestamp(datetime.datetime(2003, 1, 6)) print(ts1, type(ts1)) print(ts2, type(ts2)) print(ts3, type(ts3)) print(\"세 값이 같은가?\", ts1 == ts2 == ts3) 2003-01-06 00:00:00 ",
-  "wordCount" : "803",
-  "inLanguage": "en",
-  "datePublished": "2026-07-01T00:00:00+09:00",
-  "dateModified": "2026-07-01T00:00:00+09:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "http://localhost:1314/posts/month2-pandas-timeseries-q01-q10/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "http://localhost:1314/favicon.ico"
-    }
-  }
-}
-</script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="header-nav">
-        <div class="logo">
-            <a href="http://localhost:1314/" accesskey="h" title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu" class="menu">
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      [이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10
-    </h1>
-    <div class="post-meta">
-
-<span title='2026-07-01 00:00:00 +0900 KST'>2026년 7월 1일</span>
-
-</div>
-  </header> 
-  <div class="post-content md-content"><h1 id="pandas-시계열-50제-문제-110">Pandas 시계열 50제: 문제 1~10<a hidden class="anchor" aria-hidden="true" href="#pandas-시계열-50제-문제-110">#</a></h1>
-<p>Pandas 시계열 학습자료의 Part 1은 날짜 데이터를 만드는 방법과 변환하는 방법을 익히는 구간이다.</p>
-<p>핵심은 다음 네 가지다.</p>
-<ul>
-<li><code>pd.Timestamp</code> : 하나의 날짜/시간 값을 표현</li>
-<li><code>pd.to_datetime()</code> : 문자열, 리스트, Series 등을 datetime 타입으로 변환</li>
-<li><code>pd.date_range()</code> : 일정한 간격의 날짜 시퀀스 생성</li>
-<li><code>pd.period_range()</code> : 월, 분기처럼 기간 단위의 시퀀스 생성</li>
-</ul>
-<h2 id="공통-준비-코드">공통 준비 코드<a hidden class="anchor" aria-hidden="true" href="#공통-준비-코드">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> datetime
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#34;display.max_columns&#34;</span>, <span style="color:#ae81ff">15</span>)
-</span></span><span style="display:flex;"><span>pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#34;display.width&#34;</span>, <span style="color:#ae81ff">110</span>)
-</span></span></code></pre></div><p>원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 <code>orders[&quot;orderDate&quot;]</code> 컬럼을 사용한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>DATA <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/content/drive/MyDrive/Colab Notebooks/2026/이어드림스쿨6기/dataset/erd_sample&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>orders <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>DATA<span style="color:#e6db74">}</span><span style="color:#e6db74">/orders.csv&#34;</span>,
-</span></span><span style="display:flex;"><span>    parse_dates<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;orderDate&#34;</span>, <span style="color:#e6db74">&#34;requiredDate&#34;</span>, <span style="color:#e6db74">&#34;shippedDate&#34;</span>]
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p><code>parse_dates</code>에 날짜 컬럼을 지정하면 CSV를 읽는 시점에 문자열을 datetime 타입으로 변환할 수 있다.</p>
-<h2 id="q01-문자열을-timestamp로-변환하기">Q01. 문자열을 Timestamp로 변환하기<a hidden class="anchor" aria-hidden="true" href="#q01-문자열을-timestamp로-변환하기">#</a></h2>
-<p>문자열 날짜를 Pandas의 <code>Timestamp</code> 객체로 만드는 방법은 여러 가지가 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 방법 1: pd.Timestamp</span>
-</span></span><span style="display:flex;"><span>ts1 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Timestamp(<span style="color:#e6db74">&#34;2003-01-06&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 방법 2: pd.to_datetime</span>
-</span></span><span style="display:flex;"><span>ts2 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(<span style="color:#e6db74">&#34;2003-01-06&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 방법 3: datetime 객체를 Timestamp로 변환</span>
-</span></span><span style="display:flex;"><span>ts3 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Timestamp(datetime<span style="color:#f92672">.</span>datetime(<span style="color:#ae81ff">2003</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">6</span>))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(ts1, type(ts1))
-</span></span><span style="display:flex;"><span>print(ts2, type(ts2))
-</span></span><span style="display:flex;"><span>print(ts3, type(ts3))
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;세 값이 같은가?&#34;</span>, ts1 <span style="color:#f92672">==</span> ts2 <span style="color:#f92672">==</span> ts3)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>2003-01-06 00:00:00 &lt;class &#39;pandas._libs.tslibs.timestamps.Timestamp&#39;&gt;
-</span></span><span style="display:flex;"><span>2003-01-06 00:00:00 &lt;class &#39;pandas._libs.tslibs.timestamps.Timestamp&#39;&gt;
-</span></span><span style="display:flex;"><span>2003-01-06 00:00:00 &lt;class &#39;pandas._libs.tslibs.timestamps.Timestamp&#39;&gt;
-</span></span><span style="display:flex;"><span>세 값이 같은가? True
-</span></span></code></pre></div><p>단일 날짜를 직접 만들 때는 <code>pd.Timestamp()</code>, 여러 날짜를 한 번에 변환할 때는 <code>pd.to_datetime()</code>을 자주 사용한다.</p>
-<h2 id="q02-다양한-형식의-날짜-문자열을-한-번에-변환하기">Q02. 다양한 형식의 날짜 문자열을 한 번에 변환하기<a hidden class="anchor" aria-hidden="true" href="#q02-다양한-형식의-날짜-문자열을-한-번에-변환하기">#</a></h2>
-<p>날짜 문자열은 <code>/</code>, 영문 월 이름, <code>-</code> 등 여러 형식으로 들어올 수 있다. 이때 <code>pd.to_datetime()</code>으로 한 번에 변환할 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>raw_dates <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;2003/01/06&#34;</span>, <span style="color:#e6db74">&#34;Jan 9, 2003&#34;</span>, <span style="color:#e6db74">&#34;2003-01-10&#34;</span>, <span style="color:#e6db74">&#34;10-01-2003&#34;</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>parsed <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(raw_dates, dayfirst<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mixed&#34;</span>)
-</span></span><span style="display:flex;"><span>print(parsed)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;dtype:&#34;</span>, parsed<span style="color:#f92672">.</span>dtype)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>DatetimeIndex([&#39;2003-01-06&#39;, &#39;2003-01-09&#39;, &#39;2003-01-10&#39;, &#39;2003-10-01&#39;], dtype=&#39;datetime64[ns]&#39;, freq=None)
-</span></span><span style="display:flex;"><span>dtype: datetime64[ns]
-</span></span></code></pre></div><p><code>dayfirst=False</code>는 <code>10-01-2003</code>을 2003년 10월 1일로 해석하게 한다. 만약 일-월-연도 순서라면 <code>dayfirst=True</code>를 고려해야 한다.</p>
-<h2 id="q03-잘못된-날짜-처리하기">Q03. 잘못된 날짜 처리하기<a hidden class="anchor" aria-hidden="true" href="#q03-잘못된-날짜-처리하기">#</a></h2>
-<p>현실 데이터에는 날짜가 아닌 문자열이나 잘못된 날짜가 섞여 있을 수 있다. <code>errors=&quot;coerce&quot;</code>를 사용하면 변환할 수 없는 값을 <code>NaT</code>로 처리한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>messy <span style="color:#f92672">=</span> orders[<span style="color:#e6db74">&#34;orderDate&#34;</span>]<span style="color:#f92672">.</span>astype(str)<span style="color:#f92672">.</span>tolist() <span style="color:#f92672">+</span> [<span style="color:#e6db74">&#34;NOT_A_DATE&#34;</span>, <span style="color:#e6db74">&#34;9999-99-99&#34;</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>parsed <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(messy, errors<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;coerce&#34;</span>)
-</span></span><span style="display:flex;"><span>print(parsed)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>DatetimeIndex([...,
-</span></span><span style="display:flex;"><span>               &#39;NaT&#39;, &#39;NaT&#39;],
-</span></span><span style="display:flex;"><span>              dtype=&#39;datetime64[ns]&#39;, length=328, freq=None)
-</span></span></code></pre></div><p><code>NaT</code>는 datetime에서의 결측값이다. 숫자 데이터의 <code>NaN</code>과 비슷하게 생각하면 된다.</p>
-<h2 id="q04-unix-epoch-초를-timestamp로-변환하기">Q04. Unix epoch 초를 Timestamp로 변환하기<a hidden class="anchor" aria-hidden="true" href="#q04-unix-epoch-초를-timestamp로-변환하기">#</a></h2>
-<p>Unix epoch는 1970년 1월 1일 00:00:00부터 흐른 시간을 초 단위로 표현한 값이다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 주문일을 epoch 초로 변환</span>
-</span></span><span style="display:flex;"><span>epoch_seconds <span style="color:#f92672">=</span> (
-</span></span><span style="display:flex;"><span>    orders[<span style="color:#e6db74">&#34;orderDate&#34;</span>] <span style="color:#f92672">-</span> pd<span style="color:#f92672">.</span>Timestamp(<span style="color:#e6db74">&#34;1970-01-01&#34;</span>)
-</span></span><span style="display:flex;"><span>) <span style="color:#f92672">//</span> pd<span style="color:#f92672">.</span>Timedelta(<span style="color:#e6db74">&#34;1s&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(epoch_seconds)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># epoch 초를 다시 날짜로 복원</span>
-</span></span><span style="display:flex;"><span>restored <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(epoch_seconds, unit<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s&#34;</span>)
-</span></span><span style="display:flex;"><span>print(restored)
-</span></span></code></pre></div><p>날짜끼리 빼면 <code>Timedelta</code>가 되고, 이를 초 단위로 나누면 epoch 초를 만들 수 있다. 반대로 <code>pd.to_datetime(..., unit=&quot;s&quot;)</code>를 사용하면 초 단위 숫자를 다시 날짜로 복원한다.</p>
-<h2 id="q05-year-month-day-컬럼으로-날짜-조립하기">Q05. year, month, day 컬럼으로 날짜 조립하기<a hidden class="anchor" aria-hidden="true" href="#q05-year-month-day-컬럼으로-날짜-조립하기">#</a></h2>
-<p>연도, 월, 일, 시, 분이 각각 컬럼으로 나뉘어 있을 때도 <code>pd.to_datetime()</code>으로 날짜를 조립할 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df_parts <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;year&#34;</span>:   [<span style="color:#ae81ff">2003</span>, <span style="color:#ae81ff">2003</span>, <span style="color:#ae81ff">2003</span>],
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;month&#34;</span>:  [<span style="color:#ae81ff">1</span>,    <span style="color:#ae81ff">2</span>,    <span style="color:#ae81ff">3</span>],
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;day&#34;</span>:    [<span style="color:#ae81ff">6</span>,    <span style="color:#ae81ff">14</span>,   <span style="color:#ae81ff">3</span>],
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;hour&#34;</span>:   [<span style="color:#ae81ff">9</span>,    <span style="color:#ae81ff">13</span>,   <span style="color:#ae81ff">17</span>],
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;minute&#34;</span>: [<span style="color:#ae81ff">0</span>,    <span style="color:#ae81ff">30</span>,   <span style="color:#ae81ff">45</span>],
-</span></span><span style="display:flex;"><span>})
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>assembled <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df_parts)
-</span></span><span style="display:flex;"><span>assembled
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>0   2003-01-06 09:00:00
-</span></span><span style="display:flex;"><span>1   2003-02-14 13:30:00
-</span></span><span style="display:flex;"><span>2   2003-03-03 17:45:00
-</span></span><span style="display:flex;"><span>dtype: datetime64[ns]
-</span></span></code></pre></div><p>컬럼명이 <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>처럼 Pandas가 인식할 수 있는 이름이면 자동으로 조립된다.</p>
-<h2 id="q06-date_range로-일별-날짜-시퀀스-만들기">Q06. date_range로 일별 날짜 시퀀스 만들기<a hidden class="anchor" aria-hidden="true" href="#q06-date_range로-일별-날짜-시퀀스-만들기">#</a></h2>
-<p><code>pd.date_range()</code>는 시작일과 종료일 사이의 날짜를 일정한 간격으로 생성한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 일별 날짜 생성</span>
-</span></span><span style="display:flex;"><span>daily <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>date_range(<span style="color:#e6db74">&#34;2026-01-01&#34;</span>, <span style="color:#e6db74">&#34;2026-03-31&#34;</span>, freq<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;D&#34;</span>)
-</span></span><span style="display:flex;"><span>daily
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>DatetimeIndex([&#39;2026-01-01&#39;, &#39;2026-01-02&#39;, &#39;2026-01-03&#39;, ...,
-</span></span><span style="display:flex;"><span>               &#39;2026-03-29&#39;, &#39;2026-03-30&#39;, &#39;2026-03-31&#39;],
-</span></span><span style="display:flex;"><span>              dtype=&#39;datetime64[ns]&#39;, length=90, freq=&#39;D&#39;)
-</span></span></code></pre></div><p>주 단위 날짜도 만들 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># freq=&#34;W&#34;는 기본적으로 일요일 기준 주간 날짜를 반환</span>
-</span></span><span style="display:flex;"><span>weekly <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>date_range(<span style="color:#e6db74">&#34;2026-01-01&#34;</span>, <span style="color:#e6db74">&#34;2026-03-31&#34;</span>, freq<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;W&#34;</span>)
-</span></span><span style="display:flex;"><span>weekly
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>DatetimeIndex([&#39;2026-01-04&#39;, &#39;2026-01-11&#39;, &#39;2026-01-18&#39;, ...,
-</span></span><span style="display:flex;"><span>               &#39;2026-03-15&#39;, &#39;2026-03-22&#39;, &#39;2026-03-29&#39;],
-</span></span><span style="display:flex;"><span>              dtype=&#39;datetime64[ns]&#39;, freq=&#39;W-SUN&#39;)
-</span></span></code></pre></div><h2 id="q07-date_range의-다양한-freq-옵션-비교하기">Q07. date_range의 다양한 freq 옵션 비교하기<a hidden class="anchor" aria-hidden="true" href="#q07-date_range의-다양한-freq-옵션-비교하기">#</a></h2>
-<p><code>freq</code> 옵션을 바꾸면 월말, 분기말, 시간 단위 날짜도 만들 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 월말</span>
-</span></span><span style="display:flex;"><span>month_end <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>date_range(<span style="color:#e6db74">&#34;2026-01-01&#34;</span>, <span style="color:#e6db74">&#34;2026-03-31&#34;</span>, freq<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ME&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 분기말</span>
-</span></span><span style="display:flex;"><span>quarter_end <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>date_range(<span style="color:#e6db74">&#34;2026-01-01&#34;</span>, <span style="color:#e6db74">&#34;2026-03-31&#34;</span>, freq<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;QE&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 시간 단위</span>
-</span></span><span style="display:flex;"><span>hourly <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>date_range(<span style="color:#e6db74">&#34;2026-01-01&#34;</span>, <span style="color:#e6db74">&#34;2026-01-02&#34;</span>, freq<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;h&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(month_end)
-</span></span><span style="display:flex;"><span>print(quarter_end)
-</span></span><span style="display:flex;"><span>print(hourly)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>DatetimeIndex([&#39;2026-01-31&#39;, &#39;2026-02-28&#39;, &#39;2026-03-31&#39;], dtype=&#39;datetime64[ns]&#39;, freq=&#39;ME&#39;)
-</span></span><span style="display:flex;"><span>DatetimeIndex([&#39;2026-03-31&#39;], dtype=&#39;datetime64[ns]&#39;, freq=&#39;QE-DEC&#39;)
-</span></span><span style="display:flex;"><span>DatetimeIndex([&#39;2026-01-01 00:00:00&#39;, &#39;2026-01-01 01:00:00&#39;, ...,
-</span></span><span style="display:flex;"><span>               &#39;2026-01-02 00:00:00&#39;],
-</span></span><span style="display:flex;"><span>              dtype=&#39;datetime64[ns]&#39;, freq=&#39;h&#39;)
-</span></span></code></pre></div><p>자주 쓰는 <code>freq</code>는 <code>D</code>(일), <code>W</code>(주), <code>ME</code>(월말), <code>QE</code>(분기말), <code>h</code>(시간) 정도부터 익히면 좋다.</p>
-<h2 id="q08-bdate_range로-영업일-기준-날짜-만들기">Q08. bdate_range로 영업일 기준 날짜 만들기<a hidden class="anchor" aria-hidden="true" href="#q08-bdate_range로-영업일-기준-날짜-만들기">#</a></h2>
-<p><code>pd.bdate_range()</code>는 business day, 즉 평일 기준 날짜만 생성한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bdr <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>bdate_range(<span style="color:#e6db74">&#34;2026-01-01&#34;</span>, <span style="color:#e6db74">&#34;2026-07-01&#34;</span>)
-</span></span><span style="display:flex;"><span>bdr
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>DatetimeIndex([&#39;2026-01-01&#39;, &#39;2026-01-02&#39;, &#39;2026-01-05&#39;, ...,
-</span></span><span style="display:flex;"><span>               &#39;2026-06-29&#39;, &#39;2026-06-30&#39;, &#39;2026-07-01&#39;],
-</span></span><span style="display:flex;"><span>              dtype=&#39;datetime64[ns]&#39;, length=130, freq=&#39;B&#39;)
-</span></span></code></pre></div><p>기본 기준은 월요일부터 금요일까지다. 한국 공휴일까지 반영하려면 이후 문제에서 다루는 <code>CustomBusinessDay</code>를 사용한다.</p>
-<h2 id="q09-period_range로-월별-period-시퀀스-만들기">Q09. period_range로 월별 Period 시퀀스 만들기<a hidden class="anchor" aria-hidden="true" href="#q09-period_range로-월별-period-시퀀스-만들기">#</a></h2>
-<p><code>period_range()</code>는 특정 시점이 아니라 월, 분기, 연도 같은 기간을 표현한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pr <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>period_range(<span style="color:#e6db74">&#34;2025-01&#34;</span>, periods<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>, freq<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;M&#34;</span>)
-</span></span><span style="display:flex;"><span>print(pr)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Period를 Timestamp로 변환</span>
-</span></span><span style="display:flex;"><span>print(pr<span style="color:#f92672">.</span>to_timestamp(how<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;start&#34;</span>))
-</span></span><span style="display:flex;"><span>print(pr<span style="color:#f92672">.</span>to_timestamp(how<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;end&#34;</span>))
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>PeriodIndex([&#39;2025-01&#39;, &#39;2025-02&#39;, &#39;2025-03&#39;, ..., &#39;2026-06&#39;], dtype=&#39;period[M]&#39;)
-</span></span><span style="display:flex;"><span>DatetimeIndex([&#39;2025-01-01&#39;, &#39;2025-02-01&#39;, &#39;2025-03-01&#39;, ...,
-</span></span><span style="display:flex;"><span>               &#39;2026-06-01&#39;],
-</span></span><span style="display:flex;"><span>              dtype=&#39;datetime64[ns]&#39;, freq=&#39;MS&#39;)
-</span></span><span style="display:flex;"><span>DatetimeIndex([&#39;2025-01-31 23:59:59.999999999&#39;,
-</span></span><span style="display:flex;"><span>               &#39;2025-02-28 23:59:59.999999999&#39;,
-</span></span><span style="display:flex;"><span>               &#39;2025-03-31 23:59:59.999999999&#39;, ...],
-</span></span><span style="display:flex;"><span>              dtype=&#39;datetime64[ns]&#39;, freq=None)
-</span></span></code></pre></div><p><code>PeriodIndex</code>는 &ldquo;2025년 1월&quot;처럼 기간 자체를 나타낸다. 필요하면 <code>to_timestamp()</code>로 월초나 월말 시점으로 변환할 수 있다.</p>
-<h2 id="q10-timestamp-속성-살펴보기">Q10. Timestamp 속성 살펴보기<a hidden class="anchor" aria-hidden="true" href="#q10-timestamp-속성-살펴보기">#</a></h2>
-<p><code>Timestamp</code> 객체에서는 연도, 월, 일, 요일, 분기, 윤년 여부 등을 바로 꺼낼 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ts <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Timestamp(<span style="color:#e6db74">&#34;2026-07-01 09:30:30&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(ts<span style="color:#f92672">.</span>date())
-</span></span><span style="display:flex;"><span>print(ts<span style="color:#f92672">.</span>year)
-</span></span><span style="display:flex;"><span>print(ts<span style="color:#f92672">.</span>month)
-</span></span><span style="display:flex;"><span>print(ts<span style="color:#f92672">.</span>day)
-</span></span><span style="display:flex;"><span>print(ts<span style="color:#f92672">.</span>day_name())
-</span></span><span style="display:flex;"><span>print(ts<span style="color:#f92672">.</span>quarter)
-</span></span><span style="display:flex;"><span>print(ts<span style="color:#f92672">.</span>is_leap_year)
-</span></span><span style="display:flex;"><span>print(ts<span style="color:#f92672">.</span>day_of_year)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(pd<span style="color:#f92672">.</span>Timestamp<span style="color:#f92672">.</span>today(tz<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Asia/Seoul&#34;</span>))
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>2026-07-01
-</span></span><span style="display:flex;"><span>2026
-</span></span><span style="display:flex;"><span>7
-</span></span><span style="display:flex;"><span>1
-</span></span><span style="display:flex;"><span>Wednesday
-</span></span><span style="display:flex;"><span>3
-</span></span><span style="display:flex;"><span>False
-</span></span><span style="display:flex;"><span>182
-</span></span><span style="display:flex;"><span>2026-07-01 HH:MM:SS.ffffff+09:00
-</span></span></code></pre></div><p>마지막 줄의 <code>Timestamp.today()</code>는 실행 시점의 현재 시간이 출력되므로 실행할 때마다 결과가 달라진다.</p>
-<h2 id="정리">정리<a hidden class="anchor" aria-hidden="true" href="#정리">#</a></h2>
-<p>문제 1~10에서 가장 중요한 흐름은 문자열과 숫자를 datetime 타입으로 바꾸고, 필요한 날짜 시퀀스를 생성하는 것이다.</p>
-<ul>
-<li>단일 날짜: <code>pd.Timestamp()</code></li>
-<li>여러 날짜 변환: <code>pd.to_datetime()</code></li>
-<li>잘못된 날짜 결측 처리: <code>errors=&quot;coerce&quot;</code></li>
-<li>epoch 초 변환: <code>pd.to_datetime(..., unit=&quot;s&quot;)</code></li>
-<li>날짜 범위 생성: <code>pd.date_range()</code>, <code>pd.bdate_range()</code></li>
-<li>기간 범위 생성: <code>pd.period_range()</code></li>
-<li>날짜 속성 확인: <code>.year</code>, <code>.month</code>, <code>.day_name()</code>, <code>.quarter</code>, <code>.is_leap_year</code></li>
-</ul>
-<p>시계열 분석을 하려면 먼저 날짜 컬럼이 문자열이 아니라 <code>datetime64[ns]</code> 타입인지 확인하는 습관이 중요하다.</p>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1314/tags/pandas/">Pandas</a></li>
-      <li><a href="http://localhost:1314/tags/python/">Python</a></li>
-      <li><a href="http://localhost:1314/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/">데이터 분석</a></li>
-      <li><a href="http://localhost:1314/tags/%EC%8B%9C%EA%B3%84%EC%97%B4/">시계열</a></li>
-      <li><a href="http://localhost:1314/tags/timestamp/">Timestamp</a></li>
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1314/">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> · 
-
-    
-    
-    <span>
-        Powered by
-        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
-        <polyline points="17 11 12 6 7 11"></polyline>
-        <polyline points="17 18 12 13 7 18"></polyline>
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+pd.Timestamp : 하나의 날짜/시간 값을 표현 pd.to_datetime() : 문자열, 리스트, Series 등을 datetime 타입으로 변환 pd.date_range() : 일정한 간격의 날짜 시퀀스 생성 pd.period_range() : 월, 분기처럼 기간 단위의 시퀀스 생성 공통 준비 코드 import pandas as pd import numpy as np import datetime pd.set_option("display.max_columns", 15) pd.set_option("display.width", 110) 원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 orders["orderDate"] 컬럼을 사용한다.'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://gnl2109.github.io/posts/"},{"@type":"ListItem","position":2,"name":"[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10","item":"https://gnl2109.github.io/posts/month2-pandas-timeseries-q01-q10/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10","name":"[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10","description":"Pandas 시계열 50제: 문제 1~10 Pandas 시계열 학습자료의 Part 1은 날짜 데이터를 만드는 방법과 변환하는 방법을 익히는 구간이다.\n핵심은 다음 네 가지다.\npd.Timestamp : 하나의 날짜/시간 값을 표현 pd.to_datetime() : 문자열, 리스트, Series 등을 datetime 타입으로 변환 pd.date_range() : 일정한 간격의 날짜 시퀀스 생성 pd.period_range() : 월, 분기처럼 기간 단위의 시퀀스 생성 공통 준비 코드 import pandas as pd import numpy as np import datetime pd.set_option(\u0026#34;display.max_columns\u0026#34;, 15) pd.set_option(\u0026#34;display.width\u0026#34;, 110) 원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 orders[\u0026quot;orderDate\u0026quot;] 컬럼을 사용한다.\n","keywords":["Pandas","Python","데이터 분석","시계열","Timestamp"],"articleBody":"Pandas 시계열 50제: 문제 1~10 Pandas 시계열 학습자료의 Part 1은 날짜 데이터를 만드는 방법과 변환하는 방법을 익히는 구간이다.\n핵심은 다음 네 가지다.\npd.Timestamp : 하나의 날짜/시간 값을 표현 pd.to_datetime() : 문자열, 리스트, Series 등을 datetime 타입으로 변환 pd.date_range() : 일정한 간격의 날짜 시퀀스 생성 pd.period_range() : 월, 분기처럼 기간 단위의 시퀀스 생성 공통 준비 코드 import pandas as pd import numpy as np import datetime pd.set_option(\"display.max_columns\", 15) pd.set_option(\"display.width\", 110) 원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 orders[\"orderDate\"] 컬럼을 사용한다.\nDATA = \"/content/drive/MyDrive/Colab Notebooks/2026/이어드림스쿨6기/dataset/erd_sample\" orders = pd.read_csv( f\"{DATA}/orders.csv\", parse_dates=[\"orderDate\", \"requiredDate\", \"shippedDate\"] ) parse_dates에 날짜 컬럼을 지정하면 CSV를 읽는 시점에 문자열을 datetime 타입으로 변환할 수 있다.\nQ01. 문자열을 Timestamp로 변환하기 문자열 날짜를 Pandas의 Timestamp 객체로 만드는 방법은 여러 가지가 있다.\n# 방법 1: pd.Timestamp ts1 = pd.Timestamp(\"2003-01-06\") # 방법 2: pd.to_datetime ts2 = pd.to_datetime(\"2003-01-06\") # 방법 3: datetime 객체를 Timestamp로 변환 ts3 = pd.Timestamp(datetime.datetime(2003, 1, 6)) print(ts1, type(ts1)) print(ts2, type(ts2)) print(ts3, type(ts3)) print(\"세 값이 같은가?\", ts1 == ts2 == ts3) 2003-01-06 00:00:00 ","wordCount":"803","inLanguage":"en","datePublished":"2026-07-01T00:00:00+09:00","dateModified":"2026-07-01T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://gnl2109.github.io/posts/month2-pandas-timeseries-q01-q10/"},"publisher":{"@type":"Organization","name":"이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그","logo":{"@type":"ImageObject","url":"https://gnl2109.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://gnl2109.github.io/ accesskey=h title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">[이어드림스쿨6기_2개월] 0701 Pandas 시계열 50제 - 문제 1~10</h1><div class=post-meta><span title='2026-07-01 00:00:00 +0900 KST'>2026년 7월 1일</span></div></header><div class="post-content md-content"><h1 id=pandas-시계열-50제-문제-110>Pandas 시계열 50제: 문제 1~10<a hidden class=anchor aria-hidden=true href=#pandas-시계열-50제-문제-110>#</a></h1><p>Pandas 시계열 학습자료의 Part 1은 날짜 데이터를 만드는 방법과 변환하는 방법을 익히는 구간이다.</p><p>핵심은 다음 네 가지다.</p><ul><li><code>pd.Timestamp</code> : 하나의 날짜/시간 값을 표현</li><li><code>pd.to_datetime()</code> : 문자열, 리스트, Series 등을 datetime 타입으로 변환</li><li><code>pd.date_range()</code> : 일정한 간격의 날짜 시퀀스 생성</li><li><code>pd.period_range()</code> : 월, 분기처럼 기간 단위의 시퀀스 생성</li></ul><h2 id=공통-준비-코드>공통 준비 코드<a hidden class=anchor aria-hidden=true href=#공통-준비-코드>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> pandas <span style=color:#66d9ef>as</span> pd
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> datetime
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>pd<span style=color:#f92672>.</span>set_option(<span style=color:#e6db74>&#34;display.max_columns&#34;</span>, <span style=color:#ae81ff>15</span>)
+</span></span><span style=display:flex><span>pd<span style=color:#f92672>.</span>set_option(<span style=color:#e6db74>&#34;display.width&#34;</span>, <span style=color:#ae81ff>110</span>)
+</span></span></code></pre></div><p>원본 노트북에서는 Classic Models 샘플 CSV를 Google Drive에서 불러왔다. 문제 3, 4에서는 <code>orders["orderDate"]</code> 컬럼을 사용한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>DATA <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;/content/drive/MyDrive/Colab Notebooks/2026/이어드림스쿨6기/dataset/erd_sample&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>orders <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>read_csv(
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>DATA<span style=color:#e6db74>}</span><span style=color:#e6db74>/orders.csv&#34;</span>,
+</span></span><span style=display:flex><span>    parse_dates<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#34;orderDate&#34;</span>, <span style=color:#e6db74>&#34;requiredDate&#34;</span>, <span style=color:#e6db74>&#34;shippedDate&#34;</span>]
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><p><code>parse_dates</code>에 날짜 컬럼을 지정하면 CSV를 읽는 시점에 문자열을 datetime 타입으로 변환할 수 있다.</p><h2 id=q01-문자열을-timestamp로-변환하기>Q01. 문자열을 Timestamp로 변환하기<a hidden class=anchor aria-hidden=true href=#q01-문자열을-timestamp로-변환하기>#</a></h2><p>문자열 날짜를 Pandas의 <code>Timestamp</code> 객체로 만드는 방법은 여러 가지가 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># 방법 1: pd.Timestamp</span>
+</span></span><span style=display:flex><span>ts1 <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>Timestamp(<span style=color:#e6db74>&#34;2003-01-06&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 방법 2: pd.to_datetime</span>
+</span></span><span style=display:flex><span>ts2 <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>to_datetime(<span style=color:#e6db74>&#34;2003-01-06&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 방법 3: datetime 객체를 Timestamp로 변환</span>
+</span></span><span style=display:flex><span>ts3 <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>Timestamp(datetime<span style=color:#f92672>.</span>datetime(<span style=color:#ae81ff>2003</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>6</span>))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(ts1, type(ts1))
+</span></span><span style=display:flex><span>print(ts2, type(ts2))
+</span></span><span style=display:flex><span>print(ts3, type(ts3))
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;세 값이 같은가?&#34;</span>, ts1 <span style=color:#f92672>==</span> ts2 <span style=color:#f92672>==</span> ts3)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>2003-01-06 00:00:00 &lt;class &#39;pandas._libs.tslibs.timestamps.Timestamp&#39;&gt;
+</span></span><span style=display:flex><span>2003-01-06 00:00:00 &lt;class &#39;pandas._libs.tslibs.timestamps.Timestamp&#39;&gt;
+</span></span><span style=display:flex><span>2003-01-06 00:00:00 &lt;class &#39;pandas._libs.tslibs.timestamps.Timestamp&#39;&gt;
+</span></span><span style=display:flex><span>세 값이 같은가? True
+</span></span></code></pre></div><p>단일 날짜를 직접 만들 때는 <code>pd.Timestamp()</code>, 여러 날짜를 한 번에 변환할 때는 <code>pd.to_datetime()</code>을 자주 사용한다.</p><h2 id=q02-다양한-형식의-날짜-문자열을-한-번에-변환하기>Q02. 다양한 형식의 날짜 문자열을 한 번에 변환하기<a hidden class=anchor aria-hidden=true href=#q02-다양한-형식의-날짜-문자열을-한-번에-변환하기>#</a></h2><p>날짜 문자열은 <code>/</code>, 영문 월 이름, <code>-</code> 등 여러 형식으로 들어올 수 있다. 이때 <code>pd.to_datetime()</code>으로 한 번에 변환할 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>raw_dates <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;2003/01/06&#34;</span>, <span style=color:#e6db74>&#34;Jan 9, 2003&#34;</span>, <span style=color:#e6db74>&#34;2003-01-10&#34;</span>, <span style=color:#e6db74>&#34;10-01-2003&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>parsed <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>to_datetime(raw_dates, dayfirst<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>, format<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;mixed&#34;</span>)
+</span></span><span style=display:flex><span>print(parsed)
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;dtype:&#34;</span>, parsed<span style=color:#f92672>.</span>dtype)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>DatetimeIndex([&#39;2003-01-06&#39;, &#39;2003-01-09&#39;, &#39;2003-01-10&#39;, &#39;2003-10-01&#39;], dtype=&#39;datetime64[ns]&#39;, freq=None)
+</span></span><span style=display:flex><span>dtype: datetime64[ns]
+</span></span></code></pre></div><p><code>dayfirst=False</code>는 <code>10-01-2003</code>을 2003년 10월 1일로 해석하게 한다. 만약 일-월-연도 순서라면 <code>dayfirst=True</code>를 고려해야 한다.</p><h2 id=q03-잘못된-날짜-처리하기>Q03. 잘못된 날짜 처리하기<a hidden class=anchor aria-hidden=true href=#q03-잘못된-날짜-처리하기>#</a></h2><p>현실 데이터에는 날짜가 아닌 문자열이나 잘못된 날짜가 섞여 있을 수 있다. <code>errors="coerce"</code>를 사용하면 변환할 수 없는 값을 <code>NaT</code>로 처리한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>messy <span style=color:#f92672>=</span> orders[<span style=color:#e6db74>&#34;orderDate&#34;</span>]<span style=color:#f92672>.</span>astype(str)<span style=color:#f92672>.</span>tolist() <span style=color:#f92672>+</span> [<span style=color:#e6db74>&#34;NOT_A_DATE&#34;</span>, <span style=color:#e6db74>&#34;9999-99-99&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>parsed <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>to_datetime(messy, errors<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;coerce&#34;</span>)
+</span></span><span style=display:flex><span>print(parsed)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>DatetimeIndex([...,
+</span></span><span style=display:flex><span>               &#39;NaT&#39;, &#39;NaT&#39;],
+</span></span><span style=display:flex><span>              dtype=&#39;datetime64[ns]&#39;, length=328, freq=None)
+</span></span></code></pre></div><p><code>NaT</code>는 datetime에서의 결측값이다. 숫자 데이터의 <code>NaN</code>과 비슷하게 생각하면 된다.</p><h2 id=q04-unix-epoch-초를-timestamp로-변환하기>Q04. Unix epoch 초를 Timestamp로 변환하기<a hidden class=anchor aria-hidden=true href=#q04-unix-epoch-초를-timestamp로-변환하기>#</a></h2><p>Unix epoch는 1970년 1월 1일 00:00:00부터 흐른 시간을 초 단위로 표현한 값이다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># 주문일을 epoch 초로 변환</span>
+</span></span><span style=display:flex><span>epoch_seconds <span style=color:#f92672>=</span> (
+</span></span><span style=display:flex><span>    orders[<span style=color:#e6db74>&#34;orderDate&#34;</span>] <span style=color:#f92672>-</span> pd<span style=color:#f92672>.</span>Timestamp(<span style=color:#e6db74>&#34;1970-01-01&#34;</span>)
+</span></span><span style=display:flex><span>) <span style=color:#f92672>//</span> pd<span style=color:#f92672>.</span>Timedelta(<span style=color:#e6db74>&#34;1s&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(epoch_seconds)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># epoch 초를 다시 날짜로 복원</span>
+</span></span><span style=display:flex><span>restored <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>to_datetime(epoch_seconds, unit<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;s&#34;</span>)
+</span></span><span style=display:flex><span>print(restored)
+</span></span></code></pre></div><p>날짜끼리 빼면 <code>Timedelta</code>가 되고, 이를 초 단위로 나누면 epoch 초를 만들 수 있다. 반대로 <code>pd.to_datetime(..., unit="s")</code>를 사용하면 초 단위 숫자를 다시 날짜로 복원한다.</p><h2 id=q05-year-month-day-컬럼으로-날짜-조립하기>Q05. year, month, day 컬럼으로 날짜 조립하기<a hidden class=anchor aria-hidden=true href=#q05-year-month-day-컬럼으로-날짜-조립하기>#</a></h2><p>연도, 월, 일, 시, 분이 각각 컬럼으로 나뉘어 있을 때도 <code>pd.to_datetime()</code>으로 날짜를 조립할 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>df_parts <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>DataFrame({
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;year&#34;</span>:   [<span style=color:#ae81ff>2003</span>, <span style=color:#ae81ff>2003</span>, <span style=color:#ae81ff>2003</span>],
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;month&#34;</span>:  [<span style=color:#ae81ff>1</span>,    <span style=color:#ae81ff>2</span>,    <span style=color:#ae81ff>3</span>],
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;day&#34;</span>:    [<span style=color:#ae81ff>6</span>,    <span style=color:#ae81ff>14</span>,   <span style=color:#ae81ff>3</span>],
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;hour&#34;</span>:   [<span style=color:#ae81ff>9</span>,    <span style=color:#ae81ff>13</span>,   <span style=color:#ae81ff>17</span>],
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;minute&#34;</span>: [<span style=color:#ae81ff>0</span>,    <span style=color:#ae81ff>30</span>,   <span style=color:#ae81ff>45</span>],
+</span></span><span style=display:flex><span>})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>assembled <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>to_datetime(df_parts)
+</span></span><span style=display:flex><span>assembled
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>0   2003-01-06 09:00:00
+</span></span><span style=display:flex><span>1   2003-02-14 13:30:00
+</span></span><span style=display:flex><span>2   2003-03-03 17:45:00
+</span></span><span style=display:flex><span>dtype: datetime64[ns]
+</span></span></code></pre></div><p>컬럼명이 <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>처럼 Pandas가 인식할 수 있는 이름이면 자동으로 조립된다.</p><h2 id=q06-date_range로-일별-날짜-시퀀스-만들기>Q06. date_range로 일별 날짜 시퀀스 만들기<a hidden class=anchor aria-hidden=true href=#q06-date_range로-일별-날짜-시퀀스-만들기>#</a></h2><p><code>pd.date_range()</code>는 시작일과 종료일 사이의 날짜를 일정한 간격으로 생성한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># 일별 날짜 생성</span>
+</span></span><span style=display:flex><span>daily <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>date_range(<span style=color:#e6db74>&#34;2026-01-01&#34;</span>, <span style=color:#e6db74>&#34;2026-03-31&#34;</span>, freq<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;D&#34;</span>)
+</span></span><span style=display:flex><span>daily
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>DatetimeIndex([&#39;2026-01-01&#39;, &#39;2026-01-02&#39;, &#39;2026-01-03&#39;, ...,
+</span></span><span style=display:flex><span>               &#39;2026-03-29&#39;, &#39;2026-03-30&#39;, &#39;2026-03-31&#39;],
+</span></span><span style=display:flex><span>              dtype=&#39;datetime64[ns]&#39;, length=90, freq=&#39;D&#39;)
+</span></span></code></pre></div><p>주 단위 날짜도 만들 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># freq=&#34;W&#34;는 기본적으로 일요일 기준 주간 날짜를 반환</span>
+</span></span><span style=display:flex><span>weekly <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>date_range(<span style=color:#e6db74>&#34;2026-01-01&#34;</span>, <span style=color:#e6db74>&#34;2026-03-31&#34;</span>, freq<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;W&#34;</span>)
+</span></span><span style=display:flex><span>weekly
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>DatetimeIndex([&#39;2026-01-04&#39;, &#39;2026-01-11&#39;, &#39;2026-01-18&#39;, ...,
+</span></span><span style=display:flex><span>               &#39;2026-03-15&#39;, &#39;2026-03-22&#39;, &#39;2026-03-29&#39;],
+</span></span><span style=display:flex><span>              dtype=&#39;datetime64[ns]&#39;, freq=&#39;W-SUN&#39;)
+</span></span></code></pre></div><h2 id=q07-date_range의-다양한-freq-옵션-비교하기>Q07. date_range의 다양한 freq 옵션 비교하기<a hidden class=anchor aria-hidden=true href=#q07-date_range의-다양한-freq-옵션-비교하기>#</a></h2><p><code>freq</code> 옵션을 바꾸면 월말, 분기말, 시간 단위 날짜도 만들 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># 월말</span>
+</span></span><span style=display:flex><span>month_end <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>date_range(<span style=color:#e6db74>&#34;2026-01-01&#34;</span>, <span style=color:#e6db74>&#34;2026-03-31&#34;</span>, freq<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;ME&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 분기말</span>
+</span></span><span style=display:flex><span>quarter_end <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>date_range(<span style=color:#e6db74>&#34;2026-01-01&#34;</span>, <span style=color:#e6db74>&#34;2026-03-31&#34;</span>, freq<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;QE&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 시간 단위</span>
+</span></span><span style=display:flex><span>hourly <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>date_range(<span style=color:#e6db74>&#34;2026-01-01&#34;</span>, <span style=color:#e6db74>&#34;2026-01-02&#34;</span>, freq<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;h&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(month_end)
+</span></span><span style=display:flex><span>print(quarter_end)
+</span></span><span style=display:flex><span>print(hourly)
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>DatetimeIndex([&#39;2026-01-31&#39;, &#39;2026-02-28&#39;, &#39;2026-03-31&#39;], dtype=&#39;datetime64[ns]&#39;, freq=&#39;ME&#39;)
+</span></span><span style=display:flex><span>DatetimeIndex([&#39;2026-03-31&#39;], dtype=&#39;datetime64[ns]&#39;, freq=&#39;QE-DEC&#39;)
+</span></span><span style=display:flex><span>DatetimeIndex([&#39;2026-01-01 00:00:00&#39;, &#39;2026-01-01 01:00:00&#39;, ...,
+</span></span><span style=display:flex><span>               &#39;2026-01-02 00:00:00&#39;],
+</span></span><span style=display:flex><span>              dtype=&#39;datetime64[ns]&#39;, freq=&#39;h&#39;)
+</span></span></code></pre></div><p>자주 쓰는 <code>freq</code>는 <code>D</code>(일), <code>W</code>(주), <code>ME</code>(월말), <code>QE</code>(분기말), <code>h</code>(시간) 정도부터 익히면 좋다.</p><h2 id=q08-bdate_range로-영업일-기준-날짜-만들기>Q08. bdate_range로 영업일 기준 날짜 만들기<a hidden class=anchor aria-hidden=true href=#q08-bdate_range로-영업일-기준-날짜-만들기>#</a></h2><p><code>pd.bdate_range()</code>는 business day, 즉 평일 기준 날짜만 생성한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>bdr <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>bdate_range(<span style=color:#e6db74>&#34;2026-01-01&#34;</span>, <span style=color:#e6db74>&#34;2026-07-01&#34;</span>)
+</span></span><span style=display:flex><span>bdr
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>DatetimeIndex([&#39;2026-01-01&#39;, &#39;2026-01-02&#39;, &#39;2026-01-05&#39;, ...,
+</span></span><span style=display:flex><span>               &#39;2026-06-29&#39;, &#39;2026-06-30&#39;, &#39;2026-07-01&#39;],
+</span></span><span style=display:flex><span>              dtype=&#39;datetime64[ns]&#39;, length=130, freq=&#39;B&#39;)
+</span></span></code></pre></div><p>기본 기준은 월요일부터 금요일까지다. 한국 공휴일까지 반영하려면 이후 문제에서 다루는 <code>CustomBusinessDay</code>를 사용한다.</p><h2 id=q09-period_range로-월별-period-시퀀스-만들기>Q09. period_range로 월별 Period 시퀀스 만들기<a hidden class=anchor aria-hidden=true href=#q09-period_range로-월별-period-시퀀스-만들기>#</a></h2><p><code>period_range()</code>는 특정 시점이 아니라 월, 분기, 연도 같은 기간을 표현한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>pr <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>period_range(<span style=color:#e6db74>&#34;2025-01&#34;</span>, periods<span style=color:#f92672>=</span><span style=color:#ae81ff>18</span>, freq<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;M&#34;</span>)
+</span></span><span style=display:flex><span>print(pr)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Period를 Timestamp로 변환</span>
+</span></span><span style=display:flex><span>print(pr<span style=color:#f92672>.</span>to_timestamp(how<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;start&#34;</span>))
+</span></span><span style=display:flex><span>print(pr<span style=color:#f92672>.</span>to_timestamp(how<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;end&#34;</span>))
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>PeriodIndex([&#39;2025-01&#39;, &#39;2025-02&#39;, &#39;2025-03&#39;, ..., &#39;2026-06&#39;], dtype=&#39;period[M]&#39;)
+</span></span><span style=display:flex><span>DatetimeIndex([&#39;2025-01-01&#39;, &#39;2025-02-01&#39;, &#39;2025-03-01&#39;, ...,
+</span></span><span style=display:flex><span>               &#39;2026-06-01&#39;],
+</span></span><span style=display:flex><span>              dtype=&#39;datetime64[ns]&#39;, freq=&#39;MS&#39;)
+</span></span><span style=display:flex><span>DatetimeIndex([&#39;2025-01-31 23:59:59.999999999&#39;,
+</span></span><span style=display:flex><span>               &#39;2025-02-28 23:59:59.999999999&#39;,
+</span></span><span style=display:flex><span>               &#39;2025-03-31 23:59:59.999999999&#39;, ...],
+</span></span><span style=display:flex><span>              dtype=&#39;datetime64[ns]&#39;, freq=None)
+</span></span></code></pre></div><p><code>PeriodIndex</code>는 &ldquo;2025년 1월"처럼 기간 자체를 나타낸다. 필요하면 <code>to_timestamp()</code>로 월초나 월말 시점으로 변환할 수 있다.</p><h2 id=q10-timestamp-속성-살펴보기>Q10. Timestamp 속성 살펴보기<a hidden class=anchor aria-hidden=true href=#q10-timestamp-속성-살펴보기>#</a></h2><p><code>Timestamp</code> 객체에서는 연도, 월, 일, 요일, 분기, 윤년 여부 등을 바로 꺼낼 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>ts <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>Timestamp(<span style=color:#e6db74>&#34;2026-07-01 09:30:30&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(ts<span style=color:#f92672>.</span>date())
+</span></span><span style=display:flex><span>print(ts<span style=color:#f92672>.</span>year)
+</span></span><span style=display:flex><span>print(ts<span style=color:#f92672>.</span>month)
+</span></span><span style=display:flex><span>print(ts<span style=color:#f92672>.</span>day)
+</span></span><span style=display:flex><span>print(ts<span style=color:#f92672>.</span>day_name())
+</span></span><span style=display:flex><span>print(ts<span style=color:#f92672>.</span>quarter)
+</span></span><span style=display:flex><span>print(ts<span style=color:#f92672>.</span>is_leap_year)
+</span></span><span style=display:flex><span>print(ts<span style=color:#f92672>.</span>day_of_year)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(pd<span style=color:#f92672>.</span>Timestamp<span style=color:#f92672>.</span>today(tz<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Asia/Seoul&#34;</span>))
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>2026-07-01
+</span></span><span style=display:flex><span>2026
+</span></span><span style=display:flex><span>7
+</span></span><span style=display:flex><span>1
+</span></span><span style=display:flex><span>Wednesday
+</span></span><span style=display:flex><span>3
+</span></span><span style=display:flex><span>False
+</span></span><span style=display:flex><span>182
+</span></span><span style=display:flex><span>2026-07-01 HH:MM:SS.ffffff+09:00
+</span></span></code></pre></div><p>마지막 줄의 <code>Timestamp.today()</code>는 실행 시점의 현재 시간이 출력되므로 실행할 때마다 결과가 달라진다.</p><h2 id=정리>정리<a hidden class=anchor aria-hidden=true href=#정리>#</a></h2><p>문제 1~10에서 가장 중요한 흐름은 문자열과 숫자를 datetime 타입으로 바꾸고, 필요한 날짜 시퀀스를 생성하는 것이다.</p><ul><li>단일 날짜: <code>pd.Timestamp()</code></li><li>여러 날짜 변환: <code>pd.to_datetime()</code></li><li>잘못된 날짜 결측 처리: <code>errors="coerce"</code></li><li>epoch 초 변환: <code>pd.to_datetime(..., unit="s")</code></li><li>날짜 범위 생성: <code>pd.date_range()</code>, <code>pd.bdate_range()</code></li><li>기간 범위 생성: <code>pd.period_range()</code></li><li>날짜 속성 확인: <code>.year</code>, <code>.month</code>, <code>.day_name()</code>, <code>.quarter</code>, <code>.is_leap_year</code></li></ul><p>시계열 분석을 하려면 먼저 날짜 컬럼이 문자열이 아니라 <code>datetime64[ns]</code> 타입인지 확인하는 습관이 중요하다.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://gnl2109.github.io/tags/pandas/>Pandas</a></li><li><a href=https://gnl2109.github.io/tags/python/>Python</a></li><li><a href=https://gnl2109.github.io/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D/>데이터 분석</a></li><li><a href=https://gnl2109.github.io/tags/%EC%8B%9C%EA%B3%84%EC%97%B4/>시계열</a></li><li><a href=https://gnl2109.github.io/tags/timestamp/>Timestamp</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://gnl2109.github.io/>이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>

@@ -1,436 +1,67 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title>
-<meta name="keywords" content="Python, 파이썬, 기본문법, 자료형, 함수">
-<meta name="description" content="강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법 | 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><meta name=keywords content="Python,파이썬,기본문법,자료형,함수"><meta name=description content="강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.
 파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.
 1. 출력, 입력, 변수는 프로그램의 출발점이다
-print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1314/posts/month1-python-basic-syntax/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css" integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL&#43;GgRwmx68=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1314/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1314/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1314/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1314/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1314/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1314/posts/month1-python-basic-syntax/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script>
-      <script>
-        var doNotTrack = false;
-        if ( true ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-HTV70762HG');
-        }
-      </script><meta property="og:url" content="http://localhost:1314/posts/month1-python-basic-syntax/">
-  <meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그">
-  <meta property="og:title" content="[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법">
-  <meta property="og:description" content="강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.
+print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다."><meta name=author content><link rel=canonical href=https://gnl2109.github.io/posts/month1-python-basic-syntax/><link crossorigin=anonymous href=/assets/css/stylesheet.3fd33399855e80736ab94e72a03a5fee5186c7a2f98280bc50bf86811c26c7af.css integrity="sha256-P9MzmYVegHNquU5yoDpf7lGGx6L5goC8UL+GgRwmx68=" rel="preload stylesheet" as=style><link rel=icon href=https://gnl2109.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://gnl2109.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://gnl2109.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://gnl2109.github.io/apple-touch-icon.png><link rel=mask-icon href=https://gnl2109.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://gnl2109.github.io/posts/month1-python-basic-syntax/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-HTV70762HG"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-HTV70762HG")}</script><meta property="og:url" content="https://gnl2109.github.io/posts/month1-python-basic-syntax/"><meta property="og:site_name" content="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그"><meta property="og:title" content="[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법"><meta property="og:description" content="강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.
 파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.
-1. 출력, 입력, 변수는 프로그램의 출발점이다 print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.">
-  <meta property="og:locale" content="ko_kr">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-05-31T23:22:00+09:00">
-    <meta property="article:modified_time" content="2026-05-31T23:22:00+09:00">
-    <meta property="article:tag" content="Python">
-    <meta property="article:tag" content="파이썬">
-    <meta property="article:tag" content="기본문법">
-    <meta property="article:tag" content="자료형">
-    <meta property="article:tag" content="함수">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법">
-  <meta name="twitter:description" content="강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.
+1. 출력, 입력, 변수는 프로그램의 출발점이다 print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다."><meta property="og:locale" content="ko_kr"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-05-31T23:22:00+09:00"><meta property="article:modified_time" content="2026-05-31T23:22:00+09:00"><meta property="article:tag" content="Python"><meta property="article:tag" content="파이썬"><meta property="article:tag" content="기본문법"><meta property="article:tag" content="자료형"><meta property="article:tag" content="함수"><meta name=twitter:card content="summary"><meta name=twitter:title content="[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법"><meta name=twitter:description content="강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.
 파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.
-1. 출력, 입력, 변수는 프로그램의 출발점이다 print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "http://localhost:1314/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법",
-      "item": "http://localhost:1314/posts/month1-python-basic-syntax/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법",
-  "name": "[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법",
-  "description": "강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.\n파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.\n1. 출력, 입력, 변수는 프로그램의 출발점이다 print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.\n",
-  "keywords": [
-    "Python", "파이썬", "기본문법", "자료형", "함수"
-  ],
-  "articleBody": "강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.\n파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.\n1. 출력, 입력, 변수는 프로그램의 출발점이다 print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.\nprint(\"나의 꿈은 파이썬 정복!\") print(3, \"Hello!\") input()은 사용자에게 값을 입력받는 함수다. 중요한 점은 input()으로 입력받은 값은 기본적으로 문자열이라는 것이다. 숫자처럼 계산하려면 int()나 float()을 이용해 형 변환을 해야 한다.\nage = input(\"나이를 입력하세요: \") print(type(age)) # str number = int(input(\"숫자를 입력하세요: \")) print(number + 10) 변수는 값을 담아두는 이름이다. 같은 값을 여러 번 사용하거나, 입력받은 값을 나중에 다시 활용할 때 변수를 사용한다. 변수 이름은 알파벳, 숫자, 언더바 등을 사용할 수 있지만 숫자로 시작할 수 없고, print 같은 예약어를 변수명으로 쓰면 안 된다.\n2. 자료형은 값의 성격을 정한다 파이썬에서 값은 자료형을 가진다. 숫자, 문자열, 리스트처럼 값의 성격에 따라 사용할 수 있는 연산과 기능이 달라진다.\n숫자형: 정수와 실수를 다룬다. 문자열: 문자들의 나열이다. 리스트: 여러 값을 순서 있게 담는다. 논리형: True 또는 False를 나타낸다. 숫자형은 사칙연산을 할 수 있다. +, -, *, /뿐 아니라 몫을 구하는 //, 나머지를 구하는 %, 제곱을 구하는 **도 자주 사용한다.\nprint(13 // 5) # 2 print(13 % 5) # 3 print(2 ** 4) # 16 문자열은 +로 이어 붙이고, *로 반복할 수 있다. 문자열과 리스트처럼 순서가 있는 자료형은 인덱싱과 슬라이싱이 가능하다. 인덱스는 0부터 시작한다.\nword = \"Ready\" print(word[1]) # e print(word[1:4]) # ead 논리형은 조건문에서 특히 중요하다. 비교 연산자는 결과로 True 또는 False를 돌려준다. and, or, not을 이용하면 여러 조건을 조합할 수 있다.\n3. 조건문은 상황에 따라 다른 코드를 실행하게 한다 조건문은 특정 조건이 참인지 거짓인지에 따라 실행할 코드를 나누는 문법이다. if는 조건이 참일 때 실행되고, else는 조건이 거짓일 때 실행된다. 여러 조건을 순서대로 확인하려면 elif를 사용한다.\nscore = 78 if score \u003e= 90: print(\"A\") elif score \u003e= 75: print(\"B\") else: print(\"C\") 파이썬에서는 들여쓰기가 문법이다. if, elif, else 아래에 들어갈 코드는 같은 깊이로 들여써야 한다. 들여쓰기가 어긋나면 코드의 의미가 바뀌거나 오류가 발생할 수 있다.\n조건문을 잘 쓰려면 먼저 문제를 조건으로 나누어 생각해야 한다. 예를 들어 로그인 정보가 맞으면 홈페이지로 이동하고, 틀리면 경고 문구를 출력하는 식이다. 프로그램은 결국 이런 작은 판단들의 모음이다.\n4. 리스트와 시퀀스는 여러 값을 순서 있게 다룬다 리스트는 여러 값을 하나의 이름으로 묶어 다루는 자료형이다. 숫자, 문자열, 다른 자료형을 함께 담을 수도 있다. 리스트는 순서가 있기 때문에 인덱싱과 슬라이싱을 사용할 수 있다.\nnumbers = [2, 4, 6, 8, 10] print(numbers[2]) # 6 print(numbers[1:4]) # [4, 6, 8] 리스트에는 여러 메서드가 있다.\nappend(): 마지막에 원소를 추가한다. insert(): 지정한 위치에 원소를 추가한다. remove(): 처음 등장하는 특정 값을 제거한다. sort(): 리스트를 정렬한다. pop(): 특정 위치의 값을 꺼내고 제거한다. count(): 특정 값의 개수를 센다. 문자열과 리스트는 모두 시퀀스 자료형이다. 시퀀스는 순서가 있는 자료형이므로 in으로 포함 여부를 확인하고, len()으로 길이를 구하고, +로 이어 붙이고, *로 반복할 수 있다.\nletters = [\"e\", \"l\", \"i\", \"c\", \"e\"] print(\"e\" in letters) # True print(len(letters)) # 5 문자열에는 split()과 join()도 자주 사용된다. split()은 문자열을 기준에 따라 나누어 리스트로 만들고, join()은 리스트의 문자열들을 하나의 문자열로 합친다.\n5. 반복문은 반복되는 코드를 줄인다 반복문은 같은 일을 여러 번 수행할 때 사용한다. 파이썬에서는 for와 while을 많이 사용한다.\nfor문은 시퀀스의 원소를 하나씩 꺼내며 반복한다.\ntotal = 0 for number in [1, 3, 5]: total = total + number print(total) range()는 연속된 숫자를 만들어 반복할 때 사용한다. range(5)는 0부터 4까지의 값을 만들고, range(1, 9)는 1부터 8까지의 값을 만든다.\nfor i in range(1, 5): print(i) while문은 조건이 참인 동안 반복한다. 조건이 계속 참이면 무한 루프가 될 수 있으므로, 반복을 끝낼 조건을 반드시 신경 써야 한다. break는 반복문을 중간에 탈출할 때 사용한다.\ni = 1 while i \u003e 0: print(i) if i \u003e= 5: break i = i + 1 6. 튜플과 딕셔너리는 데이터를 다르게 묶는다 튜플은 여러 값을 담는 자료형이지만, 한 번 만들어지면 값을 바꿀 수 없다. 리스트는 수정이 가능하고, 튜플은 수정이 불가능하다는 점이 가장 큰 차이다. 값이 바뀌면 안 되는 데이터를 묶을 때 튜플을 사용할 수 있다.\npoint = (3, 5) print(point[0]) 딕셔너리는 키와 값의 쌍으로 데이터를 저장한다. 사전에서 단어를 찾으면 뜻이 나오듯, 딕셔너리에서는 키를 이용해 값을 꺼낸다.\nperson = {\"name\": \"Rabbit\", \"age\": 22} print(person[\"name\"]) 딕셔너리에는 값을 추가하거나 삭제할 수 있고, keys(), values(), items()를 이용해 키, 값, 키-값 쌍을 꺼낼 수 있다.\nperson[\"mail\"] = \"rabbit@elice.com\" del person[\"age\"] for key, value in person.items(): print(key, value) 딕셔너리의 키는 변할 수 없는 자료형이어야 한다. 리스트처럼 값이 바뀔 수 있는 자료형은 키로 사용할 수 없다.\n7. 함수와 메서드는 코드를 재사용하게 만든다 함수는 특정 기능을 수행하는 코드의 묶음이다. 파이썬에는 print(), input(), len(), sum(), max(), min() 같은 내장 함수가 있다. 직접 함수를 만들 때는 def를 사용한다.\ndef plus_double(a, b): c = a + b return 2 * c print(plus_double(3, 4)) 함수는 입력, 기능, 출력으로 생각할 수 있다. 매개변수를 통해 값을 입력받고, 함수 내부에서 작업을 수행한 뒤, return으로 결과를 돌려준다. return이 없으면 함수 안에서 계산한 값을 바깥에서 사용할 수 없다.\n변수의 범위도 중요하다. 함수 밖에서 만든 변수는 전역 변수이고, 함수 안에서 만든 변수는 지역 변수다. 지역 변수는 함수 안에서만 사용할 수 있다. 이 차이를 이해해야 함수 안팎에서 값이 왜 보이거나 보이지 않는지 알 수 있다.\n메서드는 특정 자료형과 연결된 함수처럼 사용할 수 있는 기능이다. 함수는 len(my_list)처럼 호출하지만, 메서드는 my_list.append(4)처럼 자료 뒤에 점을 찍고 호출한다. 리스트의 append(), count(), pop() 같은 기능이 메서드다.\n마무리 파이썬 기본 문법은 프로그램을 만드는 가장 작은 재료다. 출력과 입력으로 값을 주고받고, 변수와 자료형으로 값을 저장하고, 조건문과 반복문으로 흐름을 만들고, 리스트와 딕셔너리로 데이터를 묶고, 함수로 기능을 재사용한다.\n1. 핵심 주장 파이썬 문법을 배운다는 것은 단어를 외우는 것이 아니라, 문제를 코드의 흐름으로 바꾸는 방법을 익히는 일이다. 어떤 값을 다룰지, 어떤 조건으로 나눌지, 어떤 일을 반복할지, 어떤 기능을 함수로 묶을지를 생각하는 습관이 중요하다.\n처음에는 문법 하나하나가 따로 보이지만, 실제 코드는 자료형, 조건문, 반복문, 함수가 함께 움직인다. 그래서 예제를 따라 치는 것에서 멈추지 않고, 작은 문제를 직접 코드로 바꿔보는 연습이 필요하다.\n2. 중요한 개념 print()는 값을 출력하고, input()은 사용자 입력을 받는다. input()의 결과는 문자열이므로 계산이 필요하면 형 변환을 해야 한다. 변수는 값을 저장하는 이름이고, 변수명에는 지켜야 할 규칙이 있다. 숫자형, 문자열, 리스트, 튜플, 딕셔너리, 논리형은 각각 쓰임이 다르다. 조건문은 if, elif, else로 상황에 따라 실행 흐름을 나눈다. 리스트와 문자열은 순서가 있는 시퀀스 자료형이다. 반복문은 같은 작업을 여러 번 실행할 때 사용한다. 딕셔너리는 키와 값의 쌍으로 데이터를 저장한다. 함수는 코드를 묶어 재사용하게 해준다. 메서드는 특정 자료형에 연결된 기능이다. 3. 내가 놓치기 쉬운 부분 가장 놓치기 쉬운 부분은 자료형이다. input()으로 받은 숫자가 실제로는 문자열이라는 점을 잊으면 100 + 300이 아니라 \"100\" + \"300\"처럼 이어 붙이기가 되어 100300이 될 수 있다.\n들여쓰기도 단순한 보기 좋은 형식이 아니다. 파이썬에서 들여쓰기는 코드 블록을 구분하는 문법이다. 조건문, 반복문, 함수에서 들여쓰기가 어긋나면 의도와 다르게 실행되거나 오류가 난다.\n또 하나는 함수의 return이다. 함수 안에서 print()만 하면 화면에는 보이지만, 그 결과를 다른 코드에서 사용할 수는 없다. 계산 결과를 계속 활용하려면 return으로 값을 돌려줘야 한다.\n4. 현실에 적용하는 방법 작은 프로그램을 만들 때는 먼저 입력, 처리, 출력을 나눠보면 좋다. 어떤 값을 받을지, 그 값을 어떤 자료형으로 바꿔야 하는지, 어떤 조건을 확인해야 하는지, 어떤 결과를 출력해야 하는지 정리하면 코드가 훨씬 덜 막힌다.\n반복되는 코드를 발견하면 반복문이나 함수로 줄일 수 있는지 생각해볼 수 있다. 같은 print()를 여러 번 쓰고 있다면 for문을 사용할 수 있고, 같은 계산을 여러 곳에서 하고 있다면 함수로 분리할 수 있다.\n데이터를 저장할 때도 자료형 선택을 고민해야 한다. 순서가 중요하면 리스트나 튜플을, 이름표를 붙여 값을 찾고 싶으면 딕셔너리를 사용한다. 값이 바뀌면 안 된다면 리스트보다 튜플이 더 적합할 수 있다.\n5. 나에게 물어볼 질문 5개 input()으로 받은 값을 계산에 사용하려면 어떤 과정을 거쳐야 할까? 리스트, 튜플, 딕셔너리는 각각 어떤 상황에서 쓰는 것이 좋을까? for문과 while문 중 어떤 기준으로 선택할 수 있을까? 함수 안에서 계산한 값을 함수 밖에서 쓰려면 무엇이 필요할까? 지금 작성한 코드에서 반복문이나 함수로 줄일 수 있는 부분은 어디일까? ",
-  "wordCount" : "1260",
-  "inLanguage": "en",
-  "datePublished": "2026-05-31T23:22:00+09:00",
-  "dateModified": "2026-05-31T23:22:00+09:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "http://localhost:1314/posts/month1-python-basic-syntax/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "http://localhost:1314/favicon.ico"
-    }
-  }
-}
-</script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="header-nav">
-        <div class="logo">
-            <a href="http://localhost:1314/" accesskey="h" title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu" class="menu">
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      [이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법
-    </h1>
-    <div class="post-meta">
-
-<span title='2026-05-31 23:22:00 +0900 KST'>2026년 5월 31일</span>
-
-</div>
-  </header> 
-  <div class="post-content md-content"><p><code>강의자료/04,05 파이썬 기본 문법</code> 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.</p>
-<p>파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.</p>
-<h2 id="1-출력-입력-변수는-프로그램의-출발점이다">1. 출력, 입력, 변수는 프로그램의 출발점이다<a hidden class="anchor" aria-hidden="true" href="#1-출력-입력-변수는-프로그램의-출발점이다">#</a></h2>
-<p><code>print()</code>는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;나의 꿈은 파이썬 정복!&#34;</span>)
-</span></span><span style="display:flex;"><span>print(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;Hello!&#34;</span>)
-</span></span></code></pre></div><p><code>input()</code>은 사용자에게 값을 입력받는 함수다. 중요한 점은 <code>input()</code>으로 입력받은 값은 기본적으로 문자열이라는 것이다. 숫자처럼 계산하려면 <code>int()</code>나 <code>float()</code>을 이용해 형 변환을 해야 한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>age <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;나이를 입력하세요: &#34;</span>)
-</span></span><span style="display:flex;"><span>print(type(age))  <span style="color:#75715e"># str</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>number <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;숫자를 입력하세요: &#34;</span>))
-</span></span><span style="display:flex;"><span>print(number <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>)
-</span></span></code></pre></div><p>변수는 값을 담아두는 이름이다. 같은 값을 여러 번 사용하거나, 입력받은 값을 나중에 다시 활용할 때 변수를 사용한다. 변수 이름은 알파벳, 숫자, 언더바 등을 사용할 수 있지만 숫자로 시작할 수 없고, <code>print</code> 같은 예약어를 변수명으로 쓰면 안 된다.</p>
-<h2 id="2-자료형은-값의-성격을-정한다">2. 자료형은 값의 성격을 정한다<a hidden class="anchor" aria-hidden="true" href="#2-자료형은-값의-성격을-정한다">#</a></h2>
-<p>파이썬에서 값은 자료형을 가진다. 숫자, 문자열, 리스트처럼 값의 성격에 따라 사용할 수 있는 연산과 기능이 달라진다.</p>
-<ul>
-<li>숫자형: 정수와 실수를 다룬다.</li>
-<li>문자열: 문자들의 나열이다.</li>
-<li>리스트: 여러 값을 순서 있게 담는다.</li>
-<li>논리형: <code>True</code> 또는 <code>False</code>를 나타낸다.</li>
-</ul>
-<p>숫자형은 사칙연산을 할 수 있다. <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>뿐 아니라 몫을 구하는 <code>//</code>, 나머지를 구하는 <code>%</code>, 제곱을 구하는 <code>**</code>도 자주 사용한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#ae81ff">13</span> <span style="color:#f92672">//</span> <span style="color:#ae81ff">5</span>)  <span style="color:#75715e"># 2</span>
-</span></span><span style="display:flex;"><span>print(<span style="color:#ae81ff">13</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">5</span>)   <span style="color:#75715e"># 3</span>
-</span></span><span style="display:flex;"><span>print(<span style="color:#ae81ff">2</span> <span style="color:#f92672">**</span> <span style="color:#ae81ff">4</span>)   <span style="color:#75715e"># 16</span>
-</span></span></code></pre></div><p>문자열은 <code>+</code>로 이어 붙이고, <code>*</code>로 반복할 수 있다. 문자열과 리스트처럼 순서가 있는 자료형은 인덱싱과 슬라이싱이 가능하다. 인덱스는 0부터 시작한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>word <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Ready&#34;</span>
-</span></span><span style="display:flex;"><span>print(word[<span style="color:#ae81ff">1</span>])    <span style="color:#75715e"># e</span>
-</span></span><span style="display:flex;"><span>print(word[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">4</span>])  <span style="color:#75715e"># ead</span>
-</span></span></code></pre></div><p>논리형은 조건문에서 특히 중요하다. 비교 연산자는 결과로 <code>True</code> 또는 <code>False</code>를 돌려준다. <code>and</code>, <code>or</code>, <code>not</code>을 이용하면 여러 조건을 조합할 수 있다.</p>
-<h2 id="3-조건문은-상황에-따라-다른-코드를-실행하게-한다">3. 조건문은 상황에 따라 다른 코드를 실행하게 한다<a hidden class="anchor" aria-hidden="true" href="#3-조건문은-상황에-따라-다른-코드를-실행하게-한다">#</a></h2>
-<p>조건문은 특정 조건이 참인지 거짓인지에 따라 실행할 코드를 나누는 문법이다. <code>if</code>는 조건이 참일 때 실행되고, <code>else</code>는 조건이 거짓일 때 실행된다. 여러 조건을 순서대로 확인하려면 <code>elif</code>를 사용한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>score <span style="color:#f92672">=</span> <span style="color:#ae81ff">78</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> score <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">90</span>:
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;A&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> score <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">75</span>:
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;B&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;C&#34;</span>)
-</span></span></code></pre></div><p>파이썬에서는 들여쓰기가 문법이다. <code>if</code>, <code>elif</code>, <code>else</code> 아래에 들어갈 코드는 같은 깊이로 들여써야 한다. 들여쓰기가 어긋나면 코드의 의미가 바뀌거나 오류가 발생할 수 있다.</p>
-<p>조건문을 잘 쓰려면 먼저 문제를 조건으로 나누어 생각해야 한다. 예를 들어 로그인 정보가 맞으면 홈페이지로 이동하고, 틀리면 경고 문구를 출력하는 식이다. 프로그램은 결국 이런 작은 판단들의 모음이다.</p>
-<h2 id="4-리스트와-시퀀스는-여러-값을-순서-있게-다룬다">4. 리스트와 시퀀스는 여러 값을 순서 있게 다룬다<a hidden class="anchor" aria-hidden="true" href="#4-리스트와-시퀀스는-여러-값을-순서-있게-다룬다">#</a></h2>
-<p>리스트는 여러 값을 하나의 이름으로 묶어 다루는 자료형이다. 숫자, 문자열, 다른 자료형을 함께 담을 수도 있다. 리스트는 순서가 있기 때문에 인덱싱과 슬라이싱을 사용할 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">10</span>]
-</span></span><span style="display:flex;"><span>print(numbers[<span style="color:#ae81ff">2</span>])    <span style="color:#75715e"># 6</span>
-</span></span><span style="display:flex;"><span>print(numbers[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">4</span>])  <span style="color:#75715e"># [4, 6, 8]</span>
-</span></span></code></pre></div><p>리스트에는 여러 메서드가 있다.</p>
-<ul>
-<li><code>append()</code>: 마지막에 원소를 추가한다.</li>
-<li><code>insert()</code>: 지정한 위치에 원소를 추가한다.</li>
-<li><code>remove()</code>: 처음 등장하는 특정 값을 제거한다.</li>
-<li><code>sort()</code>: 리스트를 정렬한다.</li>
-<li><code>pop()</code>: 특정 위치의 값을 꺼내고 제거한다.</li>
-<li><code>count()</code>: 특정 값의 개수를 센다.</li>
-</ul>
-<p>문자열과 리스트는 모두 시퀀스 자료형이다. 시퀀스는 순서가 있는 자료형이므로 <code>in</code>으로 포함 여부를 확인하고, <code>len()</code>으로 길이를 구하고, <code>+</code>로 이어 붙이고, <code>*</code>로 반복할 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>letters <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;e&#34;</span>, <span style="color:#e6db74">&#34;l&#34;</span>, <span style="color:#e6db74">&#34;i&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#e6db74">&#34;e&#34;</span>]
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;e&#34;</span> <span style="color:#f92672">in</span> letters)  <span style="color:#75715e"># True</span>
-</span></span><span style="display:flex;"><span>print(len(letters))    <span style="color:#75715e"># 5</span>
-</span></span></code></pre></div><p>문자열에는 <code>split()</code>과 <code>join()</code>도 자주 사용된다. <code>split()</code>은 문자열을 기준에 따라 나누어 리스트로 만들고, <code>join()</code>은 리스트의 문자열들을 하나의 문자열로 합친다.</p>
-<h2 id="5-반복문은-반복되는-코드를-줄인다">5. 반복문은 반복되는 코드를 줄인다<a hidden class="anchor" aria-hidden="true" href="#5-반복문은-반복되는-코드를-줄인다">#</a></h2>
-<p>반복문은 같은 일을 여러 번 수행할 때 사용한다. 파이썬에서는 <code>for</code>와 <code>while</code>을 많이 사용한다.</p>
-<p><code>for</code>문은 시퀀스의 원소를 하나씩 꺼내며 반복한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>total <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> number <span style="color:#f92672">in</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>]:
-</span></span><span style="display:flex;"><span>    total <span style="color:#f92672">=</span> total <span style="color:#f92672">+</span> number
-</span></span><span style="display:flex;"><span>print(total)
-</span></span></code></pre></div><p><code>range()</code>는 연속된 숫자를 만들어 반복할 때 사용한다. <code>range(5)</code>는 0부터 4까지의 값을 만들고, <code>range(1, 9)</code>는 1부터 8까지의 값을 만든다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>):
-</span></span><span style="display:flex;"><span>    print(i)
-</span></span></code></pre></div><p><code>while</code>문은 조건이 참인 동안 반복한다. 조건이 계속 참이면 무한 루프가 될 수 있으므로, 반복을 끝낼 조건을 반드시 신경 써야 한다. <code>break</code>는 반복문을 중간에 탈출할 때 사용한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
-</span></span><span style="display:flex;"><span>    print(i)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">5</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>
-</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-</span></span></code></pre></div><h2 id="6-튜플과-딕셔너리는-데이터를-다르게-묶는다">6. 튜플과 딕셔너리는 데이터를 다르게 묶는다<a hidden class="anchor" aria-hidden="true" href="#6-튜플과-딕셔너리는-데이터를-다르게-묶는다">#</a></h2>
-<p>튜플은 여러 값을 담는 자료형이지만, 한 번 만들어지면 값을 바꿀 수 없다. 리스트는 수정이 가능하고, 튜플은 수정이 불가능하다는 점이 가장 큰 차이다. 값이 바뀌면 안 되는 데이터를 묶을 때 튜플을 사용할 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>point <span style="color:#f92672">=</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>print(point[<span style="color:#ae81ff">0</span>])
-</span></span></code></pre></div><p>딕셔너리는 키와 값의 쌍으로 데이터를 저장한다. 사전에서 단어를 찾으면 뜻이 나오듯, 딕셔너리에서는 키를 이용해 값을 꺼낸다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>person <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Rabbit&#34;</span>, <span style="color:#e6db74">&#34;age&#34;</span>: <span style="color:#ae81ff">22</span>}
-</span></span><span style="display:flex;"><span>print(person[<span style="color:#e6db74">&#34;name&#34;</span>])
-</span></span></code></pre></div><p>딕셔너리에는 값을 추가하거나 삭제할 수 있고, <code>keys()</code>, <code>values()</code>, <code>items()</code>를 이용해 키, 값, 키-값 쌍을 꺼낼 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>person[<span style="color:#e6db74">&#34;mail&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;rabbit@elice.com&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">del</span> person[<span style="color:#e6db74">&#34;age&#34;</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> person<span style="color:#f92672">.</span>items():
-</span></span><span style="display:flex;"><span>    print(key, value)
-</span></span></code></pre></div><p>딕셔너리의 키는 변할 수 없는 자료형이어야 한다. 리스트처럼 값이 바뀔 수 있는 자료형은 키로 사용할 수 없다.</p>
-<h2 id="7-함수와-메서드는-코드를-재사용하게-만든다">7. 함수와 메서드는 코드를 재사용하게 만든다<a hidden class="anchor" aria-hidden="true" href="#7-함수와-메서드는-코드를-재사용하게-만든다">#</a></h2>
-<p>함수는 특정 기능을 수행하는 코드의 묶음이다. 파이썬에는 <code>print()</code>, <code>input()</code>, <code>len()</code>, <code>sum()</code>, <code>max()</code>, <code>min()</code> 같은 내장 함수가 있다. 직접 함수를 만들 때는 <code>def</code>를 사용한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plus_double</span>(a, b):
-</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> b
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> c
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(plus_double(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>))
-</span></span></code></pre></div><p>함수는 입력, 기능, 출력으로 생각할 수 있다. 매개변수를 통해 값을 입력받고, 함수 내부에서 작업을 수행한 뒤, <code>return</code>으로 결과를 돌려준다. <code>return</code>이 없으면 함수 안에서 계산한 값을 바깥에서 사용할 수 없다.</p>
-<p>변수의 범위도 중요하다. 함수 밖에서 만든 변수는 전역 변수이고, 함수 안에서 만든 변수는 지역 변수다. 지역 변수는 함수 안에서만 사용할 수 있다. 이 차이를 이해해야 함수 안팎에서 값이 왜 보이거나 보이지 않는지 알 수 있다.</p>
-<p>메서드는 특정 자료형과 연결된 함수처럼 사용할 수 있는 기능이다. 함수는 <code>len(my_list)</code>처럼 호출하지만, 메서드는 <code>my_list.append(4)</code>처럼 자료 뒤에 점을 찍고 호출한다. 리스트의 <code>append()</code>, <code>count()</code>, <code>pop()</code> 같은 기능이 메서드다.</p>
-<h2 id="마무리">마무리<a hidden class="anchor" aria-hidden="true" href="#마무리">#</a></h2>
-<p>파이썬 기본 문법은 프로그램을 만드는 가장 작은 재료다. 출력과 입력으로 값을 주고받고, 변수와 자료형으로 값을 저장하고, 조건문과 반복문으로 흐름을 만들고, 리스트와 딕셔너리로 데이터를 묶고, 함수로 기능을 재사용한다.</p>
-<h3 id="1-핵심-주장">1. 핵심 주장<a hidden class="anchor" aria-hidden="true" href="#1-핵심-주장">#</a></h3>
-<p>파이썬 문법을 배운다는 것은 단어를 외우는 것이 아니라, 문제를 코드의 흐름으로 바꾸는 방법을 익히는 일이다. 어떤 값을 다룰지, 어떤 조건으로 나눌지, 어떤 일을 반복할지, 어떤 기능을 함수로 묶을지를 생각하는 습관이 중요하다.</p>
-<p>처음에는 문법 하나하나가 따로 보이지만, 실제 코드는 자료형, 조건문, 반복문, 함수가 함께 움직인다. 그래서 예제를 따라 치는 것에서 멈추지 않고, 작은 문제를 직접 코드로 바꿔보는 연습이 필요하다.</p>
-<h3 id="2-중요한-개념">2. 중요한 개념<a hidden class="anchor" aria-hidden="true" href="#2-중요한-개념">#</a></h3>
-<ul>
-<li><code>print()</code>는 값을 출력하고, <code>input()</code>은 사용자 입력을 받는다.</li>
-<li><code>input()</code>의 결과는 문자열이므로 계산이 필요하면 형 변환을 해야 한다.</li>
-<li>변수는 값을 저장하는 이름이고, 변수명에는 지켜야 할 규칙이 있다.</li>
-<li>숫자형, 문자열, 리스트, 튜플, 딕셔너리, 논리형은 각각 쓰임이 다르다.</li>
-<li>조건문은 <code>if</code>, <code>elif</code>, <code>else</code>로 상황에 따라 실행 흐름을 나눈다.</li>
-<li>리스트와 문자열은 순서가 있는 시퀀스 자료형이다.</li>
-<li>반복문은 같은 작업을 여러 번 실행할 때 사용한다.</li>
-<li>딕셔너리는 키와 값의 쌍으로 데이터를 저장한다.</li>
-<li>함수는 코드를 묶어 재사용하게 해준다.</li>
-<li>메서드는 특정 자료형에 연결된 기능이다.</li>
-</ul>
-<h3 id="3-내가-놓치기-쉬운-부분">3. 내가 놓치기 쉬운 부분<a hidden class="anchor" aria-hidden="true" href="#3-내가-놓치기-쉬운-부분">#</a></h3>
-<p>가장 놓치기 쉬운 부분은 자료형이다. <code>input()</code>으로 받은 숫자가 실제로는 문자열이라는 점을 잊으면 <code>100 + 300</code>이 아니라 <code>&quot;100&quot; + &quot;300&quot;</code>처럼 이어 붙이기가 되어 <code>100300</code>이 될 수 있다.</p>
-<p>들여쓰기도 단순한 보기 좋은 형식이 아니다. 파이썬에서 들여쓰기는 코드 블록을 구분하는 문법이다. 조건문, 반복문, 함수에서 들여쓰기가 어긋나면 의도와 다르게 실행되거나 오류가 난다.</p>
-<p>또 하나는 함수의 <code>return</code>이다. 함수 안에서 <code>print()</code>만 하면 화면에는 보이지만, 그 결과를 다른 코드에서 사용할 수는 없다. 계산 결과를 계속 활용하려면 <code>return</code>으로 값을 돌려줘야 한다.</p>
-<h3 id="4-현실에-적용하는-방법">4. 현실에 적용하는 방법<a hidden class="anchor" aria-hidden="true" href="#4-현실에-적용하는-방법">#</a></h3>
-<p>작은 프로그램을 만들 때는 먼저 입력, 처리, 출력을 나눠보면 좋다. 어떤 값을 받을지, 그 값을 어떤 자료형으로 바꿔야 하는지, 어떤 조건을 확인해야 하는지, 어떤 결과를 출력해야 하는지 정리하면 코드가 훨씬 덜 막힌다.</p>
-<p>반복되는 코드를 발견하면 반복문이나 함수로 줄일 수 있는지 생각해볼 수 있다. 같은 <code>print()</code>를 여러 번 쓰고 있다면 <code>for</code>문을 사용할 수 있고, 같은 계산을 여러 곳에서 하고 있다면 함수로 분리할 수 있다.</p>
-<p>데이터를 저장할 때도 자료형 선택을 고민해야 한다. 순서가 중요하면 리스트나 튜플을, 이름표를 붙여 값을 찾고 싶으면 딕셔너리를 사용한다. 값이 바뀌면 안 된다면 리스트보다 튜플이 더 적합할 수 있다.</p>
-<h3 id="5-나에게-물어볼-질문-5개">5. 나에게 물어볼 질문 5개<a hidden class="anchor" aria-hidden="true" href="#5-나에게-물어볼-질문-5개">#</a></h3>
-<ol>
-<li><code>input()</code>으로 받은 값을 계산에 사용하려면 어떤 과정을 거쳐야 할까?</li>
-<li>리스트, 튜플, 딕셔너리는 각각 어떤 상황에서 쓰는 것이 좋을까?</li>
-<li><code>for</code>문과 <code>while</code>문 중 어떤 기준으로 선택할 수 있을까?</li>
-<li>함수 안에서 계산한 값을 함수 밖에서 쓰려면 무엇이 필요할까?</li>
-<li>지금 작성한 코드에서 반복문이나 함수로 줄일 수 있는 부분은 어디일까?</li>
-</ol>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1314/tags/python/">Python</a></li>
-      <li><a href="http://localhost:1314/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a></li>
-      <li><a href="http://localhost:1314/tags/%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95/">기본문법</a></li>
-      <li><a href="http://localhost:1314/tags/%EC%9E%90%EB%A3%8C%ED%98%95/">자료형</a></li>
-      <li><a href="http://localhost:1314/tags/%ED%95%A8%EC%88%98/">함수</a></li>
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1314/">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> · 
-
-    
-    
-    <span>
-        Powered by
-        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
-        <polyline points="17 11 12 6 7 11"></polyline>
-        <polyline points="17 18 12 13 7 18"></polyline>
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+1. 출력, 입력, 변수는 프로그램의 출발점이다 print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://gnl2109.github.io/posts/"},{"@type":"ListItem","position":2,"name":"[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법","item":"https://gnl2109.github.io/posts/month1-python-basic-syntax/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법","name":"[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법","description":"강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.\n파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.\n1. 출력, 입력, 변수는 프로그램의 출발점이다 print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.\n","keywords":["Python","파이썬","기본문법","자료형","함수"],"articleBody":"강의자료/04,05 파이썬 기본 문법 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.\n파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.\n1. 출력, 입력, 변수는 프로그램의 출발점이다 print()는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.\nprint(\"나의 꿈은 파이썬 정복!\") print(3, \"Hello!\") input()은 사용자에게 값을 입력받는 함수다. 중요한 점은 input()으로 입력받은 값은 기본적으로 문자열이라는 것이다. 숫자처럼 계산하려면 int()나 float()을 이용해 형 변환을 해야 한다.\nage = input(\"나이를 입력하세요: \") print(type(age)) # str number = int(input(\"숫자를 입력하세요: \")) print(number + 10) 변수는 값을 담아두는 이름이다. 같은 값을 여러 번 사용하거나, 입력받은 값을 나중에 다시 활용할 때 변수를 사용한다. 변수 이름은 알파벳, 숫자, 언더바 등을 사용할 수 있지만 숫자로 시작할 수 없고, print 같은 예약어를 변수명으로 쓰면 안 된다.\n2. 자료형은 값의 성격을 정한다 파이썬에서 값은 자료형을 가진다. 숫자, 문자열, 리스트처럼 값의 성격에 따라 사용할 수 있는 연산과 기능이 달라진다.\n숫자형: 정수와 실수를 다룬다. 문자열: 문자들의 나열이다. 리스트: 여러 값을 순서 있게 담는다. 논리형: True 또는 False를 나타낸다. 숫자형은 사칙연산을 할 수 있다. +, -, *, /뿐 아니라 몫을 구하는 //, 나머지를 구하는 %, 제곱을 구하는 **도 자주 사용한다.\nprint(13 // 5) # 2 print(13 % 5) # 3 print(2 ** 4) # 16 문자열은 +로 이어 붙이고, *로 반복할 수 있다. 문자열과 리스트처럼 순서가 있는 자료형은 인덱싱과 슬라이싱이 가능하다. 인덱스는 0부터 시작한다.\nword = \"Ready\" print(word[1]) # e print(word[1:4]) # ead 논리형은 조건문에서 특히 중요하다. 비교 연산자는 결과로 True 또는 False를 돌려준다. and, or, not을 이용하면 여러 조건을 조합할 수 있다.\n3. 조건문은 상황에 따라 다른 코드를 실행하게 한다 조건문은 특정 조건이 참인지 거짓인지에 따라 실행할 코드를 나누는 문법이다. if는 조건이 참일 때 실행되고, else는 조건이 거짓일 때 실행된다. 여러 조건을 순서대로 확인하려면 elif를 사용한다.\nscore = 78 if score \u003e= 90: print(\"A\") elif score \u003e= 75: print(\"B\") else: print(\"C\") 파이썬에서는 들여쓰기가 문법이다. if, elif, else 아래에 들어갈 코드는 같은 깊이로 들여써야 한다. 들여쓰기가 어긋나면 코드의 의미가 바뀌거나 오류가 발생할 수 있다.\n조건문을 잘 쓰려면 먼저 문제를 조건으로 나누어 생각해야 한다. 예를 들어 로그인 정보가 맞으면 홈페이지로 이동하고, 틀리면 경고 문구를 출력하는 식이다. 프로그램은 결국 이런 작은 판단들의 모음이다.\n4. 리스트와 시퀀스는 여러 값을 순서 있게 다룬다 리스트는 여러 값을 하나의 이름으로 묶어 다루는 자료형이다. 숫자, 문자열, 다른 자료형을 함께 담을 수도 있다. 리스트는 순서가 있기 때문에 인덱싱과 슬라이싱을 사용할 수 있다.\nnumbers = [2, 4, 6, 8, 10] print(numbers[2]) # 6 print(numbers[1:4]) # [4, 6, 8] 리스트에는 여러 메서드가 있다.\nappend(): 마지막에 원소를 추가한다. insert(): 지정한 위치에 원소를 추가한다. remove(): 처음 등장하는 특정 값을 제거한다. sort(): 리스트를 정렬한다. pop(): 특정 위치의 값을 꺼내고 제거한다. count(): 특정 값의 개수를 센다. 문자열과 리스트는 모두 시퀀스 자료형이다. 시퀀스는 순서가 있는 자료형이므로 in으로 포함 여부를 확인하고, len()으로 길이를 구하고, +로 이어 붙이고, *로 반복할 수 있다.\nletters = [\"e\", \"l\", \"i\", \"c\", \"e\"] print(\"e\" in letters) # True print(len(letters)) # 5 문자열에는 split()과 join()도 자주 사용된다. split()은 문자열을 기준에 따라 나누어 리스트로 만들고, join()은 리스트의 문자열들을 하나의 문자열로 합친다.\n5. 반복문은 반복되는 코드를 줄인다 반복문은 같은 일을 여러 번 수행할 때 사용한다. 파이썬에서는 for와 while을 많이 사용한다.\nfor문은 시퀀스의 원소를 하나씩 꺼내며 반복한다.\ntotal = 0 for number in [1, 3, 5]: total = total + number print(total) range()는 연속된 숫자를 만들어 반복할 때 사용한다. range(5)는 0부터 4까지의 값을 만들고, range(1, 9)는 1부터 8까지의 값을 만든다.\nfor i in range(1, 5): print(i) while문은 조건이 참인 동안 반복한다. 조건이 계속 참이면 무한 루프가 될 수 있으므로, 반복을 끝낼 조건을 반드시 신경 써야 한다. break는 반복문을 중간에 탈출할 때 사용한다.\ni = 1 while i \u003e 0: print(i) if i \u003e= 5: break i = i + 1 6. 튜플과 딕셔너리는 데이터를 다르게 묶는다 튜플은 여러 값을 담는 자료형이지만, 한 번 만들어지면 값을 바꿀 수 없다. 리스트는 수정이 가능하고, 튜플은 수정이 불가능하다는 점이 가장 큰 차이다. 값이 바뀌면 안 되는 데이터를 묶을 때 튜플을 사용할 수 있다.\npoint = (3, 5) print(point[0]) 딕셔너리는 키와 값의 쌍으로 데이터를 저장한다. 사전에서 단어를 찾으면 뜻이 나오듯, 딕셔너리에서는 키를 이용해 값을 꺼낸다.\nperson = {\"name\": \"Rabbit\", \"age\": 22} print(person[\"name\"]) 딕셔너리에는 값을 추가하거나 삭제할 수 있고, keys(), values(), items()를 이용해 키, 값, 키-값 쌍을 꺼낼 수 있다.\nperson[\"mail\"] = \"rabbit@elice.com\" del person[\"age\"] for key, value in person.items(): print(key, value) 딕셔너리의 키는 변할 수 없는 자료형이어야 한다. 리스트처럼 값이 바뀔 수 있는 자료형은 키로 사용할 수 없다.\n7. 함수와 메서드는 코드를 재사용하게 만든다 함수는 특정 기능을 수행하는 코드의 묶음이다. 파이썬에는 print(), input(), len(), sum(), max(), min() 같은 내장 함수가 있다. 직접 함수를 만들 때는 def를 사용한다.\ndef plus_double(a, b): c = a + b return 2 * c print(plus_double(3, 4)) 함수는 입력, 기능, 출력으로 생각할 수 있다. 매개변수를 통해 값을 입력받고, 함수 내부에서 작업을 수행한 뒤, return으로 결과를 돌려준다. return이 없으면 함수 안에서 계산한 값을 바깥에서 사용할 수 없다.\n변수의 범위도 중요하다. 함수 밖에서 만든 변수는 전역 변수이고, 함수 안에서 만든 변수는 지역 변수다. 지역 변수는 함수 안에서만 사용할 수 있다. 이 차이를 이해해야 함수 안팎에서 값이 왜 보이거나 보이지 않는지 알 수 있다.\n메서드는 특정 자료형과 연결된 함수처럼 사용할 수 있는 기능이다. 함수는 len(my_list)처럼 호출하지만, 메서드는 my_list.append(4)처럼 자료 뒤에 점을 찍고 호출한다. 리스트의 append(), count(), pop() 같은 기능이 메서드다.\n마무리 파이썬 기본 문법은 프로그램을 만드는 가장 작은 재료다. 출력과 입력으로 값을 주고받고, 변수와 자료형으로 값을 저장하고, 조건문과 반복문으로 흐름을 만들고, 리스트와 딕셔너리로 데이터를 묶고, 함수로 기능을 재사용한다.\n1. 핵심 주장 파이썬 문법을 배운다는 것은 단어를 외우는 것이 아니라, 문제를 코드의 흐름으로 바꾸는 방법을 익히는 일이다. 어떤 값을 다룰지, 어떤 조건으로 나눌지, 어떤 일을 반복할지, 어떤 기능을 함수로 묶을지를 생각하는 습관이 중요하다.\n처음에는 문법 하나하나가 따로 보이지만, 실제 코드는 자료형, 조건문, 반복문, 함수가 함께 움직인다. 그래서 예제를 따라 치는 것에서 멈추지 않고, 작은 문제를 직접 코드로 바꿔보는 연습이 필요하다.\n2. 중요한 개념 print()는 값을 출력하고, input()은 사용자 입력을 받는다. input()의 결과는 문자열이므로 계산이 필요하면 형 변환을 해야 한다. 변수는 값을 저장하는 이름이고, 변수명에는 지켜야 할 규칙이 있다. 숫자형, 문자열, 리스트, 튜플, 딕셔너리, 논리형은 각각 쓰임이 다르다. 조건문은 if, elif, else로 상황에 따라 실행 흐름을 나눈다. 리스트와 문자열은 순서가 있는 시퀀스 자료형이다. 반복문은 같은 작업을 여러 번 실행할 때 사용한다. 딕셔너리는 키와 값의 쌍으로 데이터를 저장한다. 함수는 코드를 묶어 재사용하게 해준다. 메서드는 특정 자료형에 연결된 기능이다. 3. 내가 놓치기 쉬운 부분 가장 놓치기 쉬운 부분은 자료형이다. input()으로 받은 숫자가 실제로는 문자열이라는 점을 잊으면 100 + 300이 아니라 \"100\" + \"300\"처럼 이어 붙이기가 되어 100300이 될 수 있다.\n들여쓰기도 단순한 보기 좋은 형식이 아니다. 파이썬에서 들여쓰기는 코드 블록을 구분하는 문법이다. 조건문, 반복문, 함수에서 들여쓰기가 어긋나면 의도와 다르게 실행되거나 오류가 난다.\n또 하나는 함수의 return이다. 함수 안에서 print()만 하면 화면에는 보이지만, 그 결과를 다른 코드에서 사용할 수는 없다. 계산 결과를 계속 활용하려면 return으로 값을 돌려줘야 한다.\n4. 현실에 적용하는 방법 작은 프로그램을 만들 때는 먼저 입력, 처리, 출력을 나눠보면 좋다. 어떤 값을 받을지, 그 값을 어떤 자료형으로 바꿔야 하는지, 어떤 조건을 확인해야 하는지, 어떤 결과를 출력해야 하는지 정리하면 코드가 훨씬 덜 막힌다.\n반복되는 코드를 발견하면 반복문이나 함수로 줄일 수 있는지 생각해볼 수 있다. 같은 print()를 여러 번 쓰고 있다면 for문을 사용할 수 있고, 같은 계산을 여러 곳에서 하고 있다면 함수로 분리할 수 있다.\n데이터를 저장할 때도 자료형 선택을 고민해야 한다. 순서가 중요하면 리스트나 튜플을, 이름표를 붙여 값을 찾고 싶으면 딕셔너리를 사용한다. 값이 바뀌면 안 된다면 리스트보다 튜플이 더 적합할 수 있다.\n5. 나에게 물어볼 질문 5개 input()으로 받은 값을 계산에 사용하려면 어떤 과정을 거쳐야 할까? 리스트, 튜플, 딕셔너리는 각각 어떤 상황에서 쓰는 것이 좋을까? for문과 while문 중 어떤 기준으로 선택할 수 있을까? 함수 안에서 계산한 값을 함수 밖에서 쓰려면 무엇이 필요할까? 지금 작성한 코드에서 반복문이나 함수로 줄일 수 있는 부분은 어디일까? ","wordCount":"1260","inLanguage":"en","datePublished":"2026-05-31T23:22:00+09:00","dateModified":"2026-05-31T23:22:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://gnl2109.github.io/posts/month1-python-basic-syntax/"},"publisher":{"@type":"Organization","name":"이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그","logo":{"@type":"ImageObject","url":"https://gnl2109.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://gnl2109.github.io/ accesskey=h title="이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그 (Alt + H)">이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">[이어드림스쿨6기_1개월] 04,05 파이썬 기본 문법</h1><div class=post-meta><span title='2026-05-31 23:22:00 +0900 KST'>2026년 5월 31일</span></div></header><div class="post-content md-content"><p><code>강의자료/04,05 파이썬 기본 문법</code> 이어드림스쿨 강의자료를 바탕으로, 파이썬을 처음 배울 때 꼭 알아야 할 기본 문법을 정리해 보았다.</p><p>파이썬 문법의 핵심은 값을 어떻게 표현하고, 조건에 따라 어떻게 나누고, 반복되는 일을 어떻게 줄이고, 여러 데이터를 어떻게 묶고, 기능을 어떻게 함수로 분리할 것인지 이해하는 데 있다. 문법 하나하나는 작아 보이지만, 이 조각들이 모여 프로그램의 흐름을 만든다.</p><h2 id=1-출력-입력-변수는-프로그램의-출발점이다>1. 출력, 입력, 변수는 프로그램의 출발점이다<a hidden class=anchor aria-hidden=true href=#1-출력-입력-변수는-프로그램의-출발점이다>#</a></h2><p><code>print()</code>는 원하는 값이나 문장을 화면에 출력하는 함수다. 하나의 값만 출력할 수도 있고, 콤마를 이용해 여러 값을 함께 출력할 수도 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>print(<span style=color:#e6db74>&#34;나의 꿈은 파이썬 정복!&#34;</span>)
+</span></span><span style=display:flex><span>print(<span style=color:#ae81ff>3</span>, <span style=color:#e6db74>&#34;Hello!&#34;</span>)
+</span></span></code></pre></div><p><code>input()</code>은 사용자에게 값을 입력받는 함수다. 중요한 점은 <code>input()</code>으로 입력받은 값은 기본적으로 문자열이라는 것이다. 숫자처럼 계산하려면 <code>int()</code>나 <code>float()</code>을 이용해 형 변환을 해야 한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>age <span style=color:#f92672>=</span> input(<span style=color:#e6db74>&#34;나이를 입력하세요: &#34;</span>)
+</span></span><span style=display:flex><span>print(type(age))  <span style=color:#75715e># str</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>number <span style=color:#f92672>=</span> int(input(<span style=color:#e6db74>&#34;숫자를 입력하세요: &#34;</span>))
+</span></span><span style=display:flex><span>print(number <span style=color:#f92672>+</span> <span style=color:#ae81ff>10</span>)
+</span></span></code></pre></div><p>변수는 값을 담아두는 이름이다. 같은 값을 여러 번 사용하거나, 입력받은 값을 나중에 다시 활용할 때 변수를 사용한다. 변수 이름은 알파벳, 숫자, 언더바 등을 사용할 수 있지만 숫자로 시작할 수 없고, <code>print</code> 같은 예약어를 변수명으로 쓰면 안 된다.</p><h2 id=2-자료형은-값의-성격을-정한다>2. 자료형은 값의 성격을 정한다<a hidden class=anchor aria-hidden=true href=#2-자료형은-값의-성격을-정한다>#</a></h2><p>파이썬에서 값은 자료형을 가진다. 숫자, 문자열, 리스트처럼 값의 성격에 따라 사용할 수 있는 연산과 기능이 달라진다.</p><ul><li>숫자형: 정수와 실수를 다룬다.</li><li>문자열: 문자들의 나열이다.</li><li>리스트: 여러 값을 순서 있게 담는다.</li><li>논리형: <code>True</code> 또는 <code>False</code>를 나타낸다.</li></ul><p>숫자형은 사칙연산을 할 수 있다. <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>뿐 아니라 몫을 구하는 <code>//</code>, 나머지를 구하는 <code>%</code>, 제곱을 구하는 <code>**</code>도 자주 사용한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>print(<span style=color:#ae81ff>13</span> <span style=color:#f92672>//</span> <span style=color:#ae81ff>5</span>)  <span style=color:#75715e># 2</span>
+</span></span><span style=display:flex><span>print(<span style=color:#ae81ff>13</span> <span style=color:#f92672>%</span> <span style=color:#ae81ff>5</span>)   <span style=color:#75715e># 3</span>
+</span></span><span style=display:flex><span>print(<span style=color:#ae81ff>2</span> <span style=color:#f92672>**</span> <span style=color:#ae81ff>4</span>)   <span style=color:#75715e># 16</span>
+</span></span></code></pre></div><p>문자열은 <code>+</code>로 이어 붙이고, <code>*</code>로 반복할 수 있다. 문자열과 리스트처럼 순서가 있는 자료형은 인덱싱과 슬라이싱이 가능하다. 인덱스는 0부터 시작한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>word <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Ready&#34;</span>
+</span></span><span style=display:flex><span>print(word[<span style=color:#ae81ff>1</span>])    <span style=color:#75715e># e</span>
+</span></span><span style=display:flex><span>print(word[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>4</span>])  <span style=color:#75715e># ead</span>
+</span></span></code></pre></div><p>논리형은 조건문에서 특히 중요하다. 비교 연산자는 결과로 <code>True</code> 또는 <code>False</code>를 돌려준다. <code>and</code>, <code>or</code>, <code>not</code>을 이용하면 여러 조건을 조합할 수 있다.</p><h2 id=3-조건문은-상황에-따라-다른-코드를-실행하게-한다>3. 조건문은 상황에 따라 다른 코드를 실행하게 한다<a hidden class=anchor aria-hidden=true href=#3-조건문은-상황에-따라-다른-코드를-실행하게-한다>#</a></h2><p>조건문은 특정 조건이 참인지 거짓인지에 따라 실행할 코드를 나누는 문법이다. <code>if</code>는 조건이 참일 때 실행되고, <code>else</code>는 조건이 거짓일 때 실행된다. 여러 조건을 순서대로 확인하려면 <code>elif</code>를 사용한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>score <span style=color:#f92672>=</span> <span style=color:#ae81ff>78</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> score <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>90</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;A&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>elif</span> score <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>75</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;B&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;C&#34;</span>)
+</span></span></code></pre></div><p>파이썬에서는 들여쓰기가 문법이다. <code>if</code>, <code>elif</code>, <code>else</code> 아래에 들어갈 코드는 같은 깊이로 들여써야 한다. 들여쓰기가 어긋나면 코드의 의미가 바뀌거나 오류가 발생할 수 있다.</p><p>조건문을 잘 쓰려면 먼저 문제를 조건으로 나누어 생각해야 한다. 예를 들어 로그인 정보가 맞으면 홈페이지로 이동하고, 틀리면 경고 문구를 출력하는 식이다. 프로그램은 결국 이런 작은 판단들의 모음이다.</p><h2 id=4-리스트와-시퀀스는-여러-값을-순서-있게-다룬다>4. 리스트와 시퀀스는 여러 값을 순서 있게 다룬다<a hidden class=anchor aria-hidden=true href=#4-리스트와-시퀀스는-여러-값을-순서-있게-다룬다>#</a></h2><p>리스트는 여러 값을 하나의 이름으로 묶어 다루는 자료형이다. 숫자, 문자열, 다른 자료형을 함께 담을 수도 있다. 리스트는 순서가 있기 때문에 인덱싱과 슬라이싱을 사용할 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>numbers <span style=color:#f92672>=</span> [<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>10</span>]
+</span></span><span style=display:flex><span>print(numbers[<span style=color:#ae81ff>2</span>])    <span style=color:#75715e># 6</span>
+</span></span><span style=display:flex><span>print(numbers[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>4</span>])  <span style=color:#75715e># [4, 6, 8]</span>
+</span></span></code></pre></div><p>리스트에는 여러 메서드가 있다.</p><ul><li><code>append()</code>: 마지막에 원소를 추가한다.</li><li><code>insert()</code>: 지정한 위치에 원소를 추가한다.</li><li><code>remove()</code>: 처음 등장하는 특정 값을 제거한다.</li><li><code>sort()</code>: 리스트를 정렬한다.</li><li><code>pop()</code>: 특정 위치의 값을 꺼내고 제거한다.</li><li><code>count()</code>: 특정 값의 개수를 센다.</li></ul><p>문자열과 리스트는 모두 시퀀스 자료형이다. 시퀀스는 순서가 있는 자료형이므로 <code>in</code>으로 포함 여부를 확인하고, <code>len()</code>으로 길이를 구하고, <code>+</code>로 이어 붙이고, <code>*</code>로 반복할 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>letters <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;e&#34;</span>, <span style=color:#e6db74>&#34;l&#34;</span>, <span style=color:#e6db74>&#34;i&#34;</span>, <span style=color:#e6db74>&#34;c&#34;</span>, <span style=color:#e6db74>&#34;e&#34;</span>]
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#34;e&#34;</span> <span style=color:#f92672>in</span> letters)  <span style=color:#75715e># True</span>
+</span></span><span style=display:flex><span>print(len(letters))    <span style=color:#75715e># 5</span>
+</span></span></code></pre></div><p>문자열에는 <code>split()</code>과 <code>join()</code>도 자주 사용된다. <code>split()</code>은 문자열을 기준에 따라 나누어 리스트로 만들고, <code>join()</code>은 리스트의 문자열들을 하나의 문자열로 합친다.</p><h2 id=5-반복문은-반복되는-코드를-줄인다>5. 반복문은 반복되는 코드를 줄인다<a hidden class=anchor aria-hidden=true href=#5-반복문은-반복되는-코드를-줄인다>#</a></h2><p>반복문은 같은 일을 여러 번 수행할 때 사용한다. 파이썬에서는 <code>for</code>와 <code>while</code>을 많이 사용한다.</p><p><code>for</code>문은 시퀀스의 원소를 하나씩 꺼내며 반복한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>total <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> number <span style=color:#f92672>in</span> [<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span>]:
+</span></span><span style=display:flex><span>    total <span style=color:#f92672>=</span> total <span style=color:#f92672>+</span> number
+</span></span><span style=display:flex><span>print(total)
+</span></span></code></pre></div><p><code>range()</code>는 연속된 숫자를 만들어 반복할 때 사용한다. <code>range(5)</code>는 0부터 4까지의 값을 만들고, <code>range(1, 9)</code>는 1부터 8까지의 값을 만든다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>5</span>):
+</span></span><span style=display:flex><span>    print(i)
+</span></span></code></pre></div><p><code>while</code>문은 조건이 참인 동안 반복한다. 조건이 계속 참이면 무한 루프가 될 수 있으므로, 반복을 끝낼 조건을 반드시 신경 써야 한다. <code>break</code>는 반복문을 중간에 탈출할 때 사용한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>i <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> i <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>    print(i)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> i <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>5</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>break</span>
+</span></span><span style=display:flex><span>    i <span style=color:#f92672>=</span> i <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+</span></span></code></pre></div><h2 id=6-튜플과-딕셔너리는-데이터를-다르게-묶는다>6. 튜플과 딕셔너리는 데이터를 다르게 묶는다<a hidden class=anchor aria-hidden=true href=#6-튜플과-딕셔너리는-데이터를-다르게-묶는다>#</a></h2><p>튜플은 여러 값을 담는 자료형이지만, 한 번 만들어지면 값을 바꿀 수 없다. 리스트는 수정이 가능하고, 튜플은 수정이 불가능하다는 점이 가장 큰 차이다. 값이 바뀌면 안 되는 데이터를 묶을 때 튜플을 사용할 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>point <span style=color:#f92672>=</span> (<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span>)
+</span></span><span style=display:flex><span>print(point[<span style=color:#ae81ff>0</span>])
+</span></span></code></pre></div><p>딕셔너리는 키와 값의 쌍으로 데이터를 저장한다. 사전에서 단어를 찾으면 뜻이 나오듯, 딕셔너리에서는 키를 이용해 값을 꺼낸다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>person <span style=color:#f92672>=</span> {<span style=color:#e6db74>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;Rabbit&#34;</span>, <span style=color:#e6db74>&#34;age&#34;</span>: <span style=color:#ae81ff>22</span>}
+</span></span><span style=display:flex><span>print(person[<span style=color:#e6db74>&#34;name&#34;</span>])
+</span></span></code></pre></div><p>딕셔너리에는 값을 추가하거나 삭제할 수 있고, <code>keys()</code>, <code>values()</code>, <code>items()</code>를 이용해 키, 값, 키-값 쌍을 꺼낼 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span>person[<span style=color:#e6db74>&#34;mail&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;rabbit@elice.com&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>del</span> person[<span style=color:#e6db74>&#34;age&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> key, value <span style=color:#f92672>in</span> person<span style=color:#f92672>.</span>items():
+</span></span><span style=display:flex><span>    print(key, value)
+</span></span></code></pre></div><p>딕셔너리의 키는 변할 수 없는 자료형이어야 한다. 리스트처럼 값이 바뀔 수 있는 자료형은 키로 사용할 수 없다.</p><h2 id=7-함수와-메서드는-코드를-재사용하게-만든다>7. 함수와 메서드는 코드를 재사용하게 만든다<a hidden class=anchor aria-hidden=true href=#7-함수와-메서드는-코드를-재사용하게-만든다>#</a></h2><p>함수는 특정 기능을 수행하는 코드의 묶음이다. 파이썬에는 <code>print()</code>, <code>input()</code>, <code>len()</code>, <code>sum()</code>, <code>max()</code>, <code>min()</code> 같은 내장 함수가 있다. 직접 함수를 만들 때는 <code>def</code>를 사용한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>plus_double</span>(a, b):
+</span></span><span style=display:flex><span>    c <span style=color:#f92672>=</span> a <span style=color:#f92672>+</span> b
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> c
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(plus_double(<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>))
+</span></span></code></pre></div><p>함수는 입력, 기능, 출력으로 생각할 수 있다. 매개변수를 통해 값을 입력받고, 함수 내부에서 작업을 수행한 뒤, <code>return</code>으로 결과를 돌려준다. <code>return</code>이 없으면 함수 안에서 계산한 값을 바깥에서 사용할 수 없다.</p><p>변수의 범위도 중요하다. 함수 밖에서 만든 변수는 전역 변수이고, 함수 안에서 만든 변수는 지역 변수다. 지역 변수는 함수 안에서만 사용할 수 있다. 이 차이를 이해해야 함수 안팎에서 값이 왜 보이거나 보이지 않는지 알 수 있다.</p><p>메서드는 특정 자료형과 연결된 함수처럼 사용할 수 있는 기능이다. 함수는 <code>len(my_list)</code>처럼 호출하지만, 메서드는 <code>my_list.append(4)</code>처럼 자료 뒤에 점을 찍고 호출한다. 리스트의 <code>append()</code>, <code>count()</code>, <code>pop()</code> 같은 기능이 메서드다.</p><h2 id=마무리>마무리<a hidden class=anchor aria-hidden=true href=#마무리>#</a></h2><p>파이썬 기본 문법은 프로그램을 만드는 가장 작은 재료다. 출력과 입력으로 값을 주고받고, 변수와 자료형으로 값을 저장하고, 조건문과 반복문으로 흐름을 만들고, 리스트와 딕셔너리로 데이터를 묶고, 함수로 기능을 재사용한다.</p><h3 id=1-핵심-주장>1. 핵심 주장<a hidden class=anchor aria-hidden=true href=#1-핵심-주장>#</a></h3><p>파이썬 문법을 배운다는 것은 단어를 외우는 것이 아니라, 문제를 코드의 흐름으로 바꾸는 방법을 익히는 일이다. 어떤 값을 다룰지, 어떤 조건으로 나눌지, 어떤 일을 반복할지, 어떤 기능을 함수로 묶을지를 생각하는 습관이 중요하다.</p><p>처음에는 문법 하나하나가 따로 보이지만, 실제 코드는 자료형, 조건문, 반복문, 함수가 함께 움직인다. 그래서 예제를 따라 치는 것에서 멈추지 않고, 작은 문제를 직접 코드로 바꿔보는 연습이 필요하다.</p><h3 id=2-중요한-개념>2. 중요한 개념<a hidden class=anchor aria-hidden=true href=#2-중요한-개념>#</a></h3><ul><li><code>print()</code>는 값을 출력하고, <code>input()</code>은 사용자 입력을 받는다.</li><li><code>input()</code>의 결과는 문자열이므로 계산이 필요하면 형 변환을 해야 한다.</li><li>변수는 값을 저장하는 이름이고, 변수명에는 지켜야 할 규칙이 있다.</li><li>숫자형, 문자열, 리스트, 튜플, 딕셔너리, 논리형은 각각 쓰임이 다르다.</li><li>조건문은 <code>if</code>, <code>elif</code>, <code>else</code>로 상황에 따라 실행 흐름을 나눈다.</li><li>리스트와 문자열은 순서가 있는 시퀀스 자료형이다.</li><li>반복문은 같은 작업을 여러 번 실행할 때 사용한다.</li><li>딕셔너리는 키와 값의 쌍으로 데이터를 저장한다.</li><li>함수는 코드를 묶어 재사용하게 해준다.</li><li>메서드는 특정 자료형에 연결된 기능이다.</li></ul><h3 id=3-내가-놓치기-쉬운-부분>3. 내가 놓치기 쉬운 부분<a hidden class=anchor aria-hidden=true href=#3-내가-놓치기-쉬운-부분>#</a></h3><p>가장 놓치기 쉬운 부분은 자료형이다. <code>input()</code>으로 받은 숫자가 실제로는 문자열이라는 점을 잊으면 <code>100 + 300</code>이 아니라 <code>"100" + "300"</code>처럼 이어 붙이기가 되어 <code>100300</code>이 될 수 있다.</p><p>들여쓰기도 단순한 보기 좋은 형식이 아니다. 파이썬에서 들여쓰기는 코드 블록을 구분하는 문법이다. 조건문, 반복문, 함수에서 들여쓰기가 어긋나면 의도와 다르게 실행되거나 오류가 난다.</p><p>또 하나는 함수의 <code>return</code>이다. 함수 안에서 <code>print()</code>만 하면 화면에는 보이지만, 그 결과를 다른 코드에서 사용할 수는 없다. 계산 결과를 계속 활용하려면 <code>return</code>으로 값을 돌려줘야 한다.</p><h3 id=4-현실에-적용하는-방법>4. 현실에 적용하는 방법<a hidden class=anchor aria-hidden=true href=#4-현실에-적용하는-방법>#</a></h3><p>작은 프로그램을 만들 때는 먼저 입력, 처리, 출력을 나눠보면 좋다. 어떤 값을 받을지, 그 값을 어떤 자료형으로 바꿔야 하는지, 어떤 조건을 확인해야 하는지, 어떤 결과를 출력해야 하는지 정리하면 코드가 훨씬 덜 막힌다.</p><p>반복되는 코드를 발견하면 반복문이나 함수로 줄일 수 있는지 생각해볼 수 있다. 같은 <code>print()</code>를 여러 번 쓰고 있다면 <code>for</code>문을 사용할 수 있고, 같은 계산을 여러 곳에서 하고 있다면 함수로 분리할 수 있다.</p><p>데이터를 저장할 때도 자료형 선택을 고민해야 한다. 순서가 중요하면 리스트나 튜플을, 이름표를 붙여 값을 찾고 싶으면 딕셔너리를 사용한다. 값이 바뀌면 안 된다면 리스트보다 튜플이 더 적합할 수 있다.</p><h3 id=5-나에게-물어볼-질문-5개>5. 나에게 물어볼 질문 5개<a hidden class=anchor aria-hidden=true href=#5-나에게-물어볼-질문-5개>#</a></h3><ol><li><code>input()</code>으로 받은 값을 계산에 사용하려면 어떤 과정을 거쳐야 할까?</li><li>리스트, 튜플, 딕셔너리는 각각 어떤 상황에서 쓰는 것이 좋을까?</li><li><code>for</code>문과 <code>while</code>문 중 어떤 기준으로 선택할 수 있을까?</li><li>함수 안에서 계산한 값을 함수 밖에서 쓰려면 무엇이 필요할까?</li><li>지금 작성한 코드에서 반복문이나 함수로 줄일 수 있는 부분은 어디일까?</li></ol></div><footer class=post-footer><ul class=post-tags><li><a href=https://gnl2109.github.io/tags/python/>Python</a></li><li><a href=https://gnl2109.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/>파이썬</a></li><li><a href=https://gnl2109.github.io/tags/%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95/>기본문법</a></li><li><a href=https://gnl2109.github.io/tags/%EC%9E%90%EB%A3%8C%ED%98%95/>자료형</a></li><li><a href=https://gnl2109.github.io/tags/%ED%95%A8%EC%88%98/>함수</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://gnl2109.github.io/>이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>박스 모델 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><link>https://gnl2109.github.io/tags/%EB%B0%95%EC%8A%A4-%EB%AA%A8%EB%8D%B8/</link><description>Recent content in 박스 모델 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description><generator>Hugo</generator><language>ko-kr</language><lastBuildDate>Mon, 27 Jul 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://gnl2109.github.io/tags/%EB%B0%95%EC%8A%A4-%EB%AA%A8%EB%8D%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>[AI서비스_1개월차] 0727 웹사이트에 영향을 미치는 요소</title><link>https://gnl2109.github.io/posts/ai-service-month1-website-layout/</link><pubDate>Mon, 27 Jul 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/ai-service-month1-website-layout/</guid><description>&lt;h1 id="웹사이트에-영향을-미치는-요소"&gt;웹사이트에 영향을 미치는 요소&lt;/h1&gt;
+&lt;h2 id="박스-모델"&gt;박스 모델&lt;/h2&gt;
+&lt;p&gt;CSS 박스 모델은 바깥쪽부터 &lt;code&gt;margin &amp;gt; border &amp;gt; padding &amp;gt; content&lt;/code&gt; 순으로 구성된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;margin&lt;/code&gt;: border 바깥쪽 여백&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;padding&lt;/code&gt;: border 안쪽 여백&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;border&lt;/code&gt;: 요소의 테두리&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;content&lt;/code&gt;: 실제 콘텐츠 영역&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-css" data-lang="css"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;div&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;margin-left&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;padding-left&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;div&lt;/span&gt; { &lt;span style="color:#66d9ef"&gt;margin&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;/* top right bottom left 순으로 한 줄에 작성 가능 */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="block-요소와-inline-요소"&gt;Block 요소와 Inline 요소&lt;/h2&gt;
+&lt;h3 id="block-요소"&gt;Block 요소&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;y축 방향으로 정렬&lt;/li&gt;
+&lt;li&gt;대표적으로 &lt;code&gt;p&lt;/code&gt; 태그&lt;/li&gt;
+&lt;li&gt;줄바꿈 현상 발생&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;width&lt;/code&gt;, &lt;code&gt;height&lt;/code&gt;를 사용할 수 있어 공간 생성 가능&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;margin&lt;/code&gt;, &lt;code&gt;padding&lt;/code&gt;으로 상하 배치 작업 가능&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="inline-요소"&gt;Inline 요소&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;x축 방향으로 정렬&lt;/li&gt;
+&lt;li&gt;대표적으로 &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;span&lt;/code&gt; 태그&lt;/li&gt;
+&lt;li&gt;줄바꿈 현상 없음&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;width&lt;/code&gt;, &lt;code&gt;height&lt;/code&gt; 적용 불가&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;margin-top&lt;/code&gt;, &lt;code&gt;margin-bottom&lt;/code&gt;, &lt;code&gt;padding-top&lt;/code&gt;, &lt;code&gt;padding-bottom&lt;/code&gt; 적용 불가&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;style&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;p&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;width&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;200&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;height&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;200&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;margin-top&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;a&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;width&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;200&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt;; &lt;span style="color:#75715e"&gt;/* inline 요소에서는 적용되지 않음 */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;height&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;200&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt;; &lt;span style="color:#75715e"&gt;/* inline 요소에서는 적용되지 않음 */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;margin-top&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt;; &lt;span style="color:#75715e"&gt;/* inline 요소에서는 적용되지 않음 */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;/&lt;span style="color:#f92672"&gt;style&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;Block 요소&amp;lt;/&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;Block 요소&amp;lt;/&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;Block 요소&amp;lt;/&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;a&lt;/span&gt;&amp;gt;Inline 요소&amp;lt;/&lt;span style="color:#f92672"&gt;a&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;a&lt;/span&gt;&amp;gt;Inline 요소&amp;lt;/&lt;span style="color:#f92672"&gt;a&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;a&lt;/span&gt;&amp;gt;Inline 요소&amp;lt;/&lt;span style="color:#f92672"&gt;a&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="마진-병합-현상"&gt;마진 병합 현상&lt;/h2&gt;
+&lt;h3 id="형제-요소의-마진-병합"&gt;형제 요소의 마진 병합&lt;/h3&gt;
+&lt;p&gt;세로 마진이 만날 때 두 값이 더해지지 않고 더 큰 값으로 적용되는 현상이다.&lt;/p&gt;</description></item></channel></rss>

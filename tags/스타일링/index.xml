@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>스타일링 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</title><link>https://gnl2109.github.io/tags/%EC%8A%A4%ED%83%80%EC%9D%BC%EB%A7%81/</link><description>Recent content in 스타일링 on 이어드림스쿨 6기 / AI 서비스 개발자 학습 블로그</description><generator>Hugo</generator><language>ko-kr</language><lastBuildDate>Mon, 27 Jul 2026 00:00:00 +0900</lastBuildDate><atom:link href="https://gnl2109.github.io/tags/%EC%8A%A4%ED%83%80%EC%9D%BC%EB%A7%81/index.xml" rel="self" type="application/rss+xml"/><item><title>[AI서비스_1개월차] 0727 CSS</title><link>https://gnl2109.github.io/posts/ai-service-month1-css/</link><pubDate>Mon, 27 Jul 2026 00:00:00 +0900</pubDate><guid>https://gnl2109.github.io/posts/ai-service-month1-css/</guid><description>&lt;h1 id="css"&gt;CSS&lt;/h1&gt;
+&lt;h2 id="css란"&gt;CSS란?&lt;/h2&gt;
+&lt;p&gt;CSS(Cascading Style Sheet)는 HTML로 작성한 정보와 디자인을 분리하고, 문서의 레이아웃과 스타일을 정의하는 언어다.&lt;/p&gt;
+&lt;p&gt;기본 구성은 다음과 같다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-css" data-lang="css"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;선택자&lt;/span&gt; { &lt;span style="color:#960050;background-color:#1e0010"&gt;속성:&lt;/span&gt; &lt;span style="color:#960050;background-color:#1e0010"&gt;속성값&lt;/span&gt;; }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;선택자: 디자인을 적용할 HTML 영역&lt;/li&gt;
+&lt;li&gt;속성: 적용할 디자인의 종류. 예: &lt;code&gt;color&lt;/code&gt;, &lt;code&gt;font-size&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;속성값: 속성이 수행할 구체적인 명령. 각 선언 끝에는 세미콜론(&lt;code&gt;;&lt;/code&gt;)을 입력한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-css" data-lang="css"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;h1&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;font-size&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;20&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;font-family&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;sans-serif&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;color&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;blue&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;background-color&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;yellow&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;text-align&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;center&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="css를-연결하는-세-가지-방법"&gt;CSS를 연결하는 세 가지 방법&lt;/h2&gt;
+&lt;h3 id="inline-style-sheet"&gt;Inline Style Sheet&lt;/h3&gt;
+&lt;p&gt;HTML 태그의 &lt;code&gt;style&lt;/code&gt; 속성에 직접 작성한다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;h1&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;style&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;color: red;&amp;#34;&lt;/span&gt;&amp;gt;coding&amp;lt;/&lt;span style="color:#f92672"&gt;h1&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="internal-style-sheet"&gt;Internal Style Sheet&lt;/h3&gt;
+&lt;p&gt;HTML 문서의 &lt;code&gt;head&lt;/code&gt; 안에 &lt;code&gt;style&lt;/code&gt; 태그로 작성한다.&lt;/p&gt;</description></item></channel></rss>
